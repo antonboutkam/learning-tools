@@ -54,6 +54,7 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
   "types": [
     {
       "id": "juiste-volgorde",
+      "type": "assignment-type",
       "name": "Juiste volgorde",
       "version": "v1",
       "launchUrl": "/types/juiste-volgorde/v1/",

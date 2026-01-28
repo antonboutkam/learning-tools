@@ -11,6 +11,7 @@ let items = [];
 let correctOrder = [];
 let showCheck = true;
 let showCorrectOnCheck = true;
+let completion = null;
 
 function setStatus(msg, isError = false) {
   statusEl.textContent = msg;
@@ -47,6 +48,10 @@ function render() {
 function updateResult() {
   const isCorrect = items.every((item, idx) => item.id === correctOrder[idx]);
   resultEl.textContent = isCorrect ? "Alles staat goed!" : "Nog niet helemaal.";
+  if (isCorrect) {
+    completion?.markCompleted({ score: { correct: items.length, total: items.length } });
+  }
+  return isCorrect;
 }
 
 function markCorrectness() {
@@ -74,7 +79,7 @@ function moveItem(index, dir) {
 
 let draggedId = null;
 listEl.addEventListener("dragstart", (e) => {
-  draggedId = e.target?.dataset?.id || null;
+  draggedId = e.target?.closest?.("li")?.dataset?.id || null;
 });
 
 listEl.addEventListener("dragover", (e) => {
@@ -125,6 +130,15 @@ async function init() {
     showCorrectOnCheck = data.showCorrectOnCheck !== false;
     checkBtn.style.display = showCheck ? "inline-flex" : "none";
     render();
+    const cardEl = document.querySelector(".card");
+    completion = window.LearningToolsCompletion?.create?.({
+      toolId: "juiste-volgorde",
+      version: "v1",
+      dataUrl: new URL(dataUrl, window.location.href).toString(),
+      title: data.title || null,
+      containerEl: cardEl,
+      onReset: () => window.location.reload(),
+    }) || null;
     setStatus("Sleep of gebruik ▲▼ om te sorteren.");
   } catch (err) {
     console.error(err);

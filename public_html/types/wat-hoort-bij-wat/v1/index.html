@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wat hoort bij wat v1</title>
+  <link rel="stylesheet" href="/shared/ui.css" />
   <style>
     :root { --bg:#f6f2ee; --ink:#1b1713; --accent:#9a5b2e; --card:#fff; --muted:#6a5f55; --good:#2d8a3c; --bad:#b43c2b; }
     body { font-family: "Source Sans 3", "Segoe UI", sans-serif; margin: 0; background: var(--bg); color: var(--ink); }
@@ -11,14 +12,25 @@
     h1 { margin: 0 0 6px; font-size: 24px; }
     .wrap { padding: 0 20px 30px; }
     .card { background: var(--card); border-radius: 14px; border: 1px solid #eadfce; padding: 16px; box-shadow: 0 8px 18px rgba(0,0,0,.05); }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; padding: 8px; border-radius: 10px; border: 1px solid #f0e6d8; background: #fff; }
-    .row.correct { border-color: #bfe9c7; background: #eefaf1; }
-    .row.incorrect { border-color: #f2b7ae; background: #fff1ef; }
-    select { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #d9cbbb; background: #fff; }
     button { border: 1px solid #d5c9b8; background: #fff; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
     button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
     .status { margin-top: 12px; color: var(--muted); }
     .error { color: var(--bad); }
+
+    .matchboard { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 8px; border-radius: 14px; border: 1px solid #f0e6d8; background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65)); overflow: hidden; }
+    .matchboard canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .col { display: grid; gap: 10px; align-content: start; position: relative; z-index: 1; }
+    .node { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 10px; border-radius: 12px; border: 1px solid #e7dccb; background: #fff; box-shadow: 0 8px 18px rgba(0,0,0,.04); }
+    .node[data-side="right"] { flex-direction: row-reverse; }
+    .node.correct { border-color: #bfe9c7; background: #eefaf1; }
+    .node.incorrect { border-color: #f2b7ae; background: #fff1ef; }
+    .label { line-height: 1.25; }
+    .connector { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(0,0,0,.22); background: #fff; cursor: pointer; flex: 0 0 auto; display: grid; place-items: center; padding: 0; }
+    .connector::after { content: ""; width: 8px; height: 8px; border-radius: 999px; background: rgba(0,0,0,.10); }
+    .connector.active { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(154,91,46,.18); }
+    .connector.connected { border-color: rgba(0,0,0,.45); }
+    .connector:focus-visible { outline: 3px solid rgba(154,91,46,.28); outline-offset: 2px; }
+    .help { margin-top: 10px; font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -28,7 +40,12 @@
   </header>
   <div class="wrap">
     <div class="card">
-      <div id="pairs" style="display:grid; gap:10px;"></div>
+      <div id="pairs" class="matchboard" aria-label="Koppelen">
+        <canvas id="wires"></canvas>
+        <div class="col" id="leftCol"></div>
+        <div class="col" id="rightCol"></div>
+      </div>
+      <div class="help" id="hint">Tip: klik op een rondje en klik daarna op het bijpassende rondje aan de andere kant.</div>
       <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
         <button id="check" class="primary" type="button">Controleer</button>
         <span class="status" id="result"></span>
@@ -36,6 +53,7 @@
       <div class="status" id="status"></div>
     </div>
   </div>
+  <script src="/shared/completion.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

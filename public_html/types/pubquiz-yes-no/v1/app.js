@@ -18,6 +18,7 @@ let rollerInterval = null;
 let timerInterval = null;
 let rollerSeconds = 4;
 let questionSeconds = 10;
+let completion = null;
 
 function setStatus(msg, isError = false) {
   statusEl.textContent = msg;
@@ -87,6 +88,9 @@ function answer(value) {
   const correct = activeQuestion.answer === value;
   resultEl.textContent = correct ? "Goed!" : "Fout.";
   resultEl.className = correct ? "status good" : "status bad";
+  if (correct) {
+    completion?.markCompleted({ score: { correct: 1, total: 1 } });
+  }
   startBtn.disabled = false;
   yesBtn.disabled = true;
   noBtn.disabled = true;
@@ -114,6 +118,15 @@ async function init() {
     rollerSeconds = data.rollerSeconds ?? 4;
     questionSeconds = data.questionSeconds ?? 10;
     questionEl.textContent = "Klik op start";
+    const cardEl = document.querySelector(".card");
+    completion = window.LearningToolsCompletion?.create?.({
+      toolId: "pubquiz-yes-no",
+      version: "v1",
+      dataUrl: new URL(dataUrl, window.location.href).toString(),
+      title: data.title || null,
+      containerEl: cardEl,
+      onReset: () => window.location.reload(),
+    }) || null;
     setStatus("Klaar om te starten.");
   } catch (err) {
     console.error(err);

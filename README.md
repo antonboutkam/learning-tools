@@ -47,5 +47,6 @@ Gebruik de demo’s direct in de browser:
 - Iframe‑URL: `{launchUrl}?data=<urlencode(dataUrl)>`
 - `dataUrl` moet publiek en CORS‑toegankelijk zijn.
 - Gebruik altijd versie‑paden (bijv. `/v1/`) voor backwards compatibility.
+- Registry items hebben een `type` veld (bijv. `assignment-type`) zodat later ook visualisaties toegevoegd kunnen worden.
 
 # ......

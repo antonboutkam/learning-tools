@@ -3,6 +3,7 @@
   "types": [
     {
       "id": "juiste-volgorde",
+      "type": "assignment-type",
       "name": "Juiste volgorde",
       "version": "v1",
       "launchUrl": "/types/juiste-volgorde/v1/",
@@ -12,6 +13,7 @@
     },
     {
       "id": "wat-hoort-bij-wat",
+      "type": "assignment-type",
       "name": "Wat hoort bij wat",
       "version": "v1",
       "launchUrl": "/types/wat-hoort-bij-wat/v1/",
@@ -21,6 +23,7 @@
     },
     {
       "id": "pubquiz-yes-no",
+      "type": "assignment-type",
       "name": "Pubquiz Yes/No",
       "version": "v1",
       "launchUrl": "/types/pubquiz-yes-no/v1/",
