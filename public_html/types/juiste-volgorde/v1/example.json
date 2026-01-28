@@ -1,0 +1,12 @@
+{
+  "title": "Zet de stappen van de waterkringloop in de juiste volgorde",
+  "shuffle": true,
+  "showCheck": true,
+  "showCorrectOnCheck": true,
+  "items": [
+    { "id": "1", "text": "Verdamping" },
+    { "id": "2", "text": "Condensatie" },
+    { "id": "3", "text": "Neerslag" },
+    { "id": "4", "text": "Afvoer naar rivieren en zee" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Wat hoort bij wat?",
+  "showCheck": true,
+  "showCorrectOnCheck": true,
+  "shuffleOptions": true,
+  "pairs": [
+    { "left": "Willem van Oranje", "right": "Vader des Vaderlands" },
+    { "left": "Rembrandt", "right": "De Nachtwacht" },
+    { "left": "Erasmus", "right": "Humanist" },
+    { "left": "Michiel de Ruyter", "right": "Admiraal" }
+  ]
+}

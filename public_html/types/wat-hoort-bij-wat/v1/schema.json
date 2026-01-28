@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/wat-hoort-bij-wat/v1/schema.json",
+  "title": "Wat hoort bij wat v1",
+  "type": "object",
+  "required": ["title", "pairs"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "showCheck": { "type": "boolean", "default": true },
+    "showCorrectOnCheck": { "type": "boolean", "default": true },
+    "shuffleOptions": { "type": "boolean", "default": true },
+    "pairs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["left", "right"],
+        "additionalProperties": false,
+        "properties": {
+          "left": { "type": "string" },
+          "right": { "type": "string" }
+        }
+      }
+    }
+  }
+}

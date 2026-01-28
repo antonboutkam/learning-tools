@@ -1,0 +1,46 @@
+{
+  "title": "Learning Tools LTI",
+  "description": "LTI 1.3 tool for Learning Tools quizzes",
+  "target_link_uri": "https://your-domain.example/lti/launch",
+  "oidc_initiation_url": "https://your-domain.example/oidc/init",
+  "redirect_uris": [
+    "https://your-domain.example/lti/launch"
+  ],
+  "scopes": [
+    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/score"
+  ],
+  "extensions": [
+    {
+      "platform": "canvas.instructure.com",
+      "settings": {
+        "placements": [
+          {
+            "placement": "assignment_selection",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://your-domain.example/lti/launch",
+            "text": "Learning Tools",
+            "icon_url": "https://your-domain.example/assets/icon.png",
+            "custom_fields": {
+              "quiz_type": "$Canvas.user.id"
+            }
+          },
+          {
+            "placement": "link_selection",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://your-domain.example/lti/launch",
+            "text": "Learning Tools (link)",
+            "icon_url": "https://your-domain.example/assets/icon.png"
+          }
+        ]
+      }
+    }
+  ],
+  "public_jwk": {
+    "kty": "RSA",
+    "kid": "replace-with-your-kid",
+    "e": "AQAB",
+    "n": "replace-with-your-modulus"
+  }
+}

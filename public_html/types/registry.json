@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "types": [
+    {
+      "id": "juiste-volgorde",
+      "name": "Juiste volgorde",
+      "version": "v1",
+      "launchUrl": "/types/juiste-volgorde/v1/",
+      "schemaUrl": "/types/juiste-volgorde/v1/schema.json",
+      "exampleDataUrl": "/types/juiste-volgorde/v1/example.json",
+      "description": "Sorteer elementen in de juiste volgorde."
+    },
+    {
+      "id": "wat-hoort-bij-wat",
+      "name": "Wat hoort bij wat",
+      "version": "v1",
+      "launchUrl": "/types/wat-hoort-bij-wat/v1/",
+      "schemaUrl": "/types/wat-hoort-bij-wat/v1/schema.json",
+      "exampleDataUrl": "/types/wat-hoort-bij-wat/v1/example.json",
+      "description": "Koppel termen met hun juiste antwoord."
+    },
+    {
+      "id": "pubquiz-yes-no",
+      "name": "Pubquiz Yes/No",
+      "version": "v1",
+      "launchUrl": "/types/pubquiz-yes-no/v1/",
+      "schemaUrl": "/types/pubquiz-yes-no/v1/schema.json",
+      "exampleDataUrl": "/types/pubquiz-yes-no/v1/example.json",
+      "description": "Yes/No vragen met korte random-roller."
+    }
+  ]
+}

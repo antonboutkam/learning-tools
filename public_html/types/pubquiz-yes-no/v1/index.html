@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pubquiz yes/no v1</title>
+  <style>
+    :root { --bg:#0e1b1f; --ink:#eef6f7; --accent:#f5b942; --card:#14262b; --muted:#9fb3b7; --good:#3bb36a; --bad:#e45c4f; }
+    body { font-family: "Rubik", "Segoe UI", sans-serif; margin: 0; background: radial-gradient(circle at top, #14313a, #0e1b1f); color: var(--ink); }
+    header { padding: 20px; }
+    h1 { margin: 0 0 6px; font-size: 24px; }
+    .wrap { padding: 0 20px 30px; }
+    .card { background: var(--card); border-radius: 14px; border: 1px solid #1f3a42; padding: 16px; box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+    .question { font-size: 20px; margin: 12px 0 16px; min-height: 60px; }
+    .roller { font-size: 14px; color: var(--muted); }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    button { border: 1px solid #294951; background: #1a2f35; padding: 8px 14px; border-radius: 10px; cursor: pointer; color: var(--ink); }
+    button.primary { background: var(--accent); color: #1b1713; border-color: var(--accent); }
+    .status { margin-top: 12px; color: var(--muted); }
+    .good { color: var(--good); }
+    .bad { color: var(--bad); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pubquiz yes/no</h1>
+    <div class="status" id="subtitle">Laadt data...</div>
+  </header>
+  <div class="wrap">
+    <div class="card">
+      <div class="roller" id="roller">Klik op start om te rollen</div>
+      <div class="question" id="question">—</div>
+      <div class="row">
+        <button id="start" class="primary" type="button">Start roller</button>
+        <button id="yes" type="button">Ja</button>
+        <button id="no" type="button">Nee</button>
+      </div>
+      <div class="status" id="timer"></div>
+      <div class="status" id="result"></div>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>

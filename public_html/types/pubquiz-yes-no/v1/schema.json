@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/pubquiz-yes-no/v1/schema.json",
+  "title": "Pubquiz yes/no v1",
+  "type": "object",
+  "required": ["title", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "rollerSeconds": { "type": "number", "default": 4, "minimum": 1 },
+    "questionSeconds": { "type": "number", "default": 10, "minimum": 3 },
+    "questions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["question", "answer"],
+        "additionalProperties": false,
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

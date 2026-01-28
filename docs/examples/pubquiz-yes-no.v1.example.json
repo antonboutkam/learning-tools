@@ -1,0 +1,11 @@
+{
+  "title": "Pubquiz: Ja of Nee?",
+  "rollerSeconds": 4,
+  "questionSeconds": 8,
+  "questions": [
+    { "question": "De Eiffeltoren staat in Parijs", "answer": true },
+    { "question": "De Sahara is het grootste regenwoud ter wereld", "answer": false },
+    { "question": "Water kookt bij 100 graden Celsius", "answer": true },
+    { "question": "Een octopus heeft 3 harten", "answer": true }
+  ]
+}

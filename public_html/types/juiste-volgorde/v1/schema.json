@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/juiste-volgorde/v1/schema.json",
+  "title": "Juiste volgorde v1",
+  "type": "object",
+  "required": ["title", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "shuffle": { "type": "boolean", "default": true },
+    "showCheck": { "type": "boolean", "default": true },
+    "showCorrectOnCheck": { "type": "boolean", "default": true },
+    "items": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    }
+  }
+}
