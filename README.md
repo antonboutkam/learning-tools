@@ -48,4 +48,4 @@ Gebruik de demo’s direct in de browser:
 - `dataUrl` moet publiek en CORS‑toegankelijk zijn.
 - Gebruik altijd versie‑paden (bijv. `/v1/`) voor backwards compatibility.
 
-# ..
+# ....
