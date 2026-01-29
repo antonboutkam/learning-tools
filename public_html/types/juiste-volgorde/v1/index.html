@@ -13,7 +13,8 @@
     .wrap { padding: 0 20px 30px; }
     .card { background: var(--card); border-radius: 14px; border: 1px solid #e9e1d7; padding: 16px; box-shadow: 0 8px 18px rgba(0,0,0,.05); }
     ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-    li { background: #fff; border: 1px solid #eadfce; padding: 10px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; }
+    li { background: #fff; border: 1px solid #eadfce; padding: 10px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; cursor: grab; }
+    li:active { cursor: grabbing; }
     li.correct { border-color: #bfe9c7; background: #eefaf1; }
     li.incorrect { border-color: #f2b7ae; background: #fff1ef; }
     .handle { cursor: grab; font-size: 14px; color: var(--muted); }

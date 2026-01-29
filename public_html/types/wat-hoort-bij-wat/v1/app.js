@@ -30,6 +30,7 @@ const leftToRight = new Map(); // leftId -> rightId
 const rightToLeft = new Map(); // rightId -> leftId
 
 let active = null; // { side: 'left'|'right', id: string, start: {x,y}, cursor:{x,y} }
+let hoverTarget = null;
 let checked = false;
 let lastCanvasSize = { w: 0, h: 0, dpr: 0 };
 
@@ -183,6 +184,10 @@ function connect(leftId, rightId) {
 
 function cancelActive() {
   active = null;
+  if (hoverTarget) {
+    hoverTarget.classList.remove("hover-target");
+    hoverTarget = null;
+  }
   setConnectorState();
   redraw();
 }
@@ -192,6 +197,10 @@ function startActive(side, id) {
   if (!connector) return;
   const start = connectorCenter(connector);
   active = { side, id, start, cursor: start };
+  if (hoverTarget) {
+    hoverTarget.classList.remove("hover-target");
+    hoverTarget = null;
+  }
   setConnectorState();
   redraw();
 }
@@ -213,6 +222,10 @@ function finishActive(side, id) {
   const rightId = active.side === "right" ? active.id : id;
   connect(leftId, rightId);
   active = null;
+  if (hoverTarget) {
+    hoverTarget.classList.remove("hover-target");
+    hoverTarget = null;
+  }
   setConnectorState();
   redraw();
 }
@@ -312,6 +325,15 @@ boardEl.addEventListener("click", (e) => {
 window.addEventListener("pointermove", (e) => {
   if (!active) return;
   active.cursor = boardPointFromClient(e.clientX, e.clientY);
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  const connector = el?.closest?.(".connector") || null;
+  const isOppositeSide = connector && connector.dataset?.side && connector.dataset.side !== active.side;
+  const nextTarget = isOppositeSide ? connector : null;
+  if (hoverTarget !== nextTarget) {
+    if (hoverTarget) hoverTarget.classList.remove("hover-target");
+    hoverTarget = nextTarget;
+    if (hoverTarget) hoverTarget.classList.add("hover-target");
+  }
   redraw();
 });
 
