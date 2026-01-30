@@ -27,9 +27,9 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
-- `/types/juiste-volgorde/v1/?data=example.json`
-- `/types/wat-hoort-bij-wat/v1/?data=example.json`
-- `/types/pubquiz-yes-no/v1/?data=example.json`
+- `/types/juiste-volgorde/v1/?course_id=demo&assignment_id=volgorde-1&data=example.json`
+- `/types/wat-hoort-bij-wat/v1/?course_id=demo&assignment_id=koppelen-1&data=example.json`
+- `/types/pubquiz-yes-no/v1/?course_id=demo&assignment_id=pubquiz-1&data=example.json`
 
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`
@@ -44,7 +44,7 @@ Gebruik de demo’s direct in de browser:
 - `docs/examples/pubquiz-yes-no.v1.example.json`
 
 ## Data‑contract (kort)
-- Iframe‑URL: `{launchUrl}?data=<urlencode(dataUrl)>`
+- Iframe‑URL: `{launchUrl}?course_id=<id>&assignment_id=<id>&data=<urlencode(dataUrl)>`
 - `dataUrl` moet publiek en CORS‑toegankelijk zijn.
 - Gebruik altijd versie‑paden (bijv. `/v1/`) voor backwards compatibility.
 - Registry items hebben een `type` veld (bijv. `assignment-type`) zodat later ook visualisaties toegevoegd kunnen worden.

@@ -16,10 +16,12 @@
     }
   }
 
-  function makeStorageKey({ toolId, version, dataUrl }) {
-    const raw = `${toolId}::${version}::${dataUrl || ""}`;
+  function makeStorageKey({ toolId, version, courseId, assignmentId }) {
+    const raw = `${toolId}::${version}::${courseId}::${assignmentId}`;
     const hash = fnv1a32(raw).toString(16).padStart(8, "0");
-    return `learning-tools:completion:v1:${toolId}:${version}:${hash}`;
+    const safeCourse = encodeURIComponent(courseId);
+    const safeAssignment = encodeURIComponent(assignmentId);
+    return `learning-tools:completion:v1:${toolId}:${version}:${safeCourse}:${safeAssignment}:${hash}`;
   }
 
   function getCompleted(storageKey) {
@@ -98,9 +100,11 @@
     }
   }
 
-  function create({ toolId, version, dataUrl, title, containerEl, onReset }) {
+  function create({ toolId, version, dataUrl, title, containerEl, onReset, courseId, assignmentId }) {
     if (!containerEl) throw new Error("LearningToolsCompletion.create: containerEl is required");
-    const storageKey = makeStorageKey({ toolId, version, dataUrl });
+    if (!courseId) throw new Error("LearningToolsCompletion.create: courseId is required");
+    if (!assignmentId) throw new Error("LearningToolsCompletion.create: assignmentId is required");
+    const storageKey = makeStorageKey({ toolId, version, courseId, assignmentId });
 
     const banner = ensureBanner(containerEl);
     const titleEl = banner.querySelector("[data-lt-title]");
@@ -124,6 +128,8 @@
       const payload = {
         toolId,
         version,
+        courseId,
+        assignmentId,
         dataUrl: dataUrl || null,
         title: title || null,
         score: score && typeof score.correct === "number" && typeof score.total === "number" ? score : null,

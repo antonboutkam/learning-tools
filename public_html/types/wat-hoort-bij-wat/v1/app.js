@@ -1,5 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const dataUrl = params.get("data");
+const courseId = params.get("course_id");
+const assignmentId = params.get("assignment_id");
 
 const boardEl = document.getElementById("pairs");
 const leftColEl = document.getElementById("leftCol");
@@ -365,6 +367,12 @@ checkBtn.addEventListener("click", () => {
 });
 
 async function init() {
+  if (!courseId || !assignmentId) {
+    setStatus("course_id en assignment_id zijn verplicht. Gebruik ?course_id=...&assignment_id=...&data=URL-naar-json", true);
+    subtitleEl.textContent = "Context ontbreekt";
+    checkBtn.style.display = "none";
+    return;
+  }
   if (!dataUrl) {
     setStatus("Geen data-URL opgegeven. Gebruik ?data=URL-naar-json", true);
     subtitleEl.textContent = "Data ontbreekt";
@@ -393,6 +401,8 @@ async function init() {
         toolId: "wat-hoort-bij-wat",
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
+        courseId,
+        assignmentId,
         title: data.title || null,
         containerEl: document.querySelector(".card"),
         onReset: () => window.location.reload(),

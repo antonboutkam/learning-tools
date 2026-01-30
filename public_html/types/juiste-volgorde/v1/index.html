@@ -12,9 +12,20 @@
     h1 { margin: 0 0 6px; font-size: 24px; }
     .wrap { padding: 0 20px 30px; }
     .card { background: var(--card); border-radius: 14px; border: 1px solid #e9e1d7; padding: 16px; box-shadow: 0 8px 18px rgba(0,0,0,.05); }
+    .media { margin-bottom: 12px; }
+    .media figure { margin: 0; }
+    .media img { display: block; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #eadfce; }
+    .media figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
     ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
     li { background: #fff; border: 1px solid #eadfce; padding: 10px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; cursor: grab; }
     li:active { cursor: grabbing; }
+    li.dragging { opacity: .2; }
+    li.placeholder { background: transparent; border: 2px dashed #d2c5b2; box-sizing: border-box; }
+    li.slot.empty { background: transparent; border: 2px dashed #d2c5b2; color: var(--muted); cursor: default; justify-content: center; min-height: 44px; }
+    .pool { margin-top: 12px; }
+    .pool__label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    #pool { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    #pool li { cursor: grab; }
     li.correct { border-color: #bfe9c7; background: #eefaf1; }
     li.incorrect { border-color: #f2b7ae; background: #fff1ef; }
     .handle { cursor: grab; font-size: 14px; color: var(--muted); }
@@ -32,7 +43,12 @@
   </header>
   <div class="wrap">
     <div class="card">
+      <div id="media" class="media" hidden></div>
       <ul id="list"></ul>
+      <div id="poolWrap" class="pool" hidden>
+        <div class="pool__label">Beschikbare opties</div>
+        <ul id="pool"></ul>
+      </div>
       <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
         <button id="check" class="primary" type="button">Controleer</button>
         <span class="status" id="result"></span>

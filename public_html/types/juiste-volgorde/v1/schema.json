@@ -10,6 +10,10 @@
     "shuffle": { "type": "boolean", "default": true },
     "showCheck": { "type": "boolean", "default": true },
     "showCorrectOnCheck": { "type": "boolean", "default": true },
+    "initialState": { "type": "string", "enum": ["re-order", "empty"], "default": "re-order" },
+    "image": { "type": "string", "format": "uri" },
+    "imageAlt": { "type": "string" },
+    "imageCaption": { "type": "string" },
     "items": {
       "type": "array",
       "minItems": 2,

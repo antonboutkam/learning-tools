@@ -193,7 +193,7 @@ if ($path === '/lti/launch') {
   // Render launch page (embed quiz iframe)
   echo '<html><body>';
   echo '<h1>Launch ok</h1>';
-  echo '<iframe src="https://your-domain.example/types/juiste-volgorde/v1/?data=https%3A%2F%2F..." width="100%" height="700"></iframe>';
+  echo '<iframe src="https://your-domain.example/types/juiste-volgorde/v1/?course_id=COURSE123&assignment_id=ASSIGN456&data=https%3A%2F%2F..." width="100%" height="700"></iframe>';
   echo '</body></html>';
   exit;
 }
@@ -243,7 +243,7 @@ if ($path === '/lti/deeplink') {
       'title' => 'Learning Tools quiz',
       'url' => 'https://your-domain.example/lti/launch',
       'custom' => [
-        'launch_url' => 'https://your-domain.example/types/juiste-volgorde/v1/?data=https%3A%2F%2F...'
+        'launch_url' => 'https://your-domain.example/types/juiste-volgorde/v1/?course_id=COURSE123&assignment_id=ASSIGN456&data=https%3A%2F%2F...'
       ]
     ]]
   ], file_get_contents(__DIR__ . '/keys/private.pem'), 'RS256', 'replace-with-your-kid');
