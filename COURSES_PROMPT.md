@@ -34,8 +34,8 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
 
 6. **Bouw de iframe‑URL**
    - Gebruik `launchUrl` van het type.
-   - Voeg query toe: `?course_id=<id>&assignment_id=<id>&data=<urlencode(dataUrl)>`.
-   - Voorbeeld: `/types/juiste-volgorde/v1/?course_id=COURSE123&assignment_id=ASSIGN456&data=https%3A%2F%2Fcdn.example.nl%2Fquiz%2F123.json`
+   - Voeg query toe: `?unique_id=<id>&data=<urlencode(dataUrl)>`.
+   - Voorbeeld: `/types/juiste-volgorde/v1/?unique_id=COURSE123-ASSIGN456&data=https%3A%2F%2Fcdn.example.nl%2Fquiz%2F123.json`
 
 7. **Embed in Canvas**
    - Render in een iframe (Canvas staat iframes toe).
@@ -71,7 +71,7 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
 2. Formulier verschijnt (gegenereerd uit `schema.json`).
 3. Vul items in (met `id` en `text`).
 4. Opslaan -> JSON gepubliceerd op CDN.
-5. Courses maakt iframe‑URL met `?course_id=...&assignment_id=...&data=`.
+5. Courses maakt iframe‑URL met `?unique_id=...&data=`.
 6. In Canvas verschijnt de opdracht in de iframe.
 
 ## Opmerkingen voor Codex
@@ -93,8 +93,11 @@ Taken:
 3) Respecteer `required`, `default`, `minItems`, `additionalProperties:false`.
 4) Serialize formulier → JSON, valideer tegen het schema.
 5) Publiceer JSON naar een publiek bereikbare URL (CORS toegestaan).
-6) Bouw iframe‑URL: `${launchUrl}?course_id=${encodeURIComponent(courseId)}&assignment_id=${encodeURIComponent(assignmentId)}&data=${encodeURIComponent(dataUrl)}`.
+6) Bouw iframe‑URL: `${launchUrl}?unique_id=${encodeURIComponent(uniqueId)}&data=${encodeURIComponent(dataUrl)}`.
 7) Toon preview (iframe) en geef embed‑snippet terug.
+
+Context-parameter:
+- `unique_id` is verplicht en wordt gebruikt als sleutel voor localStorage (completion/certificaat).
 
 UI‑structuur:
 - Linker kolom: type‑selectie + beschrijving.
@@ -150,5 +153,5 @@ UX‑structuur:
 Output:
 - Genereer geldige JSON volgens schema
 - Publiceer JSON naar `dataUrl`
-- Bouw iframe‑URL: `${launchUrl}?course_id=${encodeURIComponent(courseId)}&assignment_id=${encodeURIComponent(assignmentId)}&data=${encodeURIComponent(dataUrl)}`
+- Bouw iframe‑URL: `${launchUrl}?unique_id=${encodeURIComponent(uniqueId)}&data=${encodeURIComponent(dataUrl)}`
 ```

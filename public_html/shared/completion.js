@@ -1,13 +1,4 @@
 (() => {
-  function fnv1a32(input) {
-    let hash = 0x811c9dc5;
-    for (let i = 0; i < input.length; i += 1) {
-      hash ^= input.charCodeAt(i);
-      hash = (hash * 0x01000193) >>> 0;
-    }
-    return hash >>> 0;
-  }
-
   function safeJsonParse(value) {
     try {
       return JSON.parse(value);
@@ -16,12 +7,8 @@
     }
   }
 
-  function makeStorageKey({ toolId, version, courseId, assignmentId }) {
-    const raw = `${toolId}::${version}::${courseId}::${assignmentId}`;
-    const hash = fnv1a32(raw).toString(16).padStart(8, "0");
-    const safeCourse = encodeURIComponent(courseId);
-    const safeAssignment = encodeURIComponent(assignmentId);
-    return `learning-tools:completion:v1:${toolId}:${version}:${safeCourse}:${safeAssignment}:${hash}`;
+  function makeStorageKey(uniqueId) {
+    return `learning-tools:completion:v2:${uniqueId}`;
   }
 
   function getCompleted(storageKey) {
@@ -100,11 +87,10 @@
     }
   }
 
-  function create({ toolId, version, dataUrl, title, containerEl, onReset, courseId, assignmentId }) {
+  function create({ toolId, version, dataUrl, title, containerEl, onReset, uniqueId }) {
     if (!containerEl) throw new Error("LearningToolsCompletion.create: containerEl is required");
-    if (!courseId) throw new Error("LearningToolsCompletion.create: courseId is required");
-    if (!assignmentId) throw new Error("LearningToolsCompletion.create: assignmentId is required");
-    const storageKey = makeStorageKey({ toolId, version, courseId, assignmentId });
+    if (!uniqueId || typeof uniqueId !== "string") throw new Error("LearningToolsCompletion.create: uniqueId is required");
+    const storageKey = makeStorageKey(uniqueId);
 
     const banner = ensureBanner(containerEl);
     const titleEl = banner.querySelector("[data-lt-title]");
@@ -128,8 +114,8 @@
       const payload = {
         toolId,
         version,
-        courseId,
-        assignmentId,
+        uniqueId,
+        unique_id: uniqueId,
         dataUrl: dataUrl || null,
         title: title || null,
         score: score && typeof score.correct === "number" && typeof score.total === "number" ? score : null,

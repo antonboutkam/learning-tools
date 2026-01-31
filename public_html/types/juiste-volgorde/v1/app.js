@@ -1,7 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const dataUrl = params.get("data");
-const courseId = params.get("course_id");
-const assignmentId = params.get("assignment_id");
+const uniqueId = params.get("unique_id");
 
 const listEl = document.getElementById("list");
 const mediaEl = document.getElementById("media");
@@ -344,8 +343,8 @@ checkBtn.addEventListener("click", () => {
 });
 
 async function init() {
-  if (!courseId || !assignmentId) {
-    setStatus("course_id en assignment_id zijn verplicht. Gebruik ?course_id=...&assignment_id=...&data=URL-naar-json", true);
+  if (!uniqueId) {
+    setStatus("unique_id is verplicht. Gebruik ?unique_id=...&data=URL-naar-json", true);
     subtitleEl.textContent = "Context ontbreekt";
     checkBtn.style.display = "none";
     return;
@@ -384,8 +383,7 @@ async function init() {
       toolId: "juiste-volgorde",
       version: "v1",
       dataUrl: new URL(dataUrl, window.location.href).toString(),
-      courseId,
-      assignmentId,
+      uniqueId,
       title: data.title || null,
       containerEl: cardEl,
       onReset: () => window.location.reload(),
