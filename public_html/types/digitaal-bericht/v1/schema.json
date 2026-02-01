@@ -1,0 +1,47 @@
+{
+    "title": "Digitaal bericht",
+    "type": "object",
+    "required": [
+        "text"
+    ],
+    "properties": {
+        "title": {
+            "type": "string",
+            "title": "Titel (optioneel)",
+            "default": ""
+        },
+        "text": {
+            "type": "string",
+            "title": "Tekst",
+            "description": "Gebruik | als backspace. Voor een letterlijk | teken: gebruik ||.",
+            "default": "Hallo, dit is een digitaal bericht."
+        },
+        "speed": {
+            "type": "number",
+            "title": "Snelheid",
+            "description": "1 = normaal. Lager is langzamer, hoger is sneller.",
+            "default": 1,
+            "minimum": 0.2,
+            "maximum": 3
+        },
+        "mistakes": {
+            "type": "boolean",
+            "title": "Menselijke typfouten",
+            "default": true
+        },
+        "mistake_rate": {
+            "type": "number",
+            "title": "Typfout kans",
+            "description": "Kans per letter dat er een foutje + backspace gebeurt.",
+            "default": 0.035,
+            "minimum": 0,
+            "maximum": 0.25
+        },
+        "cursor": {
+            "type": "boolean",
+            "title": "Cursor tonen",
+            "default": true
+        }
+    }
+}
+

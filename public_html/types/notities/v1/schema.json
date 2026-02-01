@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/notities/v1/schema.json",
+  "title": "Notities v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string", "default": "Notities" },
+    "pagesCount": { "type": "integer", "minimum": 1, "maximum": 1000, "default": 100 },
+    "bookmarks": {
+      "description": "Vooraf gedefinieerde bookmarks (worden bij eerste keer aanmaken evenredig verdeeld over het notitieblok).",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" }
+            }
+          }
+        ]
+      },
+      "default": []
+    }
+  }
+}
+

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/strip-ballonnetjes/v1/schema.json",
+  "title": "Strip ballonnetjes v1",
+  "type": "object",
+  "required": ["pages"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "debug": { "type": "boolean", "default": false },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["image", "bubbles"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string" },
+          "image": { "type": "string", "description": "URL naar de afbeelding (jpeg/png/webp). Kan ook relatief zijn." },
+          "imageUrl": { "type": "string", "description": "Alias voor image (mag ook, maar image heeft voorkeur)." },
+          "alt": { "type": "string" },
+          "designWidth": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Breedte van het ontwerp-coördinatenstelsel (in px). Als leeg, gebruikt de tool naturalWidth van de afbeelding."
+          },
+          "bubbles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["text", "x", "y", "width", "tail"],
+              "additionalProperties": false,
+              "properties": {
+                "text": { "type": "string" },
+                "x": { "type": "number", "description": "X positie in px (t.o.v. designWidth/naturalWidth)" },
+                "y": { "type": "number", "description": "Y positie in px (t.o.v. designWidth/naturalWidth)" },
+                "width": { "type": "number", "minimum": 40, "description": "Breedte van het ballonnetje in px (t.o.v. designWidth/naturalWidth)" },
+                "tail": {
+                  "type": "string",
+                  "enum": ["left", "right", "none", "links", "rechts"],
+                  "description": "Waar het puntje (staartje) zit."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+:root {
+  --bg: #0b0f14;
+  --ink: #0f172a;
+  --muted: rgba(255, 255, 255, 0.75);
+  --card: rgba(255, 255, 255, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: white;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app { min-height: 100%; }
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 10px 12px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.95), rgba(11, 15, 20, 0.65));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.title { font-weight: 650; letter-spacing: 0.2px; }
+.hint { margin-top: 4px; font-size: 12px; color: var(--muted); }
+.hint.error { color: #fca5a5; }
+
+.pages { width: 100%; }
+
+.page {
+  position: relative;
+  width: 100%;
+  --scale: 1;
+}
+
+.page + .page { margin-top: 18px; }
+
+.page__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 2;
+  background: #ffffff;
+  color: var(--ink);
+  border: max(1px, calc(2px * var(--scale))) solid rgba(15, 23, 42, 0.95);
+  border-radius: max(10px, calc(18px * var(--scale)));
+  padding: max(8px, calc(12px * var(--scale))) max(10px, calc(14px * var(--scale)));
+  font-size: clamp(12px, calc(18px * var(--scale)), 22px);
+  line-height: 1.25;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+  white-space: pre-wrap;
+}
+
+.bubble[data-tail="left"]::after,
+.bubble[data-tail="right"]::after {
+  content: "";
+  position: absolute;
+  bottom: calc(-10px * var(--scale));
+  width: 0;
+  height: 0;
+  border: calc(10px * var(--scale)) solid transparent;
+  border-top-color: #ffffff;
+  filter: drop-shadow(0 2px 0 rgba(15, 23, 42, 0.95));
+}
+
+.bubble[data-tail="left"]::after { left: calc(18px * var(--scale)); }
+.bubble[data-tail="right"]::after { right: calc(18px * var(--scale)); }
+
+.page__meta {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 3;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top { scroll-behavior: auto; }
+}
+

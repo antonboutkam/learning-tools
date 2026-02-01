@@ -4,7 +4,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 
 ## Inhoud
 - Centrale registry: `public_html/types/registry.json`
-- Overzichtspagina: `public_html/index.html`
+- Overzichtspagina: `public_html/index.php`
 - Prompt‑instructies voor Courses: `COURSES_PROMPT.md`
 - Docs: `docs/`
 - Examples: `docs/examples/`
@@ -25,11 +25,29 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/pubquiz-yes-no/v1/schema.json`
   - Example: `public_html/types/pubquiz-yes-no/v1/example.json`
 
+- Digitaal bericht (C64) (v1)
+  - Pad: `public_html/types/digitaal-bericht/v1/`
+  - Data‑schema: `public_html/types/digitaal-bericht/v1/schema.json`
+  - Example: `public_html/types/digitaal-bericht/v1/example.json`
+
+- Strip ballonnetjes (v1)
+  - Pad: `public_html/types/strip-ballonnetjes/v1/`
+  - Data‑schema: `public_html/types/strip-ballonnetjes/v1/schema.json`
+  - Example: `public_html/types/strip-ballonnetjes/v1/example.json`
+
+- Notities (v1)
+  - Pad: `public_html/types/notities/v1/`
+  - Data‑schema: `public_html/types/notities/v1/schema.json`
+  - Example: `public_html/types/notities/v1/example.json`
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
 - `/types/wat-hoort-bij-wat/v1/?unique_id=demo-koppelen-1&data=example.json`
 - `/types/pubquiz-yes-no/v1/?unique_id=demo-pubquiz-1&data=example.json`
+- `/types/digitaal-bericht/v1/?unique_id=demo-bericht-1&data=example.json`
+- `/types/strip-ballonnetjes/v1/?unique_id=demo-strip-1&data=example.json`
+- `/types/notities/v1/?notitieblok_id=demo-notities-1&data=example.json`
 
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`

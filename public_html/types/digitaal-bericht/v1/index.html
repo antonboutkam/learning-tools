@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digitaal bericht</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+    <div class="frame" role="region" aria-label="Digitaal bericht terminal">
+        <div class="frame__top">
+            <div class="frame__title">COMMODORE 64</div>
+            <div class="frame__meta" id="metaLine"></div>
+        </div>
+        <pre class="screen" id="screen" aria-live="polite"></pre>
+        <span class="cursor" id="cursor" aria-hidden="true"></span>
+    </div>
+    <div class="hint" id="hint"></div>
+</main>
+<script src="./tool.js"></script>
+</body>
+</html>
+

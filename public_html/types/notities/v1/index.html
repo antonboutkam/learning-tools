@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notities</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="top__left">
+        <div class="title" id="title">Notities</div>
+        <div class="meta" id="meta"></div>
+      </div>
+      <div class="top__right">
+        <button class="btn" id="prevBtn" type="button">Vorige</button>
+        <button class="btn" id="nextBtn" type="button">Volgende</button>
+        <span class="pill" id="pagePill">1 / 100</span>
+        <button class="btn" id="modeBtn" type="button" title="Wissel tussen typen en pen">Typen</button>
+        <label class="field">
+          <span class="field__label">Dikte</span>
+          <input class="range" id="penSize" type="range" min="1" max="18" value="4" />
+        </label>
+        <label class="field">
+          <span class="field__label">Kleur</span>
+          <input class="color" id="penColor" type="color" value="#111827" />
+        </label>
+        <button class="btn" id="clearBtn" type="button" title="Wis tekening op deze pagina">Wis pen</button>
+        <button class="btn" id="addBookmarkBtn" type="button" title="Maak een bookmark op deze pagina">+ Bookmark</button>
+      </div>
+    </header>
+
+    <div class="hint" id="hint"></div>
+
+    <section class="stage">
+      <div class="book" id="book">
+        <div class="book__shadow"></div>
+        <div class="book__pages">
+          <div class="page page--front" id="pageFront">
+            <div class="paper">
+              <div class="paper__lines"></div>
+              <textarea class="paper__text" id="textFront" spellcheck="false"></textarea>
+              <canvas class="paper__ink" id="inkFront"></canvas>
+            </div>
+          </div>
+          <div class="page page--back" id="pageBack" aria-hidden="true">
+            <div class="paper">
+              <div class="paper__lines"></div>
+              <textarea class="paper__text" id="textBack" spellcheck="false"></textarea>
+              <canvas class="paper__ink" id="inkBack"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="bookmarks" id="bookmarks" aria-label="Bookmarks"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./tool.js"></script>
+</body>
+</html>
+

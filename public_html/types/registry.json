@@ -30,6 +30,36 @@
       "schemaUrl": "/types/pubquiz-yes-no/v1/schema.json",
       "exampleDataUrl": "/types/pubquiz-yes-no/v1/example.json",
       "description": "Yes/No vragen met korte random-roller."
+    },
+    {
+      "id": "digitaal-bericht",
+      "type": "assignment-type",
+      "name": "Digitaal bericht (C64)",
+      "version": "v1",
+      "launchUrl": "/types/digitaal-bericht/v1/",
+      "schemaUrl": "/types/digitaal-bericht/v1/schema.json",
+      "exampleDataUrl": "/types/digitaal-bericht/v1/example.json",
+      "description": "Toon een digitaal bericht alsof het getypt wordt op een Commodore 64 terminal. Gebruik | als backspace."
+    },
+    {
+      "id": "strip-ballonnetjes",
+      "type": "assignment-type",
+      "name": "Strip ballonnetjes",
+      "version": "v1",
+      "launchUrl": "/types/strip-ballonnetjes/v1/",
+      "schemaUrl": "/types/strip-ballonnetjes/v1/schema.json",
+      "exampleDataUrl": "/types/strip-ballonnetjes/v1/example.json",
+      "description": "Toon een reeks afbeeldingen met tekstballonnen. Per ballon: x/y positie, breedte en staartje links/rechts."
+    },
+    {
+      "id": "notities",
+      "type": "assignment-type",
+      "name": "Notities",
+      "version": "v1",
+      "launchUrl": "/types/notities/v1/",
+      "schemaUrl": "/types/notities/v1/schema.json",
+      "exampleDataUrl": "/types/notities/v1/example.json",
+      "description": "Notitieblok met pagina-omslag animatie, typ- en penmodus, en bookmarks. Persistente opslag per notitieblok_id."
     }
   ]
 }

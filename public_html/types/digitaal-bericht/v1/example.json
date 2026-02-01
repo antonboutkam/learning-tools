@@ -1,0 +1,8 @@
+{
+  "title": "Digitaal bericht",
+  "text": "Hallo! Dit is een digitaal bericht.\n\nIk typ met een beetje variatie.|\nOops, backspace werkt ook.\n\nEen letterlijk | teken schrijf je zo: ||.",
+  "speed": 1,
+  "mistakes": true,
+  "mistake_rate": 0.035,
+  "cursor": true
+}
