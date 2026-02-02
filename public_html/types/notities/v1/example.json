@@ -1,5 +1,8 @@
 {
   "notitieblok_id": "demo-notitieblok",
+  "layout": {
+    "formaat": "A4"
+  },
   "title": "Notities (demo)",
   "pagesCount": 100,
   "bookmarks": ["Les 1", "Les 2", "Les 3", "Herhaling"]

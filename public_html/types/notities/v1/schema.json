@@ -12,6 +12,40 @@
       "description": "Unieke sleutel voor opslag. Gebruik hetzelfde ID om hetzelfde notitieblok opnieuw te openen (ook op andere plekken).",
       "minLength": 1
     },
+    "layout": {
+      "type": "object",
+      "title": "Weergave",
+      "description": "Opties voor het formaat/afmetingen van het kladblok op het scherm.",
+      "additionalProperties": false,
+      "properties": {
+        "formaat": {
+          "type": "string",
+          "title": "Formaat",
+          "description": "Kies een standaard formaat (A4/A5) of een custom verhouding.",
+          "enum": ["Standaard", "A4", "A4-landscape", "A5", "A5-landscape", "Custom"],
+          "default": "Standaard"
+        },
+        "max_breedte_px": {
+          "type": "integer",
+          "title": "Maximale breedte (px)",
+          "description": "Maximale breedte van het kladblok. Handig om A5 kleiner te tonen op grote schermen.",
+          "minimum": 320,
+          "maximum": 1600
+        },
+        "custom_ratio_breedte": {
+          "type": "number",
+          "title": "Custom ratio breedte",
+          "description": "Alleen bij formaat = Custom. Bijvoorbeeld 1 (breedte) voor A4 portrait.",
+          "minimum": 1
+        },
+        "custom_ratio_hoogte": {
+          "type": "number",
+          "title": "Custom ratio hoogte",
+          "description": "Alleen bij formaat = Custom. Bijvoorbeeld 1.4142 (hoogte) voor A4 portrait.",
+          "minimum": 1
+        }
+      }
+    },
     "title": {
       "type": "string",
       "title": "Titel",

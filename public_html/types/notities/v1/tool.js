@@ -13,6 +13,8 @@
   const addBookmarkBtn = document.getElementById("addBookmarkBtn");
   const downloadBtn = document.getElementById("downloadBtn");
 
+  const bookEl = document.getElementById("book");
+
   const pageFrontEl = document.getElementById("pageFront");
   const pageBackEl = document.getElementById("pageBack");
   const tabFrontEl = document.getElementById("tabFront");
@@ -254,10 +256,32 @@
 
   const getActiveTabLabel = (pageIndex) => {
     const idx = Number(pageIndex || 0);
-    const matches = (Array.isArray(state.bookmarks) ? state.bookmarks : []).filter((b) => Number(b.pageIndex || 0) === idx);
-    if (matches.length === 0) return "";
-    matches.sort((a, b) => Number(a.slot ?? 9999) - Number(b.slot ?? 9999));
-    return String(matches[0].name || "").trim();
+    const candidates = (Array.isArray(state.bookmarks) ? state.bookmarks : []).filter((b) => Number(b.pageIndex || 0) <= idx);
+    if (candidates.length === 0) return "";
+    candidates.sort((a, b) => {
+      const pa = Number(a.pageIndex ?? -1);
+      const pb = Number(b.pageIndex ?? -1);
+      if (pa !== pb) return pb - pa; // hoogste pageIndex eerst
+      const sa = Number(a.slot ?? 9999);
+      const sb = Number(b.slot ?? 9999);
+      return sa - sb; // laagste slot wint bij gelijke pageIndex
+    });
+    return String(candidates[0].name || "").trim();
+  };
+
+  const getPagesCount = () => Number(state.notebook?.pagesCount || state.config.pagesCount || 100);
+
+  const getPageHeaderText = (pageIndex) => {
+    const pagesCount = getPagesCount();
+    const current = clamp(Number(pageIndex || 0) + 1, 1, Math.max(1, pagesCount));
+    const tabName = getActiveTabLabel(pageIndex);
+    if (tabName) return `Aantekeningen bij ${tabName} pagina (${current}/${pagesCount})`;
+    return `Aantekeningen pagina (${current}/${pagesCount})`;
+  };
+
+  const updateViewTab = (view) => {
+    if (!view?.tab) return;
+    view.tab.textContent = getPageHeaderText(view.pageIndex);
   };
 
   const setMode = (mode) => {
@@ -292,6 +316,8 @@
     if (metaEl) metaEl.textContent = notebookId ? `notitieblok_id: ${notebookId}` : "";
     if (prevBtn) prevBtn.disabled = state.animating || state.currentPageIndex <= 0;
     if (nextBtn) nextBtn.disabled = state.animating || state.currentPageIndex >= pagesCount - 1;
+    updateViewTab(state.front);
+    updateViewTab(state.back);
   };
 
   const loadConfig = async () => {
@@ -303,10 +329,58 @@
     const notitieblokIdFromConfig = String(
       cfg.notitieblok_id || cfg.notitieblokId || cfg.notities_id || cfg.unique_id || ""
     ).trim();
+    const layout = (cfg.layout && typeof cfg.layout === "object") ? cfg.layout : {};
+    const format = String(layout.formaat || "Standaard");
+    const maxWidthPx = layout.max_breedte_px != null ? Number(layout.max_breedte_px) : null;
+    const customW = layout.custom_ratio_breedte != null ? Number(layout.custom_ratio_breedte) : null;
+    const customH = layout.custom_ratio_hoogte != null ? Number(layout.custom_ratio_hoogte) : null;
     const pagesCount = clamp(Number(cfg.pagesCount ?? 100) || 100, 1, 1000);
     const rawBookmarks = Array.isArray(cfg.bookmarks) ? cfg.bookmarks : [];
     const bookmarks = rawBookmarks.map(normalizeBookmarkInput).filter(Boolean);
-    return { notitieblok_id: notitieblokIdFromConfig, title: String(cfg.title || "Notities"), pagesCount, bookmarks };
+    return {
+      notitieblok_id: notitieblokIdFromConfig,
+      layout: { formaat: format, max_breedte_px: maxWidthPx, custom_ratio_breedte: customW, custom_ratio_hoogte: customH },
+      title: String(cfg.title || "Notities"),
+      pagesCount,
+      bookmarks,
+    };
+  };
+
+  const applyLayout = () => {
+    if (!bookEl) return;
+    const pagesEl = bookEl.querySelector(".book__pages");
+    if (!pagesEl) return;
+
+    const layout = state.config?.layout && typeof state.config.layout === "object" ? state.config.layout : {};
+    const format = String(layout.formaat || "Standaard");
+
+    const maybeMaxWidth = layout.max_breedte_px != null ? Number(layout.max_breedte_px) : null;
+    if (Number.isFinite(maybeMaxWidth) && maybeMaxWidth > 0) {
+      bookEl.style.setProperty("--book-max-width", `${Math.round(maybeMaxWidth)}px`);
+    } else if (format === "A5" || format === "A5-landscape") {
+      // A5 is meestal kleiner; houd hem compacter op grote schermen.
+      bookEl.style.setProperty("--book-max-width", "760px");
+    } else {
+      bookEl.style.removeProperty("--book-max-width");
+    }
+
+    const setAspect = (w, h) => {
+      const ww = Number(w);
+      const hh = Number(h);
+      if (!Number.isFinite(ww) || !Number.isFinite(hh) || ww <= 0 || hh <= 0) return;
+      pagesEl.style.setProperty("--page-aspect", `${ww} / ${hh}`);
+    };
+
+    // Default aspect-ratio staat in CSS (iets hoger dan voorheen).
+    pagesEl.style.removeProperty("--page-aspect");
+
+    if (format === "A4" || format === "A5") setAspect(1, 1.4142);
+    if (format === "A4-landscape" || format === "A5-landscape") setAspect(1.4142, 1);
+    if (format === "Custom") {
+      const w = layout.custom_ratio_breedte;
+      const h = layout.custom_ratio_hoogte;
+      if (w != null && h != null) setAspect(w, h);
+    }
   };
 
   const getNotebook = async (id) => {
@@ -504,7 +578,7 @@
 
   const setViewData = (view, pageIndex, pageData) => {
     view.pageIndex = pageIndex;
-    if (view.tab) view.tab.textContent = getActiveTabLabel(pageIndex);
+    updateViewTab(view);
     view.text.value = String(pageData?.text || "");
     view.strokes = Array.isArray(pageData?.strokes) ? pageData.strokes : [];
   };
@@ -606,8 +680,8 @@
       });
 
     // Update tab label(s) because bookmarks may have changed (init/add).
-    if (state.front?.tab) state.front.tab.textContent = getActiveTabLabel(state.front.pageIndex);
-    if (state.back?.tab) state.back.tab.textContent = getActiveTabLabel(state.back.pageIndex);
+    updateViewTab(state.front);
+    updateViewTab(state.back);
   };
 
   const flushSaves = async () => {
@@ -741,6 +815,7 @@
 
       state.db = await openDb();
       state.config = await loadConfig();
+      applyLayout();
 
       if (!notebookId && state.config?.notitieblok_id) {
         notebookId = String(state.config.notitieblok_id || "").trim();

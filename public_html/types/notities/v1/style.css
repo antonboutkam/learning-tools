@@ -96,7 +96,7 @@ body {
 
 .book {
   position: relative;
-  width: min(980px, 100%);
+  width: min(var(--book-max-width, 980px), 100%);
 }
 
 .book__shadow {
@@ -114,7 +114,7 @@ body {
   border-radius: 18px;
   perspective: 1400px;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--page-aspect, 6 / 5);
 }
 
 .page {
