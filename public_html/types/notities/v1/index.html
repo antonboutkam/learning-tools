@@ -28,6 +28,7 @@
         </label>
         <button class="btn" id="clearBtn" type="button" title="Wis tekening op deze pagina">Wis pen</button>
         <button class="btn" id="addBookmarkBtn" type="button" title="Maak een bookmark op deze pagina">+ Bookmark</button>
+        <button class="btn" id="downloadBtn" type="button" title="Download dit notitieblok als JSON" disabled>Download</button>
       </div>
     </header>
 
@@ -40,6 +41,7 @@
           <div class="page page--front" id="pageFront">
             <div class="paper">
               <div class="paper__lines"></div>
+              <div class="paper__tab" id="tabFront" aria-hidden="true"></div>
               <textarea class="paper__text" id="textFront" spellcheck="false"></textarea>
               <canvas class="paper__ink" id="inkFront"></canvas>
             </div>
@@ -47,6 +49,7 @@
           <div class="page page--back" id="pageBack" aria-hidden="true">
             <div class="paper">
               <div class="paper__lines"></div>
+              <div class="paper__tab" id="tabBack" aria-hidden="true"></div>
               <textarea class="paper__text" id="textBack" spellcheck="false"></textarea>
               <canvas class="paper__ink" id="inkBack"></canvas>
             </div>
@@ -61,4 +64,3 @@
   <script src="./tool.js"></script>
 </body>
 </html>
-

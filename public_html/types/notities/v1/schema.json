@@ -2,10 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/notities/v1/schema.json",
   "title": "Notities v1",
-  "description": "Digitaal notitieblok met pagina-omslag animatie, typen- en penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring).",
+  "description": "Digitaal notitieblok met pagina-omslag animatie, typen- en penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring of via JSON-config).",
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "notitieblok_id": {
+      "type": "string",
+      "title": "Notitieblok ID",
+      "description": "Unieke sleutel voor opslag. Gebruik hetzelfde ID om hetzelfde notitieblok opnieuw te openen (ook op andere plekken).",
+      "minLength": 1
+    },
     "title": {
       "type": "string",
       "title": "Titel",

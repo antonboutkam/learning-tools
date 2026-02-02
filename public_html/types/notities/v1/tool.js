@@ -11,9 +11,12 @@
   const penColorEl = document.getElementById("penColor");
   const clearBtn = document.getElementById("clearBtn");
   const addBookmarkBtn = document.getElementById("addBookmarkBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
 
   const pageFrontEl = document.getElementById("pageFront");
   const pageBackEl = document.getElementById("pageBack");
+  const tabFrontEl = document.getElementById("tabFront");
+  const tabBackEl = document.getElementById("tabBack");
   const textFrontEl = document.getElementById("textFront");
   const textBackEl = document.getElementById("textBack");
   const inkFrontEl = document.getElementById("inkFront");
@@ -24,12 +27,14 @@
 
   const params = new URLSearchParams(window.location.search);
   const dataUrl = params.get("data") || "";
-  const notebookIdParam =
+  const notebookIdFromQuery =
     params.get("notitieblok_id") ||
     params.get("notitieblokId") ||
     params.get("notities_id") ||
     params.get("unique_id") ||
     "";
+  let notebookId = notebookIdFromQuery;
+  downloadBtn && (downloadBtn.disabled = true);
 
   const setHint = (text, kind = "") => {
     if (!hintEl) return;
@@ -89,6 +94,22 @@
       const req = idx.getAll(indexKey);
       req.onsuccess = () => resolve(Array.isArray(req.result) ? req.result : []);
       req.onerror = () => reject(req.error || new Error("getAll failed"));
+    });
+
+  const txScanAll = (store, fn) =>
+    new Promise((resolve, reject) => {
+      const req = store.openCursor();
+      req.onsuccess = () => {
+        const cursor = req.result;
+        if (!cursor) return resolve(true);
+        try {
+          fn(cursor.value);
+        } catch (e) {
+          return reject(e);
+        }
+        cursor.continue();
+      };
+      req.onerror = () => reject(req.error || new Error("cursor failed"));
     });
 
   const debounce = (fn, waitMs) => {
@@ -226,10 +247,18 @@
 
   const isPenMode = () => state.mode === "pen";
 
-  const viewA = { root: pageFrontEl, text: textFrontEl, canvas: inkFrontEl, pageIndex: 0, strokes: [], canvasCtl: null };
-  const viewB = { root: pageBackEl, text: textBackEl, canvas: inkBackEl, pageIndex: 0, strokes: [], canvasCtl: null };
+  const viewA = { root: pageFrontEl, tab: tabFrontEl, text: textFrontEl, canvas: inkFrontEl, pageIndex: 0, strokes: [], canvasCtl: null };
+  const viewB = { root: pageBackEl, tab: tabBackEl, text: textBackEl, canvas: inkBackEl, pageIndex: 0, strokes: [], canvasCtl: null };
   state.front = viewA;
   state.back = viewB;
+
+  const getActiveTabLabel = (pageIndex) => {
+    const idx = Number(pageIndex || 0);
+    const matches = (Array.isArray(state.bookmarks) ? state.bookmarks : []).filter((b) => Number(b.pageIndex || 0) === idx);
+    if (matches.length === 0) return "";
+    matches.sort((a, b) => Number(a.slot ?? 9999) - Number(b.slot ?? 9999));
+    return String(matches[0].name || "").trim();
+  };
 
   const setMode = (mode) => {
     state.mode = mode;
@@ -260,7 +289,7 @@
     const pagesCount = Number(state.notebook?.pagesCount || state.config.pagesCount || 100);
     const cur = state.currentPageIndex + 1;
     if (pagePill) pagePill.textContent = `${cur} / ${pagesCount}`;
-    if (metaEl) metaEl.textContent = notebookIdParam ? `notitieblok_id: ${notebookIdParam}` : "";
+    if (metaEl) metaEl.textContent = notebookId ? `notitieblok_id: ${notebookId}` : "";
     if (prevBtn) prevBtn.disabled = state.animating || state.currentPageIndex <= 0;
     if (nextBtn) nextBtn.disabled = state.animating || state.currentPageIndex >= pagesCount - 1;
   };
@@ -271,10 +300,13 @@
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
     const cfg = (json && typeof json === "object") ? json : {};
+    const notitieblokIdFromConfig = String(
+      cfg.notitieblok_id || cfg.notitieblokId || cfg.notities_id || cfg.unique_id || ""
+    ).trim();
     const pagesCount = clamp(Number(cfg.pagesCount ?? 100) || 100, 1, 1000);
     const rawBookmarks = Array.isArray(cfg.bookmarks) ? cfg.bookmarks : [];
     const bookmarks = rawBookmarks.map(normalizeBookmarkInput).filter(Boolean);
-    return { title: String(cfg.title || "Notities"), pagesCount, bookmarks };
+    return { notitieblok_id: notitieblokIdFromConfig, title: String(cfg.title || "Notities"), pagesCount, bookmarks };
   };
 
   const getNotebook = async (id) => {
@@ -317,13 +349,106 @@
     return bm;
   };
 
+  const getAllPages = async (id) => {
+    const db = state.db;
+    const tx = db.transaction(["pages"], "readonly");
+    const store = tx.objectStore("pages");
+    const pages = [];
+    await txScanAll(store, (row) => {
+      if (row && row.id === id) pages.push(row);
+    });
+    pages.sort((a, b) => Number(a.pageIndex || 0) - Number(b.pageIndex || 0));
+    return pages;
+  };
+
+  const toExportBookmark = (bm) => ({
+    bookmarkId: String(bm.bookmarkId || ""),
+    name: String(bm.name || ""),
+    pageIndex: Number(bm.pageIndex || 0),
+    slot: Number(bm.slot || 0),
+    strokes: Array.isArray(bm.strokes) ? bm.strokes : [],
+    preset: Boolean(bm.preset),
+    createdAt: bm.createdAt || null,
+    updatedAt: bm.updatedAt || null,
+  });
+
+  const toExportPage = (p) => ({
+    pageIndex: Number(p.pageIndex || 0),
+    text: String(p.text || ""),
+    strokes: Array.isArray(p.strokes) ? p.strokes : [],
+    updatedAt: p.updatedAt || null,
+  });
+
+  const downloadNotebook = async () => {
+    try {
+      if (!state.db) throw new Error("Database is nog niet geladen.");
+      if (!notebookId) throw new Error("missing notitieblok_id");
+      if (!state.notebook) throw new Error("Notitieblok is nog niet geladen.");
+
+      const pagesFromDb = await getAllPages(notebookId);
+      const pages = pagesFromDb.map(toExportPage);
+
+      // Zorg dat de huidige pagina altijd de nieuwste in-memory waarde heeft.
+      const current = {
+        pageIndex: Number(state.front?.pageIndex || 0),
+        text: String(state.front?.text?.value || ""),
+        strokes: Array.isArray(state.front?.strokes) ? state.front.strokes : [],
+        updatedAt: nowIso(),
+      };
+      const idx = pages.findIndex((p) => p.pageIndex === current.pageIndex);
+      if (idx >= 0) pages[idx] = current;
+      else pages.push(current);
+      pages.sort((a, b) => Number(a.pageIndex || 0) - Number(b.pageIndex || 0));
+
+      const exportObj = {
+        tool: "notities",
+        version: "v1",
+        exportedAt: nowIso(),
+        notitieblok_id: notebookId,
+        notebook: {
+          id: state.notebook.id,
+          title: state.notebook.title,
+          pagesCount: state.notebook.pagesCount,
+          lastPageIndex: state.notebook.lastPageIndex,
+          createdAt: state.notebook.createdAt || null,
+          updatedAt: state.notebook.updatedAt || null,
+        },
+        settings: {
+          title: state.config?.title || "Notities",
+          pagesCount: Number(state.config?.pagesCount || state.notebook.pagesCount || 100),
+          bookmarks: Array.isArray(state.config?.bookmarks) ? state.config.bookmarks : [],
+        },
+        bookmarks: Array.isArray(state.bookmarks) ? state.bookmarks.map(toExportBookmark) : [],
+        pages,
+      };
+
+      const safeId = String(notebookId).replace(/[^a-z0-9_-]+/gi, "_").slice(0, 80) || "notitieblok";
+      const date = new Date().toISOString().slice(0, 10);
+      const fileName = `notities_${safeId}_${date}.json`;
+
+      const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      setHint("");
+    } catch (e) {
+      setHint(`Download mislukt: ${String(e.message || e)}`, "error");
+    }
+  };
+
   const ensureNotebook = async () => {
-    if (!notebookIdParam) {
-      setHint("notitieblok_id is verplicht (of gebruik unique_id). Voorbeeld: ?notitieblok_id=...&data=.../example.json", "error");
+    if (!notebookId) {
+      setHint("notitieblok_id is verplicht (of gebruik unique_id). Geef het mee via querystring of in de JSON-config. Voorbeeld: ?notitieblok_id=...&data=.../example.json", "error");
       throw new Error("missing notitieblok_id");
     }
 
-    let nb = await getNotebook(notebookIdParam);
+    let nb = await getNotebook(notebookId);
     if (nb) {
       // Als config meer pagina's heeft gekregen, alleen uitbreiden (niet inkorten/verplaatsen).
       const cfgCount = Number(state.config.pagesCount || 100);
@@ -337,7 +462,7 @@
 
     const pagesCount = Number(state.config.pagesCount || 100);
     nb = {
-      id: notebookIdParam,
+      id: notebookId,
       title: String(state.config.title || "Notities"),
       pagesCount,
       lastPageIndex: 0,
@@ -360,8 +485,8 @@
         const slot = clamp(slotStep * (i + 1), 0, slots - 1);
         const bookmarkId = makeBookmarkId();
         await putBookmark({
-          key: makeBookmarkKey(notebookIdParam, bookmarkId),
-          id: notebookIdParam,
+          key: makeBookmarkKey(notebookId, bookmarkId),
+          id: notebookId,
           bookmarkId,
           name: names[i],
           pageIndex,
@@ -379,6 +504,7 @@
 
   const setViewData = (view, pageIndex, pageData) => {
     view.pageIndex = pageIndex;
+    if (view.tab) view.tab.textContent = getActiveTabLabel(pageIndex);
     view.text.value = String(pageData?.text || "");
     view.strokes = Array.isArray(pageData?.strokes) ? pageData.strokes : [];
   };
@@ -394,7 +520,7 @@
 
   const savePageDebounced = debounce(async (view) => {
     try {
-      const id = notebookIdParam;
+      const id = notebookId;
       const key = makePageKey(id, view.pageIndex);
       await putPage({
         key,
@@ -478,6 +604,10 @@
 
         bookmarksEl.appendChild(el);
       });
+
+    // Update tab label(s) because bookmarks may have changed (init/add).
+    if (state.front?.tab) state.front.tab.textContent = getActiveTabLabel(state.front.pageIndex);
+    if (state.back?.tab) state.back.tab.textContent = getActiveTabLabel(state.back.pageIndex);
   };
 
   const flushSaves = async () => {
@@ -488,7 +618,7 @@
   };
 
   const loadPageIntoView = async (view, pageIndex) => {
-    const id = notebookIdParam;
+    const id = notebookId;
     const existing = await getPage(id, pageIndex);
     setViewData(view, pageIndex, existing || { text: "", strokes: [] });
   };
@@ -555,8 +685,8 @@
 
     const bookmarkId = makeBookmarkId();
     const bm = {
-      key: makeBookmarkKey(notebookIdParam, bookmarkId),
-      id: notebookIdParam,
+      key: makeBookmarkKey(notebookId, bookmarkId),
+      id: notebookId,
       bookmarkId,
       name: trimmed,
       pageIndex: state.currentPageIndex,
@@ -576,6 +706,7 @@
   const initEvents = () => {
     prevBtn && prevBtn.addEventListener("click", goPrev);
     nextBtn && nextBtn.addEventListener("click", goNext);
+    downloadBtn && downloadBtn.addEventListener("click", downloadNotebook);
 
     modeBtn &&
       modeBtn.addEventListener("click", () => {
@@ -586,7 +717,7 @@
     clearBtn &&
       clearBtn.addEventListener("click", () => {
         if (!confirm("Tekening op deze pagina wissen?")) return;
-        state.frontCanvas.clear();
+        state.front.canvasCtl && state.front.canvasCtl.clear();
       });
 
     addBookmarkBtn && addBookmarkBtn.addEventListener("click", addUserBookmark);
@@ -611,8 +742,13 @@
       state.db = await openDb();
       state.config = await loadConfig();
 
+      if (!notebookId && state.config?.notitieblok_id) {
+        notebookId = String(state.config.notitieblok_id || "").trim();
+      }
+
       state.notebook = await ensureNotebook();
-      state.bookmarks = await getBookmarks(notebookIdParam);
+      state.bookmarks = await getBookmarks(notebookId);
+      downloadBtn && (downloadBtn.disabled = false);
 
       // init page views
       state.front.root.classList.add("page--front");
@@ -646,7 +782,7 @@
       setActiveViewInteractivity();
       updateHeader();
 
-      setHint('Gebruik `?notitieblok_id=...&data=.../example.json` (of `unique_id`). Je notities blijven bewaard per notitieblok_id.');
+      setHint("");
       redrawAll();
     } catch (e) {
       setHint(`Starten mislukt: ${String(e.message || e)}`, "error");

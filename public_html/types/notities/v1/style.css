@@ -85,6 +85,7 @@ body {
   font-size: 12px;
   color: var(--muted2);
 }
+.hint:empty { display: none; }
 .hint.error { color: #fca5a5; }
 
 .stage {
@@ -151,7 +152,7 @@ body {
 
 .paper__text {
   position: absolute;
-  inset: 18px 18px 18px 54px;
+  inset: 41px 18px 18px 54px;
   width: calc(100% - 72px);
   height: calc(100% - 36px);
   resize: none;
@@ -162,6 +163,24 @@ body {
   font-size: 16px;
   line-height: 23px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.paper__tab {
+  position: absolute;
+  top: 14px;
+  left: 54px;
+  right: 18px;
+  height: 18px;
+  display: grid;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: rgba(15, 23, 42, 0.82);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 .paper__ink {
