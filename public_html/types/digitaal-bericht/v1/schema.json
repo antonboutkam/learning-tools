@@ -1,47 +1,50 @@
 {
-    "title": "Digitaal bericht",
-    "type": "object",
-    "required": [
-        "text"
-    ],
-    "properties": {
-        "title": {
-            "type": "string",
-            "title": "Titel (optioneel)",
-            "default": ""
-        },
-        "text": {
-            "type": "string",
-            "title": "Tekst",
-            "description": "Gebruik | als backspace. Voor een letterlijk | teken: gebruik ||.",
-            "default": "Hallo, dit is een digitaal bericht."
-        },
-        "speed": {
-            "type": "number",
-            "title": "Snelheid",
-            "description": "1 = normaal. Lager is langzamer, hoger is sneller.",
-            "default": 1,
-            "minimum": 0.2,
-            "maximum": 3
-        },
-        "mistakes": {
-            "type": "boolean",
-            "title": "Menselijke typfouten",
-            "default": true
-        },
-        "mistake_rate": {
-            "type": "number",
-            "title": "Typfout kans",
-            "description": "Kans per letter dat er een foutje + backspace gebeurt.",
-            "default": 0.035,
-            "minimum": 0,
-            "maximum": 0.25
-        },
-        "cursor": {
-            "type": "boolean",
-            "title": "Cursor tonen",
-            "default": true
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/digitaal-bericht/v1/schema.json",
+  "title": "Digitaal bericht v1",
+  "description": "Toon een digitaal bericht alsof het getypt wordt op een retro terminal (C64-stijl). Gebruik `|` als backspace; een letterlijk `|` teken schrijf je als `||`.",
+  "type": "object",
+  "required": ["text"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Titel (optioneel)",
+      "description": "Korte titel die bovenaan/in de meta-regel getoond kan worden.",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "title": "Tekst",
+      "description": "Gebruik `|` als backspace. Voor een letterlijk `|` teken: gebruik `||`.",
+      "default": "Hallo, dit is een digitaal bericht."
+    },
+    "speed": {
+      "type": "number",
+      "title": "Snelheid",
+      "description": "1 = normaal. Lager is langzamer, hoger is sneller.",
+      "default": 1,
+      "minimum": 0.2,
+      "maximum": 3
+    },
+    "mistakes": {
+      "type": "boolean",
+      "title": "Menselijke typfouten",
+      "description": "Simuleer af en toe een foute letter + backspace, zodat het 'menselijker' lijkt.",
+      "default": true
+    },
+    "mistake_rate": {
+      "type": "number",
+      "title": "Typfout-kans",
+      "description": "Kans per letter dat er een foutje + backspace gebeurt (alleen bij letters).",
+      "default": 0.035,
+      "minimum": 0,
+      "maximum": 0.25
+    },
+    "cursor": {
+      "type": "boolean",
+      "title": "Cursor tonen",
+      "description": "Toon een knipperende cursor tijdens het typen.",
+      "default": true
     }
+  }
 }
-

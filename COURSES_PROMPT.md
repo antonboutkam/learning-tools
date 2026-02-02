@@ -23,6 +23,8 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
    - Wanneer een type wordt geselecteerd: fetch `schemaUrl`.
    - Genereer een formulier op basis van JSON Schema (draft 2020‑12).
    - Respecteer `required`, `default`, `minItems`, `additionalProperties: false`.
+   - Gebruik schema root `title`/`description` voor type‑naam en uitleg in het UI.
+   - Gebruik per veld `title` als label en `description` als hulptekst (ook voor geneste objecten/arrays).
 
 4. **Bouw data‑JSON**
    - Serialize het formulier naar JSON die aan het schema voldoet.

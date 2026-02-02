@@ -67,4 +67,8 @@ Gebruik de demo’s direct in de browser:
 - Gebruik altijd versie‑paden (bijv. `/v1/`) voor backwards compatibility.
 - Registry items hebben een `type` veld (bijv. `assignment-type`) zodat later ook visualisaties toegevoegd kunnen worden.
 
-# ......
+## Schema UX‑metadata (titles/descriptions)
+De `schema.json` bestanden bevatten extra metadata om het automatisch gegenereerde formulier in Courses (of een andere builder) gebruiksvriendelijker te maken:
+- Gebruik schema root `title` + `description` als naam/uitleg van de tool.
+- Gebruik per property `title` als veldlabel en `description` als hulptekst.
+- Voor arrays/objects zijn ook titels/omschrijvingen toegevoegd zodat herhaalbare secties leesbaar blijven.

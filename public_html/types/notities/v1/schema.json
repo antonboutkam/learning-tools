@@ -2,23 +2,45 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/notities/v1/schema.json",
   "title": "Notities v1",
+  "description": "Digitaal notitieblok met pagina-omslag animatie, typen- en penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring).",
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "title": { "type": "string", "default": "Notities" },
-    "pagesCount": { "type": "integer", "minimum": 1, "maximum": 1000, "default": 100 },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel die boven het notitieblok wordt getoond.",
+      "default": "Notities"
+    },
+    "pagesCount": {
+      "type": "integer",
+      "title": "Aantal pagina’s",
+      "description": "Totaal aantal pagina’s in het notitieblok.",
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 100
+    },
     "bookmarks": {
+      "title": "Bookmarks (optioneel)",
       "description": "Vooraf gedefinieerde bookmarks (worden bij eerste keer aanmaken evenredig verdeeld over het notitieblok).",
       "type": "array",
       "items": {
         "anyOf": [
-          { "type": "string" },
+          {
+            "type": "string",
+            "title": "Bookmark naam",
+            "description": "Naam van de bookmark (bijv. \"Les 1\")."
+          },
           {
             "type": "object",
             "required": ["name"],
             "additionalProperties": false,
             "properties": {
-              "name": { "type": "string" }
+              "name": {
+                "type": "string",
+                "title": "Naam",
+                "description": "Naam van de bookmark (bijv. \"Hoofdstuk 2\")."
+              }
             }
           }
         ]
@@ -27,4 +49,3 @@
     }
   }
 }
-

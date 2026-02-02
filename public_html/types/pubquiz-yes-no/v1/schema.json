@@ -2,23 +2,51 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/pubquiz-yes-no/v1/schema.json",
   "title": "Pubquiz yes/no v1",
+  "description": "Snelle ja/nee pubquiz: een vraag wordt willekeurig gekozen, daarna heeft de student een beperkt aantal seconden om ja of nee te antwoorden.",
   "type": "object",
   "required": ["title", "questions"],
   "additionalProperties": false,
   "properties": {
-    "title": { "type": "string" },
-    "rollerSeconds": { "type": "number", "default": 4, "minimum": 1 },
-    "questionSeconds": { "type": "number", "default": 10, "minimum": 3 },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel die boven de pubquiz wordt getoond."
+    },
+    "rollerSeconds": {
+      "type": "number",
+      "title": "Rollerduur (seconden)",
+      "description": "Hoe lang de tool willekeurig door vragen 'rolt' voordat er één vraag gekozen wordt.",
+      "default": 4,
+      "minimum": 1
+    },
+    "questionSeconds": {
+      "type": "number",
+      "title": "Antwoordtijd (seconden)",
+      "description": "Hoeveel seconden de student heeft om ja/nee te antwoorden.",
+      "default": 10,
+      "minimum": 3
+    },
     "questions": {
       "type": "array",
+      "title": "Vragen",
+      "description": "Lijst met ja/nee vragen waaruit willekeurig gekozen wordt.",
       "minItems": 2,
       "items": {
         "type": "object",
+        "title": "Vraag",
         "required": ["question", "answer"],
         "additionalProperties": false,
         "properties": {
-          "question": { "type": "string" },
-          "answer": { "type": "boolean" }
+          "question": {
+            "type": "string",
+            "title": "Vraag",
+            "description": "De vraagtekst die op het scherm komt."
+          },
+          "answer": {
+            "type": "boolean",
+            "title": "Correct antwoord",
+            "description": "Aan = Ja, uit = Nee."
+          }
         }
       }
     }

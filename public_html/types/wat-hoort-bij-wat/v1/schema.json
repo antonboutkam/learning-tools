@@ -2,24 +2,55 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/wat-hoort-bij-wat/v1/schema.json",
   "title": "Wat hoort bij wat v1",
+  "description": "Koppel-oefening waarbij studenten items uit de linker kolom verbinden met de juiste items uit de rechter kolom.",
   "type": "object",
   "required": ["title", "pairs"],
   "additionalProperties": false,
   "properties": {
-    "title": { "type": "string" },
-    "showCheck": { "type": "boolean", "default": true },
-    "showCorrectOnCheck": { "type": "boolean", "default": true },
-    "shuffleOptions": { "type": "boolean", "default": true },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Korte titel die boven de opdracht wordt getoond."
+    },
+    "showCheck": {
+      "type": "boolean",
+      "title": "Toon controleknop",
+      "description": "Toon een knop waarmee studenten hun koppelingen kunnen controleren.",
+      "default": true
+    },
+    "showCorrectOnCheck": {
+      "type": "boolean",
+      "title": "Toon feedback bij controleren",
+      "description": "Markeer linker-items als goed/fout na het controleren.",
+      "default": true
+    },
+    "shuffleOptions": {
+      "type": "boolean",
+      "title": "Shuffle rechterkolom",
+      "description": "Zet de opties in de rechter kolom in willekeurige volgorde.",
+      "default": true
+    },
     "pairs": {
       "type": "array",
+      "title": "Koppels",
+      "description": "Lijst met correcte koppels (links ↔ rechts). Elke linker-term hoort bij precies één rechter-term.",
       "minItems": 2,
       "items": {
         "type": "object",
+        "title": "Koppel",
         "required": ["left", "right"],
         "additionalProperties": false,
         "properties": {
-          "left": { "type": "string" },
-          "right": { "type": "string" }
+          "left": {
+            "type": "string",
+            "title": "Links",
+            "description": "De term/vraag in de linker kolom."
+          },
+          "right": {
+            "type": "string",
+            "title": "Rechts",
+            "description": "Het bijbehorende antwoord in de rechter kolom."
+          }
         }
       }
     }

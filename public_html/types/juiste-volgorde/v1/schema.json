@@ -2,28 +2,78 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/juiste-volgorde/v1/schema.json",
   "title": "Juiste volgorde v1",
+  "description": "Interactieve oefening waarbij studenten items in de juiste volgorde slepen. De juiste volgorde is de volgorde van `items` in de JSON.",
   "type": "object",
   "required": ["title", "items"],
   "additionalProperties": false,
   "properties": {
-    "title": { "type": "string" },
-    "shuffle": { "type": "boolean", "default": true },
-    "showCheck": { "type": "boolean", "default": true },
-    "showCorrectOnCheck": { "type": "boolean", "default": true },
-    "initialState": { "type": "string", "enum": ["re-order", "empty"], "default": "re-order" },
-    "image": { "type": "string", "format": "uri" },
-    "imageAlt": { "type": "string" },
-    "imageCaption": { "type": "string" },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Korte titel die boven de opdracht wordt getoond."
+    },
+    "shuffle": {
+      "type": "boolean",
+      "title": "Shuffle startvolgorde",
+      "description": "Als dit aan staat, worden de items bij het starten door elkaar gehusseld (de correcte volgorde blijft de oorspronkelijke volgorde in `items`).",
+      "default": true
+    },
+    "showCheck": {
+      "type": "boolean",
+      "title": "Toon controleknop",
+      "description": "Toon een knop waarmee studenten hun antwoord kunnen controleren.",
+      "default": true
+    },
+    "showCorrectOnCheck": {
+      "type": "boolean",
+      "title": "Toon feedback bij controleren",
+      "description": "Markeer items als goed/fout wanneer er gecontroleerd wordt.",
+      "default": true
+    },
+    "initialState": {
+      "type": "string",
+      "title": "Startmodus",
+      "description": "`re-order`: items staan al in een lijst en kunnen worden herschikt. `empty`: lege plekken + een pool met opties die je naar de plekken sleept.",
+      "enum": ["re-order", "empty"],
+      "default": "re-order"
+    },
+    "image": {
+      "type": "string",
+      "title": "Afbeelding (optioneel)",
+      "description": "Afbeeldings-URL die boven de opdracht wordt getoond. Mag ook relatief zijn.",
+      "format": "uri-reference"
+    },
+    "imageAlt": {
+      "type": "string",
+      "title": "Afbeelding alt-tekst",
+      "description": "Korte beschrijving voor screenreaders (aanbevolen als je een afbeelding gebruikt)."
+    },
+    "imageCaption": {
+      "type": "string",
+      "title": "Afbeelding bijschrift",
+      "description": "Tekst onder de afbeelding."
+    },
     "items": {
       "type": "array",
+      "title": "Items",
+      "description": "De items in correcte volgorde (zoals ze beoordeeld moeten worden).",
       "minItems": 2,
       "items": {
         "type": "object",
+        "title": "Item",
         "required": ["id", "text"],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string" },
-          "text": { "type": "string" }
+          "id": {
+            "type": "string",
+            "title": "ID",
+            "description": "Unieke sleutel voor dit item (bijv. \"1\", \"stap-a\")."
+          },
+          "text": {
+            "type": "string",
+            "title": "Tekst",
+            "description": "De tekst die in de lijst wordt getoond."
+          }
         }
       }
     }
