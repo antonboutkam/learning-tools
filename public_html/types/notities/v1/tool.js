@@ -710,9 +710,17 @@
     setActiveViewInteractivity();
 
     const cls = direction === "forward" ? "page--turn-forward" : "page--turn-back";
+    const animEl = state.front.root;
+    let finished = false;
+    let safetyTimer = null;
     const onDone = () => {
-      state.front.root.removeEventListener("animationend", onDone);
-      state.front.root.classList.remove(cls);
+      if (finished) return;
+      finished = true;
+      if (safetyTimer) window.clearTimeout(safetyTimer);
+
+      animEl.removeEventListener("animationend", onDone);
+      animEl.removeEventListener("animationcancel", onDone);
+      animEl.classList.remove(cls);
 
       const tmp = state.front;
       state.front = state.back;
@@ -732,8 +740,13 @@
       state.animating = false;
     };
 
-    state.front.root.classList.add(cls);
-    state.front.root.addEventListener("animationend", onDone);
+    // Ensure the animation reliably retriggers across turns.
+    animEl.classList.remove(cls);
+    void animEl.offsetWidth; // force reflow
+    animEl.classList.add(cls);
+    animEl.addEventListener("animationend", onDone);
+    animEl.addEventListener("animationcancel", onDone);
+    safetyTimer = window.setTimeout(onDone, 900);
   };
 
   const jumpToPage = async (pageIndex) => {

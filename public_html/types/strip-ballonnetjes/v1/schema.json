@@ -18,6 +18,12 @@
       "description": "Toon extra info in de UI (handig bij het positioneren).",
       "default": false
     },
+    "showAllPages": {
+      "type": "boolean",
+      "title": "Toon alle pagina’s tegelijk",
+      "description": "Als dit aan staat, worden alle pagina’s onder elkaar getoond. Standaard toont de tool één pagina tegelijk met Vorige/Volgende.",
+      "default": false
+    },
     "pages": {
       "type": "array",
       "title": "Pagina’s",
@@ -37,12 +43,8 @@
           "image": {
             "type": "string",
             "title": "Afbeelding",
-            "description": "URL naar de afbeelding (svg/jpeg/png/webp). Mag ook relatief zijn."
-          },
-          "imageUrl": {
-            "type": "string",
-            "title": "Afbeelding (alias)",
-            "description": "Alias voor `image` (ondersteund voor backwards compatibility). Gebruik bij voorkeur `image`."
+            "description": "URL naar de afbeelding (svg/jpeg/png/webp). Mag ook relatief zijn; de tool zet relatieve paden om naar een volledige URL op basis van de pagina die de tool insluit (referrer).",
+            "format": "image"
           },
           "alt": {
             "type": "string",

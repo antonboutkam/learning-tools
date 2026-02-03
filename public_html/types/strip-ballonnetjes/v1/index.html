@@ -9,7 +9,14 @@
 <body>
   <main class="app">
     <header class="top">
-      <div class="title" id="title">Strip ballonnetjes</div>
+      <div class="top__row">
+        <div class="title" id="title">Strip ballonnetjes</div>
+        <div class="nav" id="nav" hidden>
+          <button class="nav__btn" id="prev" type="button">Vorige</button>
+          <div class="nav__meta" id="pageMeta"></div>
+          <button class="nav__btn" id="next" type="button">Volgende</button>
+        </div>
+      </div>
       <div class="hint" id="hint"></div>
     </header>
     <div class="pages" id="pages"></div>
@@ -17,4 +24,3 @@
   <script src="./tool.js"></script>
 </body>
 </html>
-
