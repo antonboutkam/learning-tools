@@ -1,0 +1,7 @@
+{
+  "unique_id": "demo-markdown-editor-1",
+  "title": "Markdown editor",
+  "intro": "Schrijf links Markdown en bekijk rechts direct hoe het eruit ziet. Tip: gebruik `Tab` om twee spaties in te voegen.",
+  "markdown": "# Voorbeeld\n\nDit is **vet**, dit is *cursief* en dit is `code`.\n\n## Lijst\n- Item 1\n- Item 2\n\n## Link\n[OpenAI](https://openai.com)\n\n> Dit is een quote.\n\n```\n// code block\nconst x = 42;\n```"
+}
+

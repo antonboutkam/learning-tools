@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown editor v1</title>
+  <link rel="stylesheet" href="/shared/ui.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="top__left">
+      <h1 class="title" id="title">Markdown editor</h1>
+      <div class="subtitle" id="subtitle">Laadt data...</div>
+    </div>
+    <div class="top__right">
+      <button class="btn" id="copyBtn" type="button" title="Kopieer de Markdown uit de editor">Kopieer</button>
+      <button class="btn btn--primary" id="downloadBtn" type="button" title="Download de Markdown als bestand">Download</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p class="intro" id="intro" hidden></p>
+
+      <div class="split" role="group" aria-label="Markdown editor met preview">
+        <div class="pane">
+          <div class="pane__head">
+            <span>Editor</span>
+            <span class="pane__meta" id="count"></span>
+          </div>
+          <textarea class="editor" id="editor" spellcheck="false" aria-label="Markdown editor"></textarea>
+        </div>
+
+        <div class="pane">
+          <div class="pane__head">
+            <span>Preview</span>
+          </div>
+          <div class="preview" id="preview" aria-label="Preview" tabindex="0"></div>
+        </div>
+      </div>
+
+      <div class="status" id="status"></div>
+    </section>
+  </main>
+
+  <dialog class="dialog" id="downloadDialog" aria-label="Download als bestand">
+    <form class="dialog__panel" id="downloadForm">
+      <h2 class="dialog__title">Download</h2>
+      <p class="dialog__text">Kies een bestandsnaam. Ongeldige tekens worden automatisch verwijderd.</p>
+
+      <label class="field">
+        <span class="field__label">Bestandsnaam</span>
+        <input class="field__input" id="filenameInput" type="text" autocomplete="off" />
+      </label>
+
+      <div class="dialog__error" id="filenameError" hidden>Vul een bestandsnaam in.</div>
+
+      <div class="dialog__actions">
+        <button class="btn" id="cancelDownloadBtn" type="button">Annuleren</button>
+        <button class="btn btn--primary" type="submit">Download</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -28,7 +28,6 @@ const rightNodeById = new Map();
 const rightById = new Map();
 
 const leftToRight = new Map(); // leftId -> rightId
-const rightToLeft = new Map(); // rightId -> leftId
 
 let active = null; // { side: 'left'|'right', id: string, start: {x,y}, cursor:{x,y} }
 let hoverTarget = null;
@@ -69,9 +68,16 @@ function setConnectorState() {
     el.classList.toggle("active", active?.side === "left" && active?.id === id);
   }
   for (const [id, el] of rightConnectorById) {
-    el.classList.toggle("connected", rightToLeft.has(id));
+    el.classList.toggle("connected", hasConnectionsOnRight(id));
     el.classList.toggle("active", active?.side === "right" && active?.id === id);
   }
+}
+
+function hasConnectionsOnRight(rightId) {
+  for (const mappedRightId of leftToRight.values()) {
+    if (mappedRightId === rightId) return true;
+  }
+  return false;
 }
 
 function resizeCanvasIfNeeded() {
@@ -165,22 +171,20 @@ function redraw() {
 }
 
 function disconnectLeft(leftId) {
-  const rightId = leftToRight.get(leftId);
-  if (rightId) rightToLeft.delete(rightId);
   leftToRight.delete(leftId);
 }
 
 function disconnectRight(rightId) {
-  const leftId = rightToLeft.get(rightId);
-  if (leftId) leftToRight.delete(leftId);
-  rightToLeft.delete(rightId);
+  for (const [leftId, mappedRightId] of leftToRight.entries()) {
+    if (mappedRightId === rightId) {
+      leftToRight.delete(leftId);
+    }
+  }
 }
 
 function connect(leftId, rightId) {
   disconnectLeft(leftId);
-  disconnectRight(rightId);
   leftToRight.set(leftId, rightId);
-  rightToLeft.set(rightId, leftId);
 }
 
 function cancelActive() {
@@ -214,7 +218,7 @@ function finishActive(side, id) {
   }
   if (active.side === side) {
     if (side === "left" && leftToRight.has(id)) disconnectLeft(id);
-    if (side === "right" && rightToLeft.has(id)) disconnectRight(id);
+    if (side === "right" && hasConnectionsOnRight(id)) disconnectRight(id);
     startActive(side, id);
     return;
   }
@@ -240,7 +244,6 @@ function renderBoard() {
   rightNodeById.clear();
   rightById.clear();
   leftToRight.clear();
-  rightToLeft.clear();
   active = null;
   checked = false;
   resultEl.textContent = "";
@@ -315,7 +318,7 @@ boardEl.addEventListener("click", (e) => {
 
   if (!active) {
     if (side === "left" && leftToRight.has(id)) disconnectLeft(id);
-    if (side === "right" && rightToLeft.has(id)) disconnectRight(id);
+    if (side === "right" && hasConnectionsOnRight(id)) disconnectRight(id);
     startActive(side, id);
     return;
   }
@@ -392,8 +395,9 @@ async function init() {
 
     leftItems = pairs.map((p, idx) => ({ id: `L${idx}`, text: p.left, correctRight: p.right }));
     const rightTexts = pairs.map((p) => p.right);
-    const shuffledRights = shuffleOptions ? shuffle(rightTexts) : rightTexts.slice();
-    rightItems = shuffledRights.map((text, idx) => ({ id: `R${idx}`, text }));
+    const uniqueRightTexts = Array.from(new Set(rightTexts));
+    const rightTextsForBoard = shuffleOptions ? shuffle(uniqueRightTexts) : uniqueRightTexts.slice();
+    rightItems = rightTextsForBoard.map((text, idx) => ({ id: `R${idx}`, text }));
 
     completion =
       window.LearningToolsCompletion?.create?.({

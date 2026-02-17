@@ -60,6 +60,36 @@
       "schemaUrl": "/types/notities/v1/schema.json",
       "exampleDataUrl": "/types/notities/v1/example.json",
       "description": "Notitieblok met pagina-omslag animatie, typ- en penmodus, en bookmarks. Persistente opslag per notitieblok_id."
+    },
+    {
+      "id": "timeline",
+      "type": "assignment-type",
+      "name": "Timeline",
+      "version": "v1",
+      "launchUrl": "/types/timeline/v1/",
+      "schemaUrl": "/types/timeline/v1/schema.json",
+      "exampleDataUrl": "/types/timeline/v1/example.json",
+      "description": "Toon een tijdlijn met momenten tussen een start- en einddatum (horizontaal of verticaal) met instelbare schaal."
+    },
+    {
+      "id": "bin-hex-dec-reken",
+      "type": "assignment-type",
+      "name": "Bin/Hex/Dec Reken",
+      "version": "v1",
+      "launchUrl": "/types/bin-hex-dec-reken/v1/",
+      "schemaUrl": "/types/bin-hex-dec-reken/v1/schema.json",
+      "exampleDataUrl": "/types/bin-hex-dec-reken/v1/example.json",
+      "description": "Converteer een getal tussen binair, decimaal en hexadecimaal met keypad, preview en teller-posities."
+    },
+    {
+      "id": "markdown-editor",
+      "type": "assignment-type",
+      "name": "Markdown editor",
+      "version": "v1",
+      "launchUrl": "/types/markdown-editor/v1/",
+      "schemaUrl": "/types/markdown-editor/v1/schema.json",
+      "exampleDataUrl": "/types/markdown-editor/v1/example.json",
+      "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview)."
     }
   ]
 }

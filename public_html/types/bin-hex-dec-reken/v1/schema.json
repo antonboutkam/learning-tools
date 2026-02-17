@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/bin-hex-dec-reken/v1/schema.json",
+  "title": "Bin/Hex/Dec reken v1",
+  "description": "Oefening waarin een student een getal omzet tussen binair, decimaal en hexadecimaal met een kassastijl toetsenbord en teller-scherm.",
+  "type": "object",
+  "required": ["input", "output", "byte_size", "preview", "unique_id", "getal"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel die boven de opdracht wordt getoond.",
+      "default": "Bin/Hex/Dec Reken"
+    },
+    "input": {
+      "type": "string",
+      "title": "Invoerformaat",
+      "description": "Het formaat waarin het opgave-getal wordt getoond.",
+      "enum": ["bin", "hex", "dec"]
+    },
+    "output": {
+      "type": "string",
+      "title": "Uitvoerformaat",
+      "description": "Het formaat waarin de student het antwoord moet invoeren.",
+      "enum": ["bin", "hex", "dec"]
+    },
+    "byte_size": {
+      "type": "integer",
+      "title": "Byte-size (bits)",
+      "description": "Beschikbaar bitbereik voor de oefening. Dit bepaalt ook het aantal posities op het teller-scherm.",
+      "enum": [4, 8, 16, 32, 64, 128, 256]
+    },
+    "preview": {
+      "type": "boolean",
+      "title": "Preview tijdens invoer",
+      "description": "Toon tijdens typen direct hoe de huidige invoer eruitziet in BIN/DEC/HEX."
+    },
+    "unique_id": {
+      "type": "string",
+      "title": "Unique ID",
+      "description": "Unieke sleutel voor voortgang/certificaatopslag van deze opdracht.",
+      "minLength": 1
+    },
+    "getal": {
+      "type": "string",
+      "title": "Getal",
+      "description": "Het opgave-getal in hetzelfde formaat als `input` (bijvoorbeeld BIN: 10101101, HEX: AD, DEC: 173)."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "input": { "const": "bin" }
+        }
+      },
+      "then": {
+        "properties": {
+          "getal": {
+            "pattern": "^(?:0b)?[01]+$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "input": { "const": "dec" }
+        }
+      },
+      "then": {
+        "properties": {
+          "getal": {
+            "pattern": "^[0-9]+$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "input": { "const": "hex" }
+        }
+      },
+      "then": {
+        "properties": {
+          "getal": {
+            "pattern": "^(?:0x)?[0-9A-Fa-f]+$"
+          }
+        }
+      }
+    }
+  ]
+}

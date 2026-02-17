@@ -40,6 +40,21 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/notities/v1/schema.json`
   - Example: `public_html/types/notities/v1/example.json`
 
+- Timeline (v1)
+  - Pad: `public_html/types/timeline/v1/`
+  - Data‑schema: `public_html/types/timeline/v1/schema.json`
+  - Example: `public_html/types/timeline/v1/example.json`
+
+- Bin/Hex/Dec Reken (v1)
+  - Pad: `public_html/types/bin-hex-dec-reken/v1/`
+  - Data‑schema: `public_html/types/bin-hex-dec-reken/v1/schema.json`
+  - Example: `public_html/types/bin-hex-dec-reken/v1/example.json`
+
+- Markdown editor (v1)
+  - Pad: `public_html/types/markdown-editor/v1/`
+  - Data‑schema: `public_html/types/markdown-editor/v1/schema.json`
+  - Example: `public_html/types/markdown-editor/v1/example.json`
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
@@ -48,6 +63,9 @@ Gebruik de demo’s direct in de browser:
 - `/types/digitaal-bericht/v1/?unique_id=demo-bericht-1&data=example.json`
 - `/types/strip-ballonnetjes/v1/?unique_id=demo-strip-1&data=example.json`
 - `/types/notities/v1/?notitieblok_id=demo-notities-1&data=example.json`
+- `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`
+- `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
+- `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
 
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`

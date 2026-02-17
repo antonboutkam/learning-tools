@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/timeline/v1/schema.json",
+  "title": "Timeline v1",
+  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium) en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
+  "type": "object",
+  "required": ["unique_id", "title", "direction", "scale", "startDate", "endDate", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke ID",
+      "description": "Unieke sleutel voor deze tool-instance. Wordt ook gebruikt als querystring-parameter in de iframe-URL (`?unique_id=...`).",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel boven de tijdlijn."
+    },
+    "intro": {
+      "type": "string",
+      "title": "Intro (optioneel)",
+      "description": "Korte uitleg die boven de tijdlijn wordt getoond."
+    },
+    "viewport": {
+      "type": "object",
+      "title": "Weergave (optioneel)",
+      "description": "Optionele instellingen om de tijdlijn ruimer te maken (bijv. een minimale hoogte of breedte).",
+      "additionalProperties": false,
+      "properties": {
+        "minWidthPx": {
+          "type": "integer",
+          "title": "Minimale breedte (px)",
+          "description": "Zet een minimale breedte voor de tijdlijn. Handig voor lange tijdlijnen; bij een smaller scherm kan er horizontaal gescrold worden.",
+          "minimum": 320,
+          "maximum": 6000
+        },
+        "minHeightPx": {
+          "type": "integer",
+          "title": "Minimale hoogte (px)",
+          "description": "Zet een minimale hoogte voor de tijdlijn, zodat momenten meer ruimte krijgen.",
+          "minimum": 240,
+          "maximum": 6000
+        }
+      }
+    },
+    "direction": {
+      "type": "string",
+      "title": "Richting",
+      "description": "In welke richting de tijdlijn loopt.",
+      "enum": ["links-naar-rechts", "boven-naar-beneden"],
+      "default": "links-naar-rechts"
+    },
+    "scale": {
+      "type": "string",
+      "title": "Schaal",
+      "description": "Welke schaal de as/ticks gebruikt.",
+      "enum": ["uur", "dag", "maand", "kwartaal", "jaar", "2 jaar", "3 jaar", "4 jaar", "5 jaar", "decennium"],
+      "default": "jaar"
+    },
+    "startDate": {
+      "title": "Startdatum",
+      "description": "Start van de tijdlijn. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
+      "anyOf": [
+        { "type": "string", "format": "date" },
+        { "type": "string", "format": "date-time" }
+      ]
+    },
+    "endDate": {
+      "title": "Einddatum",
+      "description": "Einde van de tijdlijn. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
+      "anyOf": [
+        { "type": "string", "format": "date" },
+        { "type": "string", "format": "date-time" }
+      ]
+    },
+    "events": {
+      "type": "array",
+      "title": "Momenten",
+      "description": "De momenten op de tijdlijn.",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/event" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "direction": { "const": "links-naar-rechts" } } },
+      "then": {
+        "properties": {
+          "events": {
+            "items": {
+              "properties": {
+                "placement": {
+                  "enum": ["auto", "boven", "onder"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "direction": { "const": "boven-naar-beneden" } } },
+      "then": {
+        "properties": {
+          "events": {
+            "items": {
+              "properties": {
+                "placement": {
+                  "enum": ["auto", "links", "rechts"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "event": {
+      "type": "object",
+      "title": "Moment",
+      "required": ["date", "title", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Datum",
+          "description": "Datum van het moment. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
+          "anyOf": [
+            { "type": "string", "format": "date" },
+            { "type": "string", "format": "date-time" }
+          ]
+        },
+        "title": {
+          "type": "string",
+          "title": "Titel",
+          "description": "Korte titel voor dit moment."
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Ondertitel (optioneel)",
+          "description": "Korte extra regel onder de titel (bijv. locatie, onderwerp of extra context)."
+        },
+        "description": {
+          "type": "string",
+          "title": "Beschrijving",
+          "description": "Omschrijving van dit moment.",
+          "format": "textarea"
+        },
+        "placement": {
+          "type": "string",
+          "title": "Plaatsing",
+          "description": "Waar het moment t.o.v. de as komt. Bij links→rechts: boven/onder. Bij boven→beneden: links/rechts.",
+          "default": "auto"
+        },
+        "imageUrl": {
+          "type": "string",
+          "title": "Afbeelding (optioneel)",
+          "description": "URL naar een afbeelding die in het moment-card wordt getoond. Mag ook relatief zijn t.o.v. de data-URL.",
+          "format": "uri-reference"
+        },
+        "linkUrl": {
+          "type": "string",
+          "title": "Link (optioneel)",
+          "description": "Als je dit invult, wordt het moment-card klikbaar en opent de link in een nieuw tabblad. Mag ook relatief zijn t.o.v. de data-URL.",
+          "format": "uri-reference"
+        }
+      }
+    }
+  }
+}

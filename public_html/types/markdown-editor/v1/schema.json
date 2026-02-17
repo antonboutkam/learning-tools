@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/markdown-editor/v1/schema.json",
+  "title": "Markdown editor v1",
+  "description": "Een eenvoudige Markdown-editor: links schrijf je Markdown, rechts zie je direct een preview.",
+  "type": "object",
+  "required": ["markdown"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke ID (optioneel)",
+      "description": "Unieke sleutel voor deze tool-instance. Wordt meestal ook als querystring-parameter meegegeven in de iframe-URL (`?unique_id=...`).",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel (optioneel)",
+      "description": "Titel boven de editor."
+    },
+    "intro": {
+      "type": "string",
+      "title": "Intro (optioneel)",
+      "description": "Korte uitleg boven de editor (bijv. instructie voor de student).",
+      "format": "textarea"
+    },
+    "markdown": {
+      "type": "string",
+      "title": "Markdown",
+      "description": "De Markdown-tekst die in de editor geladen wordt.",
+      "format": "textarea"
+    },
+    "defaultFilename": {
+      "type": "string",
+      "title": "Standaard bestandsnaam (optioneel)",
+      "description": "De standaard bestandsnaam die in de download-dialog wordt voorgesteld.",
+      "default": "README.md"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "title": "Alleen-lezen (optioneel)",
+      "description": "Als dit aan staat, kan de student de tekst niet aanpassen.",
+      "default": false
+    }
+  }
+}

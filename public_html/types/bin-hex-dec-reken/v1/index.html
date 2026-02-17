@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bin/Hex/Dec Reken v1</title>
+  <link rel="stylesheet" href="/shared/ui.css" />
+  <style>
+    :root {
+      --bg: #ece8de;
+      --ink: #211a12;
+      --panel: #f7f2e8;
+      --metal: #8f7b5e;
+      --metal-dark: #5a4932;
+      --display-bg: #1a1b16;
+      --display-ink: #f6d98f;
+      --display-dim: #6f6447;
+      --accent: #a44d1e;
+      --ok: #2a7e39;
+      --bad: #ad2f26;
+      --key-top: #f6f1e4;
+      --key-bottom: #d5cab3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "IBM Plex Sans Condensed", "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 12%, #faf8f0 0%, rgba(250,248,240,0) 45%),
+        linear-gradient(180deg, #f2eee5 0%, #e6dece 100%);
+    }
+
+    header {
+      padding: 18px 20px 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(24px, 3.2vw, 34px);
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: #5f513f;
+      font-size: 15px;
+    }
+
+    .wrap {
+      padding: 0 20px 30px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #d7c9b0;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 14px 30px rgba(35, 27, 18, 0.12);
+    }
+
+    .challenge {
+      border: 1px solid #dbcdb6;
+      border-radius: 14px;
+      padding: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+      margin-bottom: 14px;
+    }
+
+    .challenge-label {
+      font-size: 15px;
+      color: #5d4c39;
+      margin-bottom: 8px;
+    }
+
+    .source-number {
+      font-family: "Space Mono", "Courier New", monospace;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: clamp(18px, 3.8vw, 28px);
+      color: #2a241d;
+      word-break: break-all;
+    }
+
+    .display-shell {
+      border: 2px solid var(--metal-dark);
+      border-radius: 16px;
+      padding: 10px;
+      background: linear-gradient(180deg, #b4a488 0%, #826f53 100%);
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 16px rgba(28, 21, 13, 0.25);
+      margin-bottom: 14px;
+    }
+
+    .display-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      border-radius: 10px;
+      background: radial-gradient(circle at 50% -120%, #3a3a2f 0%, var(--display-bg) 65%);
+      border: 1px solid #312c1f;
+      padding: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: #7f6a45 #1e1f1b;
+    }
+
+    .display-track {
+      width: max-content;
+      min-width: 100%;
+    }
+
+    .position-row,
+    .digit-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(30px, 30px);
+      gap: 3px;
+      justify-content: end;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    .position-cell {
+      text-align: center;
+      color: var(--display-dim);
+      font-size: 11px;
+      font-family: "Space Mono", "Courier New", monospace;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .digit-row {
+      margin-top: 4px;
+    }
+
+    .digit-cell {
+      height: 44px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Mono", "Courier New", monospace;
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--display-ink);
+      border: 1px solid #393521;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.55));
+      text-shadow: 0 0 10px rgba(246, 217, 143, 0.45);
+      user-select: none;
+    }
+
+    .digit-cell.empty {
+      color: rgba(246, 217, 143, 0.2);
+      text-shadow: none;
+    }
+
+    .preview {
+      border: 1px dashed #cbb697;
+      background: rgba(255,255,255,0.55);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 14px;
+    }
+
+    .preview-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #493727;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .preview-item {
+      border: 1px solid #deceba;
+      border-radius: 10px;
+      padding: 8px;
+      background: #fff9ef;
+      min-width: 0;
+    }
+
+    .preview-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6a513a;
+      margin-bottom: 4px;
+    }
+
+    .preview-value {
+      display: block;
+      font-family: "Space Mono", "Courier New", monospace;
+      font-size: 14px;
+      color: #2f261c;
+      word-break: break-all;
+    }
+
+    .preview-note {
+      margin-top: 8px;
+      color: #5f513f;
+      font-size: 13px;
+      min-height: 1em;
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .keyboard[data-kind="bin"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .key,
+    .action-btn {
+      border: 1px solid #8c7759;
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--key-top) 0%, var(--key-bottom) 100%);
+      box-shadow: 0 5px 0 #7d6a4d, 0 8px 14px rgba(0,0,0,0.18);
+      color: #2c2319;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .key {
+      min-height: 56px;
+      font-size: 24px;
+      font-family: "Space Mono", "Courier New", monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .key:hover,
+    .action-btn:hover {
+      filter: brightness(1.04);
+    }
+
+    .key:active,
+    .action-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #7d6a4d, 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .action-btn {
+      min-height: 48px;
+      font-size: 18px;
+      padding: 6px 10px;
+    }
+
+    .action-btn.primary {
+      background: linear-gradient(180deg, #d3682f 0%, var(--accent) 100%);
+      color: #fff;
+      border-color: #873717;
+      box-shadow: 0 5px 0 #7a3115, 0 8px 14px rgba(0,0,0,0.2);
+    }
+
+    .status,
+    .result {
+      margin-top: 10px;
+      font-size: 14px;
+      min-height: 1.25em;
+    }
+
+    .status { color: #5f513f; }
+    .status.error { color: var(--bad); }
+    .result.ok { color: var(--ok); font-weight: 700; }
+    .result.bad { color: var(--bad); font-weight: 700; }
+
+    @media (max-width: 700px) {
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .key {
+        min-height: 52px;
+        font-size: 21px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bin/Hex/Dec Reken</h1>
+    <div class="subtitle" id="subtitle">Laadt opdracht...</div>
+  </header>
+
+  <div class="wrap">
+    <div class="card" id="card">
+      <section class="challenge" aria-label="Opdracht">
+        <div class="challenge-label" id="challengeLabel"></div>
+        <div class="source-number" id="sourceNumber">-</div>
+      </section>
+
+      <section class="display-shell" aria-label="Teller scherm">
+        <div class="display-scroll" id="displayScroll">
+          <div class="display-track">
+            <div class="position-row" id="positionRow"></div>
+            <div class="digit-row" id="digitRow"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="preview" id="previewPanel" hidden>
+        <div class="preview-title">Preview tijdens invoeren</div>
+        <div class="preview-grid">
+          <div class="preview-item">
+            <span class="preview-tag">BIN</span>
+            <code class="preview-value" id="previewBin">-</code>
+          </div>
+          <div class="preview-item">
+            <span class="preview-tag">DEC</span>
+            <code class="preview-value" id="previewDec">-</code>
+          </div>
+          <div class="preview-item">
+            <span class="preview-tag">HEX</span>
+            <code class="preview-value" id="previewHex">-</code>
+          </div>
+        </div>
+        <div class="preview-note" id="previewNote"></div>
+      </section>
+
+      <section aria-label="Toetsenbord">
+        <div class="keyboard" id="keyboard"></div>
+        <div class="actions">
+          <button class="action-btn" id="backspace" type="button">Backspace</button>
+          <button class="action-btn primary" id="check" type="button">Controleer</button>
+        </div>
+      </section>
+
+      <div class="result" id="result" aria-live="polite"></div>
+      <div class="status" id="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script src="/shared/completion.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

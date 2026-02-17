@@ -1,0 +1,43 @@
+{
+  "unique_id": "demo-timeline-1",
+  "title": "Tijdlijn: ruimtevaart (voorbeeld)",
+  "intro": "Voorbeeldtijdlijn met meerdere momenten. Pas start/eind, schaal en plaatsing aan naar jouw lesmateriaal.",
+  "direction": "links-naar-rechts",
+  "scale": "jaar",
+  "startDate": "1955-01-01",
+  "endDate": "1975-12-31",
+  "events": [
+    {
+      "date": "1957-10-04",
+      "title": "Sputnik 1",
+      "subtitle": "Eerste kunstmaan",
+      "description": "De eerste kunstmaan in een baan om de aarde.",
+      "linkUrl": "https://nl.wikipedia.org/wiki/Spoetnik_1",
+      "placement": "boven"
+    },
+    {
+      "date": "1961-04-12",
+      "title": "Eerste mens in de ruimte",
+      "description": "Joeri Gagarin maakt een omwenteling om de aarde.",
+      "placement": "onder"
+    },
+    {
+      "date": "1969-07-20",
+      "title": "Maanlanding",
+      "description": "Apollo 11 landt op de maan.",
+      "placement": "boven"
+    },
+    {
+      "date": "1971-04-19",
+      "title": "Eerste ruimtestation",
+      "description": "Salyut 1 wordt gelanceerd.",
+      "placement": "onder"
+    },
+    {
+      "date": "1975-07-17",
+      "title": "Apollo–Sojoez",
+      "description": "Eerste internationale koppeling van twee ruimtevaartuigen.",
+      "placement": "boven"
+    }
+  ]
+}

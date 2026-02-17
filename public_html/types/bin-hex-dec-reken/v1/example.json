@@ -1,0 +1,9 @@
+{
+  "title": "Reken om: BIN naar HEX",
+  "input": "bin",
+  "output": "hex",
+  "byte_size": 8,
+  "preview": true,
+  "unique_id": "demo-bin-hex-dec-1",
+  "getal": "10101101"
+}

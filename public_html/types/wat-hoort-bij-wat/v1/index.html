@@ -20,20 +20,35 @@
     .matchboard { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 8px; border-radius: 14px; border: 1px solid #f0e6d8; background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65)); overflow: hidden; }
     .matchboard canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
     .col { display: grid; gap: 10px; align-content: start; position: relative; z-index: 1; }
-    .node { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 10px; border-radius: 12px; border: 1px solid #e7dccb; background: #fff; box-shadow: 0 8px 18px rgba(0,0,0,.04); }
+    .node { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 10px; border-radius: 12px; border: 1px solid #e7dccb; background: #fff; box-shadow: 0 8px 18px rgba(0,0,0,.04); transition: border-color .18s ease, box-shadow .22s ease, transform .18s ease, background-color .18s ease; }
     .node[data-side="right"] { flex-direction: row-reverse; }
     .node.correct { border-color: #bfe9c7; background: #eefaf1; }
     .node.incorrect { border-color: #f2b7ae; background: #fff1ef; }
+    .node.connector-hover { border-color: #dcbfa3; box-shadow: 0 10px 22px rgba(154,91,46,.12); transform: translateY(-1px); }
+    .node[data-side="left"].connector-hover { border-color: #efc190; box-shadow: 0 10px 22px rgba(242,138,26,.14); }
     .label { line-height: 1.25; }
-    .connector { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(0,0,0,.22); background: #fff; cursor: pointer; flex: 0 0 auto; display: grid; place-items: center; padding: 0; }
+    .connector { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(0,0,0,.22); background: #fff; cursor: pointer; flex: 0 0 auto; display: grid; place-items: center; padding: 0; position: relative; transition: border-color .16s ease, transform .16s ease, box-shadow .16s ease; }
+    .connector::before { content: ""; position: absolute; inset: -7px; border-radius: 999px; border: 2px solid transparent; opacity: 0; transform: scale(.86); pointer-events: none; }
     .connector::after { content: ""; width: 8px; height: 8px; border-radius: 999px; background: rgba(0,0,0,.10); }
+    .connector:hover { border-color: var(--accent); transform: scale(1.06); box-shadow: 0 0 0 4px rgba(154,91,46,.14); }
+    .connector:hover::before { border-color: rgba(154,91,46,.42); animation: connectorPulse 1.15s ease-out infinite; }
+    .connector[data-side="left"]:hover { border-color: #f28a1a; box-shadow: 0 0 0 4px rgba(242,138,26,.16); }
+    .connector[data-side="left"]:hover::before { border-color: rgba(242,138,26,.45); }
     .connector.active { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(154,91,46,.18); }
     .connector.active[data-side="left"] { border-color: #f28a1a; box-shadow: 0 0 0 4px rgba(242,138,26,.22); }
     .connector.connected { border-color: rgba(0,0,0,.45); }
     .connector.hover-target { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(154,91,46,.18); }
     .connector.hover-target[data-side="left"] { border-color: #f28a1a; box-shadow: 0 0 0 4px rgba(242,138,26,.22); }
     .connector:focus-visible { outline: 3px solid rgba(154,91,46,.28); outline-offset: 2px; }
+    .connector:focus-visible::before { border-color: rgba(154,91,46,.42); animation: connectorPulse 1.15s ease-out infinite; }
+    .connector[data-side="left"]:focus-visible::before { border-color: rgba(242,138,26,.45); }
     .help { margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+    @keyframes connectorPulse {
+      0% { opacity: 0; transform: scale(.86); }
+      35% { opacity: .7; }
+      100% { opacity: 0; transform: scale(1.9); }
+    }
   </style>
 </head>
 <body>
