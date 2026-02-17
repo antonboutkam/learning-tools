@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/timeline/v1/schema.json",
   "title": "Timeline v1",
-  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium) en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
+  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
   "type": "object",
   "required": ["unique_id", "title", "direction", "scale", "startDate", "endDate", "events"],
   "additionalProperties": false,
@@ -74,6 +74,12 @@
         { "type": "string", "format": "date" },
         { "type": "string", "format": "date-time" }
       ]
+    },
+    "yearCuts": {
+      "type": "string",
+      "title": "Jaren/periodes knippen (optioneel)",
+      "description": "Lijst met jaren of jaar-ranges die uit de tijdas geknipt worden. Gebruik komma's, bijvoorbeeld: 1992-2000, 2009-2018, 2025, 2032.",
+      "format": "textarea"
     },
     "events": {
       "type": "array",
