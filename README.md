@@ -19,6 +19,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/wat-hoort-bij-wat/v1/`
   - Data‑schema: `public_html/types/wat-hoort-bij-wat/v1/schema.json`
   - Example: `public_html/types/wat-hoort-bij-wat/v1/example.json`
+  - Extra: ondersteunt configureerbare `title` + `description` (uitleg) en afleiders in de rechterkolom via een `pairs` item met alleen `right` (zonder `left`)
 
 - Pubquiz yes/no (v1)
   - Pad: `public_html/types/pubquiz-yes-no/v1/`

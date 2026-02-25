@@ -64,7 +64,7 @@
             "items": {
               "type": "object",
               "title": "Ballon",
-              "required": ["text", "x", "y", "width", "tail"],
+              "required": ["text", "x", "y", "tail"],
               "additionalProperties": false,
               "properties": {
                 "text": {
@@ -75,7 +75,7 @@
                 "x": {
                   "type": "number",
                   "title": "X (px)",
-                  "description": "X-positie in pixels (t.o.v. designWidth/naturalWidth)."
+                  "description": "X-positie in pixels (t.o.v. designWidth/naturalWidth). Als `width` ontbreekt, gebruikt de tool een full-width ballon en wordt X genegeerd."
                 },
                 "y": {
                   "type": "number",
@@ -86,7 +86,7 @@
                   "type": "number",
                   "title": "Breedte (px)",
                   "minimum": 40,
-                  "description": "Breedte van het ballonnetje in pixels (t.o.v. designWidth/naturalWidth)."
+                  "description": "Breedte van het ballonnetje in pixels (t.o.v. designWidth/naturalWidth). Laat leeg voor een full-width ballon over de volledige toolbreedte, zonder rounded corners."
                 },
                 "tail": {
                   "type": "string",

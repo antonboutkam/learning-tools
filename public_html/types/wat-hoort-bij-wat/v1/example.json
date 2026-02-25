@@ -1,5 +1,6 @@
 {
   "title": "Wat hoort bij wat?",
+  "description": "Verbind elke persoon links met de juiste omschrijving rechts. Er staan ook extra afleiders tussen.",
   "showCheck": true,
   "showCorrectOnCheck": true,
   "shuffleOptions": true,
@@ -7,6 +8,8 @@
     { "left": "Willem van Oranje", "right": "Vader des Vaderlands" },
     { "left": "Rembrandt", "right": "De Nachtwacht" },
     { "left": "Erasmus", "right": "Humanist" },
-    { "left": "Michiel de Ruyter", "right": "Admiraal" }
+    { "left": "Michiel de Ruyter", "right": "Admiraal" },
+    { "right": "Minister-president" },
+    { "left": "", "right": "Stadhouder" }
   ]
 }

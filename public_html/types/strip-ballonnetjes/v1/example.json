@@ -16,7 +16,8 @@
       "designWidth": 1200,
       "bubbles": [
         { "text": "Positioneer me met x/y.", "x": 140, "y": 170, "width": 320, "tail": "left" },
-        { "text": "Staartje links of rechts.", "x": 680, "y": 320, "width": 330, "tail": "right" }
+        { "text": "Staartje links of rechts.", "x": 680, "y": 320, "width": 330, "tail": "right" },
+        { "text": "Dit ballonnetje gebruikt geen width en pakt full-width.", "x": 0, "y": 20, "tail": "none" }
       ]
     }
   ]

@@ -8,6 +8,7 @@ const rightColEl = document.getElementById("rightCol");
 const canvasEl = document.getElementById("wires");
 const statusEl = document.getElementById("status");
 const resultEl = document.getElementById("result");
+const titleEl = document.getElementById("title");
 const subtitleEl = document.getElementById("subtitle");
 const checkBtn = document.getElementById("check");
 
@@ -46,6 +47,12 @@ function shuffle(arr) {
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
+}
+
+function nonEmptyString(value) {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed === "" ? null : trimmed;
 }
 
 function boardPointFromClient(clientX, clientY) {
@@ -249,19 +256,21 @@ function renderBoard() {
   resultEl.textContent = "";
 
   leftItems.forEach((item) => {
+    const labelText = nonEmptyString(item?.text);
+    if (!labelText) return;
     const node = document.createElement("div");
     node.className = "node";
     node.dataset.side = "left";
     node.dataset.id = item.id;
     const label = document.createElement("div");
     label.className = "label";
-    label.textContent = item.text;
+    label.textContent = labelText;
     const connector = document.createElement("button");
     connector.type = "button";
     connector.className = "connector";
     connector.dataset.side = "left";
     connector.dataset.id = item.id;
-    connector.setAttribute("aria-label", `Koppel: ${item.text}`);
+    connector.setAttribute("aria-label", `Koppel: ${labelText}`);
     node.appendChild(label);
     node.appendChild(connector);
     leftColEl.appendChild(node);
@@ -270,6 +279,8 @@ function renderBoard() {
   });
 
   rightItems.forEach((item) => {
+    const labelText = nonEmptyString(item?.text);
+    if (!labelText) return;
     rightById.set(item.id, item);
     const node = document.createElement("div");
     node.className = "node";
@@ -277,13 +288,13 @@ function renderBoard() {
     node.dataset.id = item.id;
     const label = document.createElement("div");
     label.className = "label";
-    label.textContent = item.text;
+    label.textContent = labelText;
     const connector = document.createElement("button");
     connector.type = "button";
     connector.className = "connector";
     connector.dataset.side = "right";
     connector.dataset.id = item.id;
-    connector.setAttribute("aria-label", `Koppel: ${item.text}`);
+    connector.setAttribute("aria-label", `Koppel: ${labelText}`);
     node.appendChild(label);
     node.appendChild(connector);
     rightColEl.appendChild(node);
@@ -299,7 +310,7 @@ function updateResultAndMaybeComplete() {
   const score = computeScore();
   resultEl.textContent = `${score.correctCount} van ${score.total} goed`;
   applyCheckStyling(score);
-  if (score.correctCount === score.total) {
+  if (score.total > 0 && score.correctCount === score.total) {
     completion?.markCompleted({ score: { correct: score.total, total: score.total } });
   }
   redraw();
@@ -386,15 +397,32 @@ async function init() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    subtitleEl.textContent = data.title || "Wat hoort bij wat";
-    pairs = data.pairs.slice();
+    const configuredTitle = nonEmptyString(data.title) || "Wat hoort bij wat";
+    const configuredDescription =
+      nonEmptyString(data.description) ||
+      "Koppel de items door een rondje links te verbinden met het juiste rondje rechts.";
+    titleEl.textContent = configuredTitle;
+    subtitleEl.textContent = configuredDescription;
+    pairs = Array.isArray(data.pairs) ? data.pairs.slice() : [];
     showCheck = data.showCheck !== false;
     showCorrectOnCheck = data.showCorrectOnCheck !== false;
     shuffleOptions = data.shuffleOptions !== false;
     checkBtn.style.display = showCheck ? "inline-flex" : "none";
 
-    leftItems = pairs.map((p, idx) => ({ id: `L${idx}`, text: p.left, correctRight: p.right }));
-    const rightTexts = pairs.map((p) => p.right);
+    leftItems = [];
+    const rightTexts = [];
+    pairs.forEach((p) => {
+      if (!p || typeof p !== "object") return;
+      const rightText = nonEmptyString(p.right);
+      if (!rightText) return;
+
+      rightTexts.push(rightText);
+
+      const leftText = nonEmptyString(p.left);
+      if (!leftText) return; // right-only distractor: show on the right, not on the left
+
+      leftItems.push({ id: `L${leftItems.length}`, text: leftText, correctRight: rightText });
+    });
     const uniqueRightTexts = Array.from(new Set(rightTexts));
     const rightTextsForBoard = shuffleOptions ? shuffle(uniqueRightTexts) : uniqueRightTexts.slice();
     rightItems = rightTextsForBoard.map((text, idx) => ({ id: `R${idx}`, text }));
@@ -405,7 +433,7 @@ async function init() {
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
         uniqueId,
-        title: data.title || null,
+        title: configuredTitle,
         containerEl: document.querySelector(".card"),
         onReset: () => window.location.reload(),
       }) || null;

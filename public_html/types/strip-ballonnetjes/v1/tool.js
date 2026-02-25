@@ -47,8 +47,10 @@
 
   const setHint = (text, kind = "") => {
     if (!hintEl) return;
-    hintEl.textContent = text || "";
+    const value = String(text || "");
+    hintEl.textContent = value;
     hintEl.className = kind === "error" ? "hint error" : "hint";
+    hintEl.hidden = value.length === 0;
   };
 
   const toNum = (value, fallback = 0) => {
@@ -71,16 +73,28 @@
     const fallbackWidth = imgEl.naturalWidth || imgEl.clientWidth || 1;
     const designWidth = Math.max(1, toNum(designWidthRaw, fallbackWidth));
     const renderedWidth = imgEl.clientWidth || 1;
+    const viewportWidth = pagesEl && pagesEl.clientWidth ? pagesEl.clientWidth : renderedWidth;
+    const sideOffset = Math.max(0, (viewportWidth - renderedWidth) / 2);
     const scale = renderedWidth / Math.max(1, designWidth);
     pageEl.style.setProperty("--scale", String(scale));
 
     bubbles.forEach((b) => {
+      const isFullWidth = b.dataset.fullWidth === "true";
       const x = toNum(b.dataset.x, 0);
       const y = toNum(b.dataset.y, 0);
       const w = Math.max(40, toNum(b.dataset.w, 220));
-      b.style.left = `${Math.round(x * scale)}px`;
       b.style.top = `${Math.round(y * scale)}px`;
+
+      if (isFullWidth) {
+        b.style.left = `${Math.round(-sideOffset)}px`;
+        b.style.width = `${Math.round(viewportWidth)}px`;
+        b.style.borderRadius = "0";
+        return;
+      }
+
+      b.style.left = `${Math.round(x * scale)}px`;
       b.style.width = `${Math.round(w * scale)}px`;
+      b.style.borderRadius = "";
     });
   };
 
@@ -121,10 +135,12 @@
       const el = document.createElement("div");
       el.className = "bubble";
       el.textContent = String(bubble.text || "");
+      const hasWidth = bubble.width !== undefined && bubble.width !== null && bubble.width !== "";
       el.dataset.x = String(bubble.x ?? 0);
       el.dataset.y = String(bubble.y ?? 0);
-      el.dataset.w = String(bubble.width ?? 240);
-      el.dataset.tail = normalizeTail(bubble.tail);
+      el.dataset.w = hasWidth ? String(bubble.width) : "";
+      el.dataset.fullWidth = hasWidth ? "false" : "true";
+      el.dataset.tail = hasWidth ? normalizeTail(bubble.tail) : "none";
       pageEl.appendChild(el);
       bubbleEls.push(el);
     });
@@ -196,16 +212,16 @@
     currentConfig = config || {};
     currentPages = pages;
     if (currentIndex >= currentPages.length) currentIndex = 0;
+    document.body.classList.toggle("mode-all-pages", currentConfig.showAllPages === true);
 
     if (currentConfig.showAllPages === true) {
       renderAllPages(currentConfig);
-      setHint('Tip: positions zijn in pixels t.o.v. de originele afbeelding (designWidth of naturalWidth).');
+      setHint("");
       return;
     }
 
     renderSinglePage(currentConfig);
-    const navHint = currentPages.length > 1 ? " Gebruik Vorige/Volgende voor pagina’s." : "";
-    setHint(`Tip: positions zijn in pixels t.o.v. de originele afbeelding (designWidth of naturalWidth).${navHint}`);
+    setHint("");
   };
 
   const load = async () => {

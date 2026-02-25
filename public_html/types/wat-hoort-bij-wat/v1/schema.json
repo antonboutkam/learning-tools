@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/wat-hoort-bij-wat/v1/schema.json",
   "title": "Wat hoort bij wat v1",
-  "description": "Koppel-oefening waarbij studenten items uit de linker kolom verbinden met de juiste items uit de rechter kolom.",
+  "description": "Koppel-oefening waarbij studenten items uit de linker kolom verbinden met de juiste items uit de rechter kolom. Je kunt ook extra afleiders toevoegen door alleen een rechter-item op te geven.",
   "type": "object",
   "required": ["title", "pairs"],
   "additionalProperties": false,
@@ -10,7 +10,13 @@
     "title": {
       "type": "string",
       "title": "Titel",
-      "description": "Korte titel die boven de opdracht wordt getoond."
+      "description": "Korte titel die als kop boven de opdracht wordt getoond."
+    },
+    "description": {
+      "type": "string",
+      "title": "Uitleg",
+      "description": "Korte uitleg of instructie onder de titel.",
+      "format": "textarea"
     },
     "showCheck": {
       "type": "boolean",
@@ -33,23 +39,23 @@
     "pairs": {
       "type": "array",
       "title": "Koppels",
-      "description": "Lijst met correcte koppels (links ↔ rechts). Elke linker-term hoort bij precies één rechter-term.",
+      "description": "Lijst met koppels (links ↔ rechts). Laat `left` leeg of weg om een extra (incorrect) antwoord alleen in de rechter kolom te tonen.",
       "minItems": 2,
       "items": {
         "type": "object",
         "title": "Koppel",
-        "required": ["left", "right"],
+        "required": ["right"],
         "additionalProperties": false,
         "properties": {
           "left": {
             "type": "string",
             "title": "Links",
-            "description": "De term/vraag in de linker kolom."
+            "description": "De term/vraag in de linker kolom. Laat leeg (of laat dit veld weg) om alleen een afleider in de rechter kolom toe te voegen."
           },
           "right": {
             "type": "string",
             "title": "Rechts",
-            "description": "Het bijbehorende antwoord in de rechter kolom."
+            "description": "Het antwoord in de rechter kolom. Dit veld is verplicht, ook voor afleiders."
           }
         }
       }
