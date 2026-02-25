@@ -54,6 +54,28 @@
     .timeline--vertical .tick__line { top: 0; left: -10px; width: 20px; height: 1px; transform: translateY(-50%); }
     .timeline--vertical .tick__label { position: absolute; top: 0; left: 12px; transform: translateY(-50%); white-space: nowrap; }
 
+    .breaks { position: absolute; inset: 0; pointer-events: none; }
+    .break {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      opacity: 0.72;
+      z-index: 1;
+    }
+    .break__line {
+      width: 2px;
+      height: 14px;
+      border-radius: 2px;
+      background: rgba(28,25,21,0.42);
+    }
+    .timeline--horizontal .break { transform: translate(-50%, -50%); }
+    .timeline--horizontal .break__line { transform: rotate(25deg); }
+    .timeline--vertical .break { transform: translate(-50%, -50%) rotate(90deg); }
+
     .events { position: absolute; inset: 0; }
     .event {
       position: absolute;
@@ -174,6 +196,7 @@
       <div id="timeline" class="timeline" aria-label="Tijdlijn">
         <div class="timeline__surface">
           <div class="axis" aria-hidden="true"></div>
+          <div id="breaks" class="breaks" aria-hidden="true"></div>
           <div id="ticks" class="ticks" aria-hidden="true"></div>
           <div id="events" class="events" role="list"></div>
         </div>

@@ -9,6 +9,7 @@ const statusEl = document.getElementById("status");
 const timelineEl = document.getElementById("timeline");
 const surfaceEl = timelineEl.querySelector(".timeline__surface");
 const ticksEl = document.getElementById("ticks");
+const breaksEl = document.getElementById("breaks");
 const eventsEl = document.getElementById("events");
 
 let currentData = null;
@@ -136,12 +137,115 @@ function resolveUrl(value, baseUrl) {
   }
 }
 
+function parseYearCutsSpec(spec) {
+  if (typeof spec !== "string" || spec.trim() === "") return { ranges: [], invalidTokens: [] };
+  const tokens = spec
+    .split(/[,;\n]+/)
+    .map((token) => token.trim())
+    .filter(Boolean);
+
+  const ranges = [];
+  const invalidTokens = [];
+  tokens.forEach((token) => {
+    const normalizedToken = token.replace(/[–—]/g, "-");
+    const rangeMatch = normalizedToken.match(/^(\d{1,4})\s*-\s*(\d{1,4})$/);
+    const singleMatch = normalizedToken.match(/^(\d{1,4})$/);
+    if (!rangeMatch && !singleMatch) {
+      invalidTokens.push(token);
+      return;
+    }
+
+    const startYear = Number.parseInt(rangeMatch ? rangeMatch[1] : singleMatch[1], 10);
+    const endYear = Number.parseInt(rangeMatch ? rangeMatch[2] : singleMatch[1], 10);
+    if (!Number.isInteger(startYear) || !Number.isInteger(endYear) || startYear < 1 || endYear < 1) {
+      invalidTokens.push(token);
+      return;
+    }
+
+    ranges.push({
+      startYear: Math.min(startYear, endYear),
+      endYear: Math.max(startYear, endYear),
+    });
+  });
+
+  return { ranges, invalidTokens };
+}
+
+function normalizeYearCutIntervals(ranges, startMs, endMs) {
+  if (!Array.isArray(ranges) || !ranges.length) return [];
+  const raw = [];
+  ranges.forEach((range) => {
+    const start = new Date(range.startYear, 0, 1).getTime();
+    const end = new Date(range.endYear + 1, 0, 1).getTime();
+    if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return;
+    const clippedStart = Math.max(startMs, start);
+    const clippedEnd = Math.min(endMs, end);
+    if (clippedEnd <= clippedStart) return;
+    raw.push({ startMs: clippedStart, endMs: clippedEnd });
+  });
+
+  raw.sort((a, b) => a.startMs - b.startMs);
+  const merged = [];
+  raw.forEach((item) => {
+    if (!merged.length || item.startMs > merged[merged.length - 1].endMs) {
+      merged.push({ ...item });
+      return;
+    }
+    merged[merged.length - 1].endMs = Math.max(merged[merged.length - 1].endMs, item.endMs);
+  });
+  return merged;
+}
+
+function isInIntervals(ms, intervals) {
+  for (let i = 0; i < intervals.length; i += 1) {
+    const it = intervals[i];
+    if (ms < it.startMs) return false;
+    if (ms >= it.startMs && ms < it.endMs) return true;
+  }
+  return false;
+}
+
+function buildCompressionMap(startMs, endMs, intervals) {
+  const totalMs = endMs - startMs;
+  const hiddenMs = intervals.reduce((sum, it) => sum + Math.max(0, it.endMs - it.startMs), 0);
+  const visibleMs = totalMs - hiddenMs;
+
+  function hiddenBefore(ms) {
+    let sum = 0;
+    for (let i = 0; i < intervals.length; i += 1) {
+      const it = intervals[i];
+      if (ms <= it.startMs) break;
+      sum += Math.max(0, Math.min(ms, it.endMs) - it.startMs);
+      if (ms < it.endMs) break;
+    }
+    return sum;
+  }
+
+  function toRatio(ms) {
+    if (visibleMs <= 0) return 0;
+    const clampedMs = clamp(ms, startMs, endMs);
+    const visibleBefore = clampedMs - startMs - hiddenBefore(clampedMs);
+    return clamp(visibleBefore / visibleMs, 0, 1);
+  }
+
+  return { visibleMs, toRatio };
+}
+
 function buildTickEl(t, label) {
   const el = document.createElement("div");
   el.className = "tick";
   el.dataset.t = String(t);
   el.innerHTML = `<div class="tick__line"></div><div class="tick__label"></div>`;
   el.querySelector(".tick__label").textContent = label;
+  return el;
+}
+
+function buildBreakEl(t) {
+  const el = document.createElement("div");
+  el.className = "break";
+  el.dataset.t = String(t);
+  el.setAttribute("aria-hidden", "true");
+  el.innerHTML = `<span class="break__line"></span><span class="break__line"></span>`;
   return el;
 }
 
@@ -358,6 +462,18 @@ function layout() {
         node.style.left = `${width / 2}px`;
       }
     });
+
+    const breakNodes = Array.from(breaksEl.querySelectorAll(".break"));
+    breakNodes.forEach((node) => {
+      const t = Number.parseFloat(node.dataset.t || "0") || 0;
+      if (direction === "horizontal") {
+        node.style.left = `${alongAt(t)}px`;
+        node.style.top = `${height / 2}px`;
+      } else {
+        node.style.top = `${alongAt(t)}px`;
+        node.style.left = `${width / 2}px`;
+      }
+    });
   });
 }
 
@@ -381,8 +497,17 @@ function render(data, baseUrl) {
   timelineEl.classList.toggle("timeline--horizontal", direction === "horizontal");
   timelineEl.classList.toggle("timeline--vertical", direction === "vertical");
 
+  const parsedYearCuts = parseYearCutsSpec(safeText(data.yearCuts));
+  const yearCutIntervals = normalizeYearCutIntervals(parsedYearCuts.ranges, startMs, endMs);
+  const compressionMap = buildCompressionMap(startMs, endMs, yearCutIntervals);
+  if (compressionMap.visibleMs <= 0) {
+    setStatus("De opgegeven knipsels verwijderen de volledige tijdlijn.", true);
+    return;
+  }
+
   titleEl.textContent = safeText(data.title) || "Timeline";
-  subtitleEl.textContent = `${formatRange(start, end)} · schaal: ${safeText(data.scale) || "jaar"}`;
+  const cutsMeta = yearCutIntervals.length ? ` · knipsels: ${yearCutIntervals.length}` : "";
+  subtitleEl.textContent = `${formatRange(start, end)} · schaal: ${safeText(data.scale) || "jaar"}${cutsMeta}`;
 
   if (typeof data.intro === "string" && data.intro.trim() !== "") {
     introEl.hidden = false;
@@ -412,6 +537,7 @@ function render(data, baseUrl) {
     .filter(Boolean);
 
   ticksEl.innerHTML = "";
+  breaksEl.innerHTML = "";
   eventsEl.innerHTML = "";
 
   // Ticks
@@ -427,23 +553,42 @@ function render(data, baseUrl) {
   }
   let step = 1;
   if (ticks.length > maxTicks) step = Math.ceil(ticks.length / maxTicks);
+  let lastTickRatio = -1;
   for (let i = 0; i < ticks.length; i += step) {
     const t = ticks[i].getTime();
-    const ratio = clamp((t - startMs) / (endMs - startMs), 0, 1);
+    if (isInIntervals(t, yearCutIntervals)) continue;
+    const ratio = compressionMap.toRatio(t);
+    if (ratio <= lastTickRatio + 0.0005) continue;
     const el = buildTickEl(ratio, tickLabel(ticks[i], safeText(data.scale) || "jaar"));
     ticksEl.appendChild(el);
+    lastTickRatio = ratio;
   }
+
+  yearCutIntervals.forEach((interval) => {
+    const node = buildBreakEl(compressionMap.toRatio(interval.startMs));
+    breaksEl.appendChild(node);
+  });
 
   // Events
   events.sort((a, b) => a.dateMs - b.dateMs);
   events.forEach((ev, idx) => {
-    const t = clamp((ev.dateMs - startMs) / (endMs - startMs), 0, 1);
+    const t = compressionMap.toRatio(ev.dateMs);
     const node = buildEventEl(ev, { direction, scale: safeText(data.scale) || "jaar", baseUrl, idx });
     node.dataset.t = String(t);
     eventsEl.appendChild(node);
   });
 
-  setStatus(events.length ? "" : "Geen momenten gevonden op de tijdlijn.");
+  const notices = [];
+  if (parsedYearCuts.invalidTokens.length) {
+    notices.push(`Ongeldige knipsels genegeerd: ${parsedYearCuts.invalidTokens.join(", ")}.`);
+  }
+  const hiddenEventsCount = events.filter((ev) => isInIntervals(ev.dateMs, yearCutIntervals)).length;
+  if (hiddenEventsCount > 0) {
+    notices.push(`${hiddenEventsCount} moment(en) vallen in een weggeknipte periode en delen een positie met het knipteken.`);
+  }
+  const emptyMessage = events.length ? "" : "Geen momenten gevonden op de tijdlijn.";
+  const statusText = [emptyMessage, ...notices].filter(Boolean).join(" ");
+  setStatus(statusText);
   layout();
 }
 
