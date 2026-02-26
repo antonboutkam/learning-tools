@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/code-in-volgorde-zetten/v1/schema.json",
+  "title": "Code in volgorde zetten v1",
+  "description": "Interactieve oefening waarbij studenten losse code-regels naar de juiste volgorde slepen om een programma te vormen. Regels zonder `positie` zijn afleiders en hoeven niet gebruikt te worden.",
+  "type": "object",
+  "required": ["title", "regels"],
+  "additionalProperties": false,
+  "properties": {
+    "toolTitle": {
+      "type": "string",
+      "title": "Tooltitel (kop bovenaan)",
+      "description": "Titel die helemaal bovenaan de tool staat. Laat leeg om de standaardtitel te gebruiken."
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Korte titel die boven de opdracht wordt getoond."
+    },
+    "description": {
+      "type": "string",
+      "title": "Beschrijving",
+      "description": "Korte uitleg voor de student (optioneel).",
+      "format": "textarea"
+    },
+    "shuffle": {
+      "type": "boolean",
+      "title": "Shuffle regels",
+      "description": "Als dit aan staat, worden alle regels links door elkaar gezet bij het starten.",
+      "default": true
+    },
+    "showCheck": {
+      "type": "boolean",
+      "title": "Toon controleknop",
+      "description": "Toon een knop waarmee studenten hun antwoord kunnen controleren.",
+      "default": true
+    },
+    "showCorrectOnCheck": {
+      "type": "boolean",
+      "title": "Toon goed/fout feedback",
+      "description": "Markeer de plekken rechts als goed/fout na controleren.",
+      "default": true
+    },
+    "regels": {
+      "type": "array",
+      "title": "Code-regels",
+      "description": "Alle regels die links getoond worden. Vul `positie` in voor regels die onderdeel zijn van de oplossing. Laat `positie` leeg voor afleiders.",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "title": "Code-regel",
+        "description": "Een code-regel met optionele positie in het juiste programma.",
+        "required": ["code"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "ID (optioneel)",
+            "description": "Unieke sleutel voor deze regel. Mag leeg blijven; dan wordt automatisch een ID gemaakt."
+          },
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "De code-regel die de student ziet en kan slepen.",
+            "format": "textarea"
+          },
+          "positie": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "title": "Positie (optioneel)",
+            "description": "Positie in het juiste programma (1, 2, 3, ...). Laat leeg of `null` voor een afleider."
+          }
+        }
+      }
+    }
+  }
+}

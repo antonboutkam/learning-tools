@@ -82,6 +82,16 @@
       "description": "Converteer een getal tussen binair, decimaal en hexadecimaal met keypad, preview en teller-posities."
     },
     {
+      "id": "code-in-volgorde-zetten",
+      "type": "assignment-type",
+      "name": "Code in volgorde zetten",
+      "version": "v1",
+      "launchUrl": "/types/code-in-volgorde-zetten/v1/",
+      "schemaUrl": "/types/code-in-volgorde-zetten/v1/schema.json",
+      "exampleDataUrl": "/types/code-in-volgorde-zetten/v1/example.json",
+      "description": "Sleep code-regels van links naar rechts om een programma op te bouwen. Regels zonder positie zijn afleiders."
+    },
+    {
       "id": "markdown-editor",
       "type": "assignment-type",
       "name": "Markdown editor",

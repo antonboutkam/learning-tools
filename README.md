@@ -56,6 +56,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/markdown-editor/v1/schema.json`
   - Example: `public_html/types/markdown-editor/v1/example.json`
 
+- Code in volgorde zetten (v1)
+  - Pad: `public_html/types/code-in-volgorde-zetten/v1/`
+  - Data‑schema: `public_html/types/code-in-volgorde-zetten/v1/schema.json`
+  - Example: `public_html/types/code-in-volgorde-zetten/v1/example.json`
+  - Extra: gebruik `regels[].positie` voor de juiste volgorde; laat `positie` leeg voor afleiders
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
@@ -67,6 +73,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
+- `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
 
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`
