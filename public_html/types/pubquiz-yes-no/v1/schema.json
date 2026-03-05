@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/pubquiz-yes-no/v1/schema.json",
   "title": "Pubquiz yes/no v1",
-  "description": "Snelle ja/nee pubquiz: een vraag wordt willekeurig gekozen, daarna heeft de student een beperkt aantal seconden om ja of nee te antwoorden.",
+  "description": "Snelle ja/nee pubquiz: vragen worden willekeurig gekozen en de student beantwoordt een ingesteld aantal vragen binnen een tijdslimiet.",
   "type": "object",
   "required": ["title", "questions"],
   "additionalProperties": false,
@@ -15,7 +15,7 @@
     "rollerSeconds": {
       "type": "number",
       "title": "Rollerduur (seconden)",
-      "description": "Hoe lang de tool willekeurig door vragen 'rolt' voordat er één vraag gekozen wordt.",
+      "description": "Hoe lang de tool willekeurig door vragen rolt voordat er een vraag gekozen wordt.",
       "default": 4,
       "minimum": 1
     },
@@ -25,6 +25,20 @@
       "description": "Hoeveel seconden de student heeft om ja/nee te antwoorden.",
       "default": 10,
       "minimum": 3
+    },
+    "questionsToAsk": {
+      "type": "number",
+      "title": "Aantal te stellen vragen",
+      "description": "Hoeveel vragen er in een poging worden gesteld.",
+      "default": 1,
+      "minimum": 1
+    },
+    "minCorrectToPass": {
+      "type": "number",
+      "title": "Minimaal aantal goede antwoorden",
+      "description": "Minimale score die nodig is om het certificaat te behalen.",
+      "default": 1,
+      "minimum": 1
     },
     "questions": {
       "type": "array",

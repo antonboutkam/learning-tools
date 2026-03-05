@@ -75,11 +75,24 @@ Gebruik de demo’s direct in de browser:
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
 
+## LTI test-laag (course-level, zonder admin/developer key)
+Per tool is een vaste teststructuur toegevoegd:
+- Launch endpoint: `/types/<tool-slug>/v1/lti/launch/`
+- XML config endpoint: `/types/<tool-slug>/v1/lti/config/?privacy_level=public|name_only|anonymous`
+- Lokale mock data: `/types/<tool-slug>/v1/lti/mock-data.json`
+- Productie data-override in XML: `/types/<tool-slug>/v1/lti/config/?privacy_level=public&data=<urlencode(json-url)>`
+
+Daarnaast is er een algemene debugpagina:
+- `/lti-debug/`
+
+Doel: snel testen welke launch-velden Canvas doorgeeft en of course-level External Tool by URL/XML werkt.
+
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`
 - Registry + schema contract: `public_html/types/registry.json`
 - LTI inzendingen (Canvas): `docs/lti-submission.md`
 - LTI config voorbeeld: `docs/lti-config-example.json`
+- LTI test URL matrix + smoke-tests: `docs/lti-test-urls.md`
 - Overzicht examples: `docs/examples/README.md`
 
 ## Docs/examples

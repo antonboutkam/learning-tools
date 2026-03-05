@@ -1,0 +1,28 @@
+{
+  "toolTitle": "PHP-code in volgorde zetten",
+  "title": "Zet het PHP-programma in de juiste volgorde",
+  "description": "Sleep de juiste regels naar rechts om een array aan te maken, een element te wijzigen en daarna dat element te tonen. Regels zonder functie laat je links staan.",
+  "shuffle": true,
+  "showCheck": true,
+  "showCorrectOnCheck": true,
+  "regels": [
+    {
+      "code": "$getallen = [4, 8, 15];",
+      "positie": 1
+    },
+    {
+      "code": "$getallen[1] = 42;",
+      "positie": 2
+    },
+    {
+      "code": "echo $getallen[1];",
+      "positie": 3
+    },
+    {
+      "code": "sort($getallen);"
+    },
+    {
+      "code": "echo count($getallen);"
+    }
+  ]
+}

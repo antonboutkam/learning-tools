@@ -1,0 +1,24 @@
+{
+  "title": "Strip ballonnetjes (demo)",
+  "pages": [
+    {
+      "title": "Pagina 1",
+      "image": "/types/strip-ballonnetjes/v1/panel-1.svg",
+      "designWidth": 1200,
+      "bubbles": [
+        { "text": "Hoi!", "x": 110, "y": 90, "width": 240, "tail": "left" },
+        { "text": "Dit is een demo.\nVervang de image URL.", "x": 740, "y": 180, "width": 340, "tail": "right" }
+      ]
+    },
+    {
+      "title": "Pagina 2",
+      "image": "/types/strip-ballonnetjes/v1/panel-2.svg",
+      "designWidth": 1200,
+      "bubbles": [
+        { "text": "Positioneer me met x/y.", "x": 140, "y": 170, "width": 320, "tail": "left" },
+        { "text": "Staartje links of rechts.", "x": 680, "y": 320, "width": 330, "tail": "right" },
+        { "text": "Dit ballonnetje gebruikt geen width en pakt full-width.", "x": 0, "y": 20, "tail": "none" }
+      ]
+    }
+  ]
+}

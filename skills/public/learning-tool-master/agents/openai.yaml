@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Tool Master"
+  short_description: "Update tools, schemas en registry correct."
+  default_prompt: "Use this skill to create or update a learning tool type/version in this repository, including schema, example, app code, registry, and README updates."

@@ -137,6 +137,11 @@ foreach ($types as $t) {
         'schemaUrl' => $schemaUrl,
         'exampleDataUrl' => $exampleDataUrl,
         'demoUrl' => $demoUrl,
+        'ltiLaunchUrl' => $id !== '' ? '/types/' . $id . '/v1/lti/launch/' : '',
+        'ltiConfigPublicUrl' => $id !== '' ? '/types/' . $id . '/v1/lti/config/?privacy_level=public' : '',
+        'ltiConfigNameOnlyUrl' => $id !== '' ? '/types/' . $id . '/v1/lti/config/?privacy_level=name_only' : '',
+        'ltiConfigAnonymousUrl' => $id !== '' ? '/types/' . $id . '/v1/lti/config/?privacy_level=anonymous' : '',
+        'ltiMockDataUrl' => $id !== '' ? '/types/' . $id . '/v1/lti/mock-data.json' : '',
     ];
 }
 
@@ -169,6 +174,8 @@ usort(
     .card h2 { font-size: 18px; margin: 0 0 6px; }
     .meta { font-size: 13px; color: var(--muted); }
     .actions { margin: 10px 0 0; display: flex; gap: 12px; flex-wrap: wrap; }
+    .lti { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee3d6; }
+    .lti .meta { margin-bottom: 6px; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     code { background: #efe8dd; padding: 2px 6px; border-radius: 6px; }
@@ -182,7 +189,8 @@ usort(
   <div class="wrap">
     <div class="card" style="margin-bottom:16px;">
       Centrale registry: <code>/types/registry.json</code><br />
-      Gebruik: <code>?unique_id=...&amp;data=URL-naar-json</code> (GET)
+      Gebruik: <code>?unique_id=...&amp;data=URL-naar-json</code> (GET)<br />
+      LTI debug tool: <a href="/lti-debug/">/lti-debug/</a> · Repo docs: <code>docs/lti-test-urls.md</code>
     </div>
 
     <div class="grid">
@@ -202,6 +210,18 @@ usort(
               <a href="<?php echo h($t['exampleDataUrl']); ?>">Voorbeelddata</a>
             <?php endif; ?>
           </div>
+          <?php if ($t['ltiLaunchUrl'] !== ''): ?>
+            <div class="lti">
+              <div class="meta">LTI launch URL: <code><?php echo h(rtrim($t['ltiLaunchUrl'], '/')); ?></code></div>
+              <div class="actions">
+                <a href="<?php echo h($t['ltiLaunchUrl']); ?>">Open LTI launch</a>
+                <a href="<?php echo h($t['ltiConfigPublicUrl']); ?>">XML public</a>
+                <a href="<?php echo h($t['ltiConfigNameOnlyUrl']); ?>">XML name_only</a>
+                <a href="<?php echo h($t['ltiConfigAnonymousUrl']); ?>">XML anonymous</a>
+                <a href="<?php echo h($t['ltiMockDataUrl']); ?>">LTI mock-data</a>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       <?php endforeach; ?>
     </div>
