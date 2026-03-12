@@ -16,6 +16,7 @@ let pairs = [];
 let showCheck = true;
 let showCorrectOnCheck = true;
 let shuffleOptions = true;
+let shuffleLeftColumn = false;
 
 let completion = null;
 
@@ -407,6 +408,7 @@ async function init() {
     showCheck = data.showCheck !== false;
     showCorrectOnCheck = data.showCorrectOnCheck !== false;
     shuffleOptions = data.shuffleOptions !== false;
+    shuffleLeftColumn = data.shuffleLeftColumn === true;
     checkBtn.style.display = showCheck ? "inline-flex" : "none";
 
     leftItems = [];
@@ -424,6 +426,7 @@ async function init() {
       leftItems.push({ id: `L${leftItems.length}`, text: leftText, correctRight: rightText });
     });
     const uniqueRightTexts = Array.from(new Set(rightTexts));
+    leftItems = shuffleLeftColumn ? shuffle(leftItems) : leftItems;
     const rightTextsForBoard = shuffleOptions ? shuffle(uniqueRightTexts) : uniqueRightTexts.slice();
     rightItems = rightTextsForBoard.map((text, idx) => ({ id: `R${idx}`, text }));
 

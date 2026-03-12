@@ -36,6 +36,12 @@
       "description": "Zet de opties in de rechter kolom in willekeurige volgorde.",
       "default": true
     },
+    "shuffleLeftColumn": {
+      "type": "boolean",
+      "title": "Shuffle linkerkolom",
+      "description": "Zet de items in de linker kolom in willekeurige volgorde.",
+      "default": false
+    },
     "pairs": {
       "type": "array",
       "title": "Koppels",
