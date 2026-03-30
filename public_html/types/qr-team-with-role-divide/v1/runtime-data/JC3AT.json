@@ -40,113 +40,468 @@
     },
     "title": "lsd oefening",
     "description": "",
-    "stage": "lobby",
+    "stage": "round_running",
     "participants": [
         {
-            "id": "655f949dda",
-            "icon": "🐸",
-            "name": "Emma de Vries",
+            "id": "929d8913f3",
+            "icon": "🦕",
+            "name": "Emma",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319915
+            "teamId": "team-1",
+            "teamName": "🧠 Samenvat Squad",
+            "teamColorKey": "yellow",
+            "joinedAtMs": 1774893554482
         },
         {
-            "id": "b762930084",
-            "icon": "🐧",
-            "name": "Noah Jansen",
+            "id": "70d4ad5a49",
+            "icon": "🐼",
+            "name": "Noah",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
+            "teamId": "team-3",
+            "teamName": "⚓ Inloophuis \"het anker\"",
+            "teamColorKey": "purple",
+            "joinedAtMs": 1774893554482
         },
         {
-            "id": "64623f1ee8",
-            "icon": "🦜",
-            "name": "Julia Bakker",
+            "id": "4d1258963d",
+            "icon": "🦥",
+            "name": "Julia",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
+            "teamId": "team-2",
+            "teamName": "🗣️ Praatpaal Professionals",
+            "teamColorKey": "green",
+            "joinedAtMs": 1774893554482
         },
         {
-            "id": "dba4ad0dee",
-            "icon": "🐞",
-            "name": "Luca Visser",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
-        },
-        {
-            "id": "0863667182",
+            "id": "ee4719221f",
             "icon": "🐿️",
-            "name": "Mila Smit",
+            "name": "Luca",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
+            "teamId": "team-2",
+            "teamName": "🗣️ Praatpaal Professionals",
+            "teamColorKey": "green",
+            "joinedAtMs": 1774893554483
         },
         {
-            "id": "d5e0b6fe3e",
-            "icon": "🦝",
-            "name": "Daan Mulder",
+            "id": "6fd8dd6b15",
+            "icon": "🦔",
+            "name": "Mila",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
+            "teamId": "team-2",
+            "teamName": "🗣️ Praatpaal Professionals",
+            "teamColorKey": "green",
+            "joinedAtMs": 1774893554483
         },
         {
-            "id": "ecbe10c9aa",
+            "id": "b4e67b6672",
+            "icon": "🦋",
+            "name": "Daan",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "🧠 Samenvat Squad",
+            "teamColorKey": "yellow",
+            "joinedAtMs": 1774893554483
+        },
+        {
+            "id": "71743668c8",
+            "icon": "🦓",
+            "name": "Sara",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "🧠 Samenvat Squad",
+            "teamColorKey": "yellow",
+            "joinedAtMs": 1774893554483
+        },
+        {
+            "id": "56a7dc1364",
+            "icon": "🐙",
+            "name": "Finn",
+            "ready": false,
+            "teamId": "team-3",
+            "teamName": "⚓ Inloophuis \"het anker\"",
+            "teamColorKey": "purple",
+            "joinedAtMs": 1774893554483
+        },
+        {
+            "id": "abe5f8e38f",
+            "icon": "🦚",
+            "name": "Yara",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "🧠 Samenvat Squad",
+            "teamColorKey": "yellow",
+            "joinedAtMs": 1774893554483
+        },
+        {
+            "id": "bea6f8c119",
             "icon": "🐺",
-            "name": "Sara Meijer",
+            "name": "Mats",
             "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
-        },
-        {
-            "id": "d35bad27e3",
-            "icon": "🐳",
-            "name": "Finn de Boer",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
-        },
-        {
-            "id": "104420807e",
-            "icon": "🦄",
-            "name": "Yara Prins",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319916
-        },
-        {
-            "id": "da86ed3f6e",
-            "icon": "🐨",
-            "name": "Mats Kuiper",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774893319917
+            "teamId": "team-3",
+            "teamName": "⚓ Inloophuis \"het anker\"",
+            "teamColorKey": "purple",
+            "joinedAtMs": 1774893554483
         }
     ],
-    "teams": [],
-    "rounds": [],
+    "teams": [
+        {
+            "id": "team-1",
+            "name": "🧠 Samenvat Squad",
+            "colorKey": "yellow",
+            "participantIds": [
+                "71743668c8",
+                "b4e67b6672",
+                "abe5f8e38f",
+                "929d8913f3"
+            ]
+        },
+        {
+            "id": "team-2",
+            "name": "🗣️ Praatpaal Professionals",
+            "colorKey": "green",
+            "participantIds": [
+                "ee4719221f",
+                "4d1258963d",
+                "6fd8dd6b15"
+            ]
+        },
+        {
+            "id": "team-3",
+            "name": "⚓ Inloophuis \"het anker\"",
+            "colorKey": "purple",
+            "participantIds": [
+                "bea6f8c119",
+                "70d4ad5a49",
+                "56a7dc1364"
+            ]
+        }
+    ],
+    "rounds": [
+        {
+            "index": 0,
+            "assignments": {
+                "b4e67b6672": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "b4e67b6672",
+                    "participantName": "Daan",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "929d8913f3": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "929d8913f3",
+                    "participantName": "Emma",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "abe5f8e38f": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "abe5f8e38f",
+                    "participantName": "Yara",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "71743668c8": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "71743668c8",
+                    "participantName": "Sara",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "ee4719221f": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "ee4719221f",
+                    "participantName": "Luca",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "6fd8dd6b15": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "6fd8dd6b15",
+                    "participantName": "Mila",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "4d1258963d": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "4d1258963d",
+                    "participantName": "Julia",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "bea6f8c119": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "bea6f8c119",
+                    "participantName": "Mats",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "56a7dc1364": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "56a7dc1364",
+                    "participantName": "Finn",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "70d4ad5a49": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "70d4ad5a49",
+                    "participantName": "Noah",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                }
+            },
+            "captureAssignments": [],
+            "consents": [],
+            "submissions": [],
+            "shakenParticipantIds": []
+        },
+        {
+            "index": 1,
+            "assignments": {
+                "b4e67b6672": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "b4e67b6672",
+                    "participantName": "Daan",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "71743668c8": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "71743668c8",
+                    "participantName": "Sara",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "929d8913f3": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "929d8913f3",
+                    "participantName": "Emma",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "abe5f8e38f": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "abe5f8e38f",
+                    "participantName": "Yara",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "ee4719221f": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "ee4719221f",
+                    "participantName": "Luca",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "4d1258963d": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "4d1258963d",
+                    "participantName": "Julia",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "6fd8dd6b15": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "6fd8dd6b15",
+                    "participantName": "Mila",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "bea6f8c119": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "bea6f8c119",
+                    "participantName": "Mats",
+                    "roleKey": "klant",
+                    "roleName": "klant",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "56a7dc1364": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "56a7dc1364",
+                    "participantName": "Finn",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "70d4ad5a49": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "70d4ad5a49",
+                    "participantName": "Noah",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "dit moet een textarea worden"
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                }
+            },
+            "captureAssignments": [],
+            "consents": [],
+            "submissions": [],
+            "shakenParticipantIds": []
+        }
+    ],
     "currentRoundIndex": 0,
-    "timing": [],
+    "timing": {
+        "roundStartedAtMs": 1774893860792,
+        "roundEndsAtMs": 1774894160792,
+        "waitEndsAtMs": null
+    },
     "createdAtMs": 1774888361063,
-    "updatedAtMs": 1774893319917
+    "updatedAtMs": 1774893960645
 }

@@ -19,6 +19,7 @@ const state = {
     join: false,
     assignTeams: false,
     generateTestUsers: false,
+    resetSession: false,
     startTeacher: false,
     saveConsent: false,
     shake: false,
@@ -108,6 +109,15 @@ const TEAM_THEMES = {
     line: "rgba(197, 72, 72, 0.24)",
   },
 };
+const PARTICIPANT_BADGE_THEMES = [
+  { bg: "#ffe4ec", fg: "#8a3557", line: "rgba(138, 53, 87, 0.18)" },
+  { bg: "#e4f3ff", fg: "#235a87", line: "rgba(35, 90, 135, 0.18)" },
+  { bg: "#e8f7df", fg: "#2d6a36", line: "rgba(45, 106, 54, 0.18)" },
+  { bg: "#fff0d9", fg: "#8b5a18", line: "rgba(139, 90, 24, 0.18)" },
+  { bg: "#efe8ff", fg: "#5d4094", line: "rgba(93, 64, 148, 0.18)" },
+  { bg: "#ffe9d9", fg: "#8a4d1f", line: "rgba(138, 77, 31, 0.18)" },
+  { bg: "#e3f7f2", fg: "#25695b", line: "rgba(37, 105, 91, 0.18)" },
+];
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -156,8 +166,29 @@ function formatSeconds(totalSeconds) {
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
+function ucfirst(value) {
+  const text = String(value || "");
+  return text ? text.charAt(0).toUpperCase() + text.slice(1) : "";
+}
+
 function getTheme(colorKey) {
   return TEAM_THEMES[colorKey] || TEAM_THEMES.blue;
+}
+
+function hashString(value) {
+  let hash = 0;
+  const text = String(value || "");
+  for (let index = 0; index < text.length; index += 1) {
+    hash = (hash * 31 + text.charCodeAt(index)) >>> 0;
+  }
+  return hash;
+}
+
+function participantBadgeStyle(participant) {
+  const theme = PARTICIPANT_BADGE_THEMES[
+    hashString(participant.id || participant.name) % PARTICIPANT_BADGE_THEMES.length
+  ];
+  return `--badge-bg:${theme.bg};--badge-fg:${theme.fg};--badge-line:${theme.line};`;
 }
 
 function getScreenThemeKeys(session) {
@@ -374,15 +405,62 @@ function teamMembersHtml(members, meId) {
     .join("");
 }
 
+function teamMembersTableHtml(members) {
+  return `
+    <div class="team-table-wrap">
+      <table class="team-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${members
+            .map((member) => {
+              const captureBits = [];
+              if (member.captureMode) {
+                captureBits.push(member.captureMode === "video" ? "Video-opname" : "Audio-opname");
+              }
+              if (member.captureSubmitted) {
+                captureBits.push("Ingeleverd");
+              }
+              if (member.captureAlternative) {
+                captureBits.push("Alternatief");
+              }
+
+              return `
+                <tr>
+                  <td>
+                    <div class="team-table-name">
+                      ${member.icon ? `${escapeHtml(member.icon)} ` : ""}${escapeHtml(member.name)}
+                    </div>
+                    ${
+                      captureBits.length
+                        ? `<div class="team-table-meta">${escapeHtml(captureBits.join(" • "))}</div>`
+                        : ""
+                    }
+                  </td>
+                  <td class="team-table-role">${escapeHtml(member.roleName || "Nog geen rol")}</td>
+                  <td class="team-table-role">${escapeHtml(ucfirst(member.roleName || "Nog geen rol"))}</td>
+                </tr>
+              `;
+            })
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
 function participantListHtml(participants) {
   return participants
     .map(
       (participant) => `
-        <div class="member-item">
-          <div class="member-name">
-            ${participant.icon ? `${escapeHtml(participant.icon)} ` : ""}${escapeHtml(participant.name)}
-          </div>
-        </div>
+        <span class="badge badge-participant" style="${participantBadgeStyle(participant)}">
+          <strong>${escapeHtml(participant.icon || "•")}</strong>
+          <span>${escapeHtml(participant.name)}</span>
+        </span>
       `
     )
     .join("");
@@ -423,7 +501,7 @@ function renderScreen() {
     ? session.participants
         .map(
           (participant) => `
-            <span class="badge">
+            <span class="badge badge-participant" style="${participantBadgeStyle(participant)}">
               <strong>${escapeHtml(participant.icon || "•")}</strong>
               <span>${escapeHtml(participant.name)}</span>
             </span>
@@ -445,12 +523,11 @@ function renderScreen() {
   const controls = `
     <div class="control-row">
       ${
-        session.enableTestUsers
+        session.enableTestUsers && session.stage === "lobby"
           ? `
             <button
               class="button-secondary"
               data-action="generate-test-users"
-              ${session.stage !== "lobby" ? "disabled" : ""}
               ${state.busy.generateTestUsers ? "disabled" : ""}
             >
               Test gebruikers genereren
@@ -459,15 +536,15 @@ function renderScreen() {
           : ""
       }
       <button
-        class="button-primary button-success"
+        class="${session.stage === "lobby" ? "button-success" : "button-secondary"}"
         data-action="assign-teams"
-        ${session.stage === "round_running" || session.stage === "round_wait" ? "disabled" : ""}
+        ${session.stage === "round_running" || session.stage === "round_wait" || session.stage === "finished" ? "disabled" : ""}
         ${state.busy.assignTeams ? "disabled" : ""}
       >
         Teams indelen
       </button>
       <button
-        class="button-secondary"
+        class="${session.stage === "teams" ? "button-success" : "button-secondary"}"
         data-action="start-teacher"
         ${session.stage !== "teams" ? "disabled" : ""}
         ${state.busy.startTeacher ? "disabled" : ""}
@@ -476,6 +553,7 @@ function renderScreen() {
       </button>
     </div>
   `;
+  const showControls = ["lobby", "teams"].includes(session.stage);
 
   const statusCard = state.lastError
     ? `
@@ -500,9 +578,7 @@ function renderScreen() {
                 <h3>${escapeHtml(team.name)}</h3>
                 <span class="tag">${escapeHtml(team.members.length)} deelnemers</span>
               </div>
-              <div class="member-list">
-                ${teamMembersHtml(team.members, null)}
-              </div>
+              ${teamMembersTableHtml(team.members)}
             </article>
           `
         )
@@ -514,29 +590,20 @@ function renderScreen() {
             <h3>Aangemelde studenten</h3>
             <span class="tag">${escapeHtml(String(session.participantCount))}</span>
           </div>
-          <div class="member-list">
+          <div class="badge-row">
             ${participantListHtml(session.participants)}
           </div>
         </article>
       `
       : "";
 
-  const rightStats = `
-    <div class="stat-grid stat-grid-compact">
-      <div class="stat">
-        <span>Aangemeld</span>
-        <strong>${escapeHtml(String(session.participantCount))}</strong>
+  const timerBlock = countdown
+    ? `
+      <div class="timer-hero">
+        <div class="timer-number">${escapeHtml(formatSeconds(countdown.remainingSeconds))}</div>
       </div>
-      <div class="stat">
-        <span>Teams</span>
-        <strong>${escapeHtml(String(session.teams.length || 0))}</strong>
-      </div>
-      <div class="stat">
-        <span>Ronde</span>
-        <strong>${escapeHtml(`${session.currentRoundNumber}/${session.totalRounds}`)}</strong>
-      </div>
-    </div>
-  `;
+    `
+    : "";
 
   appEl.innerHTML = `
     <div class="screen-layout">
@@ -569,14 +636,22 @@ function renderScreen() {
       <section class="panel">
         <div class="section-title">
           <h2>Teams</h2>
-          <span class="tag">Ronde ${escapeHtml(`${session.currentRoundNumber}/${session.totalRounds}`)}</span>
+          <div class="section-actions">
+            <span class="tag">Aangemeld ${escapeHtml(String(session.participantCount))}</span>
+            <span class="tag">Teams ${escapeHtml(String(session.teams.length || 0))}</span>
+            <span class="tag">Ronde ${escapeHtml(`${session.currentRoundNumber}/${session.totalRounds}`)}</span>
+            <button
+              class="button-danger button-inline"
+              data-action="reset-session"
+              ${state.busy.resetSession ? "disabled" : ""}
+            >
+              Reset
+            </button>
+          </div>
         </div>
-        ${rightStats}
         ${statusCard}
-        ${controls}
-        <div class="timer-hero">
-          <div class="timer-number">${escapeHtml(countdown ? formatSeconds(countdown.remainingSeconds) : "—")}</div>
-        </div>
+        ${showControls ? controls : ""}
+        ${timerBlock}
         <div class="team-grid">${teamCards}</div>
       </section>
     </div>
@@ -981,6 +1056,25 @@ async function generateTestUsers() {
   }
 }
 
+async function resetSession() {
+  state.busy.resetSession = true;
+  render();
+  try {
+    const payload = await apiJson("reset_session", {
+      method: "POST",
+      body: { sessionCode: state.sessionCode },
+    });
+    clearError();
+    state.session = payload.session;
+    state.localStartPressed = false;
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    state.busy.resetSession = false;
+    render();
+  }
+}
+
 async function startTeacher() {
   state.busy.startTeacher = true;
   render();
@@ -1105,6 +1199,9 @@ appEl.addEventListener("click", (event) => {
   }
   if (action === "generate-test-users") {
     generateTestUsers();
+  }
+  if (action === "reset-session") {
+    resetSession();
   }
   if (action === "start-teacher") {
     startTeacher();

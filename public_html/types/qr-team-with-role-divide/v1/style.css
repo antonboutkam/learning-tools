@@ -203,6 +203,17 @@ body.is-screen .hero h1 {
   font-weight: 700;
 }
 
+.badge-participant {
+  background: var(--badge-bg, rgba(255, 255, 255, 0.92));
+  color: var(--badge-fg, var(--ink));
+  border-color: var(--badge-line, var(--line));
+}
+
+.badge-participant strong,
+.badge-participant span {
+  color: inherit;
+}
+
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
@@ -314,7 +325,8 @@ body.is-screen .code-block {
 
 button,
 .button-link,
-.file-input-label {
+.file-input-label,
+.button-success {
   appearance: none;
   border: 0;
   border-radius: 16px;
@@ -338,7 +350,7 @@ button:disabled {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  background: var(--brand);
   color: #fff;
   box-shadow: 0 14px 28px rgba(20, 91, 87, 0.25);
 }
@@ -368,6 +380,18 @@ button:disabled {
   gap: 12px;
   align-items: baseline;
   margin-bottom: 16px;
+}
+
+.section-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-inline {
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: none;
 }
 
 body.is-screen .section-title {
@@ -436,7 +460,7 @@ body.is-screen .screen-participants {
 
 .team-card {
   flex: 1 1 260px;
-  background: linear-gradient(180deg, var(--team-card-soft, rgba(255, 255, 255, 0.96)) 0%, rgba(255, 255, 255, 0.98) 100%);
+  background: var(--team-card-soft, rgba(255, 255, 255, 0.96));
   border-color: var(--team-card-line, var(--line));
 }
 
@@ -458,6 +482,56 @@ body.is-screen .team-card {
 
 .team-card h3 {
   color: var(--team-card-accent-dark, var(--ink));
+}
+
+.team-table-wrap {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(29, 37, 51, 0.08);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.96rem;
+}
+
+.team-table th,
+.team-table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(29, 37, 51, 0.08);
+}
+
+.team-table thead th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.team-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.team-table-name {
+  font-weight: 700;
+}
+
+.team-table-meta {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.team-table-role {
+  color: var(--brand-dark);
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .member-item {

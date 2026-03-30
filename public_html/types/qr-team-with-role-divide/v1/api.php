@@ -1117,6 +1117,27 @@ try {
         ]);
     }
 
+    if ($action === 'reset_session') {
+        $body = read_json_body();
+        $code = strtoupper(trim((string) ($body['sessionCode'] ?? '')));
+
+        [$session] = with_locked_session($code, false, function (&$session): bool {
+            $session['participants'] = [];
+            $session['teams'] = [];
+            $session['rounds'] = [];
+            $session['currentRoundIndex'] = 0;
+            $session['stage'] = 'lobby';
+            $session['timing'] = [];
+            $session['updatedAtMs'] = now_ms();
+            return true;
+        });
+
+        respond_json([
+            'ok' => true,
+            'session' => public_session($session),
+        ]);
+    }
+
     if ($action === 'teacher_start') {
         $body = read_json_body();
         $code = strtoupper(trim((string) ($body['sessionCode'] ?? '')));

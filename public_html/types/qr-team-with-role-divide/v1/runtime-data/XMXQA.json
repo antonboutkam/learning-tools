@@ -71,112 +71,11 @@
     "title": "QR team with role divide",
     "description": "Verdeel studenten via QR in teams en laat ze per ronde een andere rol aannemen in een praktijksimulatie.",
     "stage": "lobby",
-    "participants": [
-        {
-            "id": "a5f2b09ac7",
-            "icon": "🐨",
-            "name": "Emma de Vries",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "5d21b22177",
-            "icon": "🦝",
-            "name": "Noah Jansen",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "b3f5e164a9",
-            "icon": "🐹",
-            "name": "Julia Bakker",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "87838f452d",
-            "icon": "🦩",
-            "name": "Luca Visser",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "a361fc306e",
-            "icon": "🦔",
-            "name": "Mila Smit",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "dc528024bb",
-            "icon": "🦚",
-            "name": "Daan Mulder",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "d71c8f22dd",
-            "icon": "🦓",
-            "name": "Sara Meijer",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "3f6ed2cbcd",
-            "icon": "🐬",
-            "name": "Finn de Boer",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "13be75fecc",
-            "icon": "🐸",
-            "name": "Yara Prins",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        },
-        {
-            "id": "ecbfae94e7",
-            "icon": "🐯",
-            "name": "Mats Kuiper",
-            "ready": false,
-            "teamId": null,
-            "teamName": null,
-            "teamColorKey": null,
-            "joinedAtMs": 1774892684289
-        }
-    ],
+    "participants": [],
     "teams": [],
     "rounds": [],
     "currentRoundIndex": 0,
     "timing": [],
     "createdAtMs": 1774892674535,
-    "updatedAtMs": 1774892684289
+    "updatedAtMs": 1774893518368
 }
