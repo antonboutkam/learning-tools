@@ -680,7 +680,10 @@ function renderMobile() {
     appEl.innerHTML = `
       <div class="mobile-layout mobile-layout-centered">
         <section class="waiting-hero">
-          <h1>Hoi ${escapeHtml(me.name)},<br>Een momentje geduld${animatedDots()}</h1>
+          <h1>Hoi ${escapeHtml(me.name)} :-)</h1>
+          <p class="waiting-line">
+            Een momentje geduld<span class="waiting-dots">${escapeHtml(animatedDots())}</span>
+          </p>
         </section>
       </div>
     `;

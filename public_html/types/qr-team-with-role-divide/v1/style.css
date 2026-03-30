@@ -108,7 +108,7 @@ body.is-screen .screen-layout > .panel {
 }
 
 .mobile-layout-centered {
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
   display: grid;
   place-items: center;
 }
@@ -524,6 +524,21 @@ body.is-mobile .loading-card {
   color: var(--team-accent-dark);
   font-size: clamp(2rem, 7vw, 3rem);
   line-height: 1.15;
+}
+
+.waiting-line {
+  margin: 14px 0 0;
+  color: var(--team-accent-dark);
+  font-size: clamp(1.15rem, 4.6vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.waiting-dots {
+  display: inline-block;
+  width: 3ch;
+  text-align: left;
 }
 
 body.is-mobile .mobile-header h1,
