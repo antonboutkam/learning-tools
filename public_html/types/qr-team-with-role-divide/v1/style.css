@@ -40,30 +40,11 @@ body {
   margin: 0;
   font-family: "Averta Std", "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(circle at top left, var(--screen-glow-1), transparent 30%),
-    radial-gradient(circle at top right, var(--screen-glow-2), transparent 26%),
-    radial-gradient(circle at bottom center, var(--screen-glow-3), transparent 34%),
-    linear-gradient(180deg, var(--screen-base-1) 0%, var(--screen-base-2) 100%);
-  background-size: 150% 150%;
-  animation: playful-wash 18s ease-in-out infinite alternate;
+  background: var(--screen-base-1);
 }
 
 body.is-mobile {
-  background:
-    radial-gradient(circle at top, var(--mobile-glow-1), transparent 36%),
-    radial-gradient(circle at bottom right, var(--mobile-glow-2), transparent 32%),
-    linear-gradient(180deg, var(--mobile-base-1) 0%, var(--mobile-base-2) 100%);
-  background-size: 145% 145%;
-}
-
-@keyframes playful-wash {
-  0% {
-    background-position: 0% 0%, 100% 0%, 50% 100%, 50% 50%;
-  }
-  100% {
-    background-position: 14% 8%, 82% 16%, 42% 88%, 50% 50%;
-  }
+  background: var(--mobile-base-1);
 }
 
 body.warning-flash::before,
@@ -354,6 +335,12 @@ button:disabled {
   box-shadow: 0 14px 28px rgba(20, 91, 87, 0.25);
 }
 
+.button-success {
+  background: linear-gradient(135deg, #3aaf55 0%, #24733d 100%);
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(36, 115, 61, 0.25);
+}
+
 .button-secondary,
 .button-link,
 .file-input-label {
@@ -539,7 +526,7 @@ body.is-mobile .callout {
 }
 
 .inline-join .join-actions {
-  margin-top: 6px;
+  margin-top: 16px;
 }
 
 .inline-join {
@@ -624,6 +611,10 @@ body.is-screen .badge-row {
 
 body.is-screen .control-row {
   margin-bottom: 10px;
+}
+
+body.is-screen .status-card {
+  margin-bottom: 14px;
 }
 
 body.is-screen .timer-hero {

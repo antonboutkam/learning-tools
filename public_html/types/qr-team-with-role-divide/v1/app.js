@@ -424,7 +424,7 @@ function renderScreen() {
   const controls = `
     <div class="control-row">
       <button
-        class="button-primary"
+        class="button-primary button-success"
         data-action="assign-teams"
         ${session.stage === "round_running" || session.stage === "round_wait" ? "disabled" : ""}
         ${state.busy.assignTeams ? "disabled" : ""}
@@ -444,13 +444,13 @@ function renderScreen() {
 
   const statusCard = state.lastError
     ? `
-      <div class="callout danger">
+      <div class="callout danger status-card">
         <strong>Fout</strong>
         <p class="status-line">${escapeHtml(state.lastError)}</p>
       </div>
     `
     : `
-      <div class="callout">
+      <div class="callout status-card">
         <strong>Status</strong>
         <p class="status-line">${escapeHtml(timerText)}</p>
       </div>
