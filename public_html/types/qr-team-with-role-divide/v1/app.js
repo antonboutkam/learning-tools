@@ -544,7 +544,7 @@ function renderJoinForm(session) {
         <input id="join-name" name="join-name" type="text" maxlength="80" value="${escapeHtml(state.joinName)}" placeholder="Bijvoorbeeld: Samira" />
       </div>
       <div class="join-actions">
-        <button class="button-primary" data-action="join-session" ${state.busy.join ? "disabled" : ""}>Opslaan</button>
+        <button class="button-primary" data-action="join-session" ${state.busy.join ? "disabled" : ""}>Meedoen</button>
         <span class="tag">Sessie ${escapeHtml(session.code)}</span>
       </div>
       ${state.lastError ? `<p class="error-text">${escapeHtml(state.lastError)}</p>` : ""}
@@ -647,14 +647,7 @@ function renderMobile() {
 
   let content = "";
   if (!me) {
-    content = `
-      <section class="mobile-card">
-        <div class="section-title">
-          <h2>${escapeHtml(session.title)}</h2>
-        </div>
-        ${renderJoinForm(session)}
-      </section>
-    `;
+    content = renderJoinForm(session);
   } else {
     const teamCard = myTeam
       ? `

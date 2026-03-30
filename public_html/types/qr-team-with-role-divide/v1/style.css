@@ -542,6 +542,10 @@ body.is-mobile .callout {
   margin-top: 6px;
 }
 
+.inline-join {
+  padding: 6px 2px 0;
+}
+
 .field input[type="text"] {
   width: 100%;
   padding: 14px 16px;
