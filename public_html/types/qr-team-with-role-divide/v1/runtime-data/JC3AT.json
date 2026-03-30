@@ -11,7 +11,7 @@
         "roundsMode": "all-roles-once",
         "roleTimeoutSeconds": 300,
         "shuffleWaitSeconds": 30,
-        "enableTestUsers": false,
+        "enableTestUsers": true,
         "teamNames": [
             "🧠 Samenvat Squad",
             "🗣️ Praatpaal Professionals",
@@ -41,11 +41,112 @@
     "title": "lsd oefening",
     "description": "",
     "stage": "lobby",
-    "participants": [],
+    "participants": [
+        {
+            "id": "655f949dda",
+            "icon": "🐸",
+            "name": "Emma de Vries",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319915
+        },
+        {
+            "id": "b762930084",
+            "icon": "🐧",
+            "name": "Noah Jansen",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "64623f1ee8",
+            "icon": "🦜",
+            "name": "Julia Bakker",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "dba4ad0dee",
+            "icon": "🐞",
+            "name": "Luca Visser",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "0863667182",
+            "icon": "🐿️",
+            "name": "Mila Smit",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "d5e0b6fe3e",
+            "icon": "🦝",
+            "name": "Daan Mulder",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "ecbe10c9aa",
+            "icon": "🐺",
+            "name": "Sara Meijer",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "d35bad27e3",
+            "icon": "🐳",
+            "name": "Finn de Boer",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "104420807e",
+            "icon": "🦄",
+            "name": "Yara Prins",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319916
+        },
+        {
+            "id": "da86ed3f6e",
+            "icon": "🐨",
+            "name": "Mats Kuiper",
+            "ready": false,
+            "teamId": null,
+            "teamName": null,
+            "teamColorKey": null,
+            "joinedAtMs": 1774893319917
+        }
+    ],
     "teams": [],
     "rounds": [],
     "currentRoundIndex": 0,
     "timing": [],
     "createdAtMs": 1774888361063,
-    "updatedAtMs": 1774893215942
+    "updatedAtMs": 1774893319917
 }
