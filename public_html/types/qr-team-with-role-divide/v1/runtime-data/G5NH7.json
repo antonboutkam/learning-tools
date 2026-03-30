@@ -1,0 +1,470 @@
+{
+    "code": "G5NH7",
+    "uniqueId": "team-color-smoke-1",
+    "config": {
+        "title": "QR team with role divide",
+        "description": "Verdeel studenten via QR in teams en laat ze per ronde een andere rol aannemen in een praktijksimulatie.",
+        "teamSize": {
+            "min": 3,
+            "max": 4
+        },
+        "roundsMode": "all-roles-once",
+        "roleTimeoutSeconds": 180,
+        "shuffleWaitSeconds": 30,
+        "teamNames": [
+            "Team Kompas",
+            "Team Horizon",
+            "Team Atlas",
+            "Team Nova"
+        ],
+        "teamColors": [
+            "yellow",
+            "green",
+            "purple",
+            "orange"
+        ],
+        "otherRoleName": "Overig",
+        "otherRoleInstructions": [
+            "Je ondersteunt je team, noteert de belangrijkste argumenten en bewaakt dat iedereen aan bod komt.",
+            "Je helpt bij het concretiseren van ideeën en verzamelt voorbeelden die de rest van het team kan gebruiken."
+        ],
+        "roles": [
+            {
+                "key": "klant",
+                "name": "Klant",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden.",
+                    "Je bent klant en beheert meerdere schoollocaties. Je zoekt een oplossing om per locatie beter inzicht te krijgen in afvalstromen en onderhoud."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "analist",
+                "name": "Analist",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je analyseert het probleem van de klant en vertaalt losse wensen naar concrete, meetbare behoeften.",
+                    "Je onderzoekt welke gegevens en processen nodig zijn om de klantvraag scherp te krijgen en te prioriteren."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "pitcher",
+                "name": "Pitcher",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat.",
+                    "Je vat de beste oplossing samen in een korte pitch en benoemt waarom dit voorstel waarde oplevert voor de klant."
+                ],
+                "audioRecording": true,
+                "videoRecording": false,
+                "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+            }
+        ]
+    },
+    "title": "QR team with role divide",
+    "description": "Verdeel studenten via QR in teams en laat ze per ronde een andere rol aannemen in een praktijksimulatie.",
+    "stage": "teams",
+    "participants": [
+        {
+            "id": "d2a3e0db12",
+            "icon": "🐿️",
+            "name": "Noor",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "Team Kompas",
+            "joinedAtMs": 1774888886435,
+            "teamColorKey": "yellow"
+        },
+        {
+            "id": "fe9aaef244",
+            "icon": "🦁",
+            "name": "Ravi",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "Team Kompas",
+            "joinedAtMs": 1774888886487,
+            "teamColorKey": "yellow"
+        },
+        {
+            "id": "2b667e843a",
+            "icon": "🦚",
+            "name": "Sara",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "Team Kompas",
+            "joinedAtMs": 1774888886536,
+            "teamColorKey": "yellow"
+        },
+        {
+            "id": "c8a6b029c5",
+            "icon": "🐸",
+            "name": "Teun",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "Team Kompas",
+            "joinedAtMs": 1774888886601,
+            "teamColorKey": "yellow"
+        }
+    ],
+    "teams": [
+        {
+            "id": "team-1",
+            "name": "Team Kompas",
+            "colorKey": "yellow",
+            "participantIds": [
+                "fe9aaef244",
+                "2b667e843a",
+                "d2a3e0db12",
+                "c8a6b029c5"
+            ]
+        }
+    ],
+    "rounds": [
+        {
+            "index": 0,
+            "assignments": {
+                "d2a3e0db12": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "d2a3e0db12",
+                    "participantName": "Noor",
+                    "roleKey": "pitcher",
+                    "roleName": "Pitcher",
+                    "instructions": [
+                        "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": "audio",
+                    "captureKey": "team-1--pitcher--d2a3e0db12--r1",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                },
+                "2b667e843a": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "2b667e843a",
+                    "participantName": "Sara",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "Je ondersteunt je team, noteert de belangrijkste argumenten en bewaakt dat iedereen aan bod komt."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "c8a6b029c5": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "c8a6b029c5",
+                    "participantName": "Teun",
+                    "roleKey": "analist",
+                    "roleName": "Analist",
+                    "instructions": [
+                        "Je analyseert het probleem van de klant en vertaalt losse wensen naar concrete, meetbare behoeften."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "fe9aaef244": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "fe9aaef244",
+                    "participantName": "Ravi",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                }
+            },
+            "captureAssignments": {
+                "team-1--pitcher--d2a3e0db12--r1": {
+                    "captureKey": "team-1--pitcher--d2a3e0db12--r1",
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "holderParticipantId": "d2a3e0db12",
+                    "holderName": "Noor",
+                    "roleName": "Pitcher",
+                    "captureMode": "audio",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "consents": {
+                "team-1--pitcher--d2a3e0db12--r1": {
+                    "d2a3e0db12": "approved"
+                }
+            },
+            "submissions": [],
+            "shakenParticipantIds": []
+        },
+        {
+            "index": 1,
+            "assignments": {
+                "2b667e843a": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "2b667e843a",
+                    "participantName": "Sara",
+                    "roleKey": "analist",
+                    "roleName": "Analist",
+                    "instructions": [
+                        "Je analyseert het probleem van de klant en vertaalt losse wensen naar concrete, meetbare behoeften."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "fe9aaef244": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "fe9aaef244",
+                    "participantName": "Ravi",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "Je helpt bij het concretiseren van ideeën en verzamelt voorbeelden die de rest van het team kan gebruiken."
+                    ],
+                    "instructionIndex": 1,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "d2a3e0db12": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "d2a3e0db12",
+                    "participantName": "Noor",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "c8a6b029c5": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "c8a6b029c5",
+                    "participantName": "Teun",
+                    "roleKey": "pitcher",
+                    "roleName": "Pitcher",
+                    "instructions": [
+                        "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": "audio",
+                    "captureKey": "team-1--pitcher--c8a6b029c5--r2",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "captureAssignments": {
+                "team-1--pitcher--c8a6b029c5--r2": {
+                    "captureKey": "team-1--pitcher--c8a6b029c5--r2",
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "holderParticipantId": "c8a6b029c5",
+                    "holderName": "Teun",
+                    "roleName": "Pitcher",
+                    "captureMode": "audio",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "consents": {
+                "team-1--pitcher--c8a6b029c5--r2": {
+                    "c8a6b029c5": "approved"
+                }
+            },
+            "submissions": [],
+            "shakenParticipantIds": []
+        },
+        {
+            "index": 2,
+            "assignments": {
+                "d2a3e0db12": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "d2a3e0db12",
+                    "participantName": "Noor",
+                    "roleKey": "analist",
+                    "roleName": "Analist",
+                    "instructions": [
+                        "Je onderzoekt welke gegevens en processen nodig zijn om de klantvraag scherp te krijgen en te prioriteren."
+                    ],
+                    "instructionIndex": 1,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "c8a6b029c5": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "c8a6b029c5",
+                    "participantName": "Teun",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "Je ondersteunt je team, noteert de belangrijkste argumenten en bewaakt dat iedereen aan bod komt."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "2b667e843a": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "2b667e843a",
+                    "participantName": "Sara",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "fe9aaef244": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "fe9aaef244",
+                    "participantName": "Ravi",
+                    "roleKey": "pitcher",
+                    "roleName": "Pitcher",
+                    "instructions": [
+                        "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": "audio",
+                    "captureKey": "team-1--pitcher--fe9aaef244--r3",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "captureAssignments": {
+                "team-1--pitcher--fe9aaef244--r3": {
+                    "captureKey": "team-1--pitcher--fe9aaef244--r3",
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "holderParticipantId": "fe9aaef244",
+                    "holderName": "Ravi",
+                    "roleName": "Pitcher",
+                    "captureMode": "audio",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "consents": {
+                "team-1--pitcher--fe9aaef244--r3": {
+                    "fe9aaef244": "approved"
+                }
+            },
+            "submissions": [],
+            "shakenParticipantIds": []
+        },
+        {
+            "index": 3,
+            "assignments": {
+                "c8a6b029c5": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "c8a6b029c5",
+                    "participantName": "Teun",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "fe9aaef244": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "fe9aaef244",
+                    "participantName": "Ravi",
+                    "roleKey": "analist",
+                    "roleName": "Analist",
+                    "instructions": [
+                        "Je onderzoekt welke gegevens en processen nodig zijn om de klantvraag scherp te krijgen en te prioriteren."
+                    ],
+                    "instructionIndex": 1,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "d2a3e0db12": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "d2a3e0db12",
+                    "participantName": "Noor",
+                    "roleKey": "overig",
+                    "roleName": "Overig",
+                    "instructions": [
+                        "Je helpt bij het concretiseren van ideeën en verzamelt voorbeelden die de rest van het team kan gebruiken."
+                    ],
+                    "instructionIndex": 1,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "2b667e843a": {
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "participantId": "2b667e843a",
+                    "participantName": "Sara",
+                    "roleKey": "pitcher",
+                    "roleName": "Pitcher",
+                    "instructions": [
+                        "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": "audio",
+                    "captureKey": "team-1--pitcher--2b667e843a--r4",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "captureAssignments": {
+                "team-1--pitcher--2b667e843a--r4": {
+                    "captureKey": "team-1--pitcher--2b667e843a--r4",
+                    "teamId": "team-1",
+                    "teamName": "Team Kompas",
+                    "holderParticipantId": "2b667e843a",
+                    "holderName": "Sara",
+                    "roleName": "Pitcher",
+                    "captureMode": "audio",
+                    "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+                }
+            },
+            "consents": {
+                "team-1--pitcher--2b667e843a--r4": {
+                    "2b667e843a": "approved"
+                }
+            },
+            "submissions": [],
+            "shakenParticipantIds": []
+        }
+    ],
+    "currentRoundIndex": 0,
+    "timing": [],
+    "createdAtMs": 1774888876058,
+    "updatedAtMs": 1774888886663
+}

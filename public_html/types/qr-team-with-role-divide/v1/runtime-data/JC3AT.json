@@ -1,0 +1,50 @@
+{
+    "code": "JC3AT",
+    "uniqueId": "633443412b1e5cbe6e8e8db9f2d51a36",
+    "config": {
+        "title": "lsd oefening",
+        "description": "",
+        "teamSize": {
+            "min": 2,
+            "max": 4
+        },
+        "roundsMode": "all-roles-once",
+        "roleTimeoutSeconds": 300,
+        "shuffleWaitSeconds": 30,
+        "teamNames": [
+            "🧠 Samenvat Squad",
+            "🗣️ Praatpaal Professionals",
+            "⚓ Inloophuis \"het anker\"",
+            "📡 Signaal Vangers",
+            "🧠 Breinfluisteraars"
+        ],
+        "teamColors": [],
+        "otherRoleName": "Overig",
+        "otherRoleInstructions": [
+            "dit moet een textarea worden"
+        ],
+        "roles": [
+            {
+                "key": "klant",
+                "name": "klant",
+                "countPerTeam": 1,
+                "instructions": [
+                    "dit moet een textarea worden"
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            }
+        ]
+    },
+    "title": "lsd oefening",
+    "description": "",
+    "stage": "lobby",
+    "participants": [],
+    "teams": [],
+    "rounds": [],
+    "currentRoundIndex": 0,
+    "timing": [],
+    "createdAtMs": 1774888361063,
+    "updatedAtMs": 1774889514884
+}

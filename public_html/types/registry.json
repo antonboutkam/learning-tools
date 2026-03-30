@@ -1,4 +1,4 @@
-  {
+{
   "version": 1,
   "types": [
     {
@@ -100,6 +100,16 @@
       "schemaUrl": "/types/markdown-editor/v1/schema.json",
       "exampleDataUrl": "/types/markdown-editor/v1/example.json",
       "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview)."
+    },
+    {
+      "id": "qr-team-with-role-divide",
+      "type": "planar-type",
+      "name": "QR team with role divide",
+      "version": "v1",
+      "launchUrl": "/types/qr-team-with-role-divide/v1/",
+      "schemaUrl": "/types/qr-team-with-role-divide/v1/schema.json",
+      "exampleDataUrl": "/types/qr-team-with-role-divide/v1/example.json",
+      "description": "Planar tool met QR-join, teamindeling, rolrotatie, countdowns en optionele audio/video-opnames per rol."
     }
   ]
 }

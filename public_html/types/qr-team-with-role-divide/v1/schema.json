@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/qr-team-with-role-divide/v1/schema.json",
+  "title": "QR team with role divide v1",
+  "description": "Planar leertool waarbij studenten via een QR-code op hun telefoon aansluiten, automatisch in teams worden verdeeld, rollen en instructies per ronde krijgen en synchroon met het grote scherm door meerdere rondes gaan.",
+  "type": "object",
+  "required": [
+    "title",
+    "teamSize",
+    "roundsMode",
+    "roleTimeoutSeconds",
+    "shuffleWaitSeconds",
+    "otherRoleName",
+    "otherRoleInstructions",
+    "roles"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel die op het grote scherm en op de mobiele pagina wordt getoond."
+    },
+    "description": {
+      "type": "string",
+      "title": "Beschrijving",
+      "description": "Korte uitleg voor bovenaan het grote scherm."
+    },
+    "teamSize": {
+      "type": "object",
+      "title": "Teamgrootte",
+      "description": "Minimale en maximale grootte van elk team. De tool probeert de deelnemers hier zo gelijkmatig mogelijk over te verdelen.",
+      "required": ["min", "max"],
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "type": "integer",
+          "title": "Minimum per team",
+          "description": "Minimaal aantal deelnemers per team.",
+          "minimum": 2,
+          "default": 3
+        },
+        "max": {
+          "type": "integer",
+          "title": "Maximum per team",
+          "description": "Maximaal aantal deelnemers per team.",
+          "minimum": 2,
+          "default": 4
+        }
+      }
+    },
+    "roundsMode": {
+      "type": "string",
+      "title": "Aantal rondes",
+      "description": "Kies hoeveel rondes gespeeld worden.",
+      "enum": [
+        "all-roles-once",
+        "1x",
+        "2x",
+        "3x",
+        "4x",
+        "5x",
+        "6x",
+        "7x"
+      ],
+      "enumNames": [
+        "Iedereen alle rollen eens",
+        "1x",
+        "2x",
+        "3x",
+        "4x",
+        "5x",
+        "6x",
+        "7x"
+      ],
+      "default": "all-roles-once"
+    },
+    "roleTimeoutSeconds": {
+      "type": "integer",
+      "title": "Rol timeout (seconden)",
+      "description": "Hoe lang een ronde duurt voordat de tool automatisch naar de schudfase gaat.",
+      "minimum": 30,
+      "default": 180
+    },
+    "shuffleWaitSeconds": {
+      "type": "integer",
+      "title": "Schud-wachttijd (seconden)",
+      "description": "Hoe lang de neppe wachtfase duurt nadat de tijd op is.",
+      "minimum": 5,
+      "default": 30
+    },
+    "teamNames": {
+      "type": "array",
+      "title": "Teamnamen",
+      "description": "Optionele lijst met teamnamen. Als er meer teams nodig zijn dan namen opgegeven, worden automatisch namen gegenereerd.",
+      "items": {
+        "type": "string",
+        "title": "Teamnaam"
+      }
+    },
+    "teamColors": {
+      "type": "array",
+      "title": "Teamkleuren",
+      "description": "Kies per team op volgorde een kleur. Als er minder kleuren dan teams zijn, vult de tool de rest automatisch aan.",
+      "items": {
+        "type": "string",
+        "title": "Teamkleur",
+        "enum": ["yellow", "green", "purple", "orange", "pink", "blue", "red"],
+        "enumNames": ["Geel", "Groen", "Paars", "Oranje", "Roze", "Blauw", "Rood"]
+      }
+    },
+    "otherRoleName": {
+      "type": "string",
+      "title": "Naam van de overig-rol",
+      "description": "De naam van de standaardrol die automatisch ontstaat voor overgebleven plekken in een team.",
+      "default": "Overig"
+    },
+    "otherRoleInstructions": {
+      "type": "array",
+      "title": "Instructies voor de overig-rol",
+      "description": "Een of meer instructies waaruit de tool per ronde zo veel mogelijk afwisselt.",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "title": "Instructie",
+        "format": "textarea"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "title": "Rollen",
+      "description": "De rollen die per team verdeeld worden. Voor elke rol geef je aan hoeveel deelnemers die rol per team krijgen en welke instructies daarbij horen.",
+      "items": {
+        "type": "object",
+        "title": "Rol",
+        "required": ["name", "countPerTeam", "instructions"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Rolnaam",
+            "description": "Naam van de rol zoals die op het grote scherm en op de telefoon zichtbaar is."
+          },
+          "countPerTeam": {
+            "type": "integer",
+            "title": "Aantal per team",
+            "description": "Hoeveel teamleden per team deze rol krijgen.",
+            "minimum": 1,
+            "default": 1
+          },
+          "instructions": {
+            "type": "array",
+            "title": "Rol instructies",
+            "description": "Een of meer instructies voor deze rol. De tool wisselt deze zo veel mogelijk af tussen rondes.",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "title": "Instructie",
+              "format": "textarea"
+            }
+          },
+          "audioRecording": {
+            "type": "boolean",
+            "title": "Audio opname",
+            "description": "Als dit aan staat, moet deze rol een audio-opname maken en inleveren zodra het team akkoord is.",
+            "default": false
+          },
+          "videoRecording": {
+            "type": "boolean",
+            "title": "Video opname",
+            "description": "Als dit aan staat, moet deze rol een video-opname maken en inleveren zodra het team akkoord is.",
+            "default": false
+          },
+          "alternativeInstruction": {
+            "type": "string",
+            "title": "Alternatieve opdracht",
+            "description": "Opdracht die de student uitvoert als het team niet akkoord gaat met de opname."
+          }
+        }
+      }
+    }
+  }
+}

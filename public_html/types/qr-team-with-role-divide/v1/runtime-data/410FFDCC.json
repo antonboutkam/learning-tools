@@ -1,0 +1,74 @@
+{
+    "code": "410FFDCC",
+    "uniqueId": "lock-fix-smoke-1",
+    "config": {
+        "title": "QR team with role divide",
+        "description": "Verdeel studenten via QR in teams en laat ze per ronde een andere rol aannemen in een praktijksimulatie.",
+        "teamSize": {
+            "min": 3,
+            "max": 4
+        },
+        "roundsMode": "all-roles-once",
+        "roleTimeoutSeconds": 180,
+        "shuffleWaitSeconds": 30,
+        "teamNames": [
+            "Team Kompas",
+            "Team Horizon",
+            "Team Atlas",
+            "Team Nova"
+        ],
+        "otherRoleName": "Overig",
+        "otherRoleInstructions": [
+            "Je ondersteunt je team, noteert de belangrijkste argumenten en bewaakt dat iedereen aan bod komt.",
+            "Je helpt bij het concretiseren van ideeën en verzamelt voorbeelden die de rest van het team kan gebruiken."
+        ],
+        "roles": [
+            {
+                "key": "klant",
+                "name": "Klant",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je bent klant en eigenaar van een vuilophaaldienst. Je wilt op een slimme manier weten hoe vol je containers zijn zodat routes efficiënter worden.",
+                    "Je bent klant en beheert meerdere schoollocaties. Je zoekt een oplossing om per locatie beter inzicht te krijgen in afvalstromen en onderhoud."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "analist",
+                "name": "Analist",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je analyseert het probleem van de klant en vertaalt losse wensen naar concrete, meetbare behoeften.",
+                    "Je onderzoekt welke gegevens en processen nodig zijn om de klantvraag scherp te krijgen en te prioriteren."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "pitcher",
+                "name": "Pitcher",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Je bereidt een korte pitch van maximaal 30 seconden voor waarin je team het slimste voorstel samenvat.",
+                    "Je vat de beste oplossing samen in een korte pitch en benoemt waarom dit voorstel waarde oplevert voor de klant."
+                ],
+                "audioRecording": true,
+                "videoRecording": false,
+                "alternativeInstruction": "Als opname niet mag, schrijf je samen met je team een pitch van vijf zinnen en lever je die mondeling in bij de docent."
+            }
+        ]
+    },
+    "title": "QR team with role divide",
+    "description": "Verdeel studenten via QR in teams en laat ze per ronde een andere rol aannemen in een praktijksimulatie.",
+    "stage": "lobby",
+    "participants": [],
+    "teams": [],
+    "rounds": [],
+    "currentRoundIndex": 0,
+    "timing": [],
+    "createdAtMs": 1774887685773,
+    "updatedAtMs": 1774887685773
+}

@@ -62,6 +62,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/code-in-volgorde-zetten/v1/example.json`
   - Extra: gebruik `regels[].positie` voor de juiste volgorde; laat `positie` leeg voor afleiders
 
+- QR team with role divide (v1)
+  - Pad: `public_html/types/qr-team-with-role-divide/v1/`
+  - Data‑schema: `public_html/types/qr-team-with-role-divide/v1/schema.json`
+  - Example: `public_html/types/qr-team-with-role-divide/v1/example.json`
+  - Extra: `planar-type` met QR-join, live teamindeling, rolrotatie per ronde, countdowns en optionele audio/video-opname met teamconsent
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
@@ -74,6 +80,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
+- `/types/qr-team-with-role-divide/v1/?unique_id=demo-qr-team-1&data=example.json`
 
 ## LTI test-laag (course-level, zonder admin/developer key)
 Per tool is een vaste teststructuur toegevoegd:
