@@ -373,6 +373,25 @@ function teamMembersHtml(members, meId) {
     .join("");
 }
 
+function participantListHtml(participants) {
+  return participants
+    .map(
+      (participant) => `
+        <div class="member-item">
+          <div class="member-name">
+            ${participant.icon ? `${escapeHtml(participant.icon)} ` : ""}${escapeHtml(participant.name)}
+          </div>
+        </div>
+      `
+    )
+    .join("");
+}
+
+function animatedDots() {
+  const frame = Math.floor(Date.now() / 500) % 3;
+  return ".".repeat(frame + 1);
+}
+
 function renderScreen() {
   if (!state.config) {
     appEl.innerHTML = `
@@ -472,7 +491,19 @@ function renderScreen() {
           `
         )
         .join("")
-    : "";
+    : session.participants.length
+      ? `
+        <article class="team-card team-card-list">
+          <div class="section-title">
+            <h3>Aangemelde studenten</h3>
+            <span class="tag">${escapeHtml(String(session.participantCount))}</span>
+          </div>
+          <div class="member-list">
+            ${participantListHtml(session.participants)}
+          </div>
+        </article>
+      `
+      : "";
 
   const rightStats = `
     <div class="stat-grid stat-grid-compact">
@@ -544,7 +575,7 @@ function renderJoinForm(session) {
         <input id="join-name" name="join-name" type="text" maxlength="80" value="${escapeHtml(state.joinName)}" placeholder="Bijvoorbeeld: Samira" />
       </div>
       <div class="join-actions">
-        <button class="button-primary" data-action="join-session" ${state.busy.join ? "disabled" : ""}>Meedoen</button>
+        <button class="button-success" data-action="join-session" ${state.busy.join ? "disabled" : ""}>Meedoen</button>
         <span class="tag">Sessie ${escapeHtml(session.code)}</span>
       </div>
       ${state.lastError ? `<p class="error-text">${escapeHtml(state.lastError)}</p>` : ""}
@@ -644,6 +675,17 @@ function renderMobile() {
         : session.stage === "finished"
           ? "Alle rondes zijn afgerond."
           : "Sessie wordt bijgewerkt.";
+
+  if (me && session.stage === "lobby") {
+    appEl.innerHTML = `
+      <div class="mobile-layout mobile-layout-centered">
+        <section class="waiting-hero">
+          <h1>Hoi ${escapeHtml(me.name)},<br>Een momentje geduld${animatedDots()}</h1>
+        </section>
+      </div>
+    `;
+    return;
+  }
 
   let content = "";
   if (!me) {
@@ -807,7 +849,7 @@ function ensureLoops() {
   }
   const needsLiveRender =
     state.mode === "screen" ||
-    Boolean(state.session?.me && ["teams", "round_running", "round_wait", "finished"].includes(state.session.stage));
+    Boolean(state.session?.me && ["lobby", "teams", "round_running", "round_wait", "finished"].includes(state.session.stage));
   if (needsLiveRender && !state.renderHandle) {
     state.renderHandle = window.setInterval(() => {
       render();

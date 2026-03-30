@@ -107,6 +107,12 @@ body.is-screen .screen-layout > .panel {
   margin: 0 auto;
 }
 
+.mobile-layout-centered {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .panel,
 .loading-card {
   background: var(--panel);
@@ -336,9 +342,9 @@ button:disabled {
 }
 
 .button-success {
-  background: linear-gradient(135deg, #3aaf55 0%, #24733d 100%);
+  background: #2f8f46;
   color: #fff;
-  box-shadow: 0 14px 28px rgba(36, 115, 61, 0.25);
+  box-shadow: 0 14px 28px rgba(36, 115, 61, 0.18);
 }
 
 .button-secondary,
@@ -432,6 +438,10 @@ body.is-screen .screen-participants {
   border-color: var(--team-card-line, var(--line));
 }
 
+.team-card-list {
+  flex-basis: 100%;
+}
+
 body.is-screen .team-card {
   flex-basis: 240px;
   padding: 16px;
@@ -501,6 +511,19 @@ body.is-mobile .mobile-card,
 body.is-mobile .capture-card,
 body.is-mobile .loading-card {
   border-color: var(--team-line);
+}
+
+.waiting-hero {
+  width: min(100%, 520px);
+  text-align: center;
+  padding: 24px;
+}
+
+.waiting-hero h1 {
+  margin: 0;
+  color: var(--team-accent-dark);
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.15;
 }
 
 body.is-mobile .mobile-header h1,
