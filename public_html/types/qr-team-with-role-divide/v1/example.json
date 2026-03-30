@@ -8,6 +8,7 @@
   "roundsMode": "all-roles-once",
   "roleTimeoutSeconds": 180,
   "shuffleWaitSeconds": 30,
+  "enableTestUsers": true,
   "teamNames": [
     "Team Kompas",
     "Team Horizon",

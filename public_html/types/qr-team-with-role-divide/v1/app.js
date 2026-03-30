@@ -18,6 +18,7 @@ const state = {
   busy: {
     join: false,
     assignTeams: false,
+    generateTestUsers: false,
     startTeacher: false,
     saveConsent: false,
     shake: false,
@@ -388,8 +389,9 @@ function participantListHtml(participants) {
 }
 
 function animatedDots() {
-  const frame = Math.floor(Date.now() / 500) % 3;
-  return ".".repeat(frame + 1);
+  const frames = ["", ".", "..", "...", "....", "....."];
+  const frame = Math.floor(Date.now() / 400) % frames.length;
+  return frames[frame];
 }
 
 function renderScreen() {
@@ -442,6 +444,20 @@ function renderScreen() {
 
   const controls = `
     <div class="control-row">
+      ${
+        session.enableTestUsers
+          ? `
+            <button
+              class="button-secondary"
+              data-action="generate-test-users"
+              ${session.stage !== "lobby" ? "disabled" : ""}
+              ${state.busy.generateTestUsers ? "disabled" : ""}
+            >
+              Test gebruikers genereren
+            </button>
+          `
+          : ""
+      }
       <button
         class="button-primary button-success"
         data-action="assign-teams"
@@ -947,6 +963,24 @@ async function assignTeams() {
   }
 }
 
+async function generateTestUsers() {
+  state.busy.generateTestUsers = true;
+  render();
+  try {
+    const payload = await apiJson("generate_test_users", {
+      method: "POST",
+      body: { sessionCode: state.sessionCode },
+    });
+    clearError();
+    state.session = payload.session;
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    state.busy.generateTestUsers = false;
+    render();
+  }
+}
+
 async function startTeacher() {
   state.busy.startTeacher = true;
   render();
@@ -1068,6 +1102,9 @@ appEl.addEventListener("click", (event) => {
   }
   if (action === "assign-teams") {
     assignTeams();
+  }
+  if (action === "generate-test-users") {
+    generateTestUsers();
   }
   if (action === "start-teacher") {
     startTeacher();

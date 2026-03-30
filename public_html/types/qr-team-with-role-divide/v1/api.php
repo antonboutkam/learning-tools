@@ -287,6 +287,7 @@ function normalize_config(array $config): array
         'roundsMode' => $roundsMode,
         'roleTimeoutSeconds' => max(30, (int) ($config['roleTimeoutSeconds'] ?? 180)),
         'shuffleWaitSeconds' => max(5, (int) ($config['shuffleWaitSeconds'] ?? 30)),
+        'enableTestUsers' => (bool) ($config['enableTestUsers'] ?? false),
         'teamNames' => list_of_strings($config['teamNames'] ?? []),
         'teamColors' => $teamColors,
         'otherRoleName' => trim((string) ($config['otherRoleName'] ?? 'Overig')) ?: 'Overig',
@@ -344,6 +345,61 @@ function participant_icon_choices(): array
         '🦄', '🐝', '🦜', '🐢', '🦖', '🐬', '🦩', '🦝', '🐿️', '🦓',
         '🐞', '🦕', '🐳', '🦚', '🐺', '🦥', '🐹', '🦔', '🐻', '🐱',
     ];
+}
+
+function test_user_name_pool(): array
+{
+    return [
+        'Emma de Vries',
+        'Noah Jansen',
+        'Julia Bakker',
+        'Luca Visser',
+        'Mila Smit',
+        'Daan Mulder',
+        'Sara Meijer',
+        'Finn de Boer',
+        'Yara Prins',
+        'Mats Kuiper',
+        'Zoey Bos',
+        'Sem van Dijk',
+        'Nina Dekker',
+        'Ties Kok',
+        'Evi Jacobs',
+        'Levi Willems',
+        'Fenna Vermeer',
+        'Ryan Brouwer',
+        'Lotte Vos',
+        'Jesse de Groot',
+    ];
+}
+
+function next_test_user_names(array $participants, int $count = 10): array
+{
+    $pool = test_user_name_pool();
+    $existingNames = [];
+    foreach ($participants as $participant) {
+        $existingNames[strtolower((string) ($participant['name'] ?? ''))] = true;
+    }
+
+    $selected = [];
+    $poolIndex = 0;
+    $suffix = 2;
+
+    while (count($selected) < $count) {
+        $baseName = $pool[$poolIndex % count($pool)];
+        $poolIndex += 1;
+        $candidate = $baseName;
+
+        while (isset($existingNames[strtolower($candidate)])) {
+            $candidate = $baseName . ' ' . $suffix;
+            $suffix += 1;
+        }
+
+        $existingNames[strtolower($candidate)] = true;
+        $selected[] = $candidate;
+    }
+
+    return $selected;
 }
 
 function pick_random_participant_icon(array $participants): string
@@ -865,6 +921,7 @@ function public_session(array $session, ?string $participantId = null): array
         'description' => $session['description'],
         'stage' => $session['stage'],
         'participantCount' => count($participants),
+        'enableTestUsers' => (bool) ($session['config']['enableTestUsers'] ?? false),
         'teamPalette' => $session['config']['teamColors'] !== [] ? array_values($session['config']['teamColors']) : default_team_color_keys(),
         'participants' => $participantPayload,
         'teams' => $teamPayload,
@@ -1014,6 +1071,42 @@ try {
             $session['currentRoundIndex'] = 0;
             $session['stage'] = 'teams';
             $session['timing'] = [];
+            $session['updatedAtMs'] = now_ms();
+            return true;
+        });
+
+        respond_json([
+            'ok' => true,
+            'session' => public_session($session),
+        ]);
+    }
+
+    if ($action === 'generate_test_users') {
+        $body = read_json_body();
+        $code = strtoupper(trim((string) ($body['sessionCode'] ?? '')));
+
+        [$session] = with_locked_session($code, false, function (&$session): bool {
+            refresh_session($session);
+            if (empty($session['config']['enableTestUsers'])) {
+                throw new ApiError('Testgebruikers genereren is niet ingeschakeld in deze configuratie.');
+            }
+            if ($session['stage'] !== 'lobby') {
+                throw new ApiError('Testgebruikers kunnen alleen worden toegevoegd voordat teams zijn ingedeeld.');
+            }
+
+            foreach (next_test_user_names($session['participants'], 10) as $name) {
+                $session['participants'][] = [
+                    'id' => random_token(10),
+                    'icon' => pick_random_participant_icon($session['participants']),
+                    'name' => $name,
+                    'ready' => false,
+                    'teamId' => null,
+                    'teamName' => null,
+                    'teamColorKey' => null,
+                    'joinedAtMs' => now_ms(),
+                ];
+            }
+
             $session['updatedAtMs'] = now_ms();
             return true;
         });

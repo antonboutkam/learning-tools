@@ -11,6 +11,7 @@
         "roundsMode": "all-roles-once",
         "roleTimeoutSeconds": 300,
         "shuffleWaitSeconds": 30,
+        "enableTestUsers": false,
         "teamNames": [
             "🧠 Samenvat Squad",
             "🗣️ Praatpaal Professionals",
@@ -46,5 +47,5 @@
     "currentRoundIndex": 0,
     "timing": [],
     "createdAtMs": 1774888361063,
-    "updatedAtMs": 1774892322027
+    "updatedAtMs": 1774893215942
 }

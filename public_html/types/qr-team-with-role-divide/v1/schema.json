@@ -89,6 +89,12 @@
       "minimum": 5,
       "default": 30
     },
+    "enableTestUsers": {
+      "type": "boolean",
+      "title": "Test gebruikers genereren",
+      "description": "Toon in de embedded versie een knop om 10 testgebruikers met echte namen toe te voegen voor een snelle demo.",
+      "default": false
+    },
     "teamNames": {
       "type": "array",
       "title": "Teamnamen",
