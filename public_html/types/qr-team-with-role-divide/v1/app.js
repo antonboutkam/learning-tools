@@ -538,9 +538,7 @@ function renderScreen() {
 
 function renderJoinForm(session) {
   return `
-    <section class="mobile-card">
-      <h2>Meld je aan</h2>
-      <p class="muted">Vul je naam in zodat de docent je direct op het grote scherm ziet verschijnen.</p>
+    <div class="inline-join">
       <div class="field">
         <label class="field-label" for="join-name">Naam</label>
         <input id="join-name" name="join-name" type="text" maxlength="80" value="${escapeHtml(state.joinName)}" placeholder="Bijvoorbeeld: Samira" />
@@ -550,7 +548,7 @@ function renderJoinForm(session) {
         <span class="tag">Sessie ${escapeHtml(session.code)}</span>
       </div>
       ${state.lastError ? `<p class="error-text">${escapeHtml(state.lastError)}</p>` : ""}
-    </section>
+    </div>
   `;
 }
 
@@ -649,7 +647,14 @@ function renderMobile() {
 
   let content = "";
   if (!me) {
-    content = renderJoinForm(session);
+    content = `
+      <section class="mobile-card">
+        <div class="section-title">
+          <h2>${escapeHtml(session.title)}</h2>
+        </div>
+        ${renderJoinForm(session)}
+      </section>
+    `;
   } else {
     const teamCard = myTeam
       ? `
@@ -748,7 +753,6 @@ function renderMobile() {
     <div class="mobile-layout">
       <div class="mobile-header">
         <div class="pill-row">
-          <span class="pill"><span>${escapeHtml(session.code)}</span></span>
           ${me?.icon ? `<span class="pill"><strong>${escapeHtml(me.icon)}</strong><span>${escapeHtml(me.name)}</span></span>` : ""}
         </div>
         <h1>${escapeHtml(session.title)}</h1>
@@ -792,6 +796,10 @@ async function pollState() {
       window.localStorage.removeItem(storageKeyParticipant(state.sessionCode));
       state.participantId = null;
     }
+    ensureLoops();
+    if (state.mode === "mobile" && !payload.session.me && document.activeElement?.id === "join-name") {
+      return;
+    }
     render();
   } catch (error) {
     setError(error.message);
@@ -804,10 +812,17 @@ function ensureLoops() {
       pollState();
     }, POLL_MS);
   }
-  if (!state.renderHandle) {
+  const needsLiveRender =
+    state.mode === "screen" ||
+    Boolean(state.session?.me && ["teams", "round_running", "round_wait", "finished"].includes(state.session.stage));
+  if (needsLiveRender && !state.renderHandle) {
     state.renderHandle = window.setInterval(() => {
       render();
     }, RENDER_MS);
+  }
+  if (!needsLiveRender && state.renderHandle) {
+    window.clearInterval(state.renderHandle);
+    state.renderHandle = null;
   }
 }
 
@@ -1033,11 +1048,16 @@ appEl.addEventListener("click", (event) => {
 appEl.addEventListener("change", (event) => {
   const target = event.target;
   if (!(target instanceof HTMLInputElement)) return;
-  if (target.id === "join-name") {
-    state.joinName = target.value;
-  }
   if (target.dataset.uploadKey) {
     uploadCapture(target);
+  }
+});
+
+appEl.addEventListener("input", (event) => {
+  const target = event.target;
+  if (!(target instanceof HTMLInputElement)) return;
+  if (target.id === "join-name") {
+    state.joinName = target.value;
   }
 });
 

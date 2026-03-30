@@ -502,6 +502,10 @@ body.is-screen .member-item {
   padding: 24px 0 6px;
 }
 
+.mobile-header .pill-row:empty {
+  display: none;
+}
+
 .mobile-card {
   box-shadow: var(--shadow);
 }
@@ -528,6 +532,14 @@ body.is-mobile .callout {
 .checkbox-row {
   display: grid;
   gap: 8px;
+}
+
+.inline-join .field {
+  margin: 8px 0 4px;
+}
+
+.inline-join .join-actions {
+  margin-top: 6px;
 }
 
 .field input[type="text"] {
