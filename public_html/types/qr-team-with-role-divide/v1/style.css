@@ -529,8 +529,8 @@ body.is-screen .team-card {
 }
 
 .team-table-role {
-  color: var(--brand-dark);
-  font-weight: 700;
+  color: #000;
+  font-weight: 400;
   white-space: nowrap;
 }
 
@@ -562,8 +562,8 @@ body.is-screen .member-item {
 }
 
 .member-role {
-  color: var(--brand-dark);
-  font-weight: 700;
+  color: #000;
+  font-weight: 400;
 }
 
 .mobile-stack {

@@ -3,14 +3,14 @@
     "uniqueId": "633443412b1e5cbe6e8e8db9f2d51a36",
     "config": {
         "title": "lsd oefening",
-        "description": "",
+        "description": "In deze opdracht ben je beurtelings klant, senior developer en stagair / notulist. Gebruik hiervoor een van de vijf klant-use-cases.",
         "teamSize": {
             "min": 2,
             "max": 4
         },
         "roundsMode": "all-roles-once",
-        "roleTimeoutSeconds": 300,
-        "shuffleWaitSeconds": 30,
+        "roleTimeoutSeconds": 420,
+        "shuffleWaitSeconds": 120,
         "enableTestUsers": true,
         "teamNames": [
             "🧠 Samenvat Squad",
@@ -20,17 +20,32 @@
             "🧠 Breinfluisteraars"
         ],
         "teamColors": [],
-        "otherRoleName": "Overig",
+        "otherRoleName": "Stagair",
         "otherRoleInstructions": [
-            "dit moet een textarea worden"
+            "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
         ],
         "roles": [
             {
                 "key": "klant",
-                "name": "klant",
+                "name": "Klant",
                 "countPerTeam": 1,
                 "instructions": [
-                    "dit moet een textarea worden"
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een tuinbouwbedrijf en zoekt een slimme plantmonitor. Je wilt planten automatisch laten scannen op schimmels, plantziektes en voedingsbehoeftes. De oplossing moet luchtvochtigheid op meerdere plekken in de kas meten, temperatuur registreren en foto's maken van planten inclusief de positie van de plant. De foto's moeten met AI gecontroleerd worden op plantziektes en je wilt daarvoor een fotodatabase opbouwen.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een cateringbedrijf met meerdere professionele koelkasten en wilt een slimme koelkastbewaker. De oplossing moet deurstatus, temperatuur en luchtvochtigheid meten, direct waarschuwen als een deur te lang openstaat of als producten niet goed gekoeld worden, en alle meetgegevens online loggen zodat je achteraf kunt controleren wat er misging.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een facilitair team op een school en wilt een slim afvalscheidingsstation. Het systeem moet herkennen welk type afval wordt aangeboden, het vulniveau per bak meten, met lampen of een scherm laten zien waar het afval hoort en liefst automatisch een klep openen. Daarnaast wil je online kunnen zien welke bakken vol raken.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een omgeving met studie- en flexplekken en wilt een slimme werkplekmonitor. De oplossing moet licht, geluid, temperatuur en aanwezigheid meten, direct feedback geven over de kwaliteit van de werkplek en online zichtbaar maken welke plekken prettig zijn om te gebruiken. Bij slechte omstandigheden wil je een waarschuwing of automatische reactie, bijvoorbeeld extra ventilatie.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "senior-developer",
+                "name": "Senior developer",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
                 ],
                 "audioRecording": false,
                 "videoRecording": false,
@@ -39,108 +54,108 @@
         ]
     },
     "title": "lsd oefening",
-    "description": "",
-    "stage": "round_running",
+    "description": "In deze opdracht ben je beurtelings klant, senior developer en stagair / notulist. Gebruik hiervoor een van de vijf klant-use-cases.",
+    "stage": "teams",
     "participants": [
         {
-            "id": "929d8913f3",
+            "id": "c060b6643f",
             "icon": "🦕",
             "name": "Emma",
             "ready": false,
             "teamId": "team-1",
             "teamName": "🧠 Samenvat Squad",
             "teamColorKey": "yellow",
-            "joinedAtMs": 1774893554482
+            "joinedAtMs": 1774900795258
         },
         {
-            "id": "70d4ad5a49",
-            "icon": "🐼",
+            "id": "65e479da7a",
+            "icon": "🐢",
             "name": "Noah",
+            "ready": false,
+            "teamId": "team-1",
+            "teamName": "🧠 Samenvat Squad",
+            "teamColorKey": "yellow",
+            "joinedAtMs": 1774900795258
+        },
+        {
+            "id": "27a7e19032",
+            "icon": "🦊",
+            "name": "Julia",
             "ready": false,
             "teamId": "team-3",
             "teamName": "⚓ Inloophuis \"het anker\"",
             "teamColorKey": "purple",
-            "joinedAtMs": 1774893554482
+            "joinedAtMs": 1774900795258
         },
         {
-            "id": "4d1258963d",
-            "icon": "🦥",
-            "name": "Julia",
-            "ready": false,
-            "teamId": "team-2",
-            "teamName": "🗣️ Praatpaal Professionals",
-            "teamColorKey": "green",
-            "joinedAtMs": 1774893554482
-        },
-        {
-            "id": "ee4719221f",
-            "icon": "🐿️",
+            "id": "24be6d3caa",
+            "icon": "🦋",
             "name": "Luca",
             "ready": false,
             "teamId": "team-2",
             "teamName": "🗣️ Praatpaal Professionals",
             "teamColorKey": "green",
-            "joinedAtMs": 1774893554483
+            "joinedAtMs": 1774900795258
         },
         {
-            "id": "6fd8dd6b15",
-            "icon": "🦔",
+            "id": "6038cc485a",
+            "icon": "🐹",
             "name": "Mila",
             "ready": false,
             "teamId": "team-2",
             "teamName": "🗣️ Praatpaal Professionals",
             "teamColorKey": "green",
-            "joinedAtMs": 1774893554483
+            "joinedAtMs": 1774900795258
         },
         {
-            "id": "b4e67b6672",
-            "icon": "🦋",
+            "id": "354dd7fd4b",
+            "icon": "🦉",
             "name": "Daan",
             "ready": false,
             "teamId": "team-1",
             "teamName": "🧠 Samenvat Squad",
             "teamColorKey": "yellow",
-            "joinedAtMs": 1774893554483
+            "joinedAtMs": 1774900795258
         },
         {
-            "id": "71743668c8",
-            "icon": "🦓",
+            "id": "321c6731da",
+            "icon": "🐝",
             "name": "Sara",
             "ready": false,
-            "teamId": "team-1",
-            "teamName": "🧠 Samenvat Squad",
-            "teamColorKey": "yellow",
-            "joinedAtMs": 1774893554483
+            "teamId": "team-3",
+            "teamName": "⚓ Inloophuis \"het anker\"",
+            "teamColorKey": "purple",
+            "joinedAtMs": 1774900795259
         },
         {
-            "id": "56a7dc1364",
-            "icon": "🐙",
+            "id": "873af5a5f6",
+            "icon": "🐿️",
             "name": "Finn",
             "ready": false,
-            "teamId": "team-3",
-            "teamName": "⚓ Inloophuis \"het anker\"",
-            "teamColorKey": "purple",
-            "joinedAtMs": 1774893554483
-        },
-        {
-            "id": "abe5f8e38f",
-            "icon": "🦚",
-            "name": "Yara",
-            "ready": false,
             "teamId": "team-1",
             "teamName": "🧠 Samenvat Squad",
             "teamColorKey": "yellow",
-            "joinedAtMs": 1774893554483
+            "joinedAtMs": 1774900795259
         },
         {
-            "id": "bea6f8c119",
-            "icon": "🐺",
-            "name": "Mats",
+            "id": "0b25e24f7e",
+            "icon": "🦩",
+            "name": "Yara",
             "ready": false,
             "teamId": "team-3",
             "teamName": "⚓ Inloophuis \"het anker\"",
             "teamColorKey": "purple",
-            "joinedAtMs": 1774893554483
+            "joinedAtMs": 1774900795259
+        },
+        {
+            "id": "72f282ba3f",
+            "icon": "🐻",
+            "name": "Mats",
+            "ready": false,
+            "teamId": "team-2",
+            "teamName": "🗣️ Praatpaal Professionals",
+            "teamColorKey": "green",
+            "joinedAtMs": 1774900795259
         }
     ],
     "teams": [
@@ -149,10 +164,10 @@
             "name": "🧠 Samenvat Squad",
             "colorKey": "yellow",
             "participantIds": [
-                "71743668c8",
-                "b4e67b6672",
-                "abe5f8e38f",
-                "929d8913f3"
+                "354dd7fd4b",
+                "65e479da7a",
+                "c060b6643f",
+                "873af5a5f6"
             ]
         },
         {
@@ -160,9 +175,9 @@
             "name": "🗣️ Praatpaal Professionals",
             "colorKey": "green",
             "participantIds": [
-                "ee4719221f",
-                "4d1258963d",
-                "6fd8dd6b15"
+                "6038cc485a",
+                "24be6d3caa",
+                "72f282ba3f"
             ]
         },
         {
@@ -170,9 +185,9 @@
             "name": "⚓ Inloophuis \"het anker\"",
             "colorKey": "purple",
             "participantIds": [
-                "bea6f8c119",
-                "70d4ad5a49",
-                "56a7dc1364"
+                "0b25e24f7e",
+                "27a7e19032",
+                "321c6731da"
             ]
         }
     ],
@@ -180,150 +195,150 @@
         {
             "index": 0,
             "assignments": {
-                "b4e67b6672": {
+                "354dd7fd4b": {
                     "teamId": "team-1",
                     "teamName": "🧠 Samenvat Squad",
-                    "participantId": "b4e67b6672",
+                    "participantId": "354dd7fd4b",
                     "participantName": "Daan",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "65e479da7a": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "65e479da7a",
+                    "participantName": "Noah",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "873af5a5f6": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "873af5a5f6",
+                    "participantName": "Finn",
                     "roleKey": "klant",
-                    "roleName": "klant",
+                    "roleName": "Klant",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
                     ],
-                    "instructionIndex": 0,
+                    "instructionIndex": 4,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "929d8913f3": {
+                "c060b6643f": {
                     "teamId": "team-1",
                     "teamName": "🧠 Samenvat Squad",
-                    "participantId": "929d8913f3",
+                    "participantId": "c060b6643f",
                     "participantName": "Emma",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "abe5f8e38f": {
-                    "teamId": "team-1",
-                    "teamName": "🧠 Samenvat Squad",
-                    "participantId": "abe5f8e38f",
-                    "participantName": "Yara",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "71743668c8": {
-                    "teamId": "team-1",
-                    "teamName": "🧠 Samenvat Squad",
-                    "participantId": "71743668c8",
-                    "participantName": "Sara",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "ee4719221f": {
+                "72f282ba3f": {
                     "teamId": "team-2",
                     "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "ee4719221f",
+                    "participantId": "72f282ba3f",
+                    "participantName": "Mats",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een facilitair team op een school en wilt een slim afvalscheidingsstation. Het systeem moet herkennen welk type afval wordt aangeboden, het vulniveau per bak meten, met lampen of een scherm laten zien waar het afval hoort en liefst automatisch een klep openen. Daarnaast wil je online kunnen zien welke bakken vol raken."
+                    ],
+                    "instructionIndex": 2,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "6038cc485a": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "6038cc485a",
+                    "participantName": "Mila",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "24be6d3caa": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "24be6d3caa",
                     "participantName": "Luca",
                     "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleName": "Stagair",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "6fd8dd6b15": {
-                    "teamId": "team-2",
-                    "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "6fd8dd6b15",
-                    "participantName": "Mila",
-                    "roleKey": "klant",
-                    "roleName": "klant",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "4d1258963d": {
-                    "teamId": "team-2",
-                    "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "4d1258963d",
+                "27a7e19032": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "27a7e19032",
                     "participantName": "Julia",
                     "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleName": "Stagair",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "bea6f8c119": {
+                "0b25e24f7e": {
                     "teamId": "team-3",
                     "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "bea6f8c119",
-                    "participantName": "Mats",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "56a7dc1364": {
-                    "teamId": "team-3",
-                    "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "56a7dc1364",
-                    "participantName": "Finn",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "70d4ad5a49": {
-                    "teamId": "team-3",
-                    "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "70d4ad5a49",
-                    "participantName": "Noah",
+                    "participantId": "0b25e24f7e",
+                    "participantName": "Yara",
                     "roleKey": "klant",
-                    "roleName": "klant",
+                    "roleName": "Klant",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
+                    ],
+                    "instructionIndex": 4,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "321c6731da": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "321c6731da",
+                    "participantName": "Sara",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
@@ -339,150 +354,309 @@
         {
             "index": 1,
             "assignments": {
-                "b4e67b6672": {
+                "354dd7fd4b": {
                     "teamId": "team-1",
                     "teamName": "🧠 Samenvat Squad",
-                    "participantId": "b4e67b6672",
+                    "participantId": "354dd7fd4b",
                     "participantName": "Daan",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een omgeving met studie- en flexplekken en wilt een slimme werkplekmonitor. De oplossing moet licht, geluid, temperatuur en aanwezigheid meten, direct feedback geven over de kwaliteit van de werkplek en online zichtbaar maken welke plekken prettig zijn om te gebruiken. Bij slechte omstandigheden wil je een waarschuwing of automatische reactie, bijvoorbeeld extra ventilatie."
                     ],
-                    "instructionIndex": 0,
+                    "instructionIndex": 3,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "71743668c8": {
+                "65e479da7a": {
                     "teamId": "team-1",
                     "teamName": "🧠 Samenvat Squad",
-                    "participantId": "71743668c8",
-                    "participantName": "Sara",
-                    "roleKey": "klant",
-                    "roleName": "klant",
+                    "participantId": "65e479da7a",
+                    "participantName": "Noah",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "929d8913f3": {
+                "873af5a5f6": {
                     "teamId": "team-1",
                     "teamName": "🧠 Samenvat Squad",
-                    "participantId": "929d8913f3",
-                    "participantName": "Emma",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "abe5f8e38f": {
-                    "teamId": "team-1",
-                    "teamName": "🧠 Samenvat Squad",
-                    "participantId": "abe5f8e38f",
-                    "participantName": "Yara",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "ee4719221f": {
-                    "teamId": "team-2",
-                    "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "ee4719221f",
-                    "participantName": "Luca",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "4d1258963d": {
-                    "teamId": "team-2",
-                    "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "4d1258963d",
-                    "participantName": "Julia",
-                    "roleKey": "klant",
-                    "roleName": "klant",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "6fd8dd6b15": {
-                    "teamId": "team-2",
-                    "teamName": "🗣️ Praatpaal Professionals",
-                    "participantId": "6fd8dd6b15",
-                    "participantName": "Mila",
-                    "roleKey": "overig",
-                    "roleName": "Overig",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "bea6f8c119": {
-                    "teamId": "team-3",
-                    "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "bea6f8c119",
-                    "participantName": "Mats",
-                    "roleKey": "klant",
-                    "roleName": "klant",
-                    "instructions": [
-                        "dit moet een textarea worden"
-                    ],
-                    "instructionIndex": 0,
-                    "captureMode": null,
-                    "captureKey": null,
-                    "alternativeInstruction": ""
-                },
-                "56a7dc1364": {
-                    "teamId": "team-3",
-                    "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "56a7dc1364",
+                    "participantId": "873af5a5f6",
                     "participantName": "Finn",
                     "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleName": "Stagair",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
                     "captureKey": null,
                     "alternativeInstruction": ""
                 },
-                "70d4ad5a49": {
+                "c060b6643f": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "c060b6643f",
+                    "participantName": "Emma",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "6038cc485a": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "6038cc485a",
+                    "participantName": "Mila",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
+                    ],
+                    "instructionIndex": 4,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "72f282ba3f": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "72f282ba3f",
+                    "participantName": "Mats",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "24be6d3caa": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "24be6d3caa",
+                    "participantName": "Luca",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "0b25e24f7e": {
                     "teamId": "team-3",
                     "teamName": "⚓ Inloophuis \"het anker\"",
-                    "participantId": "70d4ad5a49",
+                    "participantId": "0b25e24f7e",
+                    "participantName": "Yara",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "321c6731da": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "321c6731da",
+                    "participantName": "Sara",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "27a7e19032": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "27a7e19032",
+                    "participantName": "Julia",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een tuinbouwbedrijf en zoekt een slimme plantmonitor. Je wilt planten automatisch laten scannen op schimmels, plantziektes en voedingsbehoeftes. De oplossing moet luchtvochtigheid op meerdere plekken in de kas meten, temperatuur registreren en foto's maken van planten inclusief de positie van de plant. De foto's moeten met AI gecontroleerd worden op plantziektes en je wilt daarvoor een fotodatabase opbouwen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                }
+            },
+            "captureAssignments": [],
+            "consents": [],
+            "submissions": [],
+            "shakenParticipantIds": []
+        },
+        {
+            "index": 2,
+            "assignments": {
+                "65e479da7a": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "65e479da7a",
                     "participantName": "Noah",
                     "roleKey": "overig",
-                    "roleName": "Overig",
+                    "roleName": "Stagair",
                     "instructions": [
-                        "dit moet een textarea worden"
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "c060b6643f": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "c060b6643f",
+                    "participantName": "Emma",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een cateringbedrijf met meerdere professionele koelkasten en wilt een slimme koelkastbewaker. De oplossing moet deurstatus, temperatuur en luchtvochtigheid meten, direct waarschuwen als een deur te lang openstaat of als producten niet goed gekoeld worden, en alle meetgegevens online loggen zodat je achteraf kunt controleren wat er misging."
+                    ],
+                    "instructionIndex": 1,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "873af5a5f6": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "873af5a5f6",
+                    "participantName": "Finn",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "354dd7fd4b": {
+                    "teamId": "team-1",
+                    "teamName": "🧠 Samenvat Squad",
+                    "participantId": "354dd7fd4b",
+                    "participantName": "Daan",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "6038cc485a": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "6038cc485a",
+                    "participantName": "Mila",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "24be6d3caa": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "24be6d3caa",
+                    "participantName": "Luca",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een tuinbouwbedrijf en zoekt een slimme plantmonitor. Je wilt planten automatisch laten scannen op schimmels, plantziektes en voedingsbehoeftes. De oplossing moet luchtvochtigheid op meerdere plekken in de kas meten, temperatuur registreren en foto's maken van planten inclusief de positie van de plant. De foto's moeten met AI gecontroleerd worden op plantziektes en je wilt daarvoor een fotodatabase opbouwen."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "72f282ba3f": {
+                    "teamId": "team-2",
+                    "teamName": "🗣️ Praatpaal Professionals",
+                    "participantId": "72f282ba3f",
+                    "participantName": "Mats",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "27a7e19032": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "27a7e19032",
+                    "participantName": "Julia",
+                    "roleKey": "senior-developer",
+                    "roleName": "Senior developer",
+                    "instructions": [
+                        "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                    ],
+                    "instructionIndex": 0,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "321c6731da": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "321c6731da",
+                    "participantName": "Sara",
+                    "roleKey": "klant",
+                    "roleName": "Klant",
+                    "instructions": [
+                        "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
+                    ],
+                    "instructionIndex": 4,
+                    "captureMode": null,
+                    "captureKey": null,
+                    "alternativeInstruction": ""
+                },
+                "0b25e24f7e": {
+                    "teamId": "team-3",
+                    "teamName": "⚓ Inloophuis \"het anker\"",
+                    "participantId": "0b25e24f7e",
+                    "participantName": "Yara",
+                    "roleKey": "overig",
+                    "roleName": "Stagair",
+                    "instructions": [
+                        "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
                     ],
                     "instructionIndex": 0,
                     "captureMode": null,
@@ -497,11 +671,7 @@
         }
     ],
     "currentRoundIndex": 0,
-    "timing": {
-        "roundStartedAtMs": 1774893860792,
-        "roundEndsAtMs": 1774894160792,
-        "waitEndsAtMs": null
-    },
+    "timing": [],
     "createdAtMs": 1774888361063,
-    "updatedAtMs": 1774893960645
+    "updatedAtMs": 1774937101917
 }

@@ -398,7 +398,7 @@ function teamMembersHtml(members, meId) {
             </div>
             <div class="muted small">${captureBits.length ? escapeHtml(captureBits.join(" • ")) : "&nbsp;"}</div>
           </div>
-          <div class="member-role">${escapeHtml(member.roleName || "Nog geen rol")}</div>
+          <div class="member-role">${escapeHtml(ucfirst(member.roleName || "Nog geen rol"))}</div>
         </div>
       `;
     })
@@ -441,7 +441,6 @@ function teamMembersTableHtml(members) {
                         : ""
                     }
                   </td>
-                  <td class="team-table-role">${escapeHtml(member.roleName || "Nog geen rol")}</td>
                   <td class="team-table-role">${escapeHtml(ucfirst(member.roleName || "Nog geen rol"))}</td>
                 </tr>
               `;
@@ -512,8 +511,8 @@ function renderScreen() {
 
   const timerText = countdown
     ? countdown.kind === "round"
-      ? `Ronde loopt nog ${formatSeconds(countdown.remainingSeconds)}`
-      : `Nieuwe ronde start over ${formatSeconds(countdown.remainingSeconds)}`
+      ? "Ronde loopt"
+      : "Nieuwe ronde start zo"
     : session.stage === "teams"
       ? "Teams zijn ingedeeld. Wacht op de docent om te starten."
       : session.stage === "finished"
