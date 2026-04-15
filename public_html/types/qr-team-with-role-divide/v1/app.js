@@ -13,6 +13,8 @@ const state = {
   joinName: "",
   localStartPressed: false,
   lastError: "",
+  joinUrlCopied: false,
+  copyResetHandle: null,
   pollingHandle: null,
   renderHandle: null,
   busy: {
@@ -253,6 +255,46 @@ function stageLabel(stage) {
   if (stage === "round_wait") return "Schudfase";
   if (stage === "finished") return "Afgerond";
   return "Onbekend";
+}
+
+function setJoinUrlCopied(copied) {
+  state.joinUrlCopied = copied;
+  if (state.copyResetHandle) {
+    window.clearTimeout(state.copyResetHandle);
+    state.copyResetHandle = null;
+  }
+  if (copied) {
+    state.copyResetHandle = window.setTimeout(() => {
+      state.joinUrlCopied = false;
+      state.copyResetHandle = null;
+      render();
+    }, 1600);
+  }
+}
+
+async function copyJoinUrl() {
+  const joinUrl = state.joinUrl || buildJoinUrl(state.sessionCode || state.session?.code || "");
+  if (!joinUrl) return;
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(joinUrl);
+    } else {
+      const helper = document.createElement("textarea");
+      helper.value = joinUrl;
+      helper.setAttribute("readonly", "readonly");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand("copy");
+      document.body.removeChild(helper);
+    }
+    setJoinUrlCopied(true);
+    render();
+  } catch (error) {
+    setError("Kopieren van de URL is niet gelukt.");
+  }
 }
 
 function apiUrl(action, query = {}) {
@@ -624,7 +666,12 @@ function renderScreen() {
           <div class="qr-box">
             <img src="${escapeHtml(qrUrl)}" alt="QR code om deel te nemen" />
             <p>Scan de QR code met je telefoon om verder te gaan</p>
-            <span class="code-block">${escapeHtml(joinUrl)}</span>
+            <div class="qr-link-row">
+              <span class="code-block">${escapeHtml(joinUrl)}</span>
+              <button class="button-secondary button-copy" data-action="copy-join-url">
+                ${state.joinUrlCopied ? "Gekopieerd" : "Kopieer"}
+              </button>
+            </div>
           </div>
           <div class="screen-participants">
             <div class="badge-row">${participantsHtml}</div>
@@ -1201,6 +1248,9 @@ appEl.addEventListener("click", (event) => {
   }
   if (action === "reset-session") {
     resetSession();
+  }
+  if (action === "copy-join-url") {
+    copyJoinUrl();
   }
   if (action === "start-teacher") {
     startTeacher();

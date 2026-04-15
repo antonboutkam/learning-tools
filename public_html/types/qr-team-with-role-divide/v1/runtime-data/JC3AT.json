@@ -3,7 +3,7 @@
     "uniqueId": "633443412b1e5cbe6e8e8db9f2d51a36",
     "config": {
         "title": "lsd oefening",
-        "description": "In deze opdracht ben je beurtelings klant, senior developer en stagair / notulist. Gebruik hiervoor een van de vijf klant-use-cases.",
+        "description": "In deze opdracht ben je beurtelings klant, developer of notulist.",
         "teamSize": {
             "min": 2,
             "max": 4
@@ -54,7 +54,7 @@
         ]
     },
     "title": "lsd oefening",
-    "description": "In deze opdracht ben je beurtelings klant, senior developer en stagair / notulist. Gebruik hiervoor een van de vijf klant-use-cases.",
+    "description": "In deze opdracht ben je beurtelings klant, developer of notulist.",
     "stage": "teams",
     "participants": [
         {
@@ -673,5 +673,5 @@
     "currentRoundIndex": 0,
     "timing": [],
     "createdAtMs": 1774888361063,
-    "updatedAtMs": 1774937101917
+    "updatedAtMs": 1776098030097
 }
