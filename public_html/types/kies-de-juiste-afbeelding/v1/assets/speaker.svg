@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Speaker</title>
+  <desc id="desc">Een speaker met geluidslijnen.</desc>
+  <rect width="640" height="480" fill="#f5f0fb"/>
+  <path d="M126 198h88l120-86v256l-120-86h-88z" fill="#fff" stroke="#45375c" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M390 178c28 32 28 92 0 124" fill="none" stroke="#45375c" stroke-width="14" stroke-linecap="round"/>
+  <path d="M438 140c54 62 54 178 0 240" fill="none" stroke="#6d5f86" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="214" cy="240" r="34" fill="#ded4ee" stroke="#45375c" stroke-width="10"/>
+  <path d="M136 344h242" stroke="#897aa1" stroke-width="12" stroke-linecap="round" opacity=".32"/>
+</svg>

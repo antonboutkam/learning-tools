@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/kies-de-juiste-afbeelding/v1/schema.json",
+  "title": "Kies de juiste afbeelding v1",
+  "description": "Interactieve oefening waarbij studenten een vraag of stelling beantwoorden door een of meer juiste afbeeldingen te selecteren.",
+  "type": "object",
+  "required": ["vraag", "afbeeldingen"],
+  "additionalProperties": false,
+  "properties": {
+    "toolTitle": {
+      "type": "string",
+      "title": "Tooltitel",
+      "description": "Titel die helemaal bovenaan de tool staat. Laat leeg om de standaardtitel te gebruiken."
+    },
+    "vraag": {
+      "type": "string",
+      "title": "Vraag of stelling",
+      "description": "De vraag of stelling die de student moet beantwoorden door afbeeldingen te selecteren.",
+      "format": "textarea"
+    },
+    "beschrijving": {
+      "type": "string",
+      "title": "Beschrijving",
+      "description": "Korte extra uitleg voor de student (optioneel).",
+      "format": "textarea"
+    },
+    "afbeeldingenPerRij": {
+      "type": "integer",
+      "title": "Afbeeldingen per rij",
+      "description": "Aantal afbeeldingen per rij op brede schermen. Gebruik bijvoorbeeld 4 voor alles naast elkaar of 2 voor twee rijen van twee.",
+      "minimum": 1,
+      "maximum": 6,
+      "default": 2
+    },
+    "antwoordBijFout": {
+      "type": "string",
+      "title": "Bij fout antwoord",
+      "description": "Kies of de juiste afbeeldingen worden getoond of dat de student na een pauze opnieuw mag proberen.",
+      "enum": ["opnieuw-proberen", "toon-juiste-antwoord"],
+      "default": "opnieuw-proberen"
+    },
+    "pauzeSeconden": {
+      "type": "integer",
+      "title": "Pauze in seconden",
+      "description": "Aantal seconden aftellen bij een fout antwoord wanneer de student opnieuw mag proberen. Na de pauze worden de afbeeldingen opnieuw gehusseld.",
+      "minimum": 0,
+      "maximum": 30,
+      "default": 5
+    },
+    "afbeeldingen": {
+      "type": "array",
+      "title": "Afbeeldingen",
+      "description": "Afbeeldingen waaruit de student de juiste opties selecteert. Markeer per afbeelding of deze juist is.",
+      "minItems": 2,
+      "contains": {
+        "type": "object",
+        "required": ["juist"],
+        "properties": {
+          "juist": {
+            "const": true
+          }
+        }
+      },
+      "minContains": 1,
+      "items": {
+        "type": "object",
+        "title": "Afbeelding",
+        "description": "Een afbeelding met antwoordmarkering.",
+        "required": ["url", "juist"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "ID (optioneel)",
+            "description": "Unieke sleutel voor deze afbeelding. Mag leeg blijven; dan wordt automatisch een ID gemaakt."
+          },
+          "url": {
+            "type": "string",
+            "title": "Afbeeldings-URL",
+            "description": "URL of relatief pad naar de afbeelding.",
+            "format": "uri-reference"
+          },
+          "alt": {
+            "type": "string",
+            "title": "Alt-tekst",
+            "description": "Korte beschrijving voor screenreaders."
+          },
+          "bijschrift": {
+            "type": "string",
+            "title": "Bijschrift",
+            "description": "Korte tekst onder de afbeelding (optioneel)."
+          },
+          "juist": {
+            "type": "boolean",
+            "title": "Juist antwoord",
+            "description": "Zet aan als deze afbeelding geselecteerd moet worden door de student.",
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}

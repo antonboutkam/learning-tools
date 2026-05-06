@@ -12,6 +12,16 @@
       "description": "Sorteer elementen in de juiste volgorde."
     },
     {
+      "id": "kies-de-juiste-afbeelding",
+      "type": "assignment-type",
+      "name": "Kies de juiste afbeelding",
+      "version": "v1",
+      "launchUrl": "/types/kies-de-juiste-afbeelding/v1/",
+      "schemaUrl": "/types/kies-de-juiste-afbeelding/v1/schema.json",
+      "exampleDataUrl": "/types/kies-de-juiste-afbeelding/v1/example.json",
+      "description": "Selecteer een of meer juiste afbeeldingen bij een vraag of stelling."
+    },
+    {
       "id": "wat-hoort-bij-wat",
       "type": "assignment-type",
       "name": "Wat hoort bij wat",
@@ -100,6 +110,16 @@
       "schemaUrl": "/types/markdown-editor/v1/schema.json",
       "exampleDataUrl": "/types/markdown-editor/v1/example.json",
       "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview)."
+    },
+    {
+      "id": "scrumboard",
+      "type": "assignment-type",
+      "name": "Scrumboard",
+      "version": "v1",
+      "launchUrl": "/types/scrumboard/v1/",
+      "schemaUrl": "/types/scrumboard/v1/schema.json",
+      "exampleDataUrl": "/types/scrumboard/v1/example.json",
+      "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key."
     },
     {
       "id": "qr-team-with-role-divide",

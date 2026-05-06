@@ -15,6 +15,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/juiste-volgorde/v1/schema.json`
   - Example: `public_html/types/juiste-volgorde/v1/example.json`
 
+- Kies de juiste afbeelding (v1)
+  - Pad: `public_html/types/kies-de-juiste-afbeelding/v1/`
+  - Data‑schema: `public_html/types/kies-de-juiste-afbeelding/v1/schema.json`
+  - Example: `public_html/types/kies-de-juiste-afbeelding/v1/example.json`
+  - Extra: selecteer meerdere afbeeldingen, markeer per afbeelding `juist`, kies foutafhandeling (`opnieuw-proberen` met countdown en shuffle, of `toon-juiste-antwoord`) en stel `afbeeldingenPerRij` in
+
 - Wat hoort bij wat (v1)
   - Pad: `public_html/types/wat-hoort-bij-wat/v1/`
   - Data‑schema: `public_html/types/wat-hoort-bij-wat/v1/schema.json`
@@ -56,6 +62,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/markdown-editor/v1/schema.json`
   - Example: `public_html/types/markdown-editor/v1/example.json`
 
+- Scrumboard (v1)
+  - Pad: `public_html/types/scrumboard/v1/`
+  - Data‑schema: `public_html/types/scrumboard/v1/schema.json`
+  - Example: `public_html/types/scrumboard/v1/example.json`
+  - Extra: configureerbare kolommen, standaard ingeklapte geeltjes met optionele punten, optioneel studenten-items toevoegen/verwijderen, maximale breedte en persistente opslag per `key`
+
 - Code in volgorde zetten (v1)
   - Pad: `public_html/types/code-in-volgorde-zetten/v1/`
   - Data‑schema: `public_html/types/code-in-volgorde-zetten/v1/schema.json`
@@ -71,6 +83,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
+- `/types/kies-de-juiste-afbeelding/v1/?unique_id=demo-afbeelding-1&data=example.json`
 - `/types/wat-hoort-bij-wat/v1/?unique_id=demo-koppelen-1&data=example.json`
 - `/types/pubquiz-yes-no/v1/?unique_id=demo-pubquiz-1&data=example.json`
 - `/types/digitaal-bericht/v1/?unique_id=demo-bericht-1&data=example.json`
@@ -79,6 +92,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
+- `/types/scrumboard/v1/?key=demo-scrumboard-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
 - `/types/qr-team-with-role-divide/v1/?unique_id=demo-qr-team-1&data=example.json`
 

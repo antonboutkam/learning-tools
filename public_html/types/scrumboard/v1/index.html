@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scrumboard</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div>
+        <h1 id="title">Scrumboard</h1>
+        <div class="meta" id="meta"></div>
+      </div>
+      <button class="btn btn--primary" id="openFormBtn" type="button">Item toevoegen</button>
+    </header>
+
+    <section class="composer" id="composer" hidden>
+      <form class="composer__form" id="itemForm">
+        <label class="field">
+          <span>Label</span>
+          <input id="itemLabel" name="label" type="text" maxlength="80" required />
+        </label>
+        <label class="field field--wide">
+          <span>Beschrijving</span>
+          <textarea id="itemDescription" name="description" rows="3"></textarea>
+        </label>
+        <label class="field">
+          <span>URL</span>
+          <input id="itemUrl" name="url" type="url" />
+        </label>
+        <label class="field">
+          <span>Punten</span>
+          <input id="itemPoints" name="points" type="number" min="0" step="1" />
+        </label>
+        <label class="field">
+          <span>Kolom</span>
+          <select id="itemColumn" name="column"></select>
+        </label>
+        <div class="actions">
+          <button class="btn btn--primary" type="submit">Toevoegen</button>
+          <button class="btn" id="cancelFormBtn" type="button">Annuleren</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="board" id="board" aria-label="Scrumboard"></section>
+    <div class="status" id="status"></div>
+  </main>
+
+  <script src="./tool.js"></script>
+</body>
+</html>

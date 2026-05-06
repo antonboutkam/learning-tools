@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Muis</title>
+  <desc id="desc">Een computermuis met kabel op een groen bureau.</desc>
+  <rect width="640" height="480" fill="#edf2fb"/>
+  <path d="M320 82c0-42 38-70 86-70h48" fill="none" stroke="#29494a" stroke-width="14" stroke-linecap="round"/>
+  <rect x="220" y="110" width="200" height="270" rx="96" fill="#fbfcff" stroke="#29494a" stroke-width="12"/>
+  <path d="M320 112v94" stroke="#29494a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M220 226h200" stroke="#29494a" stroke-width="10" stroke-linecap="round"/>
+  <rect x="301" y="144" width="38" height="72" rx="18" fill="#dbe7f6" stroke="#29494a" stroke-width="8"/>
+  <path d="M236 396h168" stroke="#7490a8" stroke-width="12" stroke-linecap="round" opacity=".35"/>
+</svg>

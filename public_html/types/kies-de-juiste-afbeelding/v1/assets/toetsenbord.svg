@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Toetsenbord</title>
+  <desc id="desc">Een compact toetsenbord op een groen bureau.</desc>
+  <rect width="640" height="480" fill="#e8f3ee"/>
+  <rect x="80" y="130" width="480" height="220" rx="28" fill="#f9fbf8" stroke="#244f49" stroke-width="12"/>
+  <g fill="#d6e2dc" stroke="#244f49" stroke-width="6">
+    <rect x="122" y="172" width="48" height="34" rx="7"/>
+    <rect x="186" y="172" width="48" height="34" rx="7"/>
+    <rect x="250" y="172" width="48" height="34" rx="7"/>
+    <rect x="314" y="172" width="48" height="34" rx="7"/>
+    <rect x="378" y="172" width="48" height="34" rx="7"/>
+    <rect x="442" y="172" width="48" height="34" rx="7"/>
+    <rect x="122" y="224" width="48" height="34" rx="7"/>
+    <rect x="186" y="224" width="48" height="34" rx="7"/>
+    <rect x="250" y="224" width="48" height="34" rx="7"/>
+    <rect x="314" y="224" width="48" height="34" rx="7"/>
+    <rect x="378" y="224" width="48" height="34" rx="7"/>
+    <rect x="442" y="224" width="76" height="34" rx="7"/>
+    <rect x="122" y="276" width="96" height="34" rx="7"/>
+    <rect x="234" y="276" width="220" height="34" rx="7"/>
+    <rect x="470" y="276" width="48" height="34" rx="7"/>
+  </g>
+  <path d="M132 365h376" stroke="#6d8f83" stroke-width="12" stroke-linecap="round" opacity=".35"/>
+</svg>

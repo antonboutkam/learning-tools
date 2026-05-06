@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/scrumboard/v1/schema.json",
+  "title": "Scrumboard v1",
+  "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key. Gebruik dezelfde key om hetzelfde board op meerdere pagina's terug te laten komen.",
+  "type": "object",
+  "required": ["key"],
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string",
+      "title": "Scrumboard key",
+      "description": "Unieke sleutel voor opslag. Gebruik dezelfde key om hetzelfde scrumboard opnieuw te openen op andere pagina's.",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel die boven het scrumboard wordt getoond.",
+      "default": "Scrumboard"
+    },
+    "allowStudentItems": {
+      "type": "boolean",
+      "title": "Student mag items toevoegen",
+      "description": "Zet aan als studenten via de UI zelf geeltjes mogen toevoegen.",
+      "default": true
+    },
+    "allowStudentDelete": {
+      "type": "boolean",
+      "title": "Student mag kaartjes verwijderen",
+      "description": "Zet aan als studenten via de UI kaartjes van het scrumboard mogen verwijderen.",
+      "default": true
+    },
+    "maxWidth": {
+      "type": "string",
+      "title": "Maximale breedte",
+      "description": "Optionele maximale breedte van het scrumboard, bijvoorbeeld 1200px of 72rem. Laat leeg voor width: 100%.",
+      "default": ""
+    },
+    "columns": {
+      "title": "Kolommen",
+      "description": "Kolommen op het scrumboard, van links naar rechts.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "title": "Kolomnaam",
+        "description": "Naam van een kolom op het scrumboard.",
+        "minLength": 1
+      },
+      "default": ["Backlog", "Sprint", "Today", "Done"]
+    },
+    "items": {
+      "title": "Vooraf ingevulde items",
+      "description": "Optionele startitems voor het scrumboard. Nieuwe of verplaatste items worden daarna per key opgeslagen.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Scrumboard item",
+        "required": ["label"],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "Korte tekst op het geeltje.",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "description": {
+            "type": "string",
+            "title": "Beschrijving",
+            "description": "Optionele toelichting op het item."
+          },
+          "url": {
+            "type": "string",
+            "title": "URL",
+            "description": "Optionele link bij het item.",
+            "format": "uri"
+          },
+          "points": {
+            "type": "integer",
+            "title": "Punten",
+            "description": "Optioneel aantal punten voor dit item.",
+            "minimum": 0
+          },
+          "column": {
+            "type": "string",
+            "title": "Kolom",
+            "description": "Kolom waarin het item start. Als deze leeg of onbekend is, gebruikt de tool de meest linker kolom."
+          }
+        }
+      },
+      "default": []
+    }
+  }
+}

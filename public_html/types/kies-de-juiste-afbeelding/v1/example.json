@@ -1,0 +1,38 @@
+{
+  "toolTitle": "Kies de juiste afbeelding",
+  "vraag": "Welke afbeeldingen tonen invoerapparaten?",
+  "beschrijving": "Selecteer alle afbeeldingen die bij de vraag passen.",
+  "afbeeldingenPerRij": 2,
+  "antwoordBijFout": "opnieuw-proberen",
+  "pauzeSeconden": 5,
+  "afbeeldingen": [
+    {
+      "id": "toetsenbord",
+      "url": "assets/toetsenbord.svg",
+      "alt": "Toetsenbord",
+      "bijschrift": "Toetsenbord",
+      "juist": true
+    },
+    {
+      "id": "muis",
+      "url": "assets/muis.svg",
+      "alt": "Muis",
+      "bijschrift": "Muis",
+      "juist": true
+    },
+    {
+      "id": "monitor",
+      "url": "assets/monitor.svg",
+      "alt": "Monitor",
+      "bijschrift": "Monitor",
+      "juist": false
+    },
+    {
+      "id": "speaker",
+      "url": "assets/speaker.svg",
+      "alt": "Speaker",
+      "bijschrift": "Speaker",
+      "juist": false
+    }
+  ]
+}

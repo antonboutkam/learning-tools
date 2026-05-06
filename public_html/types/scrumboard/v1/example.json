@@ -1,0 +1,27 @@
+{
+  "key": "demo-scrumboard-1",
+  "title": "Scrumboard",
+  "allowStudentItems": true,
+  "allowStudentDelete": true,
+  "maxWidth": "",
+  "columns": ["Backlog", "Sprint", "Today", "Done"],
+  "items": [
+    {
+      "label": "Briefing lezen",
+      "description": "Bekijk de opdracht en noteer onduidelijkheden.",
+      "points": 1,
+      "column": "Backlog"
+    },
+    {
+      "label": "Taken verdelen",
+      "description": "Maak afspraken over rollen en eerste acties.",
+      "points": 2,
+      "column": "Sprint"
+    },
+    {
+      "label": "Daily stand-up",
+      "points": 1,
+      "column": "Today"
+    }
+  ]
+}
