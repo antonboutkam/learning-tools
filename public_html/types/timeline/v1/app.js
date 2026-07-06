@@ -10,6 +10,7 @@ const timelineEl = document.getElementById("timeline");
 const surfaceEl = timelineEl.querySelector(".timeline__surface");
 const ticksEl = document.getElementById("ticks");
 const breaksEl = document.getElementById("breaks");
+const phasesEl = document.getElementById("phases");
 const eventsEl = document.getElementById("events");
 
 let currentData = null;
@@ -249,11 +250,87 @@ function buildBreakEl(t) {
   return el;
 }
 
+function buildPhaseEl(phase) {
+  const el = document.createElement("div");
+  el.className = "phase";
+  el.dataset.startT = String(phase.startT);
+  el.dataset.endT = String(phase.endT);
+  if (phase.color) el.style.setProperty("--phase-color", phase.color);
+  if (phase.textColor) el.style.setProperty("--phase-text-color", phase.textColor);
+  if (phase.description) el.title = phase.description;
+
+  const label = document.createElement("div");
+  label.className = "phase__label";
+  label.textContent = phase.label;
+  el.appendChild(label);
+  return el;
+}
+
+function cardStyleTokens(style) {
+  const palettes = {
+    "salie-groen": {
+      accent: "#4f7a68",
+      accentSoft: "rgba(79,122,104,0.22)",
+      line: "rgba(79,122,104,0.34)",
+      cardBg: "#eef6f1",
+      cardBorder: "#bad3c5",
+      meta: "#4f6b5f",
+      title: "#21473b",
+      text: "#35554b",
+    },
+    "licht-blauw": {
+      accent: "#5178a6",
+      accentSoft: "rgba(81,120,166,0.22)",
+      line: "rgba(81,120,166,0.34)",
+      cardBg: "#eef4fb",
+      cardBorder: "#bfd2ea",
+      meta: "#506b8d",
+      title: "#25476e",
+      text: "#395470",
+    },
+    "zacht-perzik": {
+      accent: "#b97853",
+      accentSoft: "rgba(185,120,83,0.22)",
+      line: "rgba(185,120,83,0.34)",
+      cardBg: "#fdf1e8",
+      cardBorder: "#ecc9b0",
+      meta: "#946953",
+      title: "#7c4427",
+      text: "#724b37",
+    },
+    "poeder-roze": {
+      accent: "#b56d87",
+      accentSoft: "rgba(181,109,135,0.22)",
+      line: "rgba(181,109,135,0.34)",
+      cardBg: "#fbf0f5",
+      cardBorder: "#e8c0d0",
+      meta: "#8d6172",
+      title: "#6f334a",
+      text: "#6d4655",
+    },
+  };
+
+  return palettes[style] || null;
+}
+
 function buildEventEl(event, { direction, scale, baseUrl, idx }) {
   const el = document.createElement("div");
   el.className = "event";
   el.dataset.side = sideForEvent(direction, event.placement, idx);
   el.setAttribute("role", "listitem");
+
+  const styleTokens = cardStyleTokens(event.cardStyle);
+  if (event.cardStyle) el.dataset.cardStyle = event.cardStyle;
+  if (styleTokens) {
+    el.style.setProperty("--event-accent", styleTokens.accent);
+    el.style.setProperty("--event-accent-soft", styleTokens.accentSoft);
+    el.style.setProperty("--event-line", styleTokens.line);
+    el.style.setProperty("--event-card-bg", styleTokens.cardBg);
+    el.style.setProperty("--event-card-border", styleTokens.cardBorder);
+    el.style.setProperty("--event-meta", styleTokens.meta);
+    el.style.setProperty("--event-title", styleTokens.title);
+    el.style.setProperty("--event-text", styleTokens.text);
+  }
 
   const linkUrl = resolveUrl(event.linkUrl, baseUrl);
   const bubble = document.createElement(linkUrl ? "a" : "div");
@@ -331,6 +408,37 @@ function assignLanes(events, getPosPx, getSizePx, gapPx) {
   return out;
 }
 
+function computeVerticalPlacements(events, alongAt, padPx, gapPx) {
+  const centers = new Map();
+  let maxBottom = padPx;
+  const bySide = new Map();
+
+  events.forEach((ev) => {
+    if (!bySide.has(ev.side)) bySide.set(ev.side, []);
+    bySide.get(ev.side).push(ev);
+  });
+
+  for (const list of bySide.values()) {
+    list.sort((a, b) => alongAt(a.t) - alongAt(b.t));
+    let prevBottom = padPx;
+    list.forEach((ev) => {
+      const rect = ev.bubble?.getBoundingClientRect?.();
+      const bubbleH = rect?.height || 160;
+      const half = bubbleH / 2;
+      const desiredCenter = alongAt(ev.t);
+      const center = Math.max(desiredCenter, prevBottom + gapPx + half, padPx + half);
+      centers.set(ev, center);
+      prevBottom = center + half;
+      maxBottom = Math.max(maxBottom, prevBottom);
+    });
+  }
+
+  return {
+    centers,
+    neededHeight: Math.ceil(maxBottom + padPx),
+  };
+}
+
 function layout() {
   if (!currentData) return;
   if (raf) cancelAnimationFrame(raf);
@@ -372,26 +480,32 @@ function layout() {
       t: Number.parseFloat(node.dataset.t || "0") || 0,
     }));
 
-    const bySide = new Map();
-    events.forEach((ev) => {
-      if (!bySide.has(ev.side)) bySide.set(ev.side, []);
-      bySide.get(ev.side).push(ev);
-    });
-
     const lanesByEvent = new Map();
-    for (const [side, list] of bySide.entries()) {
-      list.sort((a, b) => alongAt(a.t) - alongAt(b.t));
-      const laneMap = assignLanes(
-        list,
-        (ev) => alongAt(ev.t),
-        (ev) => {
-          const r = ev.bubble?.getBoundingClientRect?.();
-          if (!r) return 200;
-          return direction === "horizontal" ? r.width : r.height;
-        },
-        14
-      );
-      laneMap.forEach((lane, ev) => lanesByEvent.set(ev, lane));
+    const centersByEvent = new Map();
+
+    if (direction === "horizontal") {
+      const bySide = new Map();
+      events.forEach((ev) => {
+        if (!bySide.has(ev.side)) bySide.set(ev.side, []);
+        bySide.get(ev.side).push(ev);
+      });
+
+      for (const list of bySide.values()) {
+        list.sort((a, b) => alongAt(a.t) - alongAt(b.t));
+        const laneMap = assignLanes(
+          list,
+          (ev) => alongAt(ev.t),
+          (ev) => {
+            const r = ev.bubble?.getBoundingClientRect?.();
+            if (!r) return 200;
+            return r.width;
+          },
+          14
+        );
+        laneMap.forEach((lane, ev) => lanesByEvent.set(ev, lane));
+      }
+    } else {
+      events.forEach((ev) => lanesByEvent.set(ev, 0));
     }
 
     const laneGap = Number.parseFloat(css.getPropertyValue("--lane-gap")) || 86;
@@ -415,6 +529,17 @@ function layout() {
       }
     }
 
+    if (direction === "vertical" && events.length) {
+      const placement = computeVerticalPlacements(events, alongAt, pad, 18);
+      const wanted = Math.max(baseMinHeight, placement.neededHeight);
+      if (Math.abs(wanted - currentMin) > 2) {
+        timelineEl.style.minHeight = `${wanted}px`;
+        layout();
+        return;
+      }
+      placement.centers.forEach((center, ev) => centersByEvent.set(ev, center));
+    }
+
     events.forEach((ev) => {
       const lane = lanesByEvent.get(ev) ?? 0;
       ev.node.style.setProperty("--lane", lane);
@@ -434,7 +559,7 @@ function layout() {
         ev.node.style.setProperty("--bubble-shift-x", `${shiftX}px`);
       } else {
         const bubbleH = bubbleRect?.height || 160;
-        const y = clamp(alongAt(ev.t), pad, height - pad);
+        const y = clamp(centersByEvent.get(ev) ?? alongAt(ev.t), pad, height - pad);
         ev.node.style.top = `${y}px`;
         ev.node.style.left = `${width / 2}px`;
 
@@ -447,9 +572,25 @@ function layout() {
       }
     });
 
-    if (direction === "vertical") {
-      timelineEl.style.minHeight = `${baseMinHeight}px`;
-    }
+    const phaseNodes = Array.from(phasesEl.querySelectorAll(".phase"));
+    phaseNodes.forEach((node) => {
+      const startT = Number.parseFloat(node.dataset.startT || "0") || 0;
+      const endT = Number.parseFloat(node.dataset.endT || "0") || 0;
+      const startPx = clamp(alongAt(startT), pad, direction === "horizontal" ? width - pad : height - pad);
+      const endPx = clamp(alongAt(endT), startPx + 16, direction === "horizontal" ? width - pad : height - pad);
+
+      if (direction === "horizontal") {
+        node.style.left = `${startPx}px`;
+        node.style.top = "10px";
+        node.style.width = `${Math.max(18, endPx - startPx)}px`;
+        node.style.height = `${Math.max(44, height - 20)}px`;
+      } else {
+        node.style.top = `${startPx}px`;
+        node.style.left = "10px";
+        node.style.height = `${Math.max(18, endPx - startPx)}px`;
+        node.style.width = `${Math.max(44, width - 20)}px`;
+      }
+    });
 
     const tickNodes = Array.from(ticksEl.querySelectorAll(".tick"));
     tickNodes.forEach((node) => {
@@ -530,15 +671,41 @@ function render(data, baseUrl) {
         subtitle: safeText(ev?.subtitle),
         description: safeText(ev?.description),
         placement: safeText(ev?.placement),
+        cardStyle: safeText(ev?.cardStyle),
         imageUrl: safeText(ev?.imageUrl),
         linkUrl: safeText(ev?.linkUrl),
       };
     })
     .filter(Boolean);
 
+  const rawPhases = Array.isArray(data.phases) ? data.phases : [];
+  const phases = rawPhases
+    .map((phase) => {
+      const phaseStart = parseDate(phase?.startDate);
+      const phaseEnd = parseDate(phase?.endDate);
+      if (!phaseStart || !phaseEnd) return null;
+      const startMsClamped = Math.max(startMs, phaseStart.getTime());
+      const endMsClamped = Math.min(endMs, phaseEnd.getTime());
+      if (!(endMsClamped > startMsClamped)) return null;
+      return {
+        label: safeText(phase?.label),
+        description: safeText(phase?.description),
+        color: safeText(phase?.color),
+        textColor: safeText(phase?.textColor),
+        startT: compressionMap.toRatio(startMsClamped),
+        endT: compressionMap.toRatio(endMsClamped),
+      };
+    })
+    .filter((phase) => phase && phase.label);
+
+  phasesEl.innerHTML = "";
   ticksEl.innerHTML = "";
   breaksEl.innerHTML = "";
   eventsEl.innerHTML = "";
+
+  phases.forEach((phase) => {
+    phasesEl.appendChild(buildPhaseEl(phase));
+  });
 
   // Ticks
   const maxTicks = 48;

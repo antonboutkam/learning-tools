@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/timeline/v1/schema.json",
   "title": "Timeline v1",
-  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
+  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele faseblokken, optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
   "type": "object",
   "required": ["unique_id", "title", "direction", "scale", "startDate", "endDate", "events"],
   "additionalProperties": false,
@@ -81,6 +81,12 @@
       "description": "Lijst met jaren of jaar-ranges die uit de tijdas geknipt worden. Gebruik komma's, bijvoorbeeld: 1992-2000, 2009-2018, 2025, 2032.",
       "format": "textarea"
     },
+    "phases": {
+      "type": "array",
+      "title": "Fasen (optioneel)",
+      "description": "Optionele faseblokken die als gekleurde band achter de tijdlijn worden getoond, inclusief label.",
+      "items": { "$ref": "#/$defs/phase" }
+    },
     "events": {
       "type": "array",
       "title": "Momenten",
@@ -124,6 +130,51 @@
     }
   ],
   "$defs": {
+    "phase": {
+      "type": "object",
+      "title": "Fase",
+      "required": ["label", "startDate", "endDate"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label",
+          "description": "Korte naam van de fase."
+        },
+        "description": {
+          "type": "string",
+          "title": "Beschrijving (optioneel)",
+          "description": "Optionele extra uitleg; wordt gebruikt als tooltip.",
+          "format": "textarea"
+        },
+        "startDate": {
+          "title": "Startdatum",
+          "description": "Begin van de fase. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
+          "anyOf": [
+            { "type": "string", "format": "date" },
+            { "type": "string", "format": "date-time" }
+          ]
+        },
+        "endDate": {
+          "title": "Einddatum",
+          "description": "Einde van de fase. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
+          "anyOf": [
+            { "type": "string", "format": "date" },
+            { "type": "string", "format": "date-time" }
+          ]
+        },
+        "color": {
+          "type": "string",
+          "title": "Kleur (optioneel)",
+          "description": "CSS-kleur voor de faseband, bijvoorbeeld #d7def5 of rgba(31,111,94,0.18)."
+        },
+        "textColor": {
+          "type": "string",
+          "title": "Tekstkleur (optioneel)",
+          "description": "CSS-kleur voor het faselabel."
+        }
+      }
+    },
     "event": {
       "type": "object",
       "title": "Moment",
@@ -159,6 +210,12 @@
           "title": "Plaatsing",
           "description": "Waar het moment t.o.v. de as komt. Bij links→rechts: boven/onder. Bij boven→beneden: links/rechts.",
           "default": "auto"
+        },
+        "cardStyle": {
+          "type": "string",
+          "title": "Kaartkleur (optioneel)",
+          "description": "Kies een zacht kleurenpalet voor dit kaartje. Achtergrond, rand, tekst en marker krijgen dan automatisch een bijpassende schakering.",
+          "enum": ["salie-groen", "licht-blauw", "zacht-perzik", "poeder-roze"]
         },
         "imageUrl": {
           "type": "string",

@@ -51,6 +51,8 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/timeline/v1/`
   - Data‑schema: `public_html/types/timeline/v1/schema.json`
   - Example: `public_html/types/timeline/v1/example.json`
+  - Docs: `public_html/types/timeline/v1/README.md`
+  - Extra: horizontale of verticale tijdlijn, `placement` hangt af van `direction`, optionele `phases`, optionele `yearCuts`, kaartkleuren via `cardStyle`, klikbare cards via `linkUrl`, afbeeldingen via `imageUrl`, extra ruimte via `viewport.minWidthPx` / `viewport.minHeightPx` en automatische extra spreiding voor verticale clusters
 
 - Bin/Hex/Dec Reken (v1)
   - Pad: `public_html/types/bin-hex-dec-reken/v1/`

@@ -34,16 +34,49 @@
 	    .timeline--vertical { min-height: 560px; }
 	    .timeline--scroll { overflow: auto; }
 
+    .phases {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .phase {
+      position: absolute;
+      background: var(--phase-color, rgba(31,111,94,0.12));
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      box-sizing: border-box;
+      overflow: hidden;
+      opacity: 0.95;
+    }
+    .phase__label {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.84);
+      color: var(--phase-text-color, var(--ink));
+      border: 1px solid rgba(0,0,0,0.08);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      max-width: min(280px, calc(100% - 20px));
+    }
+
 	    .axis {
 	      position: absolute;
 	      background: var(--axis);
 	      border-radius: 2px;
 	      opacity: 0.9;
+	      z-index: 1;
 	    }
     .timeline--horizontal .axis { left: 10px; right: 10px; top: 50%; height: 2px; transform: translateY(-50%); }
     .timeline--vertical .axis { top: 10px; bottom: 10px; left: 50%; width: 2px; transform: translateX(-50%); }
 
-    .ticks { position: absolute; inset: 0; pointer-events: none; }
+    .ticks { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
     .tick { position: absolute; color: var(--muted); font-size: 12px; }
     .tick__line { position: absolute; background: rgba(0,0,0,0.15); border-radius: 2px; }
     .timeline--horizontal .tick { top: 50%; transform: translate(-50%, -50%); }
@@ -54,7 +87,7 @@
     .timeline--vertical .tick__line { top: 0; left: -10px; width: 20px; height: 1px; transform: translateY(-50%); }
     .timeline--vertical .tick__label { position: absolute; top: 0; left: 12px; transform: translateY(-50%); white-space: nowrap; }
 
-    .breaks { position: absolute; inset: 0; pointer-events: none; }
+    .breaks { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
     .break {
       position: absolute;
       width: 16px;
@@ -76,13 +109,21 @@
     .timeline--horizontal .break__line { transform: rotate(25deg); }
     .timeline--vertical .break { transform: translate(-50%, -50%) rotate(90deg); }
 
-    .events { position: absolute; inset: 0; }
+    .events { position: absolute; inset: 0; z-index: 2; }
     .event {
       position: absolute;
       --lane: 0;
       --bubble-shift-x: 0px;
       --bubble-shift-y: 0px;
       --stem-len: calc(var(--bubble-gap) + var(--lane) * var(--lane-gap));
+      --event-accent: #1f6f5e;
+      --event-accent-soft: rgba(31,111,94,0.18);
+      --event-line: rgba(31,111,94,0.28);
+      --event-card-bg: rgba(255,255,255,0.98);
+      --event-card-border: #eadfce;
+      --event-meta: #6a5f55;
+      --event-title: #1c1915;
+      --event-text: rgba(0,0,0,0.75);
     }
 
     .event::before {
@@ -91,8 +132,8 @@
       width: 12px;
       height: 12px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(31,111,94,0.18);
+      background: var(--event-accent);
+      box-shadow: 0 0 0 3px var(--event-accent-soft);
       left: 0;
       top: 0;
       transform: translate(-50%, -50%);
@@ -101,7 +142,7 @@
     .event::after {
       content: "";
       position: absolute;
-      background: rgba(0,0,0,0.18);
+      background: var(--event-line);
       border-radius: 2px;
       left: 0;
       top: 0;
@@ -115,23 +156,23 @@
       position: absolute;
       width: min(320px, 78vw);
       max-width: 360px;
-      background: rgba(255, 255, 255, 0.98);
-      border: 1px solid #eadfce;
+      background: var(--event-card-bg);
+      border: 1px solid var(--event-card-border);
       border-radius: 14px;
       box-shadow: 0 12px 26px rgba(0,0,0,0.08);
       padding: 12px 12px 10px;
       backdrop-filter: blur(6px);
     }
 
-	    .bubble__meta { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-	    .bubble__title { font-weight: 700; margin: 0 0 6px; }
-	    .bubble__subtitle { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
-	    .bubble__desc { margin: 0; color: rgba(0,0,0,0.75); line-height: 1.35; white-space: pre-wrap; text-align: justify; text-justify: inter-word; hyphens: auto; }
+	    .bubble__meta { font-size: 12px; color: var(--event-meta); margin-bottom: 6px; }
+	    .bubble__title { font-weight: 700; margin: 0 0 6px; color: var(--event-title); }
+	    .bubble__subtitle { font-size: 13px; color: var(--event-meta); margin: 0 0 8px; }
+	    .bubble__desc { margin: 0; color: var(--event-text); line-height: 1.35; white-space: pre-wrap; text-align: justify; text-justify: inter-word; hyphens: auto; }
 	    .bubble__media { margin-top: 10px; }
-	    .bubble__media img { display: block; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #eadfce; }
+	    .bubble__media img { display: block; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--event-card-border); }
 	    .bubble--link { display: block; color: inherit; text-decoration: none; cursor: pointer; }
-	    .bubble--link:hover { border-color: rgba(31,111,94,0.35); box-shadow: 0 14px 30px rgba(0,0,0,0.10); }
-	    .bubble--link:focus-visible { outline: 3px solid rgba(31,111,94,0.28); outline-offset: 3px; }
+	    .bubble--link:hover { border-color: var(--event-accent); box-shadow: 0 14px 30px rgba(0,0,0,0.10); }
+	    .bubble--link:focus-visible { outline: 3px solid var(--event-accent-soft); outline-offset: 3px; }
 
     /* Horizontal placement */
     .timeline--horizontal .event { top: 50%; }
@@ -183,6 +224,28 @@
       height: 2px;
       transform: translateY(-50%);
     }
+
+    .timeline--horizontal .phase {
+      top: 10px;
+      bottom: 10px;
+    }
+    .timeline--horizontal .phase__label {
+      left: 10px;
+      top: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .timeline--vertical .phase {
+      left: 10px;
+      right: 10px;
+    }
+    .timeline--vertical .phase__label {
+      right: 14px;
+      top: 10px;
+      text-align: right;
+    }
   </style>
 </head>
 <body>
@@ -195,6 +258,7 @@
       <p id="intro" class="intro" hidden></p>
       <div id="timeline" class="timeline" aria-label="Tijdlijn">
         <div class="timeline__surface">
+          <div id="phases" class="phases" aria-hidden="true"></div>
           <div class="axis" aria-hidden="true"></div>
           <div id="breaks" class="breaks" aria-hidden="true"></div>
           <div id="ticks" class="ticks" aria-hidden="true"></div>
