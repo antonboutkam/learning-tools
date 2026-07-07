@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindmap</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="topbar__copy">
+        <p class="eyebrow">Learn tool</p>
+        <h1 id="title">Mindmap</h1>
+        <p class="intro" id="intro"></p>
+      </div>
+      <div class="topbar__actions" id="toolbar">
+        <button class="btn btn--ghost" id="addNodeBtn" type="button">Woord toevoegen</button>
+        <button class="btn btn--ghost" id="addConnectionBtn" type="button">Lijn toevoegen</button>
+        <button class="btn btn--ghost" id="manageConnectionsBtn" type="button">Verbinding kiezen</button>
+        <button class="btn btn--ghost" id="reflowBtn" type="button">Opnieuw verdelen</button>
+        <label class="toolbar-range">
+          <span>Spread</span>
+          <input id="spreadInput" type="range" min="45" max="140" step="5" value="75" />
+        </label>
+        <div class="zoom-controls">
+          <button class="btn btn--ghost" id="zoomOutBtn" type="button" aria-label="Uitzoomen">-</button>
+          <button class="btn btn--ghost" id="zoomResetBtn" type="button">100%</button>
+          <button class="btn btn--ghost" id="zoomInBtn" type="button" aria-label="Inzoomen">+</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="workspace" id="workspace">
+      <div class="canvas" id="canvas" aria-label="Mindmap canvas">
+        <div class="scroll-extent" id="scrollExtent" aria-hidden="true"></div>
+        <div class="viewport" id="viewport">
+          <svg class="edges" id="edges" aria-hidden="true">
+            <defs>
+              <marker id="arrow-head" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0 0L12 6L0 12Z" class="marker-path"></path>
+              </marker>
+            </defs>
+          </svg>
+          <div class="nodes" id="nodes"></div>
+        </div>
+        <button class="canvas-add" id="canvasAddBtn" type="button" hidden>+</button>
+      </div>
+    </section>
+
+    <div class="legend" id="legend"></div>
+    <div class="status" id="status"></div>
+  </main>
+
+  <div class="modal" id="nodeModal" hidden>
+    <div class="modal__backdrop" data-close-modal="node"></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 id="nodeModalTitle">Woord toevoegen</h2>
+        <button class="modal__close" type="button" data-close-modal="node" aria-label="Sluiten">×</button>
+      </div>
+      <form class="modal__body" id="nodeForm">
+        <label class="field">
+          <span>Woord</span>
+          <input id="nodeLabelInput" name="label" type="text" maxlength="60" required />
+        </label>
+        <label class="field">
+          <span>Kleur</span>
+          <select id="nodeColorInput" name="color"></select>
+        </label>
+        <label class="field">
+          <span>Hyperlink (optioneel)</span>
+          <input id="nodeUrlInput" name="url" type="url" />
+        </label>
+        <div class="field field--split">
+          <label>
+            <span>X</span>
+            <input id="nodeXInput" name="x" type="number" step="1" min="0" />
+          </label>
+          <label>
+            <span>Y</span>
+            <input id="nodeYInput" name="y" type="number" step="1" min="0" />
+          </label>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--primary" type="submit">Opslaan</button>
+          <button class="btn btn--ghost" type="button" data-close-modal="node">Annuleren</button>
+          <button class="btn btn--danger" id="deleteNodeBtn" type="button" hidden>Verwijderen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="connectionModal" hidden>
+    <div class="modal__backdrop" data-close-modal="connection"></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 id="connectionModalTitle">Verbinding toevoegen</h2>
+        <button class="modal__close" type="button" data-close-modal="connection" aria-label="Sluiten">×</button>
+      </div>
+      <form class="modal__body" id="connectionForm">
+        <label class="field">
+          <span>Van</span>
+          <select id="connectionFromInput" name="from"></select>
+        </label>
+        <label class="field">
+          <span>Naar</span>
+          <select id="connectionToInput" name="to"></select>
+        </label>
+        <label class="field">
+          <span>Lijnstijl</span>
+          <select id="connectionStyleInput" name="style"></select>
+        </label>
+        <div class="modal__actions">
+          <button class="btn btn--primary" type="submit">Opslaan</button>
+          <button class="btn btn--ghost" type="button" data-close-modal="connection">Annuleren</button>
+          <button class="btn btn--danger" id="deleteConnectionBtn" type="button" hidden>Verwijderen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

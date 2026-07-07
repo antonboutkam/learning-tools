@@ -122,6 +122,16 @@
       "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key."
     },
     {
+      "id": "mindmap",
+      "type": "assignment-type",
+      "name": "Mindmap",
+      "version": "v1",
+      "launchUrl": "/types/mindmap/v1/",
+      "schemaUrl": "/types/mindmap/v1/schema.json",
+      "exampleDataUrl": "/types/mindmap/v1/example.json",
+      "description": "Interactieve mindmap met verplaatsbare woorden, kleurkeuzes, lichte/donkere achtergrond en meerdere verbindingsstijlen."
+    },
+    {
       "id": "qr-team-with-role-divide",
       "type": "planar-type",
       "name": "QR team with role divide",

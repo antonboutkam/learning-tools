@@ -1,0 +1,89 @@
+{
+  "unique_id": "demo-mindmap-1",
+  "title": "Mindmap: webtechnologie",
+  "intro": "Verplaats de woorden, voeg eigen begrippen toe en leg verbanden tussen frontend, backend en infrastructuur.",
+  "theme": "donker",
+  "readOnly": false,
+  "showGrid": true,
+  "centerNodeId": "html",
+  "autoLayout": true,
+  "spread": 0.75,
+  "nodes": [
+    {
+      "id": "html",
+      "label": "HTML",
+      "linkUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+      "color": "goud",
+      "x": 600,
+      "y": 320
+    },
+    {
+      "id": "css",
+      "label": "CSS",
+      "color": "hemel",
+      "x": 760,
+      "y": 220
+    },
+    {
+      "id": "javascript",
+      "label": "JavaScript",
+      "color": "koraal",
+      "x": 760,
+      "y": 420
+    },
+    {
+      "id": "php",
+      "label": "PHP",
+      "linkUrl": "https://www.php.net/",
+      "color": "indigo",
+      "x": 960,
+      "y": 320,
+      "satellites": [
+        { "label": "API", "linkUrl": "https://www.php.net/manual/en/book.json.php" },
+        { "label": "Templates", "linkUrl": "https://www.php.net/manual/en/book.outcontrol.php" },
+        "Sessies"
+      ]
+    },
+    {
+      "id": "mysql",
+      "label": "MySQL",
+      "color": "mos",
+      "x": 1120,
+      "y": 420
+    },
+    {
+      "id": "apache",
+      "label": "Apache",
+      "color": "leisteen",
+      "x": 1120,
+      "y": 220
+    }
+  ],
+  "connections": [
+    {
+      "from": "html",
+      "to": "css",
+      "style": "lijn"
+    },
+    {
+      "from": "html",
+      "to": "javascript",
+      "style": "pijl"
+    },
+    {
+      "from": "javascript",
+      "to": "php",
+      "style": "stippellijn"
+    },
+    {
+      "from": "php",
+      "to": "mysql",
+      "style": "veel"
+    },
+    {
+      "from": "php",
+      "to": "apache",
+      "style": "veel-op-veel"
+    }
+  ]
+}

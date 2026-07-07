@@ -70,6 +70,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/scrumboard/v1/example.json`
   - Extra: configureerbare kolommen, standaard ingeklapte geeltjes met optionele punten, optioneel studenten-items toevoegen/verwijderen, maximale breedte en persistente opslag per `key`
 
+- Mindmap (v1)
+  - Pad: `public_html/types/mindmap/v1/`
+  - Data‑schema: `public_html/types/mindmap/v1/schema.json`
+  - Example: `public_html/types/mindmap/v1/example.json`
+  - Extra: verplaatsbare woorden, beperkte kleurset per node, licht/donker thema, meerdere lijnstijlen (`lijn`, `pijl`, `stippellijn`, `veel`, `veel-op-veel`), dropdown-gestuurde verbindingen en frontend-bewerkmodus via `readOnly: false`
+
 - Code in volgorde zetten (v1)
   - Pad: `public_html/types/code-in-volgorde-zetten/v1/`
   - Data‑schema: `public_html/types/code-in-volgorde-zetten/v1/schema.json`
@@ -95,6 +101,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
 - `/types/scrumboard/v1/?key=demo-scrumboard-1&data=example.json`
+- `/types/mindmap/v1/?unique_id=demo-mindmap-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
 - `/types/qr-team-with-role-divide/v1/?unique_id=demo-qr-team-1&data=example.json`
 

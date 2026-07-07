@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/mindmap/v1/schema.json",
+  "title": "Mindmap v1",
+  "description": "Interactieve mindmap of woordweb met verplaatsbare woorden, instelbare kleur per node, lichte of donkere achtergrond en verbindingen met meerdere lijnstijlen. Als `readOnly` uit staat, kunnen gebruikers in de frontend zelf woorden en verbindingen toevoegen.",
+  "type": "object",
+  "required": ["unique_id", "title", "theme", "readOnly", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke ID",
+      "description": "Unieke sleutel voor deze mindmap-instance. Wordt gebruikt voor persistente opslag wanneer gebruikers de map mogen aanpassen.",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel boven de mindmap.",
+      "minLength": 1
+    },
+    "intro": {
+      "type": "string",
+      "title": "Intro (optioneel)",
+      "description": "Korte uitleg of opdracht boven de mindmap."
+    },
+    "theme": {
+      "type": "string",
+      "title": "Achtergrondthema",
+      "description": "Kies of de mindmap een lichte of donkere uitstraling krijgt.",
+      "enum": ["licht", "donker"],
+      "default": "licht"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "title": "Alleen-lezen",
+      "description": "Als dit aan staat, kunnen gebruikers niets toevoegen, verwijderen, verbinden of verplaatsen. Als dit uit staat, zijn frontend-bewerkingen en lokale opslag actief.",
+      "default": true
+    },
+    "showGrid": {
+      "type": "boolean",
+      "title": "Grid tonen",
+      "description": "Toon een subtiel raster op de achtergrond om de mindmap makkelijker uit te lijnen.",
+      "default": true
+    },
+    "centerNodeId": {
+      "type": "string",
+      "title": "Centrale node-ID (optioneel)",
+      "description": "ID van het woord dat in het midden van de mindmap moet staan. Laat leeg om automatisch de eerste node of meest verbonden node te gebruiken."
+    },
+    "autoLayout": {
+      "type": "boolean",
+      "title": "Automatisch radiaal verdelen",
+      "description": "Als dit aan staat, zet de tool woorden bij het laden automatisch in ringen rond de centrale node: direct gerelateerd dichtbij, volgende relaties verder naar buiten.",
+      "default": true
+    },
+    "spread": {
+      "type": "number",
+      "title": "Spreiding",
+      "description": "Relatieve afstand tussen bolletjes en clusters. 1 is normaal, lager is compacter en hoger is ruimer.",
+      "minimum": 0.45,
+      "maximum": 1.4,
+      "default": 0.75
+    },
+    "nodes": {
+      "type": "array",
+      "title": "Woorden / nodes",
+      "description": "De woorden die op de mindmap staan. Gebruik per node een uniek ID; verbindingen verwijzen naar deze IDs.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "connections": {
+      "type": "array",
+      "title": "Verbindingen",
+      "description": "Lijnen tussen twee woorden. De velden `from` en `to` verwijzen naar node-IDs uit de lijst hierboven.",
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/connection"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "title": "Node",
+      "required": ["id", "label", "color", "x", "y"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "ID",
+          "description": "Technische sleutel voor deze node. Gebruik een korte, unieke waarde zonder doublures.",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "title": "Woord",
+          "description": "Tekst die in de node zichtbaar is.",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "linkUrl": {
+          "type": "string",
+          "title": "Hyperlink (optioneel)",
+          "description": "Optionele link voor deze node. De bol opent de link in een nieuw tabblad.",
+          "format": "uri-reference"
+        },
+        "color": {
+          "type": "string",
+          "title": "Kleur",
+          "description": "Kies een vaste kleur uit het beperkte palet.",
+          "enum": ["zand", "koraal", "goud", "mos", "hemel", "indigo", "leisteen"],
+          "default": "hemel"
+        },
+        "x": {
+          "type": "integer",
+          "title": "X-positie",
+          "description": "Horizontale positie in pixels binnen het canvas. Wordt overschreven als automatisch radiaal verdelen aan staat.",
+          "minimum": 0
+        },
+        "y": {
+          "type": "integer",
+          "title": "Y-positie",
+          "description": "Verticale positie in pixels binnen het canvas. Wordt overschreven als automatisch radiaal verdelen aan staat.",
+          "minimum": 0
+        },
+        "satellites": {
+          "type": "array",
+          "title": "Orbit-items (optioneel)",
+          "description": "Korte subpunten die als losse bolletjes om deze node heen worden getoond, bijvoorbeeld deliverables rond een centrale OUT-node.",
+          "items": {
+            "title": "Orbit-item",
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "Tekst",
+                "description": "Korte tekst voor een klein bolletje rond deze node.",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              {
+                "type": "object",
+                "title": "Orbit-item met link",
+                "required": ["label"],
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "title": "Tekst",
+                    "description": "Korte tekst voor een klein bolletje rond deze node.",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "linkUrl": {
+                    "type": "string",
+                    "title": "Hyperlink (optioneel)",
+                    "description": "Optionele link voor dit orbit-item. De bol opent de link in een nieuw tabblad.",
+                    "format": "uri-reference"
+                  },
+                  "position": {
+                    "type": "object",
+                    "title": "Positie (optioneel)",
+                    "description": "Optionele handmatige positie van dit orbit-item binnen het canvas.",
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "integer",
+                        "title": "X-positie",
+                        "minimum": 0
+                      },
+                      "y": {
+                        "type": "integer",
+                        "title": "Y-positie",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "default": []
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "title": "Verbinding",
+      "required": ["from", "to", "style"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string",
+          "title": "Van node-ID",
+          "description": "ID van de bron-node."
+        },
+        "to": {
+          "type": "string",
+          "title": "Naar node-ID",
+          "description": "ID van de doel-node."
+        },
+        "style": {
+          "type": "string",
+          "title": "Lijnstijl",
+          "description": "Kies hoe de verbinding eruit ziet.",
+          "enum": ["lijn", "pijl", "stippellijn", "veel", "veel-op-veel"],
+          "default": "lijn"
+        }
+      }
+    }
+  }
+}
