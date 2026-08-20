@@ -2,6 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const dataUrl = params.get("data");
 let uniqueId = params.get("unique_id");
 
+const headerEl = document.getElementById("header");
 const titleEl = document.getElementById("title");
 const subtitleEl = document.getElementById("subtitle");
 const introEl = document.getElementById("intro");
@@ -19,6 +20,7 @@ let raf = null;
 function setStatus(msg, isError = false) {
   statusEl.textContent = msg;
   statusEl.className = isError ? "status error" : "status";
+  statusEl.hidden = !msg;
 }
 
 function safeText(value) {
@@ -313,7 +315,7 @@ function cardStyleTokens(style) {
   return palettes[style] || null;
 }
 
-function buildEventEl(event, { direction, scale, baseUrl, idx }) {
+function buildEventEl(event, { direction, scale, showDates, baseUrl, idx }) {
   const el = document.createElement("div");
   el.className = "event";
   el.dataset.side = sideForEvent(direction, event.placement, idx);
@@ -341,10 +343,6 @@ function buildEventEl(event, { direction, scale, baseUrl, idx }) {
     bubble.rel = "noopener noreferrer";
   }
 
-  const meta = document.createElement("div");
-  meta.className = "bubble__meta";
-  meta.textContent = formatEventMeta(event.dateObj, scale);
-
   const title = document.createElement("div");
   title.className = "bubble__title";
   title.textContent = safeText(event.title);
@@ -360,7 +358,12 @@ function buildEventEl(event, { direction, scale, baseUrl, idx }) {
   desc.className = "bubble__desc";
   desc.textContent = safeText(event.description);
 
-  bubble.appendChild(meta);
+  if (showDates) {
+    const meta = document.createElement("div");
+    meta.className = "bubble__meta";
+    meta.textContent = formatEventMeta(event.dateObj, scale);
+    bubble.appendChild(meta);
+  }
   bubble.appendChild(title);
   if (subtitle) bubble.appendChild(subtitle);
   bubble.appendChild(desc);
@@ -457,7 +460,8 @@ function layout() {
     }
     timelineEl.classList.toggle("timeline--scroll", Boolean(viewportMinWidthPx));
 
-    const baseMinHeight = Math.max(direction === "vertical" ? 560 : 420, viewportMinHeightPx);
+    const iframeHeightPx = document.body.classList.contains("timeline--bare") ? Math.max(1, window.innerHeight) : 0;
+    const baseMinHeight = Math.max(direction === "vertical" ? 560 : 420, viewportMinHeightPx, iframeHeightPx);
     const css = getComputedStyle(timelineEl);
     const currentMin = Number.parseFloat(css.getPropertyValue("min-height")) || 0;
     if (baseMinHeight && baseMinHeight > currentMin + 1) {
@@ -620,6 +624,7 @@ function layout() {
 
 function render(data, baseUrl) {
   currentData = data;
+  const showDates = data.showDates !== false;
 
   const start = parseDate(data.startDate);
   const end = parseDate(data.endDate);
@@ -646,9 +651,15 @@ function render(data, baseUrl) {
     return;
   }
 
-  titleEl.textContent = safeText(data.title) || "Timeline";
+  const title = safeText(data.title).trim();
+  const bareMode = !title && !showDates;
+  document.body.classList.toggle("timeline--bare", bareMode);
+  headerEl.hidden = bareMode;
+  titleEl.hidden = !title;
+  titleEl.textContent = title;
   const cutsMeta = yearCutIntervals.length ? ` · knipsels: ${yearCutIntervals.length}` : "";
-  subtitleEl.textContent = `${formatRange(start, end)} · schaal: ${safeText(data.scale) || "jaar"}${cutsMeta}`;
+  subtitleEl.hidden = !showDates;
+  subtitleEl.textContent = showDates ? `${formatRange(start, end)} · schaal: ${safeText(data.scale) || "jaar"}${cutsMeta}` : "";
 
   if (typeof data.intro === "string" && data.intro.trim() !== "") {
     introEl.hidden = false;
@@ -707,28 +718,29 @@ function render(data, baseUrl) {
     phasesEl.appendChild(buildPhaseEl(phase));
   });
 
-  // Ticks
-  const maxTicks = 48;
-  const ticks = [];
-  let cur = new Date(startMs);
-  for (let i = 0; i < 5000; i += 1) {
-    if (cur.getTime() > endMs) break;
-    ticks.push(new Date(cur.getTime()));
-    const next = addUnit(cur, safeText(data.scale) || "jaar", 1);
-    if (next.getTime() === cur.getTime()) break;
-    cur = next;
-  }
-  let step = 1;
-  if (ticks.length > maxTicks) step = Math.ceil(ticks.length / maxTicks);
-  let lastTickRatio = -1;
-  for (let i = 0; i < ticks.length; i += step) {
-    const t = ticks[i].getTime();
-    if (isInIntervals(t, yearCutIntervals)) continue;
-    const ratio = compressionMap.toRatio(t);
-    if (ratio <= lastTickRatio + 0.0005) continue;
-    const el = buildTickEl(ratio, tickLabel(ticks[i], safeText(data.scale) || "jaar"));
-    ticksEl.appendChild(el);
-    lastTickRatio = ratio;
+  if (showDates) {
+    const maxTicks = 48;
+    const ticks = [];
+    let cur = new Date(startMs);
+    for (let i = 0; i < 5000; i += 1) {
+      if (cur.getTime() > endMs) break;
+      ticks.push(new Date(cur.getTime()));
+      const next = addUnit(cur, safeText(data.scale) || "jaar", 1);
+      if (next.getTime() === cur.getTime()) break;
+      cur = next;
+    }
+    let step = 1;
+    if (ticks.length > maxTicks) step = Math.ceil(ticks.length / maxTicks);
+    let lastTickRatio = -1;
+    for (let i = 0; i < ticks.length; i += step) {
+      const t = ticks[i].getTime();
+      if (isInIntervals(t, yearCutIntervals)) continue;
+      const ratio = compressionMap.toRatio(t);
+      if (ratio <= lastTickRatio + 0.0005) continue;
+      const el = buildTickEl(ratio, tickLabel(ticks[i], safeText(data.scale) || "jaar"));
+      ticksEl.appendChild(el);
+      lastTickRatio = ratio;
+    }
   }
 
   yearCutIntervals.forEach((interval) => {
@@ -740,7 +752,7 @@ function render(data, baseUrl) {
   events.sort((a, b) => a.dateMs - b.dateMs);
   events.forEach((ev, idx) => {
     const t = compressionMap.toRatio(ev.dateMs);
-    const node = buildEventEl(ev, { direction, scale: safeText(data.scale) || "jaar", baseUrl, idx });
+    const node = buildEventEl(ev, { direction, scale: safeText(data.scale) || "jaar", showDates, baseUrl, idx });
     node.dataset.t = String(t);
     eventsEl.appendChild(node);
   });
@@ -753,7 +765,7 @@ function render(data, baseUrl) {
   if (hiddenEventsCount > 0) {
     notices.push(`${hiddenEventsCount} moment(en) vallen in een weggeknipte periode en delen een positie met het knipteken.`);
   }
-  const emptyMessage = events.length ? "" : "Geen momenten gevonden op de tijdlijn.";
+  const emptyMessage = events.length || phases.length ? "" : "Geen momenten of fasen gevonden op de tijdlijn.";
   const statusText = [emptyMessage, ...notices].filter(Boolean).join(" ");
   setStatus(statusText);
   layout();

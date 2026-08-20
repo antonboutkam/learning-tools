@@ -2,9 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/timeline/v1/schema.json",
   "title": "Timeline v1",
-  "description": "Toon een tijdlijn tussen een start- en einddatum met meerdere momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele faseblokken, optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
+  "description": "Toon een tijdlijn tussen een start- en einddatum met optionele momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele faseblokken, optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
   "type": "object",
-  "required": ["unique_id", "title", "direction", "scale", "startDate", "endDate", "events"],
+  "required": ["unique_id", "direction", "scale", "startDate", "endDate"],
   "additionalProperties": false,
   "properties": {
     "unique_id": {
@@ -15,8 +15,8 @@
     },
     "title": {
       "type": "string",
-      "title": "Titel",
-      "description": "Titel boven de tijdlijn."
+      "title": "Titel (optioneel)",
+      "description": "Titel boven de tijdlijn. Laat leeg voor geen titel. Als ook 'Toon datums' uit staat, toont de tool de tijdlijn zonder buitenkader op de volledige iframe-afmeting."
     },
     "intro": {
       "type": "string",
@@ -59,6 +59,12 @@
       "enum": ["uur", "dag", "maand", "kwartaal", "jaar", "2 jaar", "3 jaar", "4 jaar", "5 jaar", "decennium"],
       "default": "jaar"
     },
+    "showDates": {
+      "type": "boolean",
+      "title": "Toon datums",
+      "description": "Toon de periode en schaal bovenaan, de datumlabels op de as en de datum bij elk moment. Zet uit voor een overzicht met bijvoorbeeld alleen projectfasen.",
+      "default": true
+    },
     "startDate": {
       "title": "Startdatum",
       "description": "Start van de tijdlijn. Je mag een datum (YYYY-MM-DD) of een datum+tijd (ISO 8601 date-time) gebruiken.",
@@ -89,9 +95,9 @@
     },
     "events": {
       "type": "array",
-      "title": "Momenten",
-      "description": "De momenten op de tijdlijn.",
-      "minItems": 1,
+      "title": "Momenten (optioneel)",
+      "description": "De momenten op de tijdlijn. Laat leeg of weg als je alleen fasen wilt tonen.",
+      "default": [],
       "items": { "$ref": "#/$defs/event" }
     }
   },
@@ -220,8 +226,8 @@
         "imageUrl": {
           "type": "string",
           "title": "Afbeelding (optioneel)",
-          "description": "URL naar een afbeelding die in het moment-card wordt getoond. Mag ook relatief zijn t.o.v. de data-URL.",
-          "format": "uri-reference"
+          "description": "Kies een lokale cursusafbeelding die in het moment-card wordt getoond.",
+          "format": "image"
         },
         "linkUrl": {
           "type": "string",

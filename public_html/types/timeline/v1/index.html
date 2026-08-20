@@ -30,9 +30,19 @@
 
 	    .timeline__surface { position: relative; width: 100%; min-height: inherit; }
 
-	    .timeline--horizontal { min-height: 420px; }
-	    .timeline--vertical { min-height: 560px; }
-	    .timeline--scroll { overflow: auto; }
+    .timeline--horizontal { min-height: 420px; }
+    .timeline--vertical { min-height: 560px; }
+    .timeline--scroll { overflow: auto; }
+
+    /* Kaderloze stand: geen titel én geen datum-/schaalkop. */
+    body.timeline--bare { background: transparent; min-height: 100vh; }
+    .timeline--bare .wrap,
+    .timeline--bare .card { min-height: 100vh; }
+    .timeline--bare .wrap { padding: 0; }
+    .timeline--bare .card { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+    .timeline--bare .timeline { min-height: 100vh; height: 100vh; background: transparent; border: 0; border-radius: 0; }
+    .timeline--bare .timeline__surface { min-height: 100vh; }
+    .timeline--bare .intro { padding: 20px 20px 12px; }
 
     .phases {
       position: absolute;
@@ -249,8 +259,8 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1 id="title">Timeline</h1>
+  <header id="header">
+    <h1 id="title"></h1>
     <div class="status" id="subtitle">Laadt data...</div>
   </header>
   <div class="wrap">

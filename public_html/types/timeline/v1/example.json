@@ -4,6 +4,7 @@
   "intro": "Voorbeeldtijdlijn met twee sporen, vaste links/rechts-plaatsing en optionele faseblokken.",
   "direction": "boven-naar-beneden",
   "scale": "maand",
+  "showDates": true,
   "startDate": "2026-08-01",
   "endDate": "2026-12-31",
   "phases": [

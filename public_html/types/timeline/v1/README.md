@@ -10,19 +10,22 @@ De timeline tool toont een tijdlijn tussen een `startDate` en `endDate` met een 
 
 ## Vereiste root-velden
 - `unique_id`: stabiele unieke sleutel voor de instance
-- `title`: titel boven de tijdlijn
 - `direction`: `links-naar-rechts` of `boven-naar-beneden`
 - `scale`: bijvoorbeeld `dag`, `maand`, `jaar` of `kwartaal`
 - `startDate`: begin van de tijdlijn
 - `endDate`: einde van de tijdlijn
-- `events`: lijst met momenten
 
 ## Optionele root-velden
+- `title`: optionele titel boven de tijdlijn; laat leeg voor geen titel
 - `intro`: korte uitleg boven de tijdlijn
+- `showDates`: zet op `false` om de periode en schaal bovenaan, de labels op de as en de datum per moment te verbergen
 - `yearCuts`: komma-gescheiden jaren of jaar-ranges die uit de as geknipt worden
 - `phases`: optionele gekleurde faseblokken met label, start- en einddatum
+- `events`: optionele lijst met momenten; laat weg of gebruik een lege lijst voor een overzicht met alleen fasen
 - `viewport.minWidthPx`: handig voor brede horizontale tijdlijnen
 - `viewport.minHeightPx`: handig voor lange verticale tijdlijnen; de tool vergroot verticale tijdlijnen daarnaast zelf verder als cards anders zouden botsen
+
+Als `title` leeg is én `showDates` op `false` staat, verdwijnt ook het buitenkader. De tijdlijn vult dan de volledige breedte en hoogte van het iframe, zonder achtergrondkleur, rand of afgeronde buitenhoeken.
 
 ## Event-velden
 Per event zijn dit de belangrijkste velden:
@@ -32,7 +35,7 @@ Per event zijn dit de belangrijkste velden:
 - `description`: langere uitleg
 - `placement`: positie van de card ten opzichte van de as
 - `cardStyle`: optioneel kleurpalet voor kaart, rand, tekst en marker
-- `imageUrl`: optionele afbeelding in de card
+- `imageUrl`: optionele lokale cursusafbeelding in de card; het schema gebruikt de `image`-annotatie zodat de configuratie-UI hiervoor een afbeeldingskeuzelijst kan tonen
 - `linkUrl`: maakt de card klikbaar; opent in een nieuw tabblad
 
 ## Phase-velden
@@ -66,6 +69,7 @@ De tool past daarmee in één keer de achtergrond, rand, marker en tekstkleuren 
 - Laat een semesterplanning gerust op maandgrenzen starten/eindigen, ook als het eerste event later in de maand valt; dat geeft meer visuele ademruimte.
 - Gebruik `viewport.minHeightPx` zodra je veel events op een verticale tijdlijn zet. De tool trekt verticale clusters nu ook automatisch verder uit elkaar om overlap te beperken.
 - Gebruik `phases` voor semesterfasen, projectfases of hoofdstukblokken; de fasebanden blijven achter de as en de cards liggen.
+- Gebruik `showDates: false` samen met alleen `phases` voor een fase-overzicht zonder zichtbare datums.
 - Gebruik `cardStyle` als je verschillende sporen of categorieen direct visueel uit elkaar wilt trekken zonder extra legenda in de tekst.
 - Zet `linkUrl` op course- of bronpagina's als de timeline ook als navigatie moet werken.
 - Gebruik `yearCuts` alleen bij lange historische tijdlijnen; voor compacte onderwijsplanningen is het meestal niet nodig.
