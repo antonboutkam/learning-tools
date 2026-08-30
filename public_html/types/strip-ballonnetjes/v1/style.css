@@ -85,6 +85,61 @@ body {
   overflow: hidden;
 }
 
+.answers {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-height: 40vh;
+  padding: 12px;
+  overflow-y: auto;
+  background: linear-gradient(to top, rgba(11, 15, 20, 0.98), rgba(11, 15, 20, 0.86));
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.answers[hidden] { display: none; }
+
+.answer {
+  flex: 1 1 320px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.answer__input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--ink);
+  background: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.38);
+  border-radius: 12px;
+  outline: none;
+  font: inherit;
+  font-size: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+.answer__input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.28), 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .page {
   position: relative;
   width: fit-content;
@@ -131,6 +186,11 @@ body.mode-all-pages .page__img {
   max-height: none;
 }
 
+body.mode-all-pages .answers {
+  position: sticky;
+  bottom: 0;
+}
+
 .bubble {
   position: absolute;
   z-index: 2;
@@ -145,8 +205,14 @@ body.mode-all-pages .page__img {
   white-space: pre-wrap;
 }
 
-.bubble[data-tail="left"]::after,
-.bubble[data-tail="right"]::after {
+.bubble__text {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.bubble:is([data-type="speech"], [data-type="question"])[data-tail="left"]::after,
+.bubble:is([data-type="speech"], [data-type="question"])[data-tail="right"]::after {
   content: "";
   position: absolute;
   bottom: calc(-10px * var(--scale));
@@ -157,8 +223,80 @@ body.mode-all-pages .page__img {
   filter: drop-shadow(0 2px 0 rgba(15, 23, 42, 0.95));
 }
 
-.bubble[data-tail="left"]::after { left: calc(18px * var(--scale)); }
-.bubble[data-tail="right"]::after { right: calc(18px * var(--scale)); }
+.bubble:is([data-type="speech"], [data-type="question"])[data-tail="left"]::after { left: calc(18px * var(--scale)); }
+.bubble:is([data-type="speech"], [data-type="question"])[data-tail="right"]::after { right: calc(18px * var(--scale)); }
+
+.bubble[data-type="thought"][data-full-width="false"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: max(72px, calc(90px * var(--scale)));
+  border-radius: 48% 52% 45% 55% / 55% 46% 54% 45%;
+  padding: max(12px, calc(18px * var(--scale))) max(16px, calc(24px * var(--scale)));
+  text-align: center;
+}
+
+.bubble[data-type="thought"][data-full-width="false"]::before,
+.bubble[data-type="thought"][data-full-width="false"]::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: max(-9px, calc(-13px * var(--scale)));
+  width: 38%;
+  height: max(12px, calc(20px * var(--scale)));
+  background: #ffffff;
+  border: max(1px, calc(2px * var(--scale))) solid rgba(15, 23, 42, 0.95);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.bubble[data-type="thought"][data-full-width="false"]::before { left: 10%; }
+.bubble[data-type="thought"][data-full-width="false"]::after { right: 10%; }
+
+.bubble__thought-tail {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + max(2px, calc(2px * var(--scale))));
+  left: calc(16px * var(--scale));
+  width: calc(42px * var(--scale));
+  height: calc(38px * var(--scale));
+  pointer-events: none;
+}
+
+.bubble[data-tail="right"] .bubble__thought-tail {
+  right: calc(16px * var(--scale));
+  left: auto;
+  transform: scaleX(-1);
+}
+
+.bubble__thought-tail i {
+  position: absolute;
+  display: block;
+  background: #ffffff;
+  border: max(1px, calc(2px * var(--scale))) solid rgba(15, 23, 42, 0.95);
+  border-radius: 50%;
+}
+
+.bubble__thought-tail i:nth-child(1) {
+  top: 0;
+  left: calc(22px * var(--scale));
+  width: calc(17px * var(--scale));
+  height: calc(17px * var(--scale));
+}
+
+.bubble__thought-tail i:nth-child(2) {
+  top: calc(15px * var(--scale));
+  left: calc(11px * var(--scale));
+  width: calc(12px * var(--scale));
+  height: calc(12px * var(--scale));
+}
+
+.bubble__thought-tail i:nth-child(3) {
+  top: calc(27px * var(--scale));
+  left: 0;
+  width: calc(8px * var(--scale));
+  height: calc(8px * var(--scale));
+}
 
 .page__meta {
   position: absolute;

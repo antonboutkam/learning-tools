@@ -6,14 +6,20 @@
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
   const pageMetaEl = document.getElementById("pageMeta");
+  const answersEl = document.getElementById("answers");
 
   const params = new URLSearchParams(window.location.search);
   const dataUrl = params.get("data") || "";
+  const STORAGE_VERSION = 1;
+  const STORAGE_PREFIX = "learning-tools:strip-ballonnetjes:v1:";
 
   let currentConfig = {};
   let currentPages = [];
   let currentIndex = 0;
   let relayout = () => {};
+  let storageInstanceId = "";
+  let answerDefaults = new Map();
+  let persistedAnswers = new Map();
 
   const embedderBaseUrl = (() => {
     const referrer = String(document.referrer || "").trim();
@@ -66,6 +72,141 @@
     if (v === "left" || v === "links") return "left";
     if (v === "right" || v === "rechts") return "right";
     return "none";
+  };
+
+  const normalizeBubbleType = (value) => {
+    const v = String(value || "").toLowerCase();
+    if (v === "gedachte" || v === "thought") return "thought";
+    if (v === "vraag" || v === "question") return "question";
+    return "speech";
+  };
+
+  const isValidVariableName = (value) => /^[a-z0-9_]+$/.test(String(value || ""));
+
+  const storageKey = () => `${STORAGE_PREFIX}${storageInstanceId}`;
+
+  const getAnswer = (variable) => {
+    if (persistedAnswers.has(variable)) return persistedAnswers.get(variable);
+    return answerDefaults.get(variable) || "";
+  };
+
+  const interpolateText = (template) =>
+    String(template || "").replace(/\{\{\s*([a-z0-9_]+)\s*\}\}/g, (_match, variable) => getAnswer(variable));
+
+  const validateQuestions = (config) => {
+    const pages = Array.isArray(config.pages) ? config.pages : [];
+    for (let pageIndex = 0; pageIndex < pages.length; pageIndex += 1) {
+      const bubbles = Array.isArray(pages[pageIndex]?.bubbles) ? pages[pageIndex].bubbles : [];
+      for (let bubbleIndex = 0; bubbleIndex < bubbles.length; bubbleIndex += 1) {
+        const bubble = bubbles[bubbleIndex];
+        if (normalizeBubbleType(bubble?.type) !== "question") continue;
+        if (!isValidVariableName(bubble?.variable)) {
+          return `Vraagballon ${bubbleIndex + 1} op pagina ${pageIndex + 1} heeft een ongeldige variabelenaam. Gebruik alleen kleine letters, cijfers en underscores.`;
+        }
+      }
+    }
+    return "";
+  };
+
+  const loadAnswerState = (config) => {
+    storageInstanceId = String(
+      params.get("unique_id") || config.unique_id || dataUrl || window.location.pathname
+    ).trim();
+    answerDefaults = new Map();
+    persistedAnswers = new Map();
+
+    const pages = Array.isArray(config.pages) ? config.pages : [];
+    pages.forEach((page) => {
+      const bubbles = Array.isArray(page?.bubbles) ? page.bubbles : [];
+      bubbles.forEach((bubble) => {
+        if (normalizeBubbleType(bubble?.type) !== "question") return;
+        const variable = String(bubble.variable || "");
+        if (!isValidVariableName(variable) || answerDefaults.has(variable)) return;
+        answerDefaults.set(variable, String(bubble.defaultValue ?? ""));
+      });
+    });
+
+    try {
+      const raw = window.localStorage.getItem(storageKey());
+      if (!raw) return;
+      const stored = JSON.parse(raw);
+      if (stored?.storageVersion !== STORAGE_VERSION || !stored.answers || typeof stored.answers !== "object") return;
+      Object.entries(stored.answers).forEach(([variable, value]) => {
+        if (isValidVariableName(variable) && typeof value === "string") persistedAnswers.set(variable, value);
+      });
+    } catch (_) {}
+  };
+
+  const saveAnswerState = () => {
+    try {
+      window.localStorage.setItem(
+        storageKey(),
+        JSON.stringify({ storageVersion: STORAGE_VERSION, answers: Object.fromEntries(persistedAnswers) })
+      );
+    } catch (_) {}
+  };
+
+  const updateBubbleTexts = () => {
+    if (!pagesEl) return;
+    pagesEl.querySelectorAll(".bubble__text[data-template]").forEach((textEl) => {
+      textEl.textContent = interpolateText(textEl.dataset.template || "");
+    });
+  };
+
+  const renderAnswerFields = (pages) => {
+    if (!answersEl) return;
+    answersEl.innerHTML = "";
+
+    const questionsByVariable = new Map();
+    pages.forEach((page) => {
+      const bubbles = Array.isArray(page?.bubbles) ? page.bubbles : [];
+      bubbles.forEach((bubble) => {
+        if (normalizeBubbleType(bubble?.type) !== "question") return;
+        const variable = String(bubble.variable || "");
+        if (isValidVariableName(variable) && !questionsByVariable.has(variable)) {
+          questionsByVariable.set(variable, bubble);
+        }
+      });
+    });
+
+    if (questionsByVariable.size === 0) {
+      answersEl.hidden = true;
+      return;
+    }
+
+    questionsByVariable.forEach((bubble, variable) => {
+      const fieldEl = document.createElement("div");
+      fieldEl.className = "answer";
+
+      const inputId = `answer-${variable}`;
+      const labelEl = document.createElement("label");
+      labelEl.className = "sr-only";
+      labelEl.htmlFor = inputId;
+      labelEl.textContent = `Antwoord op: ${interpolateText(bubble.text)}`;
+
+      const inputEl = document.createElement("input");
+      inputEl.className = "answer__input";
+      inputEl.id = inputId;
+      inputEl.name = variable;
+      inputEl.type = "text";
+      inputEl.autocomplete = "off";
+      inputEl.placeholder = String(bubble.placeholder || "");
+      inputEl.value = getAnswer(variable);
+      inputEl.dataset.variable = variable;
+      inputEl.addEventListener("input", () => {
+        persistedAnswers.set(variable, inputEl.value);
+        saveAnswerState();
+        answersEl.querySelectorAll(".answer__input").forEach((otherInput) => {
+          if (otherInput !== inputEl && otherInput.dataset.variable === variable) otherInput.value = inputEl.value;
+        });
+        updateBubbleTexts();
+      });
+
+      fieldEl.append(labelEl, inputEl);
+      answersEl.appendChild(fieldEl);
+    });
+
+    answersEl.hidden = false;
   };
 
   const applyLayoutForPage = (pageEl, imgEl, bubbles) => {
@@ -134,13 +275,29 @@
       if (!bubble || typeof bubble !== "object") return;
       const el = document.createElement("div");
       el.className = "bubble";
-      el.textContent = String(bubble.text || "");
+      el.dataset.type = normalizeBubbleType(bubble.type);
+
+      const textEl = document.createElement("span");
+      textEl.className = "bubble__text";
+      textEl.dataset.template = String(bubble.text || "");
+      textEl.textContent = interpolateText(textEl.dataset.template);
+      el.appendChild(textEl);
+
       const hasWidth = bubble.width !== undefined && bubble.width !== null && bubble.width !== "";
       el.dataset.x = String(bubble.x ?? 0);
       el.dataset.y = String(bubble.y ?? 0);
       el.dataset.w = hasWidth ? String(bubble.width) : "";
       el.dataset.fullWidth = hasWidth ? "false" : "true";
       el.dataset.tail = hasWidth ? normalizeTail(bubble.tail) : "none";
+
+      if (el.dataset.type === "thought" && el.dataset.tail !== "none") {
+        const thoughtTail = document.createElement("span");
+        thoughtTail.className = "bubble__thought-tail";
+        thoughtTail.setAttribute("aria-hidden", "true");
+        thoughtTail.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
+        el.appendChild(thoughtTail);
+      }
+
       pageEl.appendChild(el);
       bubbleEls.push(el);
     });
@@ -171,6 +328,7 @@
     });
 
     relayout = () => relayoutTasks.forEach((fn) => fn());
+    renderAnswerFields(currentPages);
     updateNav();
   };
 
@@ -186,6 +344,7 @@
     }
     pagesEl.appendChild(built.pageEl);
     relayout = built.doLayout;
+    renderAnswerFields([page]);
     updateNav();
   };
 
@@ -200,6 +359,14 @@
   const render = (config) => {
     if (!pagesEl) return;
 
+    const questionError = validateQuestions(config);
+    if (questionError) {
+      pagesEl.innerHTML = "";
+      if (answersEl) answersEl.hidden = true;
+      setHint(questionError, "error");
+      return;
+    }
+
     const title = String(config.title || "Strip ballonnetjes");
     if (titleEl) titleEl.textContent = title;
 
@@ -211,6 +378,7 @@
 
     currentConfig = config || {};
     currentPages = pages;
+    loadAnswerState(currentConfig);
     if (currentIndex >= currentPages.length) currentIndex = 0;
     document.body.classList.toggle("mode-all-pages", currentConfig.showAllPages === true);
 
@@ -249,6 +417,7 @@
   window.addEventListener("keydown", (e) => {
     if (e.defaultPrevented) return;
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.target instanceof HTMLElement && (e.target.matches("input, textarea, select, button") || e.target.isContentEditable)) return;
     if (currentConfig.showAllPages === true) return;
     if (currentPages.length <= 1) return;
     if (e.key === "ArrowLeft") goTo(currentIndex - 1);
