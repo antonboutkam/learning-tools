@@ -1,0 +1,16 @@
+{
+  "aantalWoordenPerStudent": 3,
+  "onderzoektijdPerWoordInSeconden": 120,
+  "spreektijdInSeconden": 60,
+  "jargonWoorden": [
+    "Klantvraag",
+    "Requirements",
+    "Programma van eisen",
+    "Prototype",
+    "MVP",
+    "Microcontroller",
+    "Sensor",
+    "Actuator",
+    "Interface"
+  ]
+}

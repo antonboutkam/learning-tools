@@ -140,6 +140,16 @@
       "schemaUrl": "/types/qr-team-with-role-divide/v1/schema.json",
       "exampleDataUrl": "/types/qr-team-with-role-divide/v1/example.json",
       "description": "Planar tool met QR-join, teamindeling, rolrotatie, countdowns en optionele audio/video-opnames per rol."
+    },
+    {
+      "id": "jargonwoorden-presenteren",
+      "type": "planar-type",
+      "name": "Jargonwoorden presenteren",
+      "version": "v1",
+      "launchUrl": "/types/jargonwoorden-presenteren/v1/",
+      "schemaUrl": "/types/jargonwoorden-presenteren/v1/schema.json",
+      "exampleDataUrl": "/types/jargonwoorden-presenteren/v1/example.json",
+      "description": "Speel met jargonwoorden: verdeel woorden, laat studenten onderzoeken en rouleer presentatoren met timers, stemmen en scores."
     }
   ]
 }

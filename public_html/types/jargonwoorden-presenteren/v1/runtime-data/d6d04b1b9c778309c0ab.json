@@ -1,0 +1,57 @@
+{
+    "code": "d6d04b1b9c778309c0ab",
+    "uniqueId": "smart-technology-1000167-jargon",
+    "createdAt": 1788328973189,
+    "teacherToken": "3cfb2a7d60e041e13e76413dcaa5af64",
+    "config": {
+        "aantalWoordenPerStudent": 3,
+        "onderzoektijdPerWoordInSeconden": 120,
+        "spreektijdInSeconden": 60,
+        "jargonWoorden": [
+            "Klantvraag",
+            "Requirements",
+            "Programma van eisen",
+            "Prototype",
+            "MVP",
+            "Microcontroller",
+            "Sensor",
+            "Actuator",
+            "Interface"
+        ]
+    },
+    "participants": [
+        {
+            "id": "af2a8343ea27477387c3ab2c584f53e2",
+            "token": "bc4c4ed0-cc5bad63-60592b11-513b11b3",
+            "name": "Daniel",
+            "icon": "🐸",
+            "joinedAt": 1788331637141,
+            "words": [
+                "Prototype",
+                "Microcontroller",
+                "Programma van eisen"
+            ]
+        },
+        {
+            "id": "af2a8343ea27477387c3ab2c584f53e2",
+            "token": "bc4c4ed0-cc5bad63-60592b11-513b11b3",
+            "name": "Daniel",
+            "icon": "🐸",
+            "joinedAt": 1788331637141,
+            "words": [
+                "Programma van eisen",
+                "Sensor",
+                "MVP"
+            ]
+        }
+    ],
+    "scores": [],
+    "presented": [],
+    "showScore": false,
+    "started": true,
+    "phase": "presentations",
+    "currentRound": 2,
+    "roundEndsAt": 1788332019204,
+    "transitionEndsAt": 1788332024270,
+    "presentation": null
+}

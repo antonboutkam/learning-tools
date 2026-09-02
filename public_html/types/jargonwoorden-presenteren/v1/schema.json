@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/jargonwoorden-presenteren/v1/schema.json",
+  "title": "Jargonwoorden presenteren v1",
+  "description": "Speelse klasactiviteit waarin studenten jargonwoorden onderzoeken en presenteren.",
+  "type": "object",
+  "required": ["aantalWoordenPerStudent", "onderzoektijdPerWoordInSeconden", "spreektijdInSeconden", "jargonWoorden"],
+  "additionalProperties": false,
+  "properties": {
+    "aantalWoordenPerStudent": {
+      "type": "integer",
+      "title": "Aantal woorden per student",
+      "description": "Het maximale aantal jargonwoorden dat iedere student krijgt.",
+      "minimum": 1,
+      "default": 3
+    },
+    "onderzoektijdPerWoordInSeconden": {
+      "type": "integer",
+      "title": "Onderzoektijd per woord (seconden)",
+      "description": "Hoeveel seconden studenten per woord krijgen om de betekenis te onderzoeken.",
+      "minimum": 5,
+      "default": 120
+    },
+    "spreektijdInSeconden": {
+      "type": "integer",
+      "title": "Spreektijd (seconden)",
+      "description": "De starttijd voor een presentatie. Stemmen voegen 5 seconden toe of trekken 5 seconden af.",
+      "minimum": 5,
+      "default": 60
+    },
+    "jargonWoorden": {
+      "type": "array",
+      "title": "Jargonwoorden",
+      "description": "De lijst met woorden die over de studenten verdeeld wordt.",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "title": "Jargonwoord",
+        "description": "Eén jargonwoord.",
+        "minLength": 1
+      }
+    }
+  }
+}

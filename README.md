@@ -88,6 +88,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/qr-team-with-role-divide/v1/example.json`
   - Extra: `planar-type` met QR-join, live teamindeling, rolrotatie per ronde, countdowns en optionele audio/video-opname met teamconsent
 
+- Jargonwoorden presenteren (v1)
+  - Pad: `public_html/types/jargonwoorden-presenteren/v1/`
+  - Data-schema: `public_html/types/jargonwoorden-presenteren/v1/schema.json`
+  - Example: `public_html/types/jargonwoorden-presenteren/v1/example.json`
+  - Extra: `canvas_course_view` (`teacher`, `student`, `presentation`) en `canvas_course_mode` (`individual`, `plenary`, `hybrid`), server-side docentclaim per instance, automatische woordverdeling, late instroom, onderzoeks- en spreektimers, presentatie-roulette, stemmen, scorebord en naamopslag
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
@@ -104,6 +110,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/mindmap/v1/?unique_id=demo-mindmap-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`
 - `/types/qr-team-with-role-divide/v1/?unique_id=demo-qr-team-1&data=example.json`
+- `/types/jargonwoorden-presenteren/v1/?canvas_course_view=teacher&canvas_course_mode=plenary&unique_id=demo-jargon-1&data=example.json`
 
 ## LTI test-laag (course-level, zonder admin/developer key)
 Per tool is een vaste teststructuur toegevoegd:
