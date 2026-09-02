@@ -10,6 +10,8 @@ De defaults zijn `canvas_course_view=student` en `canvas_course_mode=individual`
 
 De tool gebruikt `api.php` voor gedeelde sessiestatus. De eerste docentpagina maakt de sessie aan; studenten melden zich daarna aan en zien in hun eigen scherm duidelijk welke naam de server heeft geregistreerd. Studenten die tijdens een lopende onderzoeksronde binnenkomen, krijgen alleen de nog resterende rondes. De server gebruikt een deelnemertoken voor naam- en stemmutaties; IP-adres/user-agent worden als aanvullende docentclaim opgeslagen, maar een browser-token blijft de betrouwbare sessie-identiteit.
 
+Sessies worden standaard buiten de document root opgeslagen in `${sys_temp_dir}/learning-tools-jargonwoorden-presenteren` (meestal `/tmp/learning-tools-jargonwoorden-presenteren`). Stel in productie `LEARNING_TOOLS_JARGONWOORDEN_STORAGE=/pad/naar/data/learning-tools/jargonwoorden-presenteren` in om een vaste datamap te gebruiken; die map heeft voorrang op `/tmp`.
+
 ## Courses-configuratie
 
 Gebruik deze JSON als configuratiedata in Courses:

@@ -8,7 +8,42 @@ final class ApiError extends RuntimeException { public int $status; public funct
 function out(array $data, int $status=200): never { http_response_code($status); echo json_encode($data, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES); exit; }
 function fail(Throwable $e): never { out(['error'=>$e->getMessage()], $e instanceof ApiError ? $e->status : 500); }
 function body(): array { $raw=file_get_contents('php://input'); $data=json_decode($raw ?: '{}', true); return is_array($data)?$data:[]; }
-function root(): string { $path=__DIR__.'/runtime-data'; if(!is_dir($path)) @mkdir($path,0777,true); if(!is_writable($path)) throw new ApiError('De sessie-opslag is niet schrijfbaar.',500); return $path; }
+function ensure_storage_root(string $candidate): ?string
+{
+    $candidate = rtrim(trim($candidate), '/\\');
+    if ($candidate === '') {
+        return null;
+    }
+    if (!is_dir($candidate) && !@mkdir($candidate, 0700, true) && !is_dir($candidate)) {
+        return null;
+    }
+    return is_writable($candidate) ? $candidate : null;
+}
+
+function root(): string
+{
+    static $resolved = null;
+    if (is_string($resolved) && $resolved !== '') {
+        return $resolved;
+    }
+
+    $configured = trim((string)getenv('LEARNING_TOOLS_JARGONWOORDEN_STORAGE'));
+    $candidates = [];
+    if ($configured !== '') {
+        $candidates[] = $configured;
+    }
+    $candidates[] = rtrim(sys_get_temp_dir(), '/\\') . '/learning-tools-jargonwoorden-presenteren';
+
+    foreach ($candidates as $candidate) {
+        $path = ensure_storage_root($candidate);
+        if ($path !== null) {
+            $resolved = $path;
+            return $resolved;
+        }
+    }
+
+    throw new ApiError('Kan geen schrijfbare sessie-opslag buiten de document root gebruiken.', 500);
+}
 function code(string $id): string { return substr(hash('sha256',$id),0,20); }
 function path(string $code): string { return root().'/'.$code.'.json'; }
 function lock(string $code): string { return root().'/'.$code.'.lock'; }
