@@ -2,11 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/strip-ballonnetjes/v1/schema.json",
   "title": "Strip ballonnetjes v1",
-  "description": "Toon één of meer (strip)afbeeldingen met tekstballonnen die je met x/y coördinaten positioneert.",
+  "description": "Toon één of meer (strip)afbeeldingen met spraak-, gedachte- en vraagballonnen die je met x/y coördinaten positioneert.",
   "type": "object",
   "required": ["pages"],
   "additionalProperties": false,
   "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke ID (optioneel)",
+      "description": "Stabiele unieke sleutel voor deze tool-instance. Hiermee worden antwoorden van verschillende strips apart in localStorage opgeslagen.",
+      "minLength": 1
+    },
     "title": {
       "type": "string",
       "title": "Titel (optioneel)",
@@ -27,7 +33,7 @@
     "pages": {
       "type": "array",
       "title": "Pagina’s",
-      "description": "Elke pagina bestaat uit een afbeelding en één of meer tekstballonnen.",
+      "description": "Elke pagina bestaat uit een afbeelding en één of meer spraak-, gedachte- of vraagballonnen.",
       "minItems": 1,
       "items": {
         "type": "object",
@@ -70,7 +76,32 @@
                 "text": {
                   "type": "string",
                   "title": "Tekst",
-                  "description": "Tekst in het ballonnetje. Nieuwe regel via \\n."
+                  "description": "Tekst in het ballonnetje. Nieuwe regel via \\n. Gebruik {{variabelenaam}} om een eerder ingevuld antwoord in de tekst te plaatsen."
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Soort ballon",
+                  "description": "Kies een spraakballon, een gedachteballon als wolkje of een vraagballon met een invulveld onder in het scherm.",
+                  "enum": ["spraak", "gedachte", "vraag"],
+                  "enumNames": ["Spraak", "Gedachte", "Vraag"],
+                  "default": "spraak"
+                },
+                "variable": {
+                  "type": "string",
+                  "title": "Variabelenaam",
+                  "description": "Naam waaronder het antwoord wordt opgeslagen en via {{variabelenaam}} in vervolgteksten kan worden gebruikt. Alleen kleine letters, cijfers en underscores zijn toegestaan.",
+                  "minLength": 1,
+                  "pattern": "^[a-z0-9_]+$"
+                },
+                "placeholder": {
+                  "type": "string",
+                  "title": "Placeholder (optioneel)",
+                  "description": "Hulptekst die in het lege antwoordveld wordt getoond."
+                },
+                "defaultValue": {
+                  "type": "string",
+                  "title": "Standaardwaarde (optioneel)",
+                  "description": "Waarde waarmee het antwoordveld wordt vooringevuld zolang de student nog geen eigen antwoord heeft opgeslagen."
                 },
                 "x": {
                   "type": "number",
@@ -90,11 +121,24 @@
                 },
                 "tail": {
                   "type": "string",
-                  "title": "Staartje",
+                  "title": "Richting",
                   "enum": ["left", "right", "none", "links", "rechts"],
-                  "description": "Waar het puntje (staartje) zit. `links`/`rechts` worden ook geaccepteerd."
+                  "description": "Aan welke kant het puntige staartje of de gedachtebolletjes staan. Een vraagballon gebruikt dezelfde puntige vorm als een spraakballon. `links`/`rechts` worden ook geaccepteerd."
                 }
-              }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": { "const": "vraag" }
+                    },
+                    "required": ["type"]
+                  },
+                  "then": {
+                    "required": ["variable"]
+                  }
+                }
+              ]
             }
           }
         }

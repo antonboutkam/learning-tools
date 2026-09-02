@@ -41,6 +41,8 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/strip-ballonnetjes/v1/`
   - Data‑schema: `public_html/types/strip-ballonnetjes/v1/schema.json`
   - Example: `public_html/types/strip-ballonnetjes/v1/example.json`
+  - Ondersteunt spraakballonnen met een puntig staartje, gedachteballonnen als wolkje en vraagballonnen met een opgeslagen antwoordveld.
+  - Gebruik bij een vraag een variabelenaam zoals `naam`; plaats het antwoord daarna met `{{naam}}` in teksten op vervolgpagina’s.
 
 - Notities (v1)
   - Pad: `public_html/types/notities/v1/`

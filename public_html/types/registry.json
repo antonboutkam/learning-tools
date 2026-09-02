@@ -59,7 +59,7 @@
       "launchUrl": "/types/strip-ballonnetjes/v1/",
       "schemaUrl": "/types/strip-ballonnetjes/v1/schema.json",
       "exampleDataUrl": "/types/strip-ballonnetjes/v1/example.json",
-      "description": "Toon een reeks afbeeldingen met tekstballonnen. Per ballon: x/y positie, breedte en staartje links/rechts."
+      "description": "Toon een reeks afbeeldingen met spraak-, gedachte- en vraagballonnen. Vraagantwoorden worden lokaal bewaard en zijn als variabele beschikbaar in vervolgteksten."
     },
     {
       "id": "notities",
