@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slide-show</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="slideshow" id="slideshow" aria-label="Slide-show">
+    <section class="stage" id="stage" aria-live="polite" aria-atomic="true"></section>
+
+    <div class="controls" id="controls">
+      <button class="control" id="previousButton" type="button" aria-label="Vorige slide">←</button>
+      <button class="control control--play" id="playButton" type="button" aria-label="Afspelen">▶</button>
+      <div class="progress" id="progress" aria-label="Voortgang"></div>
+      <button class="control" id="nextButton" type="button" aria-label="Volgende slide">→</button>
+    </div>
+
+    <p class="status" id="status" role="status"></p>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

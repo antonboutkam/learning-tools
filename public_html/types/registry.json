@@ -150,6 +150,16 @@
       "schemaUrl": "/types/jargonwoorden-presenteren/v1/schema.json",
       "exampleDataUrl": "/types/jargonwoorden-presenteren/v1/example.json",
       "description": "Speel met jargonwoorden: verdeel woorden, laat studenten onderzoeken en rouleer presentatoren met timers, stemmen en scores."
+    },
+    {
+      "id": "slide-show",
+      "type": "planar-type",
+      "name": "Slide-show",
+      "version": "v1",
+      "launchUrl": "/types/slide-show/v1/",
+      "schemaUrl": "/types/slide-show/v1/schema.json",
+      "exampleDataUrl": "/types/slide-show/v1/example.json",
+      "description": "Speel slides met vrij positioneerbare, getimede teksten, in- en uit-effecten en instelbare automatische voortgang af."
     }
   ]
 }

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.devroc.nl/types/slide-show/v1/schema.json",
+  "title": "Slide-show v1",
+  "description": "Toon een automatisch of handmatig afspeelbare reeks slides met vrij positioneerbare, getimede teksten en in- en uit-effecten.",
+  "type": "object",
+  "required": ["interval", "loop", "automatischStarten", "voortgang", "slides"],
+  "additionalProperties": false,
+  "properties": {
+    "interval": {
+      "type": "number",
+      "title": "Interval (seconden)",
+      "description": "Standaardduur van elke slide in seconden. Een slide kan hiervan afwijken met de optionele parameter duur.",
+      "default": 5,
+      "minimum": 0.5
+    },
+    "loop": {
+      "type": "boolean",
+      "title": "Herhalen / loop",
+      "description": "Begin na de laatste slide automatisch opnieuw bij de eerste slide.",
+      "default": false
+    },
+    "automatischStarten": {
+      "type": "boolean",
+      "title": "Automatisch starten",
+      "description": "Start de slide-show direct na het laden. Als dit uit staat, kan de gebruiker de slide-show met de afspeelknop starten.",
+      "default": true
+    },
+    "voortgang": {
+      "type": "string",
+      "title": "Voortgang",
+      "description": "Kies hoe de huidige positie in de slide-show wordt weergegeven.",
+      "enum": ["bullets", "nummers", "geen"],
+      "enumNames": ["Bullets", "Nummers", "Geen"],
+      "default": "bullets"
+    },
+    "slides": {
+      "type": "array",
+      "title": "Slides",
+      "description": "De slides in de volgorde waarin ze worden afgespeeld.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "title": "Slide",
+        "required": ["teksten"],
+        "additionalProperties": false,
+        "properties": {
+          "duur": {
+            "type": "number",
+            "title": "Duur (seconden, optioneel)",
+            "description": "Duur van alleen deze slide. Laat dit veld leeg om het algemene interval te gebruiken.",
+            "minimum": 0.5
+          },
+          "teksten": {
+            "type": "array",
+            "title": "Teksten",
+            "description": "Een of meer tekstlagen die op ingestelde momenten in deze slide verschijnen en verdwijnen.",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "title": "Tekst",
+              "required": ["tekst", "grootte", "positie", "kleur", "lettertype", "begintijd", "eindtijd", "effectIn", "effectOut"],
+              "additionalProperties": false,
+              "properties": {
+                "tekst": {
+                  "type": "string",
+                  "title": "Tekst",
+                  "description": "De tekst die op de slide wordt getoond. Nieuwe regels zijn toegestaan.",
+                  "format": "textarea",
+                  "minLength": 1
+                },
+                "grootte": {
+                  "type": "number",
+                  "title": "Grootte (px)",
+                  "description": "Lettergrootte van de tekst in pixels.",
+                  "default": 48,
+                  "minimum": 12,
+                  "maximum": 112
+                },
+                "positie": {
+                  "type": "object",
+                  "title": "Positie",
+                  "description": "Positie van het middelpunt van de tekst, uitgedrukt als percentage van de slide.",
+                  "required": ["x", "y"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "title": "Horizontale positie (%)",
+                      "description": "0 is de linkerrand en 100 is de rechterrand.",
+                      "default": 50,
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "y": {
+                      "type": "number",
+                      "title": "Verticale positie (%)",
+                      "description": "0 is de bovenrand en 100 is de onderrand.",
+                      "default": 50,
+                      "minimum": 0,
+                      "maximum": 100
+                    }
+                  }
+                },
+                "kleur": {
+                  "type": "string",
+                  "title": "Kleur",
+                  "description": "Tekstkleur als hexadecimale kleurcode, bijvoorbeeld #ffffff.",
+                  "format": "color",
+                  "pattern": "^#[0-9a-fA-F]{6}$",
+                  "default": "#ffffff"
+                },
+                "lettertype": {
+                  "type": "string",
+                  "title": "Lettertype",
+                  "description": "Kies een lettertype uit de compacte, ingebouwde set.",
+                  "enum": ["modern", "klassiek", "monospace", "speels"],
+                  "enumNames": ["Modern", "Klassiek", "Monospace", "Speels"],
+                  "default": "modern"
+                },
+                "begintijd": {
+                  "type": "number",
+                  "title": "Begintijd (seconden)",
+                  "description": "Aantal seconden na het begin van de slide waarop de tekst verschijnt.",
+                  "default": 0,
+                  "minimum": 0
+                },
+                "eindtijd": {
+                  "type": "number",
+                  "title": "Eindtijd (seconden)",
+                  "description": "Aantal seconden na het begin van de slide waarop het uit-effect start.",
+                  "default": 4.5,
+                  "minimum": 0
+                },
+                "effectIn": {
+                  "type": "string",
+                  "title": "Effect in",
+                  "description": "Animatie waarmee de tekst verschijnt.",
+                  "enum": ["geen", "vervagen", "omhoog", "inzoomen"],
+                  "enumNames": ["Geen", "Vervagen", "Omhoog bewegen", "Inzoomen"],
+                  "default": "vervagen"
+                },
+                "effectOut": {
+                  "type": "string",
+                  "title": "Effect out",
+                  "description": "Animatie waarmee de tekst verdwijnt.",
+                  "enum": ["geen", "vervagen", "omlaag", "uitzoomen"],
+                  "enumNames": ["Geen", "Vervagen", "Omlaag bewegen", "Uitzoomen"],
+                  "default": "vervagen"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

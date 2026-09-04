@@ -1,0 +1,59 @@
+{
+  "interval": 5,
+  "loop": true,
+  "automatischStarten": true,
+  "voortgang": "bullets",
+  "slides": [
+    {
+      "teksten": [
+        {
+          "tekst": "Welkom bij de slide-show",
+          "grootte": 64,
+          "positie": {
+            "x": 50,
+            "y": 42
+          },
+          "kleur": "#ffffff",
+          "lettertype": "modern",
+          "begintijd": 0,
+          "eindtijd": 4.4,
+          "effectIn": "inzoomen",
+          "effectOut": "vervagen"
+        },
+        {
+          "tekst": "Elke tekst heeft zijn eigen timing.",
+          "grootte": 28,
+          "positie": {
+            "x": 50,
+            "y": 63
+          },
+          "kleur": "#93c5fd",
+          "lettertype": "klassiek",
+          "begintijd": 1,
+          "eindtijd": 4.2,
+          "effectIn": "omhoog",
+          "effectOut": "omlaag"
+        }
+      ]
+    },
+    {
+      "duur": 7,
+      "teksten": [
+        {
+          "tekst": "Deze slide duurt 7 seconden",
+          "grootte": 54,
+          "positie": {
+            "x": 50,
+            "y": 38
+          },
+          "kleur": "#fef3c7",
+          "lettertype": "speels",
+          "begintijd": 0.4,
+          "eindtijd": 6.2,
+          "effectIn": "vervagen",
+          "effectOut": "uitzoomen"
+        }
+      ]
+    }
+  ]
+}
