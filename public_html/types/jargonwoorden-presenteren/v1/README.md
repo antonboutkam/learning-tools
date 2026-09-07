@@ -2,7 +2,7 @@
 
 Een live klasactiviteit met drie weergaven. Courses geeft de actuele context door via `canvas_course_view` en `canvas_course_mode`.
 
-- `?canvas_course_view=teacher&canvas_course_mode=plenary&unique_id=<id>&data=<config-url>` claimt de docentrol. Per `unique_id` kan slechts één server-side docentclaim bestaan.
+- `?canvas_course_view=teacher&canvas_course_mode=plenary&unique_id=<id>&data=<config-url>` claimt de docentrol. Per `unique_id` kan slechts één server-side docentclaim bestaan. Als de bijbehorende browser-token ontbreekt, kan een docent de rol na een bevestiging overnemen; de oude docentweergave verliest dan de bedienrechten.
 - `?canvas_course_view=student&canvas_course_mode=individual&unique_id=<id>&data=<config-url>` vraagt een naam, bewaart die als `jargonwoorden-presenteren:naam:<unique_id>` in localStorage en laat de naam alleen via "Naam wijzigen" aanpassen.
 - `?canvas_course_view=presentation&canvas_course_mode=plenary&unique_id=<id>&data=<config-url>` is het gedeelde scherm met letterbalk, woorden links, studenten rechts, stemmen en score.
 
