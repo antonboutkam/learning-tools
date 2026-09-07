@@ -1,6 +1,6 @@
 # Digitaal bericht v2
 
-Kale terminal zonder afzenderblok, kop, badges of knoppen. Open `index.html?data=<JSON-URL>` via HTTP(S). `text` is verplicht; overige velden staan in `schema.json`. Iedere tekstregel begint met `$`, ook bij het afbreken van lange regels op mobiel. Tussen alinea’s met een lege regel in de berichttekst staat één witregel zonder dollarprompt. Automatisch afgebroken regels sluiten direct op elkaar aan.
+Kale terminal zonder afzenderblok, kop, badges of knoppen. Open `index.html?data=<JSON-URL>` via HTTP(S). `text` is verplicht; overige velden staan in `schema.json`. Iedere tekstregel begint met `$`, ook bij het afbreken van lange regels op mobiel. Tussen alinea’s met een lege regel in de berichttekst staat één aparte regel met `$`. Automatisch afgebroken regels sluiten direct op elkaar aan.
 
 Het scherm vult de ingestelde iframehoogte en scrollt intern. Tijdens het typen volgt de weergave de laatste regel, behalve als de lezer omhoog is gescrold. Het iframe groeit niet met de tekst.
 

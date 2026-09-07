@@ -40,13 +40,29 @@
         return Math.max(min, Math.min(max, number));
     }
 
+    function storedName() {
+        try {
+            const settingsName = String(localStorage.getItem('canvas.settings.name') || '').trim();
+            if (settingsName) return settingsName;
+            const profile = JSON.parse(localStorage.getItem('canvas-survey-student') || '{}');
+            return String(profile.name || '').trim();
+        } catch (_) {
+            return '';
+        }
+    }
+
+    function resolveTemplate(text) {
+        const name = storedName();
+        return text.replace(/\{naam\}/gi, name || 'daar');
+    }
+
     function show(config) {
         if (!config || typeof config !== 'object' || typeof config.text !== 'string' || !config.text.trim()) {
             throw new Error('Dit bericht bevat geen tekst.');
         }
         document.title = config.title || 'Bericht';
         hint.hidden = true;
-        const tokens = tokenize(config.text);
+        const tokens = tokenize(resolveTemplate(config.text));
         const fullText = finalText(tokens);
         // Half the previous typing rate, including correction and hesitation pauses.
         const speed = numberInRange(config.speed, 1, 0.2, 3) * 0.5;
@@ -74,7 +90,7 @@
                     paragraphBreak = lines.length > 0;
                     return;
                 }
-                if (paragraphBreak) lines.push('');
+                if (paragraphBreak) lines.push('$');
                 paragraphBreak = false;
                 let chars = Array.from(paragraph);
                 while (chars.length > columns) {

@@ -74,7 +74,7 @@ async function run({text = 'A😀|B || C', reduced = false, search = '?data=./ex
     app = await run({reduced: true, text: 'woord '.repeat(40) + '\nNieuw'});
     assert.ok(app.elements.get('screen').textContent.split('\n').every(line => line.startsWith('$ ') && line.length <= 55));
     app = await run({reduced: true, text: 'Eerste regel\n\n  \nTweede regel\n\n'});
-    assert.equal(app.elements.get('screen').textContent, '$ Eerste regel\n\n$ Tweede regel');
+    assert.equal(app.elements.get('screen').textContent, '$ Eerste regel\n$\n$ Tweede regel');
     app = await run({text: 'Lang bericht'});
     const terminal = app.elements.get('terminal');
     terminal.scrollHeight = 2000;
