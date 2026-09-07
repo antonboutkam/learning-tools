@@ -52,6 +52,16 @@
       "description": "Toon een digitaal bericht alsof het getypt wordt op een Commodore 64 terminal. Gebruik | als backspace."
     },
     {
+      "id": "digitaal-bericht-v2",
+      "type": "assignment-type",
+      "name": "Digitaal bericht — toekomst (v2)",
+      "version": "v2",
+      "launchUrl": "/types/digitaal-bericht/v2/",
+      "schemaUrl": "/types/digitaal-bericht/v2/schema.json",
+      "exampleDataUrl": "/types/digitaal-bericht/v2/example.json",
+      "description": "Kale terminal met dollarprompts, herstelde tikfouten en tijdelijke puntjes. Scrollt binnen een vaste hoogte en ondersteunt verminderde beweging."
+    },
+    {
       "id": "strip-ballonnetjes",
       "type": "assignment-type",
       "name": "Strip ballonnetjes",

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/digitaal-bericht/v2/schema.json",
+  "title": "Digitaal bericht v2",
+  "description": "Een kale terminal met een dollarprompt op iedere schermregel, type-effect, herstelde tikfouten en tijdelijke puntjes. Het scherm scrollt binnen een vaste hoogte. Bij verminderde beweging verschijnt de tekst meteen.",
+  "type": "object",
+  "required": [
+    "text"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke instantiecode",
+      "description": "Optionele identificatie voor de koppeling met Courses."
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Documenttitel voor het browsertabblad; wordt niet boven het bericht getoond.",
+      "default": "Een bericht uit de toekomst"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Berichttekst",
+      "description": "Platte tekst met alineas. Gebruik | als backspace en || voor een letterlijk pipe-teken.",
+      "format": "textarea"
+    },
+    "senderLabel": {
+      "type": "string",
+      "title": "Afzender",
+      "description": "Alleen behouden voor bestaande instanties; wordt niet getoond in de terminal.",
+      "deprecated": true
+    },
+    "sentLabel": {
+      "type": "string",
+      "title": "Verzendmoment",
+      "description": "Alleen behouden voor bestaande instanties; wordt niet getoond in de terminal.",
+      "deprecated": true
+    },
+    "statusLabel": {
+      "type": "string",
+      "title": "Ontvangststatus",
+      "description": "Alleen behouden voor bestaande instanties; wordt niet getoond in de terminal.",
+      "deprecated": true
+    },
+    "speed": {
+      "type": "number",
+      "title": "Typsnelheid",
+      "description": "1 is het rustige standaardtempo; hoger is sneller. Het basistempo is 50% lager dan de eerdere terminalanimatie.",
+      "default": 1,
+      "minimum": 0.2,
+      "maximum": 3
+    },
+    "mistakes": {
+      "type": "boolean",
+      "title": "Menselijke typfouten",
+      "description": "Toon tijdelijke tikfouten met backspace en af en toe extra puntjes die weer worden gewist.",
+      "default": true
+    },
+    "mistake_rate": {
+      "type": "number",
+      "title": "Typfoutkans",
+      "description": "Kans per letter op een tijdelijke typfout.",
+      "default": 0.035,
+      "minimum": 0,
+      "maximum": 0.25
+    },
+    "cursor": {
+      "type": "boolean",
+      "title": "Cursor tonen",
+      "description": "Toon tijdens het typen een cursor.",
+      "default": true
+    }
+  }
+}

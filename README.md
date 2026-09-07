@@ -37,6 +37,13 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/digitaal-bericht/v1/schema.json`
   - Example: `public_html/types/digitaal-bericht/v1/example.json`
 
+- Digitaal bericht — toekomst (v2)
+  - Pad: `public_html/types/digitaal-bericht/v2/`
+  - Data-schema: `public_html/types/digitaal-bericht/v2/schema.json`
+  - Example: `public_html/types/digitaal-bericht/v2/example.json`
+  - Kale terminal met `$` op iedere schermregel, herstelde tikfouten en tijdelijke puntjes. Geen afzenderblok of knoppen. Het scherm scrollt binnen de vaste iframehoogte. Bij verminderde beweging verschijnt de hele tekst direct.
+  - Ondersteunt de bestaande tekstvelden en pipe/backspace-notatie. V1 blijft beschikbaar met de C64-weergave. De nieuwe registry-id is `digitaal-bericht-v2`, zodat beide versies apart te kiezen zijn.
+
 - Strip ballonnetjes (v1)
   - Pad: `public_html/types/strip-ballonnetjes/v1/`
   - Data‑schema: `public_html/types/strip-ballonnetjes/v1/schema.json`
