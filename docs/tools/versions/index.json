@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "generatedFrom": "../catalog.json",
+  "tools": [
+    {
+      "id": "juiste-volgorde",
+      "version": "v1",
+      "name": "Juiste volgorde",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Processtappen oefenen",
+        "Chronologie ordenen"
+      ],
+      "documentatie": "versions/juiste-volgorde/v1.md"
+    },
+    {
+      "id": "kies-de-juiste-afbeelding",
+      "version": "v1",
+      "name": "Kies de juiste afbeelding",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Begrippen herkennen",
+        "Visuele meerkeuzevragen"
+      ],
+      "documentatie": "versions/kies-de-juiste-afbeelding/v1.md"
+    },
+    {
+      "id": "wat-hoort-bij-wat",
+      "version": "v1",
+      "name": "Wat hoort bij wat",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Begrippen koppelen",
+        "Woordenschat en definities oefenen"
+      ],
+      "documentatie": "versions/wat-hoort-bij-wat/v1.md"
+    },
+    {
+      "id": "pubquiz-yes-no",
+      "version": "v1",
+      "name": "Pubquiz Yes/No",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Energizer",
+        "Voorkennis checken",
+        "Waar/onwaar-quiz"
+      ],
+      "documentatie": "versions/pubquiz-yes-no/v1.md"
+    },
+    {
+      "id": "digitaal-bericht",
+      "version": "v1",
+      "name": "Digitaal bericht (C64)",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Verhaalintro of instructie tonen",
+        "Retro/computerhistorie-sfeer"
+      ],
+      "documentatie": "versions/digitaal-bericht/v1.md"
+    },
+    {
+      "id": "digitaal-bericht-v2",
+      "version": "v2",
+      "name": "Digitaal bericht — toekomst (v2)",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Bericht uit de toekomst",
+        "Sfeervolle lesopening of reflectie"
+      ],
+      "documentatie": "versions/digitaal-bericht-v2/v2.md"
+    },
+    {
+      "id": "strip-ballonnetjes",
+      "version": "v1",
+      "name": "Strip ballonnetjes",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Stripverhaal met dialoog",
+        "Invuloefening in context",
+        "Sociale situaties bespreken"
+      ],
+      "documentatie": "versions/strip-ballonnetjes/v1.md"
+    },
+    {
+      "id": "notities",
+      "version": "v1",
+      "name": "Notities",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Lesnotities verzamelen",
+        "Reflectie of schetsen"
+      ],
+      "documentatie": "versions/notities/v1.md"
+    },
+    {
+      "id": "timeline",
+      "version": "v1",
+      "name": "Timeline",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Historische tijdlijn",
+        "Projectplanning",
+        "Loopbaan- of toekomstverhaal"
+      ],
+      "documentatie": "versions/timeline/v1.md"
+    },
+    {
+      "id": "bin-hex-dec-reken",
+      "version": "v1",
+      "name": "Bin/Hex/Dec Reken",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Getalstelsels oefenen",
+        "Binair, decimaal en hexadecimaal vergelijken"
+      ],
+      "documentatie": "versions/bin-hex-dec-reken/v1.md"
+    },
+    {
+      "id": "code-in-volgorde-zetten",
+      "version": "v1",
+      "name": "Code in volgorde zetten",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Programmeerstappen ordenen",
+        "Code met afleiders bespreken"
+      ],
+      "documentatie": "versions/code-in-volgorde-zetten/v1.md"
+    },
+    {
+      "id": "markdown-editor",
+      "version": "v1",
+      "name": "Markdown editor",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Markdown leren",
+        "Tekst met directe preview schrijven"
+      ],
+      "documentatie": "versions/markdown-editor/v1.md"
+    },
+    {
+      "id": "scrumboard",
+      "version": "v1",
+      "name": "Scrumboard",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Werk verdelen",
+        "Kanban/sprintbord",
+        "Persoonlijke planning"
+      ],
+      "documentatie": "versions/scrumboard/v1.md"
+    },
+    {
+      "id": "mindmap",
+      "version": "v1",
+      "name": "Mindmap",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Brainstormen",
+        "Begrippen verbinden",
+        "Individuele of gezamenlijke woordwebben"
+      ],
+      "documentatie": "versions/mindmap/v1.md"
+    },
+    {
+      "id": "qr-team-with-role-divide",
+      "version": "v1",
+      "name": "QR team with role divide",
+      "type": "planar-type",
+      "toepassingen": [
+        "Klassikale teamindeling",
+        "Rolroulatie",
+        "Samenwerkingsopdracht met telefoon"
+      ],
+      "documentatie": "versions/qr-team-with-role-divide/v1.md"
+    },
+    {
+      "id": "jargonwoorden-presenteren",
+      "version": "v1",
+      "name": "Jargonwoorden presenteren",
+      "type": "planar-type",
+      "toepassingen": [
+        "Klassikale jargonverkenning",
+        "Presenteren met peer-feedback",
+        "Actieve woordenschat"
+      ],
+      "documentatie": "versions/jargonwoorden-presenteren/v1.md"
+    },
+    {
+      "id": "slide-show",
+      "version": "v1",
+      "name": "Slide-show",
+      "type": "planar-type",
+      "toepassingen": [
+        "Instructies presenteren",
+        "Automatische presentatie",
+        "Beeld met getimede tekstlagen"
+      ],
+      "documentatie": "versions/slide-show/v1.md"
+    }
+  ]
+}

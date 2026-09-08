@@ -1,5 +1,9 @@
 # Learning Tools
 
+## Tooldocumentatie
+
+Per toolversie is agentgerichte documentatie beschikbaar in [`docs/tools/README.md`](docs/tools/README.md). De bewerkbare catalogus bevat standaard **Toepassingen**, **Features**, **Implementatie**, **Configuratie** en **API**; `node scripts/build-tool-docs.mjs` genereert daarvan Markdown per versie en een geaggregeerde JSON-index voor toepassingen.
+
 Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen worden ingeladen. Elk type heeft een `schema.json` voor formulier‑generatie en een `example.json` voor snelle preview.
 
 ## Inhoud
