@@ -10,6 +10,7 @@ const editorEl = document.getElementById("editor");
 const previewEl = document.getElementById("preview");
 const countEl = document.getElementById("count");
 const copyBtn = document.getElementById("copyBtn");
+const resetBtn = document.getElementById("resetBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const downloadDialogEl = document.getElementById("downloadDialog");
 const downloadFormEl = document.getElementById("downloadForm");
@@ -19,6 +20,46 @@ const cancelDownloadBtn = document.getElementById("cancelDownloadBtn");
 
 let renderRaf = null;
 let defaultFilename = "README.md";
+let initialMarkdown = "";
+
+function storageKey() {
+  return uniqueId ? `learning-tools:markdown-editor:v1:${uniqueId}` : null;
+}
+
+function loadSavedMarkdown() {
+  const key = storageKey();
+  if (!key) return null;
+  try {
+    const saved = localStorage.getItem(key);
+    return typeof saved === "string" ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveMarkdown() {
+  const key = storageKey();
+  if (!key) return;
+  try {
+    localStorage.setItem(key, editorEl.value || "");
+  } catch {
+    // Opslag kan uitgeschakeld zijn; de editor blijft bruikbaar.
+  }
+}
+
+function resetMarkdown() {
+  const key = storageKey();
+  if (key) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      // Ignore.
+    }
+  }
+  editorEl.value = initialMarkdown;
+  renderNow();
+  setStatus("De oorspronkelijke tekst is teruggezet.");
+}
 
 function setStatus(msg, isError = false) {
   statusEl.textContent = msg || "";
@@ -261,7 +302,10 @@ function scheduleRender() {
 }
 
 function setupEditorInteractions() {
-  editorEl.addEventListener("input", scheduleRender);
+  editorEl.addEventListener("input", () => {
+    scheduleRender();
+    saveMarkdown();
+  });
 
   editorEl.addEventListener("keydown", (e) => {
     if (e.key !== "Tab") return;
@@ -271,7 +315,10 @@ function setupEditorInteractions() {
     const insert = "  ";
     editorEl.setRangeText(insert, start, end, "end");
     scheduleRender();
+    saveMarkdown();
   });
+
+  resetBtn.addEventListener("click", resetMarkdown);
 
   copyBtn.addEventListener("click", async () => {
     try {
@@ -366,13 +413,17 @@ async function init() {
       introEl.hidden = true;
     }
 
-    editorEl.value = safeText(data.markdown);
+    initialMarkdown = safeText(data.markdown);
+    resetBtn.hidden = !uniqueId;
+    resetBtn.disabled = data.readOnly === true;
+    const savedMarkdown = loadSavedMarkdown();
+    editorEl.value = savedMarkdown === null ? initialMarkdown : savedMarkdown;
     if (data.readOnly === true) {
       editorEl.setAttribute("readonly", "readonly");
       copyBtn.disabled = false;
     }
     renderNow();
-    setStatus("");
+    setStatus(savedMarkdown === null ? "" : "Opgeslagen tekst hersteld.");
   } catch (err) {
     console.error(err);
     setStatus("Kan data niet laden. Controleer de data-URL.", true);

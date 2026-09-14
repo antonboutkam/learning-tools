@@ -10,7 +10,7 @@
     "unique_id": {
       "type": "string",
       "title": "Unieke ID (optioneel)",
-      "description": "Unieke sleutel voor deze tool-instance. Wordt meestal ook als querystring-parameter meegegeven in de iframe-URL (`?unique_id=...`).",
+      "description": "Unieke sleutel voor deze tool-instance. Met dezelfde ID wordt de tekst automatisch in deze browser bewaard en later hersteld. Wordt meestal ook als querystring-parameter meegegeven in de iframe-URL (`?unique_id=...`).",
       "minLength": 1
     },
     "title": {

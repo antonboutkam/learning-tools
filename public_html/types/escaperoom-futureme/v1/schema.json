@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/escaperoom-futureme/v1/schema.json",
+  "title": "FutureMe escaperoom v1",
+  "description": "Een korte fictieve escape room waarin studenten bronnen zorgvuldig bekijken, feiten en aannames onderscheiden, veilig prioriteren en een briefing voorbereiden.",
+  "type": "object",
+  "required": ["unique_id", "title", "intro", "theme", "rooms", "successMessage", "allowHints", "persistProgress"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": { "type": "string", "minLength": 1, "title": "Unieke instantiecode", "description": "Stabiele sleutel voor lokale voortgang van deze instantie." },
+    "title": { "type": "string", "title": "Titel", "description": "Titel van de escaperoom." },
+    "intro": { "type": "string", "title": "Introductie", "description": "Korte verhaal- en lesintroductie.", "format": "textarea" },
+    "theme": {
+      "title": "Thema", "description": "Kies een presetnaam of geef een eigen thema-object met kleuren op.",
+      "oneOf": [
+        { "type": "string", "enum": ["future-message", "midnight-terminal", "paper-case", "signal-green", "sunset-arcade"] },
+        { "type": "object", "title": "Eigen thema", "additionalProperties": false, "properties": {
+          "preset": { "type": "string", "enum": ["future-message", "midnight-terminal", "paper-case", "signal-green", "sunset-arcade"], "title": "Basis-preset", "description": "Optionele preset waarop je eigen kleuren voortbouwen." },
+          "backgroundColor": { "type": "string", "title": "Achtergrondkleur", "description": "Bijvoorbeeld #eef3f7, rgb(238,243,247) of white." },
+          "surfaceColor": { "type": "string", "title": "Paneelkleur", "description": "Kleur van de hoofdvlakken." },
+          "mutedSurfaceColor": { "type": "string", "title": "Gedempte paneelkleur", "description": "Kleur van bronstukken en antwoordopties." },
+          "textColor": { "type": "string", "title": "Tekstkleur", "description": "Hoofdkleur voor tekst." },
+          "mutedTextColor": { "type": "string", "title": "Gedempte tekstkleur", "description": "Kleur voor instructies en ondersteunende tekst." },
+          "primaryColor": { "type": "string", "title": "Primaire knopkleur", "description": "Achtergrondkleur van primaire knoppen." },
+          "primaryTextColor": { "type": "string", "title": "Primaire knoptekst", "description": "Tekstkleur van primaire knoppen." },
+          "secondaryColor": { "type": "string", "title": "Secundaire knopkleur", "description": "Achtergrondkleur van secundaire knoppen." },
+          "secondaryTextColor": { "type": "string", "title": "Secundaire knoptekst", "description": "Tekstkleur van secundaire knoppen." },
+          "accentColor": { "type": "string", "title": "Accentkleur", "description": "Accentkleur voor de actieve kamer en focusranden." },
+          "borderColor": { "type": "string", "title": "Randkleur", "description": "Kleur van randen en scheidingslijnen." },
+          "progressColor": { "type": "string", "title": "Voortgangskleur", "description": "Kleur van de voortgangsbalk." },
+          "successColor": { "type": "string", "title": "Succes kleur", "description": "Kleur voor positieve feedback." },
+          "errorColor": { "type": "string", "title": "Foutkleur", "description": "Kleur voor herstel-feedback." },
+          "hintColor": { "type": "string", "title": "Hintkleur", "description": "Kleur van hints." },
+          "radius": { "type": "string", "pattern": "^[0-9]+(px|rem|em|%)$", "title": "Afronding", "description": "Bijvoorbeeld 12px of 0px voor een hoekige stijl." }
+        } }
+      ]
+    },
+    "allowHints": { "type": "boolean", "title": "Hints toestaan", "description": "Toon per taak maximaal drie hints van algemeen naar specifiek." },
+    "persistProgress": { "type": "boolean", "title": "Voortgang bewaren", "description": "Bewaar antwoorden lokaal in de browser per unique_id." },
+    "showProgress": { "type": "boolean", "title": "Voortgangsbalk tonen", "description": "Toon optioneel boven of onder in het iframe hoeveel kamers zijn afgerond.", "default": false },
+    "progressPosition": { "type": "string", "enum": ["top", "bottom"], "title": "Plaats van voortgangsbalk", "description": "Plaats de optionele voortgangsbalk boven of onder de kamerweergave.", "default": "bottom" },
+    "showReset": { "type": "boolean", "title": "Resetknop tonen", "description": "Toon optioneel de knop met het opschrift 'voortgang resetten'.", "default": false },
+    "successMessage": { "type": "string", "title": "Succesmelding", "description": "Melding na een afgeronde route." },
+    "rooms": {
+      "type": "array", "title": "Kamers", "description": "Kamers in zichtbare volgorde. Een lege lijst is toegestaan als startconfiguratie.", "items": {
+        "type": "object", "title": "Kamer", "required": ["id", "title", "instruction", "assets", "clues", "tasks", "hints"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "title": "Kamer-ID", "description": "Unieke sleutel van de kamer." },
+          "title": { "type": "string", "title": "Kamertitel", "description": "Titel van de kamer." },
+          "instruction": { "type": "string", "title": "Instructie", "description": "Korte uitleg voor de student.", "format": "textarea" },
+          "terminal": { "type": "object", "title": "Toekomstterminal", "description": "Optioneel terminalbericht met rustig type-effect, herleesactie en tekstalternatief.", "required": ["text", "textAlternative"], "additionalProperties": false, "properties": { "text": { "type": "string", "title": "Berichttekst", "description": "Bericht dat teken voor teken verschijnt.", "format": "textarea" }, "textAlternative": { "type": "string", "title": "Tekstalternatief", "description": "Volledige leesbare tekst voor schermlezers en herlezen.", "format": "textarea" }, "mistakes": { "type": "boolean", "title": "Tijdelijke tikfouten", "description": "Toon optioneel tijdelijke correcties tijdens het typen.", "default": true } } },
+          "unlock": { "type": "object", "title": "Ontgrendeling", "description": "Optionele verwijzing naar voltooide taak-ID's.", "additionalProperties": false, "properties": { "taskIds": { "type": "array", "title": "Benodigde taken", "items": { "type": "string", "title": "Taak-ID" } } } },
+          "assets": { "type": "array", "title": "Bronstukken", "description": "Lokale afbeeldingen, video, audio of tekst met toegankelijk alternatief.", "items": { "type": "object", "title": "Bronstuk", "required": ["id", "type", "assetAlt", "caption"], "additionalProperties": false, "properties": { "id": { "type": "string", "title": "Bron-ID" }, "type": { "type": "string", "enum": ["image", "video", "audio", "text"], "title": "Type" }, "src": { "type": "string", "title": "Lokaal pad", "description": "Relatief lokaal assetpad; niet verplicht voor tekst." }, "text": { "type": "string", "title": "Tekstbron", "format": "textarea" }, "assetAlt": { "type": "string", "title": "Tekstalternatief", "description": "Beschrijving of volledige tekst voor toegankelijkheid." }, "caption": { "type": "string", "title": "Bijschrift" } } } },
+          "clues": { "type": "array", "title": "Aanwijzingen", "description": "Brongebonden observaties die studenten kunnen markeren.", "items": { "type": "object", "title": "Aanwijzing", "required": ["id", "text"], "additionalProperties": false, "properties": { "id": { "type": "string", "title": "Aanwijzing-ID" }, "text": { "type": "string", "title": "Tekst" } } } },
+          "tasks": { "type": "array", "title": "Taken", "description": "Taken van type order, match, classify, text of checklist.", "items": { "type": "object", "title": "Taak", "required": ["id", "type", "prompt"], "additionalProperties": false, "properties": { "id": { "type": "string", "title": "Taak-ID" }, "type": { "type": "string", "enum": ["order", "match", "classify", "text", "checklist"], "title": "Antwoordtype" }, "prompt": { "type": "string", "title": "Vraag/instructie", "format": "textarea" }, "items": { "type": "array", "title": "Items", "items": { "type": "object", "title": "Item", "required": ["id", "text"], "additionalProperties": false, "properties": { "id": { "type": "string", "title": "Item-ID" }, "text": { "type": "string", "title": "Tekst" } } } }, "options": { "type": "array", "title": "Keuzes", "items": { "type": "object", "title": "Keuze", "required": ["id", "text"], "additionalProperties": false, "properties": { "id": { "type": "string", "title": "Keuze-ID" }, "text": { "type": "string", "title": "Tekst" } } } }, "expected": { "type": ["array", "object", "string"], "title": "Verwacht antwoord", "description": "Antwoordstructuur; bij text kan dit een array met minimumcriteria zijn. Bij classify kunnen waarden arrays zijn." }, "categories": { "type": "array", "title": "Categorieën", "items": { "type": "string", "title": "Categorie" } }, "allowMultiple": { "type": "boolean", "title": "Meerdere categorieën toestaan", "description": "Toon bij classify meerdere selectievakjes per item, bijvoorbeeld wanneer meerdere hypotheses tegelijk mogelijk blijven.", "default": false }, "minLength": { "type": "integer", "title": "Minimum tekstlengte", "minimum": 1 }, "feedbackCorrect": { "type": "string", "title": "Goede feedback" }, "feedbackIncorrect": { "type": "string", "title": "Herstel-feedback" } } } },
+          "hints": { "type": "array", "maxItems": 3, "title": "Hints", "description": "Maximaal drie oplopend specifieke hints.", "items": { "type": "string", "title": "Hint" } },
+          "teacherChecklist": { "type": "array", "title": "Docentchecklist", "description": "Niet automatisch beoordelen; bedoeld voor bespreking of docentcontrole.", "items": { "type": "string", "title": "Controlepunt" } }
+        }
+      }
+    }
+  }
+}

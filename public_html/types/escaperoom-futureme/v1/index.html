@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FutureMe</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app" id="app">
+    <div class="toolbar" id="toolbar" hidden>
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-label"><span>Voortgang</span><span id="progressText"></span></div>
+        <progress id="progress" value="0" max="1" aria-label="Voortgang"></progress>
+      </div>
+      <button class="secondary" id="reset" type="button" hidden>voortgang resetten</button>
+    </div>
+    <nav class="rooms" id="roomNav" aria-label="Kamers"></nav>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <section id="room" aria-labelledby="roomTitle"></section>
+    <section class="success" id="success" hidden aria-live="polite">
+      <h2>Route afgerond</h2>
+      <p id="successMessage"></p>
+    </section>
+  </main>
+  <script src="./tool.js"></script>
+</body>
+</html>

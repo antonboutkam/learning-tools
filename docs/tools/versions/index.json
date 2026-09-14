@@ -196,6 +196,18 @@
         "Beeld met getimede tekstlagen"
       ],
       "documentatie": "versions/slide-show/v1.md"
+    },
+    {
+      "id": "escaperoom-futureme",
+      "version": "v1",
+      "name": "FutureMe escaperoom",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Bronnen zorgvuldig verwerken",
+        "Feiten en aannames onderscheiden",
+        "Veilig prioriteren en briefen"
+      ],
+      "documentatie": "versions/escaperoom-futureme/v1.md"
     }
   ]
 }

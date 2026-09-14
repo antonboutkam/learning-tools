@@ -170,6 +170,16 @@
       "schemaUrl": "/types/slide-show/v1/schema.json",
       "exampleDataUrl": "/types/slide-show/v1/example.json",
       "description": "Speel slides met vrij positioneerbare, getimede teksten, in- en uit-effecten en instelbare automatische voortgang af."
+    },
+    {
+      "id": "escaperoom-futureme",
+      "type": "assignment-type",
+      "name": "FutureMe escaperoom",
+      "version": "v1",
+      "launchUrl": "/types/escaperoom-futureme/v1/",
+      "schemaUrl": "/types/escaperoom-futureme/v1/schema.json",
+      "exampleDataUrl": "/types/escaperoom-futureme/v1/example.json",
+      "description": "Doorloop kamers waarin je bronnen markeert, hypotheses onderzoekt, veilig prioriteert en een briefing schrijft."
     }
   ]
 }

@@ -113,6 +113,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/slide-show/v1/example.json`
   - Extra: `planar-type` met een algemeen interval, optionele `duur` per slide, meerdere getimede en vrij positioneerbare teksten per slide, vier lettertypen, in- en uit-effecten, loop, automatisch starten en voortgang als bullets, nummers of geen
 
+- FutureMe escaperoom (v1)
+  - Pad: `public_html/types/escaperoom-futureme/v1/`
+  - Data-schema: `public_html/types/escaperoom-futureme/v1/schema.json`
+  - Example: `public_html/types/escaperoom-futureme/v1/example.json`
+  - Extra: headless fullscreen iframe-layout zonder zichtbare escaperoomheader of intro; vijf ingebouwde themes (`future-message`, `midnight-terminal`, `paper-case`, `signal-green`, `sunset-arcade`) plus eigen kleuren via een `theme`-object; optionele voortgangsbalk boven/onder en resetknop met opschrift `voortgang resetten`; configureerbare kamers met bronstukken, clues, order/match/classify/text/checklist-taken, maximaal drie hints, herstel zonder voortgangsverlies en lokale opslag per `unique_id`. De docentchecklist is zichtbaar maar geen verborgen automatische beoordeling.
+
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
@@ -131,6 +137,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/qr-team-with-role-divide/v1/?unique_id=demo-qr-team-1&data=example.json`
 - `/types/jargonwoorden-presenteren/v1/?canvas_course_view=teacher&canvas_course_mode=plenary&unique_id=demo-jargon-1&data=example.json`
 - `/types/slide-show/v1/?unique_id=demo-slide-show-1&data=example.json`
+- `/types/escaperoom-futureme/v1/?unique_id=demo-futureme-1&data=example.json`
 
 ## LTI test-laag (course-level, zonder admin/developer key)
 Per tool is een vaste teststructuur toegevoegd:

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Demo-foto van Bobs bureau</title>
+  <desc id="desc">Een eenvoudige illustratie van een bureau met een laptop, map en USB-stick.</desc>
+  <rect width="640" height="360" fill="#dbe8ef"/>
+  <rect y="250" width="640" height="110" fill="#8b5e3c"/>
+  <rect x="100" y="115" width="330" height="150" rx="12" fill="#26364d"/>
+  <rect x="120" y="135" width="290" height="105" fill="#70e1f5"/>
+  <rect x="245" y="265" width="70" height="12" rx="6" fill="#4b3527"/>
+  <rect x="475" y="175" width="80" height="68" rx="5" fill="#f2d49b" stroke="#6b3f2a" stroke-width="6"/>
+  <text x="515" y="215" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#6b3f2a">PROJECT</text>
+  <rect x="50" y="215" width="30" height="55" rx="5" fill="#ffb703"/>
+  <text x="320" y="55" text-anchor="middle" font-family="sans-serif" font-size="25" font-weight="700" fill="#26364d">DEMO-AFBEELDING</text>
+</svg>
