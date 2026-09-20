@@ -162,6 +162,16 @@
       "description": "Speel met jargonwoorden: verdeel woorden, laat studenten onderzoeken en rouleer presentatoren met timers, stemmen en scores."
     },
     {
+      "id": "poll-vote",
+      "type": "planar-type",
+      "name": "Poll & vote",
+      "version": "v1",
+      "launchUrl": "/types/poll-vote/v1/",
+      "schemaUrl": "/types/poll-vote/v1/schema.json",
+      "exampleDataUrl": "/types/poll-vote/v1/example.json",
+      "description": "Live meerkeuzepoll met student-, presentatie- en docentweergave, directe staafgrafiek en beheer van individuele stemmen."
+    },
+    {
       "id": "slide-show",
       "type": "planar-type",
       "name": "Slide-show",

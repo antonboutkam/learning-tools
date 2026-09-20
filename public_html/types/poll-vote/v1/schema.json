@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/poll-vote/v1/schema.json",
+  "title": "Poll & vote v1",
+  "description": "Een live meerkeuzepoll met een student-, presentatie- en docentweergave.",
+  "type": "object",
+  "required": ["titel", "vragen"],
+  "additionalProperties": false,
+  "properties": {
+    "titel": {
+      "type": "string",
+      "title": "Titel",
+      "description": "De titel die boven de poll wordt getoond.",
+      "minLength": 1,
+      "maxLength": 120,
+      "default": "Onze klas kiest"
+    },
+    "vragen": {
+      "type": "array",
+      "title": "Vragen",
+      "description": "Een of meer meerkeuzevragen die de docent tijdens de poll kan kiezen.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "title": "Pollvraag",
+        "required": ["vraag", "antwoorden"],
+        "additionalProperties": false,
+        "properties": {
+          "vraag": {
+            "type": "string",
+            "title": "Vraag",
+            "description": "De volledige vraag die studenten en de presentatie zien.",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "antwoorden": {
+            "type": "array",
+            "title": "Antwoorden",
+            "description": "De meerkeuzeantwoorden bij deze vraag.",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "title": "Antwoord",
+              "required": ["lang", "kort"],
+              "additionalProperties": false,
+              "properties": {
+                "lang": {
+                  "type": "string",
+                  "title": "Lang antwoord",
+                  "description": "De volledige antwoordtekst, zichtbaar voordat de eerste stem is uitgebracht.",
+                  "minLength": 1,
+                  "maxLength": 300
+                },
+                "kort": {
+                  "type": "string",
+                  "title": "Kort antwoord",
+                  "description": "Het korte label dat in de staafgrafiek wordt getoond.",
+                  "minLength": 1,
+                  "maxLength": 80
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "titel": "Onze klas kiest",
+  "vragen": [
+    {
+      "vraag": "Welke manier helpt jou het best om nieuwe code te leren?",
+      "antwoorden": [
+        {"lang": "Zelf meteen kleine opdrachten programmeren", "kort": "Zelf doen"},
+        {"lang": "Eerst een duidelijke uitleg en voorbeeld bekijken", "kort": "Uitleg"},
+        {"lang": "Samen met iemand een oplossing bedenken", "kort": "Samen"},
+        {"lang": "Een video stap voor stap volgen", "kort": "Video"}
+      ]
+    },
+    {
+      "vraag": "Welk onderwerp willen we als volgende verdiepen?",
+      "antwoorden": [
+        {"lang": "Een eigen webpagina ontwerpen met HTML en CSS", "kort": "Webdesign"},
+        {"lang": "Een spelletje maken met JavaScript", "kort": "Games"},
+        {"lang": "Data ophalen en tonen met een API", "kort": "API's"}
+      ]
+    }
+  ]
+}
