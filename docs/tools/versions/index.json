@@ -186,6 +186,18 @@
       "documentatie": "versions/jargonwoorden-presenteren/v1.md"
     },
     {
+      "id": "poll-vote",
+      "version": "v1",
+      "name": "Poll & vote",
+      "type": "planar-type",
+      "toepassingen": [
+        "Voorkennis peilen",
+        "Klassikale keuze maken",
+        "Korte reflectie afsluiten"
+      ],
+      "documentatie": "versions/poll-vote/v1.md"
+    },
+    {
       "id": "slide-show",
       "version": "v1",
       "name": "Slide-show",
