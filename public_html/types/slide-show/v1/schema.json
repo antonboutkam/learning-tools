@@ -3,6 +3,7 @@
   "$id": "https://learning-tools.devroc.nl/types/slide-show/v1/schema.json",
   "title": "Slide-show v1",
   "description": "Toon een automatisch of handmatig afspeelbare reeks slides met vrij positioneerbare, getimede teksten en in- en uit-effecten.",
+  "outputs": [],
   "type": "object",
   "required": ["interval", "loop", "automatischStarten", "voortgang", "slides"],
   "additionalProperties": false,

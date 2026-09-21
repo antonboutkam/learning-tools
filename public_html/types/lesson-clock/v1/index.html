@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lesklok v1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="clock" aria-live="polite">
+    <div class="clock__eyebrow" id="eyebrow">LESKLOK</div>
+    <h1 class="clock__title" id="title">De tijd loopt</h1>
+    <p class="clock__message" id="message">Laden…</p>
+
+    <div class="clock__face" id="face" role="img" aria-label="Resterende tijd">
+      <div class="clock__pie" id="pie"></div>
+      <div class="clock__core">
+        <div class="clock__time" id="time">--:--</div>
+        <div class="clock__label" id="label">resterend</div>
+      </div>
+    </div>
+
+    <div class="clock__meta">
+      <span id="lessonName"></span>
+      <span id="range"></span>
+    </div>
+    <p class="clock__status" id="status" hidden></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

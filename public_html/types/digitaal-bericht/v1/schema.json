@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/digitaal-bericht/v1/schema.json",
   "title": "Digitaal bericht v1",
   "description": "Toon een digitaal bericht alsof het getypt wordt op een retro terminal (C64-stijl). Gebruik `|` als backspace; een letterlijk `|` teken schrijf je als `||`.",
+  "outputs": [],
   "type": "object",
   "required": ["text"],
   "additionalProperties": false,

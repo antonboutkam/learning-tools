@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/wat-hoort-bij-wat/v1/schema.json",
   "title": "Wat hoort bij wat v1",
   "description": "Koppel-oefening waarbij studenten items uit de linker kolom verbinden met de juiste items uit de rechter kolom. Je kunt ook extra afleiders toevoegen door alleen een rechter-item op te geven.",
+  "outputs": [],
   "type": "object",
   "required": ["title", "pairs"],
   "additionalProperties": false,

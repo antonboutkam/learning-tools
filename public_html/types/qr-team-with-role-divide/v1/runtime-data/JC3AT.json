@@ -1,0 +1,66 @@
+{
+    "code": "JC3AT",
+    "uniqueId": "633443412b1e5cbe6e8e8db9f2d51a36",
+    "config": {
+        "title": "lsd oefening",
+        "description": "In deze opdracht ben je beurtelings klant, developer of notulist.",
+        "teamSize": {
+            "min": 2,
+            "max": 4
+        },
+        "roundsMode": "all-roles-once",
+        "roleTimeoutSeconds": 420,
+        "shuffleWaitSeconds": 120,
+        "enableTestUsers": true,
+        "teamNames": [
+            "🧠 Samenvat Squad",
+            "🗣️ Praatpaal Professionals",
+            "⚓ Inloophuis \"het anker\"",
+            "📡 Signaal Vangers",
+            "🧠 Breinfluisteraars"
+        ],
+        "teamColors": [],
+        "otherRoleName": "Stagair",
+        "otherRoleInstructions": [
+            "1. Jij bent verantwoordelijk voor het maken van notulen, deze moet je na afloop inleveren.\n2. Jij vraagt of je audio of video opnames mag maken van het gesprek.\n\nDe senior developer en klant kunnen tijdens het gesprek vragen of je dingen wilt noteren, dat is onderdeel van hun opdracht. Jij moet hun opdrachten zo goed mogelijk proberen op te volgen."
+        ],
+        "roles": [
+            {
+                "key": "klant",
+                "name": "Klant",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een tuinbouwbedrijf en zoekt een slimme plantmonitor. Je wilt planten automatisch laten scannen op schimmels, plantziektes en voedingsbehoeftes. De oplossing moet luchtvochtigheid op meerdere plekken in de kas meten, temperatuur registreren en foto's maken van planten inclusief de positie van de plant. De foto's moeten met AI gecontroleerd worden op plantziektes en je wilt daarvoor een fotodatabase opbouwen.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een cateringbedrijf met meerdere professionele koelkasten en wilt een slimme koelkastbewaker. De oplossing moet deurstatus, temperatuur en luchtvochtigheid meten, direct waarschuwen als een deur te lang openstaat of als producten niet goed gekoeld worden, en alle meetgegevens online loggen zodat je achteraf kunt controleren wat er misging.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een facilitair team op een school en wilt een slim afvalscheidingsstation. Het systeem moet herkennen welk type afval wordt aangeboden, het vulniveau per bak meten, met lampen of een scherm laten zien waar het afval hoort en liefst automatisch een klep openen. Daarnaast wil je online kunnen zien welke bakken vol raken.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een omgeving met studie- en flexplekken en wilt een slimme werkplekmonitor. De oplossing moet licht, geluid, temperatuur en aanwezigheid meten, direct feedback geven over de kwaliteit van de werkplek en online zichtbaar maken welke plekken prettig zijn om te gebruiken. Bij slechte omstandigheden wil je een waarschuwing of automatische reactie, bijvoorbeeld extra ventilatie.",
+                    "Jij bent klant en je kiest voor deze ronde een use case uit de lijst hieronder. Vertel in 1 keer wat je nodig hebt en blijf tijdens het gesprek in jouw rol. De senior developer gebruikt de rest van de tijd om samen te vatten en door te vragen. Laat de stagair(s) vooral de requirements notuleren zodat jullie niets vergeten.\n\nJij vertegenwoordigt een proefkas en zoekt een slimme kascontroller. Het systeem moet temperatuur, luchtvochtigheid en bodemvocht meten en de kas zelf helpen regelen met ventilatie en bewatering. Je wilt online monitoring, duidelijke statusmeldingen en een oplossing die laat zien wanneer de kas automatisch heeft ingegrepen."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            },
+            {
+                "key": "senior-developer",
+                "name": "Senior developer",
+                "countPerTeam": 1,
+                "instructions": [
+                    "Jij bent senior developer en jij gaat met de klant in gesprek. De klant krijgt 8 minuten om zijn of haar wensen aan jou uit te leggen. Luister goed, vat samen en vraag door totdat je scherp hebt wat de klant wil, waarom dat nodig is en welke gegevens of signaleringen belangrijk zijn. In je team zitten mogelijk een of meerdere stagairs; stuur hen aan om de requirements netjes mee te noteren.\n\n1. Geef je klant de ruimte om zijn of haar verhaal te doen.\n2. Controleer aan het eind of je alle requirements kunt terugvinden op de pagina LSD uitwerking."
+                ],
+                "audioRecording": false,
+                "videoRecording": false,
+                "alternativeInstruction": ""
+            }
+        ]
+    },
+    "title": "lsd oefening",
+    "description": "In deze opdracht ben je beurtelings klant, developer of notulist.",
+    "stage": "lobby",
+    "participants": [],
+    "teams": [],
+    "rounds": [],
+    "currentRoundIndex": 0,
+    "timing": [],
+    "createdAtMs": 1789025774848,
+    "updatedAtMs": 1789025790501
+}

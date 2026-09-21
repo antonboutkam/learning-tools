@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/kies-de-juiste-afbeelding/v1/schema.json",
   "title": "Kies de juiste afbeelding v1",
   "description": "Interactieve oefening waarbij studenten een vraag of stelling beantwoorden door een of meer juiste afbeeldingen te selecteren.",
+  "outputs": [],
   "type": "object",
   "required": ["vraag", "afbeeldingen"],
   "additionalProperties": false,

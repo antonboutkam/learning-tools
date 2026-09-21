@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/lesson-clock/v1/schema.json",
+  "title": "Lesklok v1",
+  "description": "Toon een synchroon aftellende klok voor meerdere lessen. De resterende tijd wordt als een pie weergegeven die richting het einde rood kleurt en af en toe flitst.",
+  "type": "object",
+  "required": ["lessons"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel boven de klok.",
+      "default": "De tijd loopt"
+    },
+    "warningSeconds": {
+      "type": "integer",
+      "title": "Waarschuwingsdrempel (seconden)",
+      "description": "Vanaf dit aantal resterende seconden wordt de pie rood en pulseert de klok.",
+      "minimum": 5,
+      "maximum": 3600,
+      "default": 30
+    },
+    "flashEverySeconds": {
+      "type": "integer",
+      "title": "Flitsinterval (seconden)",
+      "description": "Laat de klok in de laatste fase iedere zoveel seconden kort flitsen.",
+      "minimum": 1,
+      "maximum": 60,
+      "default": 5
+    },
+    "finishedTitle": {
+      "type": "string",
+      "title": "Titel na afloop",
+      "description": "Titel die zichtbaar is als alle lessen voorbij zijn.",
+      "default": "Alle lessen zijn voorbij"
+    },
+    "finishedMessage": {
+      "type": "string",
+      "title": "Melding na afloop",
+      "description": "Melding die zichtbaar is als alle lessen voorbij zijn.",
+      "default": "De klok is gestopt."
+    },
+    "lessons": {
+      "type": "array",
+      "title": "Lessen",
+      "description": "De lessen die achter elkaar worden getoond. Gebruik ISO-tijdstippen met tijdzone, bijvoorbeeld 2026-09-21T09:00:00+02:00.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "title": "Les",
+        "required": ["start", "end"],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Naam van de les",
+            "description": "Optionele naam die tijdens het aftellen wordt getoond."
+          },
+          "start": {
+            "type": "string",
+            "title": "Begintijd",
+            "description": "Starttijd als ISO 8601-datum met tijdzone, bijvoorbeeld 2026-09-21T09:00:00+02:00.",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "title": "Eindtijd",
+            "description": "Eindtijd als ISO 8601-datum met tijdzone, bijvoorbeeld 2026-09-21T09:45:00+02:00.",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

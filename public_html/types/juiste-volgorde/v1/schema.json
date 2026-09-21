@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/juiste-volgorde/v1/schema.json",
   "title": "Juiste volgorde v1",
   "description": "Interactieve oefening waarbij studenten items in de juiste volgorde slepen. De juiste volgorde is de volgorde van `items` in de JSON.",
+  "outputs": [],
   "type": "object",
   "required": ["title", "items"],
   "additionalProperties": false,

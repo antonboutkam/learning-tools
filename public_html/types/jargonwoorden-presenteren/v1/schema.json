@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/jargonwoorden-presenteren/v1/schema.json",
   "title": "Jargonwoorden presenteren v1",
   "description": "Speelse klasactiviteit waarin studenten jargonwoorden onderzoeken en presenteren.",
+  "outputs": [],
   "type": "object",
   "required": ["aantalWoordenPerStudent", "onderzoektijdPerWoordInSeconden", "spreektijdInSeconden", "jargonWoorden"],
   "additionalProperties": false,

@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/pubquiz-yes-no/v1/schema.json",
   "title": "Pubquiz yes/no v1",
   "description": "Snelle ja/nee pubquiz: vragen worden willekeurig gekozen en de student beantwoordt een ingesteld aantal vragen binnen een tijdslimiet.",
+  "outputs": [],
   "type": "object",
   "required": ["title", "questions"],
   "additionalProperties": false,

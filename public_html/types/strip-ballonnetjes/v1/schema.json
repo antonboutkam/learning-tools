@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/strip-ballonnetjes/v1/schema.json",
   "title": "Strip ballonnetjes v1",
   "description": "Toon één of meer (strip)afbeeldingen met spraak-, gedachte- en vraagballonnen die je met x/y coördinaten positioneert.",
+  "outputs": [],
   "type": "object",
   "required": ["pages"],
   "additionalProperties": false,
