@@ -7,4 +7,4 @@ De twee meegeleverde SVG-afbeeldingen komen uit de lokale Fritzing-installatie:
 
 De connectornamen, SVG-contactcoördinaten en interne connectorbussen van de Arduino Uno zijn overgenomen uit `/usr/share/fritzing/parts/core/arduino_Uno_Rev3(fix).fzp` en de bijbehorende SVG. Breadboardcontacten en de vijf-per-kolom verbindingen (`A1` t/m `J20`) volgen `/usr/share/fritzing/parts/core/tinyBreadboard.fzp` en de bijbehorende breadboard-SVG.
 
-In de configurator wordt gedurende de eerste vijf seconden deze credit getoond: “Afbeelding gemaakt met Fritzing. Fritzing graphics: CC BY-SA 3.0.'.”
+In de configurator wordt gedurende de eerste vijf seconden rechtsonder een subtiele credit getoond: “Afbeelding gemaakt met Fritzing. Fritzing graphics: CC BY-SA 3.0.”

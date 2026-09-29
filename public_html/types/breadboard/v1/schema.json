@@ -68,7 +68,8 @@
                 "enum": [
                   "breadboard",
                   "arduino",
-                  "component"
+                  "component",
+                  "fritzing"
                 ]
               },
               "name": {
@@ -90,6 +91,43 @@
                 "type": "boolean",
                 "title": "Vergrendeld",
                 "description": "Vergrendelt slepen en wijzigen van de positie."
+              },
+              "partId": {
+                "type": "string",
+                "title": "Fritzing-onderdeel",
+                "description": "Pad naar de onderdeeldefinitie binnen de Fritzing-bibliotheek."
+              },
+              "image": {
+                "type": "string",
+                "title": "Breadboard-afbeelding",
+                "description": "Relatief pad naar de SVG-afbeelding van het Fritzing-onderdeel."
+              },
+              "width": {
+                "type": "number",
+                "title": "Breedte onderdeel",
+                "description": "Weergavebreedte van het onderdeel in pixels."
+              },
+              "height": {
+                "type": "number",
+                "title": "Hoogte onderdeel",
+                "description": "Weergavehoogte van het onderdeel in pixels."
+              },
+              "pins": {
+                "type": "array",
+                "title": "Contactpunten onderdeel",
+                "description": "De uit de Fritzing-definitie afgeleide aansluitpunten.",
+                "items": {
+                  "type": "object",
+                  "title": "Contactpunt",
+                  "required": ["id", "label", "x", "y"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {"type": "string", "title": "ID", "description": "Fritzing-ID van het contactpunt."},
+                    "label": {"type": "string", "title": "Naam", "description": "Leesbare naam van het contactpunt."},
+                    "x": {"type": "number", "title": "X-positie", "description": "Horizontale positie binnen het onderdeel."},
+                    "y": {"type": "number", "title": "Y-positie", "description": "Verticale positie binnen het onderdeel."}
+                  }
+                }
               }
             }
           }
