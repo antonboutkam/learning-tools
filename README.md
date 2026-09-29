@@ -71,7 +71,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/lesson-clock/v1/`
   - Data-schema: `public_html/types/lesson-clock/v1/schema.json`
   - Example: `public_html/types/lesson-clock/v1/example.json`
-  - Extra: meerdere lessen met ISO 8601-start- en eindtijdstippen, synchroon aftellen in iedere iframe, pie-weergave, rode waarschuwingsfase en instelbare flitsfrequentie
+  - Extra: meerdere lessen met ISO 8601-start- en eindtijdstippen, synchroon aftellen in iedere iframe, pie-weergave, rode waarschuwingsfase, instelbare flitsfrequentie en responsieve weergave voor verschillende iframe-afmetingen
 
 - Bin/Hex/Dec Reken (v1)
   - Pad: `public_html/types/bin-hex-dec-reken/v1/`
