@@ -145,6 +145,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/poll-vote/v1/?canvas_course_view=teacher&canvas_course_mode=plenary&unique_id=demo-poll-1&data=example.json`
 - `/types/slide-show/v1/?unique_id=demo-slide-show-1&data=example.json`
 - `/types/escaperoom-futureme/v1/?unique_id=demo-futureme-1&data=example.json`
+- `/types/breadboard/v1/?unique_id=demo-breadboard-1&data=example.json`
 
 ## LTI test-laag (course-level, zonder admin/developer key)
 Per tool is een vaste teststructuur toegevoegd:
@@ -161,6 +162,7 @@ Doel: snel testen welke launch-velden Canvas doorgeeft en of course-level Extern
 ## Docs
 - Prompt‑instructies: `COURSES_PROMPT.md`
 - Registry + schema contract: `public_html/types/registry.json`
+- Courses config-URL datatype en iframe-berichtcontract: `docs/config-url-fields.md`
 - LTI inzendingen (Canvas): `docs/lti-submission.md`
 - LTI config voorbeeld: `docs/lti-config-example.json`
 - LTI test URL matrix + smoke-tests: `docs/lti-test-urls.md`
@@ -170,6 +172,7 @@ Doel: snel testen welke launch-velden Canvas doorgeeft en of course-level Extern
 - `docs/examples/juiste-volgorde.v1.example.json`
 - `docs/examples/wat-hoort-bij-wat.v1.example.json`
 - `docs/examples/pubquiz-yes-no.v1.example.json`
+- Breadboard configurator en voorbeeld: `public_html/types/breadboard/v1/`
 
 ## Data‑contract (kort)
 - Iframe‑URL: `{launchUrl}?unique_id=<id>&data=<urlencode(dataUrl)>`

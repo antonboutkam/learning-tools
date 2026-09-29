@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/breadboard/v1/schema.json",
+  "title": "Breadboard v1",
+  "description": "Configureer en bekijk een schakeling met componenten, contactpunten en gekleurde draden.",
+  "type": "object",
+  "required": [
+    "configuratie"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "configuratie": {
+      "type": "object",
+      "title": "Breadboard-configuratie",
+      "description": "De bewerkbare tekening. Courses slaat de JSON uit de configuratie-iframe op en geeft deze bij weergave als waarde mee.",
+      "format": "learning-tool-config-url",
+      "x-config-url": {
+        "url": "/types/breadboard/v1/?mode=config",
+        "width": 1120,
+        "height": 760,
+        "valueType": "application/json",
+        "messageType": "learning-tool:config-change"
+      },
+      "additionalProperties": false,
+      "properties": {
+        "canvasWidth": {
+          "type": "integer",
+          "title": "Canvasbreedte (px)",
+          "description": "Breedte van de tekenruimte.",
+          "minimum": 480,
+          "maximum": 2400,
+          "default": 1000
+        },
+        "canvasHeight": {
+          "type": "integer",
+          "title": "Canvashoogte (px)",
+          "description": "Hoogte van de tekenruimte.",
+          "minimum": 320,
+          "maximum": 1800,
+          "default": 620
+        },
+        "components": {
+          "type": "array",
+          "title": "Componenten",
+          "description": "Onderdelen en hun positie op de tekening.",
+          "items": {
+            "type": "object",
+            "title": "Geplaatst element",
+            "required": [
+              "id",
+              "kind",
+              "name",
+              "x",
+              "y",
+              "locked"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "ID",
+                "description": "Unieke sleutel van dit element."
+              },
+              "kind": {
+                "type": "string",
+                "title": "Type",
+                "description": "Soort component.",
+                "enum": [
+                  "breadboard",
+                  "arduino",
+                  "component"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "title": "Naam",
+                "description": "Naam die in de elementenlijst wordt getoond."
+              },
+              "x": {
+                "type": "number",
+                "title": "X-positie",
+                "description": "Horizontale positie in pixels."
+              },
+              "y": {
+                "type": "number",
+                "title": "Y-positie",
+                "description": "Verticale positie in pixels."
+              },
+              "locked": {
+                "type": "boolean",
+                "title": "Vergrendeld",
+                "description": "Vergrendelt slepen en wijzigen van de positie."
+              }
+            }
+          }
+        },
+        "wires": {
+          "type": "array",
+          "title": "Draden",
+          "description": "Verbindingen tussen twee contactpunten, inclusief eventuele knikpunten.",
+          "items": {
+            "type": "object",
+            "title": "Draad",
+            "required": [
+              "id",
+              "from",
+              "to",
+              "color",
+              "points"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "ID",
+                "description": "Unieke sleutel van de draad."
+              },
+              "from": {
+                "type": "string",
+                "title": "Van contactpunt",
+                "description": "ID van het eerste contactpunt."
+              },
+              "to": {
+                "type": "string",
+                "title": "Naar contactpunt",
+                "description": "ID van het tweede contactpunt."
+              },
+              "color": {
+                "type": "string",
+                "title": "Kleur",
+                "description": "Weergavekleur van de draad.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "points": {
+                "type": "array",
+                "title": "Knikpunten",
+                "description": "Tussenpunten van de draad in canvascoördinaten.",
+                "items": {
+                  "type": "object",
+                  "title": "Knikpunt",
+                  "required": [
+                    "x",
+                    "y"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "title": "X",
+                      "description": "Horizontale positie."
+                    },
+                    "y": {
+                      "type": "number",
+                      "title": "Y",
+                      "description": "Verticale positie."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
