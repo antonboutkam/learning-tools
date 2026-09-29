@@ -10,20 +10,27 @@
 
 * { box-sizing: border-box; }
 
-html, body { min-height: 100%; }
+html, body { min-width: 0; min-height: 100%; }
 
 body {
   margin: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
   background: radial-gradient(circle at 50% 42%, #25211b 0, var(--bg) 55%, #050608 100%);
   color: var(--ink);
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 .clock {
-  min-height: 100vh;
-  padding: clamp(24px, 6vw, 72px) 20px 28px;
+  container-type: size;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: 100%;
+  padding: clamp(12px, min(6vw, 6vh), 72px) clamp(12px, 5vw, 40px) clamp(16px, 4vh, 28px);
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
@@ -36,16 +43,32 @@ body {
   letter-spacing: .24em;
 }
 
-.clock__title { margin: 10px 0 4px; font-size: clamp(24px, 5vw, 42px); letter-spacing: -.03em; }
-.clock__message { margin: 0; color: var(--muted); font-size: clamp(14px, 2.4vw, 18px); }
+.clock__title {
+  max-width: 100%;
+  margin: clamp(6px, 1.5vh, 10px) 0 4px;
+  font-size: clamp(20px, min(5vw, 5vh), 42px);
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  overflow-wrap: anywhere;
+}
+.clock__message {
+  max-width: 100%;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, min(2.4vw, 2.8vh), 18px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
 
 .clock__face {
   --progress-angle: 0deg;
   --progress-color: var(--progress);
   position: relative;
-  width: min(64vh, 76vw, 520px);
+  flex: 0 1 auto;
+  width: min(76vw, 64svh, 520px);
+  max-width: 100%;
   aspect-ratio: 1;
-  margin: clamp(28px, 6vh, 64px) 0 24px;
+  margin: clamp(16px, min(6vw, 6vh), 64px) 0 clamp(14px, 3vh, 24px);
   display: grid;
   place-items: center;
   filter: drop-shadow(0 0 28px var(--glow));
@@ -61,10 +84,18 @@ body {
 .clock__pie::after { content: ""; inset: 10px; background: var(--bg); }
 
 .clock__core { position: relative; z-index: 1; }
-.clock__time { font-variant-numeric: tabular-nums; font-size: clamp(48px, 12vw, 112px); font-weight: 800; letter-spacing: -.07em; line-height: .95; }
-.clock__label { margin-top: 10px; color: var(--muted); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; }
+.clock__time {
+  max-width: 90%;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(32px, min(12vw, 18vh), 112px);
+  font-weight: 800;
+  letter-spacing: -.07em;
+  line-height: .95;
+  overflow-wrap: anywhere;
+}
+.clock__label { margin-top: clamp(5px, 1.5vh, 10px); color: var(--muted); font-size: clamp(10px, 1.7vw, 13px); letter-spacing: .16em; text-transform: uppercase; }
 
-.clock__meta { display: grid; gap: 5px; color: var(--muted); font-size: 14px; }
+.clock__meta { max-width: 100%; display: grid; gap: 5px; color: var(--muted); font-size: clamp(12px, 1.8vw, 14px); line-height: 1.25; overflow-wrap: anywhere; }
 .clock__meta span:empty { display: none; }
 .clock__status { max-width: 480px; margin: 24px auto 0; color: #f7c76e; font-size: 13px; }
 
@@ -80,4 +111,48 @@ body.has-error .clock__message { color: #ff7777; }
 @media (prefers-reduced-motion: reduce) {
   .clock__pie { transition: none; }
   body.is-critical .clock__face, body.is-flashing .clock__face { animation: none; }
+}
+
+/* In a short landscape iframe, place the copy beside the clock so the
+   complete widget remains visible instead of forcing vertical scrolling. */
+@media (max-height: 440px) and (min-width: 480px) {
+  .clock {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(150px, 52vh);
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "eyebrow face"
+      "title face"
+      "message face"
+      "meta face";
+    column-gap: clamp(16px, 5vw, 64px);
+    align-content: center;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .clock__eyebrow { grid-area: eyebrow; }
+  .clock__title { grid-area: title; }
+  .clock__message { grid-area: message; }
+  .clock__face {
+    grid-area: face;
+    width: min(52vh, 100%);
+    margin: 0;
+    justify-self: center;
+  }
+  .clock__meta { grid-area: meta; margin-top: 12px; }
+}
+
+@media (max-height: 300px) and (min-width: 480px) {
+  .clock { grid-template-columns: minmax(0, 1fr) minmax(120px, 46vh); }
+  .clock__face { width: min(46vh, 100%); }
+  .clock__meta { margin-top: 8px; }
+}
+
+@media (max-width: 280px) {
+  .clock { padding-inline: 8px; }
+  .clock__eyebrow { font-size: 9px; letter-spacing: .16em; }
+  .clock__title { font-size: 18px; }
+  .clock__face { width: min(76vw, 220px); }
+  .clock__meta { font-size: 11px; }
 }
