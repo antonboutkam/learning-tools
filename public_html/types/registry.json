@@ -192,6 +192,16 @@
       "description": "Speel slides met vrij positioneerbare, getimede teksten, in- en uit-effecten en instelbare automatische voortgang af."
     },
     {
+      "id": "breadboard",
+      "type": "assignment-type",
+      "name": "Breadboard",
+      "version": "v1",
+      "launchUrl": "/types/breadboard/v1/",
+      "schemaUrl": "/types/breadboard/v1/schema.json",
+      "exampleDataUrl": "/types/breadboard/v1/example.json",
+      "description": "Configureer een schakeling met Fritzing-afbeeldingen, contactpunten en gekleurde draden."
+    },
+    {
       "id": "escaperoom-futureme",
       "type": "assignment-type",
       "name": "FutureMe escaperoom",

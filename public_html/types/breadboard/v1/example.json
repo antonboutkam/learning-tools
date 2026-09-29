@@ -1,0 +1,12 @@
+{
+  "configuratie": {
+    "canvasWidth": 1000,
+    "canvasHeight": 620,
+    "components": [
+      { "id": "breadboard-1", "kind": "breadboard", "name": "Breadboard", "x": 36, "y": 48, "locked": false },
+      { "id": "arduino-1", "kind": "arduino", "name": "Arduino Uno", "x": 555, "y": 100, "locked": false },
+      { "id": "led-1", "kind": "component", "name": "LED", "x": 320, "y": 210, "locked": false }
+    ],
+    "wires": []
+  }
+}
