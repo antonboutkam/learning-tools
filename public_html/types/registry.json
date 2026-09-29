@@ -92,6 +92,16 @@
       "description": "Toon een tijdlijn met momenten tussen een start- en einddatum (horizontaal of verticaal) met instelbare schaal."
     },
     {
+      "id": "lesson-clock",
+      "type": "visualization-type",
+      "name": "Lesklok",
+      "version": "v1",
+      "launchUrl": "/types/lesson-clock/v1/",
+      "schemaUrl": "/types/lesson-clock/v1/schema.json",
+      "exampleDataUrl": "/types/lesson-clock/v1/example.json",
+      "description": "Synchroon aftellen voor meerdere lessen met een steeds roder wordende en af en toe flitsende pie."
+    },
+    {
       "id": "bin-hex-dec-reken",
       "type": "assignment-type",
       "name": "Bin/Hex/Dec Reken",

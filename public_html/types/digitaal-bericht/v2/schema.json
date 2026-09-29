@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/digitaal-bericht/v2/schema.json",
   "title": "Digitaal bericht v2",
   "description": "Een kale terminal met een dollarprompt op iedere schermregel, type-effect, herstelde tikfouten en tijdelijke puntjes. Het scherm scrollt binnen een vaste hoogte. Bij verminderde beweging verschijnt de tekst meteen.",
+  "outputs": [],
   "type": "object",
   "required": [
     "text"

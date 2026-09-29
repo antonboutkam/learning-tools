@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/qr-team-with-role-divide/v1/schema.json",
   "title": "QR team with role divide v1",
   "description": "Planar leertool waarbij studenten via een QR-code op hun telefoon aansluiten, automatisch in teams worden verdeeld, rollen en instructies per ronde krijgen en synchroon met het grote scherm door meerdere rondes gaan.",
+  "outputs": [],
   "type": "object",
   "required": [
     "title",

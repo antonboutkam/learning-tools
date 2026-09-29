@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/timeline/v1/schema.json",
   "title": "Timeline v1",
   "description": "Toon een tijdlijn tussen een start- en einddatum met optionele momenten. Je kiest de richting (links→rechts of boven→beneden), een schaal (uur/dag/maand/kwartaal/jaar/2 jaar/3 jaar/4 jaar/5 jaar/decennium), optionele faseblokken, optionele jaar-knipsels en per moment een datum + titel + beschrijving (optioneel met afbeelding).",
+  "outputs": [],
   "type": "object",
   "required": ["unique_id", "direction", "scale", "startDate", "endDate"],
   "additionalProperties": false,

@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/bin-hex-dec-reken/v1/schema.json",
   "title": "Bin/Hex/Dec reken v1",
   "description": "Oefening waarin een student een getal omzet tussen binair, decimaal en hexadecimaal met een kassastijl toetsenbord en teller-scherm.",
+  "outputs": [],
   "type": "object",
   "required": ["input", "output", "byte_size", "preview", "unique_id", "getal"],
   "additionalProperties": false,

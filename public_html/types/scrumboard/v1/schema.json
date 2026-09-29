@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/scrumboard/v1/schema.json",
   "title": "Scrumboard v1",
   "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key. Gebruik dezelfde key om hetzelfde board op meerdere pagina's terug te laten komen.",
+  "outputs": [],
   "type": "object",
   "required": ["key"],
   "additionalProperties": false,

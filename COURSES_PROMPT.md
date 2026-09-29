@@ -23,7 +23,8 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
    - Wanneer een type wordt geselecteerd: fetch `schemaUrl`.
    - Genereer een formulier op basis van JSON Schema (draft 2020‑12).
    - Respecteer `required`, `default`, `minItems`, `additionalProperties: false`.
-   - Gebruik schema root `title`/`description` voor type‑naam en uitleg in het UI.
+   - Gebruik schema root `title`/`description` voor type-naam en uitleg in het UI.
+   - Gebruik schema root `outputs` als capability-metadata voor bestandsuitvoer. Dit is een array van objecten met minimaal `type` en optioneel `title`, `description`, `mimeType` en `extensions`; vergelijk de ingeschakelde bestandstypen van de opdracht met `outputs[].type` (bijvoorbeeld `md`, `json`, `txt` of `pdf`).
    - Gebruik per veld `title` als label en `description` als hulptekst (ook voor geneste objecten/arrays).
 
 4. **Bouw data‑JSON**
@@ -46,6 +47,7 @@ Doel: laat Codex een externe leertool configureren die dynamisch quiz‑types ka
 ## Technische vereisten
 - JSON Schema: 2020‑12.
 - Output JSON moet exact voldoen aan `additionalProperties: false`.
+- `outputs` staat op schema-rootniveau en mag niet als invoerveld in de data-JSON worden opgenomen.
 - CORS: `dataUrl` moet fetchbaar zijn door de quiz‑pagina.
 - Versioning: gebruik altijd `launchUrl` met versie, bv. `/v1/`.
 

@@ -3,6 +3,15 @@
   "$id": "https://example.local/types/markdown-editor/v1/schema.json",
   "title": "Markdown editor v1",
   "description": "Een eenvoudige Markdown-editor: links schrijf je Markdown, rechts zie je direct een preview.",
+  "outputs": [
+    {
+      "type": "md",
+      "title": "Markdown",
+      "description": "De inhoud kan als Markdown-bestand worden gedownload.",
+      "mimeType": "text/markdown",
+      "extensions": [".md", ".markdown"]
+    }
+  ],
   "type": "object",
   "required": ["markdown"],
   "additionalProperties": false,

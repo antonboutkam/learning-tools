@@ -1,0 +1,83 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0c10;
+  --ink: #f6f2e8;
+  --muted: #a8a5a0;
+  --track: rgba(255, 255, 255, 0.09);
+  --progress: #f2a93b;
+  --glow: rgba(242, 169, 59, 0.32);
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 42%, #25211b 0, var(--bg) 55%, #050608 100%);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.clock {
+  min-height: 100vh;
+  padding: clamp(24px, 6vw, 72px) 20px 28px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+.clock__eyebrow {
+  color: var(--progress);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .24em;
+}
+
+.clock__title { margin: 10px 0 4px; font-size: clamp(24px, 5vw, 42px); letter-spacing: -.03em; }
+.clock__message { margin: 0; color: var(--muted); font-size: clamp(14px, 2.4vw, 18px); }
+
+.clock__face {
+  --progress-angle: 0deg;
+  --progress-color: var(--progress);
+  position: relative;
+  width: min(64vh, 76vw, 520px);
+  aspect-ratio: 1;
+  margin: clamp(28px, 6vh, 64px) 0 24px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 0 28px var(--glow));
+}
+
+.clock__pie, .clock__pie::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.clock__pie { background: conic-gradient(from -90deg, var(--progress-color) var(--progress-angle), var(--track) 0); transition: background .2s linear; }
+.clock__pie::after { content: ""; inset: 10px; background: var(--bg); }
+
+.clock__core { position: relative; z-index: 1; }
+.clock__time { font-variant-numeric: tabular-nums; font-size: clamp(48px, 12vw, 112px); font-weight: 800; letter-spacing: -.07em; line-height: .95; }
+.clock__label { margin-top: 10px; color: var(--muted); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; }
+
+.clock__meta { display: grid; gap: 5px; color: var(--muted); font-size: 14px; }
+.clock__meta span:empty { display: none; }
+.clock__status { max-width: 480px; margin: 24px auto 0; color: #f7c76e; font-size: 13px; }
+
+body.is-critical .clock__face { animation: pulse 1.15s ease-in-out infinite; }
+body.is-flashing .clock__face { animation: flash .48s steps(2, end) 1; }
+body.is-finished { --progress: #e94343; --glow: rgba(233, 67, 67, .28); }
+body.is-finished .clock__face { opacity: .52; }
+body.has-error .clock__message { color: #ff7777; }
+
+@keyframes pulse { 50% { transform: scale(1.025); } }
+@keyframes flash { 50% { filter: brightness(1.8) drop-shadow(0 0 42px var(--glow)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .clock__pie { transition: none; }
+  body.is-critical .clock__face, body.is-flashing .clock__face { animation: none; }
+}

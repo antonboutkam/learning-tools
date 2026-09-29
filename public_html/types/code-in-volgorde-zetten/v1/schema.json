@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/code-in-volgorde-zetten/v1/schema.json",
   "title": "Code in volgorde zetten v1",
   "description": "Interactieve oefening waarbij studenten losse code-regels naar de juiste volgorde slepen om een programma te vormen. Regels zonder `positie` zijn afleiders en hoeven niet gebruikt te worden.",
+  "outputs": [],
   "type": "object",
   "required": ["title", "regels"],
   "additionalProperties": false,

@@ -3,6 +3,15 @@
   "$id": "https://example.local/types/escaperoom-futureme/v1/schema.json",
   "title": "FutureMe escaperoom v1",
   "description": "Een korte fictieve escape room waarin studenten bronnen zorgvuldig bekijken, feiten en aannames onderscheiden, veilig prioriteren en een briefing voorbereiden.",
+  "outputs": [
+    {
+      "type": "txt",
+      "title": "Platte tekst",
+      "description": "De briefing kan als tekstbestand worden gedownload.",
+      "mimeType": "text/plain",
+      "extensions": [".txt"]
+    }
+  ],
   "type": "object",
   "required": ["unique_id", "title", "intro", "theme", "rooms", "successMessage", "allowHints", "persistProgress"],
   "additionalProperties": false,

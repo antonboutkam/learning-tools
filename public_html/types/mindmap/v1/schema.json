@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/mindmap/v1/schema.json",
   "title": "Mindmap v1",
   "description": "Interactieve mindmap of woordweb met verplaatsbare woorden, instelbare kleur per node, lichte of donkere achtergrond en verbindingen met meerdere lijnstijlen. Als `readOnly` uit staat, kunnen gebruikers in de frontend zelf woorden en verbindingen toevoegen.",
+  "outputs": [],
   "type": "object",
   "required": ["unique_id", "title", "theme", "readOnly", "nodes"],
   "additionalProperties": false,

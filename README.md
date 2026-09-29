@@ -67,6 +67,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Docs: `public_html/types/timeline/v1/README.md`
   - Extra: horizontale of verticale tijdlijn, `placement` hangt af van `direction`, optionele `phases`, optionele `yearCuts`, kaartkleuren via `cardStyle`, klikbare cards via `linkUrl`, afbeeldingen via `imageUrl`, extra ruimte via `viewport.minWidthPx` / `viewport.minHeightPx` en automatische extra spreiding voor verticale clusters
 
+- Lesklok (v1)
+  - Pad: `public_html/types/lesson-clock/v1/`
+  - Data-schema: `public_html/types/lesson-clock/v1/schema.json`
+  - Example: `public_html/types/lesson-clock/v1/example.json`
+  - Extra: meerdere lessen met ISO 8601-start- en eindtijdstippen, synchroon aftellen in iedere iframe, pie-weergave, rode waarschuwingsfase en instelbare flitsfrequentie
+
 - Bin/Hex/Dec Reken (v1)
   - Pad: `public_html/types/bin-hex-dec-reken/v1/`
   - Data‑schema: `public_html/types/bin-hex-dec-reken/v1/schema.json`
@@ -135,6 +141,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/strip-ballonnetjes/v1/?unique_id=demo-strip-1&data=example.json`
 - `/types/notities/v1/?notitieblok_id=demo-notities-1&data=example.json`
 - `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`
+- `/types/lesson-clock/v1/?data=example.json`
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
 - `/types/scrumboard/v1/?key=demo-scrumboard-1&data=example.json`
@@ -185,3 +192,21 @@ De `schema.json` bestanden bevatten extra metadata om het automatisch gegenereer
 - Gebruik schema root `title` + `description` als naam/uitleg van de tool.
 - Gebruik per property `title` als veldlabel en `description` als hulptekst.
 - Voor arrays/objects zijn ook titels/omschrijvingen toegevoegd zodat herhaalbare secties leesbaar blijven.
+
+### Output-specificatie
+
+Een schema kan op rootniveau aangeven welke bestandsformaten de tool kan exporteren via `outputs`. Dit is metadata over de tool en dus geen invoerveld in `properties`:
+
+```json
+"outputs": [
+  {
+    "type": "md",
+    "title": "Markdown",
+    "description": "De inhoud kan als Markdown-bestand worden gedownload.",
+    "mimeType": "text/markdown",
+    "extensions": [".md", ".markdown"]
+  }
+]
+```
+
+Gebruik voor automatische compatibiliteitscontrole altijd `outputs[].type` als stabiele extensiecode. `mimeType`, `extensions`, `title` en `description` zijn optionele presentatiemetadata voor toekomstige uitbreidingen. Een lege array (`"outputs": []`) betekent dat de versie momenteel geen bestandsoutput ondersteunt. Gebruik bijvoorbeeld `md`, `json`, `txt` en `pdf` als type-codes; voeg nieuwe codes alleen toe wanneer de tool dat formaat daadwerkelijk kan exporteren.
