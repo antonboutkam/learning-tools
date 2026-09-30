@@ -51,6 +51,13 @@
           "description": "Toont in de weergavemodus een knop waarmee de gebruiker het breadboard als PNG-afbeelding kan opslaan. In de editor is deze knop altijd beschikbaar.",
           "default": false
         },
+        "caption": {
+          "type": "string",
+          "title": "Caption",
+          "description": "Korte toelichting die onder de breadboard-learn-tool wordt getoond.",
+          "maxLength": 240,
+          "default": ""
+        },
         "components": {
           "type": "array",
           "title": "Componenten",
@@ -240,6 +247,71 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "annotations": {
+          "type": "array",
+          "title": "Annotaties",
+          "description": "Losse labels en pijlen die uitleg op de stage toevoegen.",
+          "items": {
+            "type": "object",
+            "title": "Stage-annotatie",
+            "required": [
+              "id",
+              "type",
+              "x",
+              "y",
+              "color"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "ID",
+                "description": "Unieke sleutel van de annotatie."
+              },
+              "type": {
+                "type": "string",
+                "title": "Annotatietype",
+                "description": "Bepaalt of de annotatie tekst of een pijl toont.",
+                "enum": [
+                  "label",
+                  "arrow"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "title": "Labeltekst",
+                "description": "Tekst van een labelannotatie.",
+                "maxLength": 120
+              },
+              "x": {
+                "type": "number",
+                "title": "X-positie",
+                "description": "Horizontale startpositie in pixels."
+              },
+              "y": {
+                "type": "number",
+                "title": "Y-positie",
+                "description": "Verticale startpositie in pixels."
+              },
+              "x2": {
+                "type": "number",
+                "title": "Eindpositie X",
+                "description": "Horizontale eindpositie van een pijl in pixels."
+              },
+              "y2": {
+                "type": "number",
+                "title": "Eindpositie Y",
+                "description": "Verticale eindpositie van een pijl in pixels."
+              },
+              "color": {
+                "type": "string",
+                "title": "Kleur",
+                "description": "Kleur van het label of de pijl.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             }
           }

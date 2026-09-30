@@ -2,6 +2,7 @@
   "configuratie": {
     "canvasWidth": 1000,
     "canvasHeight": 620,
+    "caption": "Voorbeeld van een eenvoudige breadboardopstelling.",
     "showPinsInResult": true,
     "showExportButtonInResult": false,
     "components": [
@@ -10,6 +11,10 @@
       { "id": "led-1", "kind": "component", "name": "LED", "x": 320, "y": 210, "layer": 10, "rotation": 0, "locked": false, "showLabel": false }
     ],
     "wires": [],
+    "annotations": [
+      { "id": "label-1", "type": "label", "text": "Voeding", "x": 650, "y": 55, "color": "#203c4e" },
+      { "id": "arrow-1", "type": "arrow", "x": 705, "y": 82, "x2": 680, "y2": 125, "color": "#203c4e" }
+    ],
     "mounts": []
   }
 }

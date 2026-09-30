@@ -6,7 +6,7 @@
   const app = document.querySelector('#app');
   const credit = document.querySelector('#credit');
   setTimeout(() => { credit.classList.add('done'); setTimeout(() => credit.remove(), 400); }, 5000);
-  const initial = { canvasWidth: 1000, canvasHeight: 620, showPinsInResult:true, showExportButtonInResult:false, components: [{id:'breadboard-1',kind:'breadboard',name:'Breadboard',x:36,y:48,rotation:0,locked:false,showLabel:false},{id:'arduino-1',kind:'arduino',name:'Arduino Uno',x:555,y:100,rotation:0,locked:false,showLabel:false},{id:'led-1',kind:'component',name:'LED',x:320,y:210,rotation:0,locked:false,showLabel:false}], wires:[], mounts:[] };
+  const initial = { canvasWidth: 1000, canvasHeight: 620, caption:'', showPinsInResult:true, showExportButtonInResult:false, components: [{id:'breadboard-1',kind:'breadboard',name:'Breadboard',x:36,y:48,rotation:0,locked:false,showLabel:false},{id:'arduino-1',kind:'arduino',name:'Arduino Uno',x:555,y:100,rotation:0,locked:false,showLabel:false},{id:'led-1',kind:'component',name:'LED',x:320,y:210,rotation:0,locked:false,showLabel:false}], wires:[], annotations:[], mounts:[] };
   let library = null, libraryPromise = null, libraryQuery = '', libraryCategory = '', libraryLimit = 36;
   let stageExpanded = true, libraryExpanded = true;
   let stageZoom = 1, stageScrollX = 0, stageScrollY = 0, stagePan = null, suppressStageClick = false;
@@ -112,7 +112,7 @@
     ['#8e24aa', 'Paars'], ['#6d4c41', 'Bruin'], ['#37474f', 'Zwart'],
     ['#b0bec5', 'Grijs'], ['#ffffff', 'Wit']
   ];
-  let data = structuredClone(initial), pendingPin = null, wirePointer = null, snapPin = null, selectedWire = null, selectedKink = null, selectedComponentId = null, activeSelection = null, drag = null, contextMenu = null;
+  let data = structuredClone(initial), pendingPin = null, wirePointer = null, snapPin = null, selectedWire = null, selectedKink = null, selectedComponentId = null, selectedAnnotationId = null, activeSelection = null, drag = null, contextMenu = null;
   window.addEventListener('pointermove', event => {
     const stage = document.querySelector('#stage');
     const inside = stage && event.target instanceof Node && stage.contains(event.target);
@@ -191,11 +191,13 @@
     if (next < 0 || next >= history.length) return;
     historyIndex = next;
     const wireId = selectedWire?.id;
+    const annotationId = selectedAnnotationId;
     data = clone(history[historyIndex]);
     selectedWire = data.wires.find(w => w.id === wireId) || null;
+    selectedAnnotationId = data.annotations?.some(annotation => annotation.id === annotationId) ? annotationId : null;
     if (!getSelectedKink()) selectedKink = null;
     if (!data.components.some(c => c.id === selectedComponentId)) selectedComponentId = null;
-    if ((activeSelection === 'wire' && !selectedWire) || (activeSelection === 'kink' && !getSelectedKink()) || (activeSelection === 'component' && !selectedComponentId)) activeSelection = null;
+    if ((activeSelection === 'wire' && !selectedWire) || (activeSelection === 'kink' && !getSelectedKink()) || (activeSelection === 'component' && !selectedComponentId) || (activeSelection === 'annotation' && !selectedAnnotationId)) activeSelection = null;
     pendingPin = null;
     wirePointer = null;
     drag = null;
@@ -222,6 +224,7 @@
     data = {...clone(initial), ...clone(value)};
     data.components = Array.isArray(data.components) ? data.components.filter(c => c && typeof c === 'object') : [];
     data.wires = Array.isArray(data.wires) ? data.wires.filter(w => w && typeof w === 'object').map(w => ({...w, points:Array.isArray(w.points) ? w.points : []})) : [];
+    data.annotations = Array.isArray(data.annotations) ? data.annotations.filter(annotation => annotation && ['label','arrow'].includes(annotation.type)) : [];
     data.mounts = Array.isArray(data.mounts) ? data.mounts.filter(m => m && typeof m.componentPin === 'string' && typeof m.breadboardPin === 'string') : [];
     selectedWire = data.wires.find(w => w.id === wireId) || null;
     if (!getSelectedKink()) selectedKink = null;
@@ -231,6 +234,7 @@
       selectedWire = null;
       selectedKink = null;
       selectedComponentId = null;
+      selectedAnnotationId = null;
       activeSelection = null;
     }
     render();
@@ -249,6 +253,11 @@
     if (selectedWire === wire) { selectedWire = null; selectedKink = null; activeSelection = null; }
     changed();
   }
+  function removeAnnotation(annotation) {
+    data.annotations = data.annotations.filter(item => item !== annotation);
+    if (selectedAnnotationId === annotation.id) { selectedAnnotationId = null; activeSelection = null; }
+    changed();
+  }
   function cutSelection() {
     if (activeSelection === 'component') {
       const component = data.components.find(c => c.id === selectedComponentId);
@@ -260,6 +269,13 @@
     if (activeSelection === 'wire' && selectedWire) {
       clipboard = {kind:'wire', wire:clone(selectedWire), uses:0};
       removeWire(selectedWire);
+      return true;
+    }
+    if (activeSelection === 'annotation') {
+      const annotation = data.annotations.find(item => item.id === selectedAnnotationId);
+      if (!annotation) return false;
+      clipboard = {kind:'annotation', annotation:clone(annotation), uses:0};
+      removeAnnotation(annotation);
       return true;
     }
     return false;
@@ -291,7 +307,7 @@
       selectedComponentId = component.id;
       selectedWire = null;
       activeSelection = 'component';
-    } else {
+    } else if (clipboard.kind === 'wire') {
       const wire = clone(clipboard.wire);
       if (!data.components.some(c => wire.from.startsWith(c.id + ':')) || !data.components.some(c => wire.to.startsWith(c.id + ':'))) return false;
       wire.id = availableId(wire.id, data.wires);
@@ -299,6 +315,16 @@
       selectedWire = wire;
       selectedComponentId = null;
       activeSelection = 'wire';
+    } else {
+      const annotation = clone(clipboard.annotation);
+      annotation.id = availableId(annotation.id, data.annotations);
+      const offset = clipboard.uses * 24;
+      annotation.x += offset; annotation.y += offset;
+      if (annotation.type === 'arrow') { annotation.x2 += offset; annotation.y2 += offset; }
+      data.annotations.push(annotation);
+      selectedAnnotationId = annotation.id;
+      selectedComponentId = null; selectedWire = null; selectedKink = null;
+      activeSelection = 'annotation';
     }
     clipboard.uses++;
     changed();
@@ -465,13 +491,23 @@
     } catch(error) { if(notice)notice.textContent=`Exporteren mislukt: ${error.message}`; }
     finally {button.disabled=false;button.textContent=previous;}
   }
+  function addAnnotation(type) {
+    const width=Math.max(480,Number(data.canvasWidth)||1000),height=Math.max(320,Number(data.canvasHeight)||620);
+    const id=availableId(`${type}-${Date.now()}`,data.annotations);
+    const annotation=type==='label'
+      ? {id,type,text:'Nieuw label',x:Math.round(width/2),y:Math.round(height/2),color:'#203c4e'}
+      : {id,type,x:Math.round(width/2-60),y:Math.round(height/2),x2:Math.round(width/2+60),y2:Math.round(height/2),color:'#203c4e'};
+    data.annotations.push(annotation);
+    selectedAnnotationId=id;selectedComponentId=null;selectedWire=null;selectedKink=null;activeSelection='annotation';
+    changed();
+  }
   function render() {
     closeContextMenu();
     setSnapPin(null);
     showPinStatus(null);
     const width = Math.max(480, Number(data.canvasWidth) || 1000), height = Math.max(320, Number(data.canvasHeight) || 620);
-    app.innerHTML = `<div class="layout ${editing?'':'readonly'} ${!editing&&data.showPinsInResult===false?'hide-result-pins':''}" style="--stage-width:${width}px"><div class="toolbar" ${editing?'':'hidden'}><label>Breedte <input data-size="canvasWidth" type="number" min="480" max="2400" value="${width}"></label><label>Hoogte <input data-size="canvasHeight" type="number" min="320" max="1800" value="${height}"></label><button id="wire-mode">${pendingPin?'Kies tweede contactpunt':'Draad verbinden'}</button><button id="delete-wire" ${selectedWire?'':'disabled'}>Verwijder geselecteerde draad</button><button id="undo" title="Ctrl+Z" ${historyIndex===0?'disabled':''}>↶ Ongedaan</button><button id="redo" title="Ctrl+Y / Ctrl+Shift+Z" ${historyIndex===history.length-1?'disabled':''}>↷ Opnieuw</button><button type="button" data-export-image>Opslaan als afbeelding</button></div><section class="stage-column"><div class="stage-viewport">${!editing&&data.showExportButtonInResult===true?'<button class="result-export" type="button" data-export-image>Opslaan als afbeelding</button>':''}<div class="stage-wrap"><div class="stage-canvas" style="width:${width*stageZoom}px;height:${height*stageZoom}px"><div class="stage ${pendingPin?'wiring':''}" id="stage" style="width:${width}px;height:${height}px;transform:scale(${stageZoom})"><svg id="wires" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible"></svg><div id="parts"></div><svg id="wire-overlay" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible" aria-hidden="true"></svg><svg id="kink-overlay" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible"></svg></div></div></div><div class="zoom-controls" aria-label="Zoom"><button id="zoom-in" type="button" aria-label="Inzoomen" title="Inzoomen">+</button><output id="zoom-level">${Math.round(stageZoom*100)}%</output><button id="zoom-out" type="button" aria-label="Uitzoomen" title="Uitzoomen">−</button></div></div><div class="diagnostics" id="diagnostics" aria-live="polite"></div><div class="notice" id="notice">${editing?'Klik twee contactpunten om een draad te verbinden. Sleep lege ruimte om de stage te verplaatsen.':'Sleep lege ruimte om de stage te verplaatsen.'}</div></section><aside class="panel" ${editing?'':'hidden'}><details id="stage-section" ${stageExpanded?'open':''}><summary>Stage</summary><label class="global-setting"><input id="show-pins-in-result" type="checkbox" ${data.showPinsInResult!==false?'checked':''}> Contactpinnen tonen in eindresultaat</label><label class="global-setting"><input id="show-export-in-result" type="checkbox" ${data.showExportButtonInResult===true?'checked':''}> Knop ‘Opslaan als afbeelding’ tonen in eindresultaat</label><div id="list"></div><h3>Draden</h3><div id="wire-list"></div><h3>Geselecteerd knikpunt</h3><div id="kink-settings"></div></details><details class="library" id="library-section" ${libraryExpanded?'open':''}><summary>Library</summary><label class="library-filter">Zoeken <input id="library-search" type="search" value="${esc(libraryQuery)}" placeholder="Zoek onderdeel"></label><label class="library-filter">Categorie <select id="library-category"></select></label><div id="library-results" aria-live="polite"></div></details></aside></div>`;
-    const stage = document.querySelector('#stage'), stageWrap=document.querySelector('.stage-wrap'), stageCanvas=document.querySelector('.stage-canvas'), parts = document.querySelector('#parts'), svg = document.querySelector('#wires'), overlay = document.querySelector('#wire-overlay'), kinkOverlay=document.querySelector('#kink-overlay');
+    app.innerHTML = `<div class="layout ${editing?'':'readonly'} ${!editing&&data.showPinsInResult===false?'hide-result-pins':''}" style="--stage-width:${width}px"><div class="toolbar" ${editing?'':'hidden'}><label>Breedte <input data-size="canvasWidth" type="number" min="480" max="2400" value="${width}"></label><label>Hoogte <input data-size="canvasHeight" type="number" min="320" max="1800" value="${height}"></label><button id="wire-mode">${pendingPin?'Kies tweede contactpunt':'Draad verbinden'}</button><button id="add-label">+ Label</button><button id="add-arrow">+ Pijl</button><button id="delete-wire" ${selectedWire?'':'disabled'}>Verwijder geselecteerde draad</button><button id="undo" title="Ctrl+Z" ${historyIndex===0?'disabled':''}>↶ Ongedaan</button><button id="redo" title="Ctrl+Y / Ctrl+Shift+Z" ${historyIndex===history.length-1?'disabled':''}>↷ Opnieuw</button><button type="button" data-export-image>Opslaan als afbeelding</button></div><section class="stage-column"><div class="stage-viewport">${!editing&&data.showExportButtonInResult===true?'<button class="result-export" type="button" data-export-image>Opslaan als afbeelding</button>':''}<div class="stage-wrap"><div class="stage-canvas" style="width:${width*stageZoom}px;height:${height*stageZoom}px"><div class="stage ${pendingPin?'wiring':''}" id="stage" style="width:${width}px;height:${height}px;transform:scale(${stageZoom})"><svg id="wires" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible"></svg><div id="parts"></div><svg id="wire-overlay" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible" aria-hidden="true"></svg><svg id="kink-overlay" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible"></svg><svg id="annotation-arrows" width="${width}" height="${height}" style="position:absolute;inset:0;overflow:visible"><defs><marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="context-stroke"></path></marker></defs></svg><div id="annotation-labels"></div></div></div></div><div class="zoom-controls" aria-label="Zoom"><button id="zoom-in" type="button" aria-label="Inzoomen" title="Inzoomen">+</button><output id="zoom-level">${Math.round(stageZoom*100)}%</output><button id="zoom-out" type="button" aria-label="Uitzoomen" title="Uitzoomen">−</button></div></div>${data.caption?.trim()?`<p class="tool-caption">${esc(data.caption.trim())}</p>`:''}<div class="diagnostics" id="diagnostics" aria-live="polite"></div><div class="notice" id="notice">${editing?'Klik twee contactpunten om een draad te verbinden. Sleep lege ruimte om de stage te verplaatsen.':'Sleep lege ruimte om de stage te verplaatsen.'}</div></section><aside class="panel" ${editing?'':'hidden'}><details id="stage-section" ${stageExpanded?'open':''}><summary>Stage</summary><label class="global-setting"><input id="show-pins-in-result" type="checkbox" ${data.showPinsInResult!==false?'checked':''}> Contactpinnen tonen in eindresultaat</label><label class="global-setting"><input id="show-export-in-result" type="checkbox" ${data.showExportButtonInResult===true?'checked':''}> Knop ‘Opslaan als afbeelding’ tonen in eindresultaat</label><label class="caption-setting">Caption<textarea id="caption" maxlength="240" placeholder="Korte toelichting onder de learn-tool">${esc(data.caption||'')}</textarea></label><div id="list"></div><h3>Draden</h3><div id="wire-list"></div><h3>Annotaties</h3><div id="annotation-list"></div><h3>Geselecteerd knikpunt</h3><div id="kink-settings"></div></details><details class="library" id="library-section" ${libraryExpanded?'open':''}><summary>Library</summary><label class="library-filter">Zoeken <input id="library-search" type="search" value="${esc(libraryQuery)}" placeholder="Zoek onderdeel"></label><label class="library-filter">Categorie <select id="library-category"></select></label><div id="library-results" aria-live="polite"></div></details></aside></div>`;
+    const stage = document.querySelector('#stage'), stageWrap=document.querySelector('.stage-wrap'), stageCanvas=document.querySelector('.stage-canvas'), parts = document.querySelector('#parts'), svg = document.querySelector('#wires'), overlay = document.querySelector('#wire-overlay'), kinkOverlay=document.querySelector('#kink-overlay'), annotationArrows=document.querySelector('#annotation-arrows'), annotationLabels=document.querySelector('#annotation-labels');
     stageWrap.scrollLeft=stageScrollX;stageWrap.scrollTop=stageScrollY;
     const setZoom=(next,clientX,clientY)=>{
       next=Math.max(.35,Math.min(2.5,Math.round(next*20)/20));
@@ -487,7 +523,7 @@
     document.querySelectorAll('[data-export-image]').forEach(button=>button.onclick=()=>exportStageImage(button));
     stageWrap.onwheel=e=>{if(!e.ctrlKey&&!e.metaKey)return;e.preventDefault();setZoom(stageZoom*Math.exp(-e.deltaY*.01),e.clientX,e.clientY);};
     stageWrap.onscroll=()=>{stageScrollX=stageWrap.scrollLeft;stageScrollY=stageWrap.scrollTop;};
-    stage.onpointerdown=e=>{if(e.button!==0||e.target.closest('.part,.pin,.wire,.kink')||pendingPin)return;stagePan={x:e.clientX,y:e.clientY,left:stageWrap.scrollLeft,top:stageWrap.scrollTop};stage.setPointerCapture(e.pointerId);stage.classList.add('panning');};
+    stage.onpointerdown=e=>{if(e.button!==0||e.target.closest('.part,.pin,.wire,.kink,.annotation')||pendingPin)return;stagePan={x:e.clientX,y:e.clientY,left:stageWrap.scrollLeft,top:stageWrap.scrollTop};stage.setPointerCapture(e.pointerId);stage.classList.add('panning');};
     stage.addEventListener('pointermove',e=>{if(!stagePan)return;const dx=e.clientX-stagePan.x,dy=e.clientY-stagePan.y;if(Math.abs(dx)+Math.abs(dy)>4)suppressStageClick=true;stageWrap.scrollLeft=stagePan.left-dx;stageWrap.scrollTop=stagePan.top-dy;});
     stage.addEventListener('pointerup',()=>{stagePan=null;stage.classList.remove('panning');});
     stage.addEventListener('pointercancel',()=>{stagePan=null;stage.classList.remove('panning');});
@@ -527,15 +563,19 @@
       document.querySelector('#library-section').ontoggle = event => { libraryExpanded = event.target.open; };
       document.querySelectorAll('[data-size]').forEach(i => i.onchange = () => { data[i.dataset.size]=Number(i.value); changed(); });
       document.querySelector('#wire-mode').onclick = () => { pendingPin=null; wirePointer=null; setSnapPin(null); stage.classList.remove('wiring'); stage.querySelector('.pin.pending')?.classList.remove('pending'); overlay.querySelector('#wire-preview')?.remove(); document.querySelector('#wire-mode').textContent='Draad verbinden'; document.querySelector('#notice').textContent='Klik een begincontactpunt en daarna een eindcontactpunt.'; };
+      document.querySelector('#add-label').onclick = () => addAnnotation('label');
+      document.querySelector('#add-arrow').onclick = () => addAnnotation('arrow');
       document.querySelector('#delete-wire').onclick = () => { if(selectedWire)removeWire(selectedWire); };
       document.querySelector('#undo').onclick = () => restoreHistory(-1);
       document.querySelector('#redo').onclick = () => restoreHistory(1);
       document.querySelector('#show-pins-in-result').onchange = event => { data.showPinsInResult=event.target.checked; changed(); };
       document.querySelector('#show-export-in-result').onchange = event => { data.showExportButtonInResult=event.target.checked; changed(); };
+      document.querySelector('#caption').onchange = event => { data.caption=event.target.value.trim(); changed(); };
       document.querySelector('#library-search').oninput = event => { libraryQuery = event.target.value; libraryLimit = 36; renderLibrary(); };
       document.querySelector('#library-category').onchange = event => { libraryCategory = event.target.value; libraryLimit = 36; renderLibrary(); };
       renderList();
       renderWirePanel();
+      renderAnnotationPanel();
       renderKinkPanel();
       renderLibrary();
     }
@@ -614,6 +654,7 @@
             selectedWire = w;
             selectedKink = null;
             selectedComponentId = null;
+            selectedAnnotationId = null;
             activeSelection = 'wire';
             svg.querySelectorAll('.wire').forEach(line=>line.classList.toggle('selected',line.dataset.wire===w.id));
             overlay.querySelectorAll('.wire-visual').forEach(line=>line.classList.toggle('selected',line.dataset.wireVisual===w.id));
@@ -679,8 +720,24 @@
         }
       }
     }
+    data.annotations.forEach(annotation=>{
+      let element;
+      if(annotation.type==='label'){
+        element=document.createElement('div');element.className=`annotation annotation-label ${annotation.id===selectedAnnotationId?'selected':''}`;element.dataset.annotation=annotation.id;element.textContent=annotation.text||'Label';element.style.left=`${annotation.x}px`;element.style.top=`${annotation.y}px`;element.style.color=annotation.color||'#203c4e';annotationLabels.append(element);
+      }else{
+        element=document.createElementNS('http://www.w3.org/2000/svg','line');element.setAttribute('class',`annotation annotation-arrow ${annotation.id===selectedAnnotationId?'selected':''}`);element.dataset.annotation=annotation.id;for(const [key,value] of Object.entries({x1:annotation.x,y1:annotation.y,x2:annotation.x2,y2:annotation.y2}))element.setAttribute(key,value);element.setAttribute('stroke',annotation.color||'#203c4e');element.setAttribute('marker-end','url(#arrowhead)');annotationArrows.append(element);
+      }
+      if(!editing)return;
+      element.onpointerdown=event=>{
+        if(event.button!==0)return;event.preventDefault();event.stopPropagation();selectedAnnotationId=annotation.id;selectedComponentId=null;selectedWire=null;selectedKink=null;activeSelection='annotation';
+        const start=stagePoint(stage,event.clientX,event.clientY),original={x:annotation.x,y:annotation.y,x2:annotation.x2,y2:annotation.y2};element.setPointerCapture(event.pointerId);
+        element.onpointermove=move=>{const point=stagePoint(stage,move.clientX,move.clientY),dx=Math.round(point.x-start.x),dy=Math.round(point.y-start.y);annotation.x=original.x+dx;annotation.y=original.y+dy;if(annotation.type==='arrow'){annotation.x2=original.x2+dx;annotation.y2=original.y2+dy;element.setAttribute('x1',annotation.x);element.setAttribute('y1',annotation.y);element.setAttribute('x2',annotation.x2);element.setAttribute('y2',annotation.y2);}else{element.style.left=`${annotation.x}px`;element.style.top=`${annotation.y}px`;}};
+        element.onpointerup=()=>changed();
+      };
+      element.onclick=event=>{event.stopPropagation();selectedAnnotationId=annotation.id;selectedComponentId=null;selectedWire=null;selectedKink=null;activeSelection='annotation';render();};
+    });
     stage.querySelectorAll('.pin').forEach(pin=>pin.onclick=e=>{if(!editing)return;e.stopPropagation();if(!pendingPin){pendingPin=pin.dataset.pin;wirePointer={x:e.clientX,y:e.clientY};pin.classList.add('pending');stage.classList.add('wiring');drawWires();document.querySelector('#wire-mode').textContent='Kies tweede contactpunt';document.querySelector('#notice').textContent='Beginpunt gekozen. Klik nu het tweede contactpunt.';}else connectToPin(pin); });
-    stage.onclick=e=>{if(suppressStageClick){suppressStageClick=false;return;}if(pendingPin){connectToPin(nearestPin(e.clientX,e.clientY));return;}if((e.target===stage||e.target===svg||e.target===parts||e.target===kinkOverlay)&&selectedWire){selectedWire=null;selectedKink=null;activeSelection=null;render();}};
+    stage.onclick=e=>{if(suppressStageClick){suppressStageClick=false;return;}if(pendingPin){connectToPin(nearestPin(e.clientX,e.clientY));return;}if((e.target===stage||e.target===svg||e.target===parts||e.target===kinkOverlay||e.target===annotationArrows||e.target===annotationLabels)&&(selectedWire||selectedAnnotationId)){selectedWire=null;selectedKink=null;selectedAnnotationId=null;activeSelection=null;render();}};
     showDiagnostics(validateConfiguration(width,height));
   }
   function validateConfiguration(width,height){
@@ -745,6 +802,7 @@
     selectedComponentId=id;
     selectedWire=null;
     selectedKink=null;
+    selectedAnnotationId=null;
     activeSelection='component';
     document.querySelectorAll('.part').forEach(part=>part.classList.toggle('selected',part.dataset.id===id));
     document.querySelector('#delete-wire').disabled=true;
@@ -775,7 +833,7 @@
     list.innerHTML=data.wires.map((wire,index)=>{const label=wire.name?.trim()||`Draad ${index+1}`;return `<div class="wire-item ${wire===selectedWire?'selected':''}" data-wire-row="${esc(wire.id)}"><div class="wire-item-heading"><button class="wire-color-trigger" type="button" data-wire-colors aria-label="Kleur van ${esc(label)} wijzigen" aria-expanded="false"><span class="wire-swatch" style="background:${esc(wire.color)}"></span></button><div class="wire-name"><button type="button" data-edit-wire-name title="Naam wijzigen">${esc(label)}</button><input type="text" data-wire-name value="${esc(wire.name||'')}" placeholder="Draad ${index+1}" aria-label="Naam van ${esc(label)}" hidden></div><div class="wire-actions"><input class="label-toggle" type="checkbox" data-wire-show-label ${wire.showLabel?'checked':''} aria-label="Label op stage tonen" title="Label op stage tonen"><button type="button" data-select-wire aria-label="${esc(label)} selecteren" title="Draad selecteren">◎</button><button class="wire-remove" type="button" data-remove-wire aria-label="${esc(label)} verwijderen" title="Draad verwijderen">×</button></div><div class="wire-color-menu" data-wire-color-menu role="group" aria-label="Kies een kleur voor ${esc(label)}" hidden>${WIRE_COLORS.map(([color,name])=>`<button type="button" class="wire-color-option" data-wire-color="${color}" aria-label="${name}" title="${name}" aria-pressed="${wire.color?.toLowerCase()===color?'true':'false'}" style="--wire-option-color:${color}"></button>`).join('')}</div></div></div>`;}).join('')||'<p class="empty-list">Nog geen draden.</p>';
     list.querySelectorAll('[data-wire-row]').forEach(row=>{
       const wire=data.wires.find(item=>item.id===row.dataset.wireRow);
-      row.querySelector('[data-select-wire]').onclick=()=>{selectedWire=wire;selectedKink=null;selectedComponentId=null;activeSelection='wire';render();};
+      row.querySelector('[data-select-wire]').onclick=()=>{selectedWire=wire;selectedKink=null;selectedComponentId=null;selectedAnnotationId=null;activeSelection='wire';render();};
       row.querySelector('[data-remove-wire]').onclick=()=>removeWire(wire);
       row.querySelector('[data-wire-show-label]').onchange=event=>{wire.showLabel=event.target.checked;changed();};
       const colorTrigger=row.querySelector('[data-wire-colors]'), colorMenu=row.querySelector('[data-wire-color-menu]');
@@ -801,6 +859,19 @@
       nameButton.onclick=()=>{nameButton.hidden=true;input.hidden=false;input.focus();input.select();};
       input.onkeydown=event=>{if(event.key==='Enter'){event.preventDefault();input.blur();}if(event.key==='Escape'){input.value=wire.name||'';input.hidden=true;nameButton.hidden=false;nameButton.focus();}};
       input.onblur=()=>{const name=input.value.trim();if(name)wire.name=name;else delete wire.name;changed();};
+    });
+  }
+  function renderAnnotationPanel() {
+    const list=document.querySelector('#annotation-list');
+    if(!list)return;
+    list.innerHTML=data.annotations.map((annotation,index)=>`<div class="annotation-item ${annotation.id===selectedAnnotationId?'selected':''}" data-annotation-row="${esc(annotation.id)}"><strong>${annotation.type==='label'?'Label':'Pijl'} ${index+1}</strong>${annotation.type==='label'?`<label>Tekst <input data-annotation-text type="text" maxlength="120" value="${esc(annotation.text||'')}"></label>`:''}<div class="annotation-coordinates"><label>X <input data-annotation-x type="number" value="${annotation.x}"></label><label>Y <input data-annotation-y type="number" value="${annotation.y}"></label>${annotation.type==='arrow'?`<label>Eind X <input data-annotation-x2 type="number" value="${annotation.x2}"></label><label>Eind Y <input data-annotation-y2 type="number" value="${annotation.y2}"></label>`:''}</div><div class="annotation-actions"><label>Kleur <input data-annotation-color type="color" value="${esc(annotation.color||'#203c4e')}"></label><button data-select-annotation type="button">Selecteer</button><button data-remove-annotation class="danger" type="button">Verwijder</button></div></div>`).join('')||'<p class="empty-list">Nog geen labels of pijlen.</p>';
+    list.querySelectorAll('[data-annotation-row]').forEach(row=>{
+      const annotation=data.annotations.find(item=>item.id===row.dataset.annotationRow);
+      row.querySelector('[data-select-annotation]').onclick=()=>{selectedAnnotationId=annotation.id;selectedComponentId=null;selectedWire=null;selectedKink=null;activeSelection='annotation';render();};
+      row.querySelector('[data-remove-annotation]').onclick=()=>removeAnnotation(annotation);
+      const text=row.querySelector('[data-annotation-text]');if(text)text.onchange=()=>{annotation.text=text.value.trim()||'Label';changed();};
+      for(const key of ['x','y','x2','y2']){const input=row.querySelector(`[data-annotation-${key}]`);if(input)input.onchange=()=>{const value=Number(input.value);if(Number.isFinite(value)){annotation[key]=value;changed();}};}
+      row.querySelector('[data-annotation-color]').onchange=event=>{annotation.color=event.target.value;changed();};
     });
   }
   function renderList() {
