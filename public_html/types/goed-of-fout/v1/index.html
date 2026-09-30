@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goed of fout v1</title>
+  <link rel="stylesheet" href="/shared/ui.css" />
+  <link rel="stylesheet" href="style.css?v=20260930-1" />
+</head>
+<body>
+  <main class="shell">
+    <header class="tool-header">
+      <div>
+        <p class="eyebrow">Goed of fout</p>
+        <h1 id="tool-title">Goed of fout</h1>
+        <p id="intro" class="intro"></p>
+      </div>
+      <div id="progress" class="progress" aria-live="polite"></div>
+    </header>
+
+    <section id="quiz-card" class="quiz-card" aria-labelledby="question">
+      <div class="image-frame">
+        <img id="situation-image" alt="" />
+      </div>
+      <div class="question-area">
+        <p id="question-number" class="question-number"></p>
+        <h2 id="question">Bekijk de situatie</h2>
+        <div class="answer-buttons" aria-label="Kies goed of fout">
+          <button id="good-button" class="answer-button answer-button--good" type="button">
+            <span class="thumb" aria-hidden="true">👍</span>
+            <span>Goed</span>
+          </button>
+          <button id="wrong-button" class="answer-button answer-button--wrong" type="button">
+            <span class="thumb" aria-hidden="true">👎</span>
+            <span>Fout</span>
+          </button>
+        </div>
+        <p id="feedback" class="feedback" aria-live="assertive"></p>
+      </div>
+    </section>
+
+    <section id="result-card" class="result-card" hidden aria-labelledby="result-title">
+      <div class="confetti" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div id="result-icon" class="result-icon" aria-hidden="true">🎉</div>
+      <p class="eyebrow">Jouw uitslag</p>
+      <h2 id="result-title"></h2>
+      <p id="score" class="score"></p>
+      <p id="score-detail" class="score-detail"></p>
+      <button id="restart-button" class="restart-button" type="button">Nog een keer</button>
+    </section>
+
+    <section id="error-card" class="error-card" hidden role="alert">
+      <h2>De oefening kan niet worden gestart</h2>
+      <p id="error-message"></p>
+    </section>
+  </main>
+  <script src="/shared/completion.js" defer></script>
+  <script src="app.js?v=20260930-2" defer></script>
+</body>
+</html>

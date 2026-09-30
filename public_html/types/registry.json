@@ -2,6 +2,16 @@
   "version": 1,
   "types": [
     {
+      "id": "goed-of-fout",
+      "type": "assignment-type",
+      "name": "Goed of fout",
+      "version": "v1",
+      "launchUrl": "/types/goed-of-fout/v1/",
+      "schemaUrl": "/types/goed-of-fout/v1/schema.json",
+      "exampleDataUrl": "/types/goed-of-fout/v1/example.json",
+      "description": "Beoordeel situaties op afbeeldingen als goed of fout en ontvang na afloop een feestelijke procentuele score."
+    },
+    {
       "id": "juiste-volgorde",
       "type": "assignment-type",
       "name": "Juiste volgorde",

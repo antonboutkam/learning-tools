@@ -1,0 +1,33 @@
+{
+  "titel": "Veilig werken: goed of fout?",
+  "introductie": "Bekijk iedere werksituatie en bepaal of er veilig wordt gewerkt.",
+  "vragenRandomiseren": true,
+  "aantalVragen": 4,
+  "minimaalGoed": 3,
+  "situaties": [
+    {
+      "afbeelding": "assets/veiligheidsbril.svg",
+      "alt": "Een leerling draagt een veiligheidsbril tijdens het werken.",
+      "vraag": "De leerling draagt een veiligheidsbril. Is dit goed of fout?",
+      "goed": true
+    },
+    {
+      "afbeelding": "assets/losse-kabel.svg",
+      "alt": "Een losse kabel ligt over een looppad.",
+      "vraag": "Deze kabel kan zo veilig blijven liggen.",
+      "goed": false
+    },
+    {
+      "afbeelding": "assets/opgeruimde-werkplek.svg",
+      "alt": "Gereedschap ligt netjes geordend op een werkbank.",
+      "vraag": "Dit is een veilige en opgeruimde werkplek.",
+      "goed": true
+    },
+    {
+      "afbeelding": "assets/drinken-bij-elektronica.svg",
+      "alt": "Een beker drinken staat naast open elektronica.",
+      "vraag": "Drinken naast open elektronica is verstandig.",
+      "goed": false
+    }
+  ]
+}

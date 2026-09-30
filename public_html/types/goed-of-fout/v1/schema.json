@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/goed-of-fout/v1/schema.json",
+  "title": "Goed of fout v1",
+  "description": "Beeldquiz waarin studenten per situatie kiezen of deze goed of fout is en na afloop een procentuele score krijgen.",
+  "outputs": [],
+  "type": "object",
+  "required": ["vragenRandomiseren", "aantalVragen", "minimaalGoed", "situaties"],
+  "additionalProperties": false,
+  "properties": {
+    "titel": {
+      "type": "string",
+      "title": "Titel",
+      "description": "Titel bovenaan de oefening.",
+      "default": "Goed of fout"
+    },
+    "introductie": {
+      "type": "string",
+      "title": "Introductie",
+      "description": "Korte uitleg die onder de titel wordt getoond.",
+      "format": "textarea"
+    },
+    "vragenRandomiseren": {
+      "type": "boolean",
+      "title": "Vragen randomiseren",
+      "description": "Zet aan om bij iedere poging een willekeurige selectie en volgorde te gebruiken.",
+      "default": true
+    },
+    "aantalVragen": {
+      "type": "integer",
+      "title": "Aantal te stellen vragen",
+      "description": "Aantal situaties dat de student per poging krijgt. Als er minder situaties beschikbaar zijn, worden alle beschikbare situaties gebruikt.",
+      "minimum": 1,
+      "default": 5
+    },
+    "minimaalGoed": {
+      "type": "integer",
+      "title": "Minimaal aantal antwoorden goed",
+      "description": "Aantal goede antwoorden dat nodig is voor een voldoende. Dit kan niet hoger zijn dan het aantal gestelde vragen.",
+      "minimum": 0,
+      "default": 4
+    },
+    "situaties": {
+      "type": "array",
+      "title": "Situaties",
+      "description": "De afbeeldingen met optionele vraag en het juiste antwoord.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "title": "Situatie",
+        "description": "Eén afbeelding waarop de student goed of fout antwoordt.",
+        "required": ["afbeelding", "alt", "goed"],
+        "additionalProperties": false,
+        "properties": {
+          "afbeelding": {
+            "type": "string",
+            "title": "Afbeelding",
+            "description": "Kies een lokale cursusafbeelding voor deze situatie. Relatieve paden worden opgelost binnen de actieve Courses-omgeving.",
+            "format": "image"
+          },
+          "alt": {
+            "type": "string",
+            "title": "Alt-tekst",
+            "description": "Beschrijf de zichtbare situatie voor studenten die de afbeelding niet kunnen zien.",
+            "minLength": 1
+          },
+          "vraag": {
+            "type": "string",
+            "title": "Vraag (optioneel)",
+            "description": "Vraag of stelling onder de afbeelding. Zonder tekst wordt de standaardvraag getoond.",
+            "format": "textarea"
+          },
+          "goed": {
+            "type": "boolean",
+            "title": "Juiste antwoord is goed",
+            "description": "Zet aan wanneer de groene knop Goed het juiste antwoord is; laat uit voor Fout.",
+            "default": true
+          }
+        }
+      }
+    }
+  }
+}

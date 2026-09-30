@@ -39,6 +39,18 @@
           "maximum": 1800,
           "default": 620
         },
+        "showPinsInResult": {
+          "type": "boolean",
+          "title": "Contactpinnen tonen",
+          "description": "Toont de gekleurde contactrondjes in het eindresultaat. In de editor blijven ze altijd zichtbaar.",
+          "default": true
+        },
+        "showExportButtonInResult": {
+          "type": "boolean",
+          "title": "Afbeelding opslaan toestaan",
+          "description": "Toont in de weergavemodus een knop waarmee de gebruiker het breadboard als PNG-afbeelding kan opslaan. In de editor is deze knop altijd beschikbaar.",
+          "default": false
+        },
         "components": {
           "type": "array",
           "title": "Componenten",
@@ -87,10 +99,33 @@
                 "title": "Y-positie",
                 "description": "Verticale positie in pixels."
               },
+              "layer": {
+                "type": "integer",
+                "title": "Laag",
+                "description": "Bepaalt welke componenten boven andere componenten worden getekend. Breadboards gebruiken standaard een lagere laag."
+              },
+              "rotation": {
+                "type": "integer",
+                "title": "Rotatie",
+                "description": "Draaiing van het component met de klok mee, in stappen van 90 graden.",
+                "enum": [
+                  0,
+                  90,
+                  180,
+                  270
+                ],
+                "default": 0
+              },
               "locked": {
                 "type": "boolean",
                 "title": "Vergrendeld",
                 "description": "Vergrendelt slepen en wijzigen van de positie."
+              },
+              "showLabel": {
+                "type": "boolean",
+                "title": "Label tonen",
+                "description": "Toont de naam van het component op de stage.",
+                "default": false
               },
               "partId": {
                 "type": "string",
@@ -153,6 +188,11 @@
                 "title": "ID",
                 "description": "Unieke sleutel van de draad."
               },
+              "name": {
+                "type": "string",
+                "title": "Naam",
+                "description": "Herkenbare naam of label voor de draad."
+              },
               "from": {
                 "type": "string",
                 "title": "Van contactpunt",
@@ -168,6 +208,12 @@
                 "title": "Kleur",
                 "description": "Weergavekleur van de draad.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "showLabel": {
+                "type": "boolean",
+                "title": "Label tonen",
+                "description": "Toont de naam van de draad op de stage.",
+                "default": false
               },
               "points": {
                 "type": "array",
@@ -194,6 +240,32 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "mounts": {
+          "type": "array",
+          "title": "Breadboardmontages",
+          "description": "Elektrische verbindingen die ontstaan doordat componentpinnen rechtstreeks in breadboardgaten zijn geplaatst.",
+          "items": {
+            "type": "object",
+            "title": "Gemonteerde componentpin",
+            "required": [
+              "componentPin",
+              "breadboardPin"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "componentPin": {
+                "type": "string",
+                "title": "Componentpin",
+                "description": "Volledige ID van de pin op het geplaatste component."
+              },
+              "breadboardPin": {
+                "type": "string",
+                "title": "Breadboardgat",
+                "description": "Volledige ID van het breadboardgat waarin de componentpin is geplaatst."
               }
             }
           }
