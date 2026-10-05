@@ -142,6 +142,16 @@
       "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview)."
     },
     {
+      "id": "p5-editor",
+      "type": "assignment-type",
+      "name": "p5.js editor",
+      "version": "v1",
+      "launchUrl": "/types/p5-editor/v1/",
+      "schemaUrl": "/types/p5-editor/v1/schema.json",
+      "exampleDataUrl": "/types/p5-editor/v1/example.json",
+      "description": "Bewerk en voer configureerbare p5.js-demo-JavaScript uit in een streng geïsoleerde preview."
+    },
+    {
       "id": "scrumboard",
       "type": "assignment-type",
       "name": "Scrumboard",

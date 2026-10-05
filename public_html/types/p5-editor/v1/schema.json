@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.example/types/p5-editor/v1/schema.json",
+  "title": "p5.js editor v1",
+  "description": "Een JavaScript-editor waarin studenten een configureerbare p5.js-demo veilig kunnen aanpassen en uitvoeren in een geïsoleerde preview.",
+  "type": "object",
+  "required": ["demoJavaScript"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke ID (optioneel)",
+      "description": "Stabiele sleutel voor deze tool-instance. Hiermee worden wijzigingen van de student alleen in deze browser opgeslagen.",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "title": {
+      "type": "string",
+      "title": "Titel (optioneel)",
+      "description": "Titel boven de p5.js-editor.",
+      "maxLength": 200,
+      "default": "p5.js editor"
+    },
+    "intro": {
+      "type": "string",
+      "title": "Instructie (optioneel)",
+      "description": "Korte opdracht of uitleg boven de editor.",
+      "format": "textarea",
+      "maxLength": 4000
+    },
+    "demoJavaScript": {
+      "type": "string",
+      "title": "Demo-JavaScript",
+      "description": "Startcode die in de editor verschijnt en als p5.js-sketch in de geïsoleerde preview wordt uitgevoerd. Gebruik bijvoorbeeld setup() en draw().",
+      "format": "textarea",
+      "maxLength": 100000
+    },
+    "autoRun": {
+      "type": "boolean",
+      "title": "Automatisch uitvoeren (optioneel)",
+      "description": "Start de preview automatisch na het laden en opnieuw kort nadat de student code wijzigt.",
+      "default": true
+    },
+    "readOnly": {
+      "type": "boolean",
+      "title": "Alleen-lezen (optioneel)",
+      "description": "Toon de demo en preview zonder dat de student de JavaScript kan aanpassen.",
+      "default": false
+    }
+  }
+}

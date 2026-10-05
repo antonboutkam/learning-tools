@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>p5.js editor</title>
+  <link rel="stylesheet" href="/shared/ui.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1 class="title" id="title">p5.js editor</h1>
+      <div class="subtitle" id="subtitle">Configuratie laden…</div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="copyBtn" type="button">Kopieer code</button>
+      <button class="btn" id="resetBtn" type="button" hidden>Reset</button>
+      <button class="btn" id="stopBtn" type="button" disabled>Stop</button>
+      <button class="btn btn--primary" id="runBtn" type="button">Uitvoeren</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p class="intro" id="intro" hidden></p>
+
+      <div class="split" role="group" aria-label="JavaScript-editor met p5.js-preview">
+        <section class="pane">
+          <div class="pane__head">
+            <span>JavaScript</span>
+            <span class="pane__meta" id="count"></span>
+          </div>
+          <textarea id="editor" class="editor" aria-label="p5.js JavaScript" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+        </section>
+
+        <section class="pane">
+          <div class="pane__head">
+            <span>Preview</span>
+            <span class="pane__meta">p5.js 2.3.3 · sandbox</span>
+          </div>
+          <div class="preview" id="preview" aria-label="p5.js-preview"></div>
+        </section>
+      </div>
+
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+      <p class="security-note">De preview draait geïsoleerd zonder toegang tot cookies, lokale opslag, formulieren, pop-ups of de bovenliggende pagina. De Content Security Policy blokkeert fetch-, WebSocket- en externe assetverzoeken.</p>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -89,6 +89,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data‑schema: `public_html/types/markdown-editor/v1/schema.json`
   - Example: `public_html/types/markdown-editor/v1/example.json`
 
+- p5.js editor (v1)
+  - Pad: `public_html/types/p5-editor/v1/`
+  - Data-schema: `public_html/types/p5-editor/v1/schema.json`
+  - Example: `public_html/types/p5-editor/v1/example.json`
+  - Extra: configureerbare `demoJavaScript`, lokale opslag per `unique_id`, automatisch of handmatig uitvoeren en een geneste preview-iframe met alleen `allow-scripts`, opaque origin en een netwerkblokkerende CSP
+
 - Scrumboard (v1)
   - Pad: `public_html/types/scrumboard/v1/`
   - Data‑schema: `public_html/types/scrumboard/v1/schema.json`
@@ -151,6 +157,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/lesson-clock/v1/?data=example.json`
 - `/types/bin-hex-dec-reken/v1/?unique_id=demo-bin-hex-dec-1&data=example.json`
 - `/types/markdown-editor/v1/?unique_id=demo-markdown-editor-1&data=example.json`
+- `/types/p5-editor/v1/?unique_id=demo-p5-editor-1&data=example.json`
 - `/types/scrumboard/v1/?key=demo-scrumboard-1&data=example.json`
 - `/types/mindmap/v1/?unique_id=demo-mindmap-1&data=example.json`
 - `/types/code-in-volgorde-zetten/v1/?unique_id=demo-code-volgorde-1&data=example.json`

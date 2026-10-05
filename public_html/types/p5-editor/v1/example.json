@@ -1,0 +1,8 @@
+{
+  "unique_id": "demo-p5-editor-1",
+  "title": "Maak een interactieve p5.js-sketch",
+  "intro": "Pas de kleuren, snelheid en grootte van de cirkel aan. Gebruik Ctrl+Enter om de sketch direct opnieuw uit te voeren.",
+  "demoJavaScript": "let x = 0;\n\nfunction setup() {\n  createCanvas(520, 320);\n}\n\nfunction draw() {\n  background(245, 248, 255);\n\n  noStroke();\n  fill(217, 50, 138);\n  circle(x, height / 2, 64);\n\n  x = (x + 2) % (width + 64);\n}",
+  "autoRun": true,
+  "readOnly": false
+}

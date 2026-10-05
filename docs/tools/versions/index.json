@@ -138,6 +138,17 @@
       "documentatie": "versions/markdown-editor/v1.md"
     },
     {
+      "id": "p5-editor",
+      "version": "v1",
+      "name": "p5.js editor",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Creative coding met p5.js",
+        "JavaScript-sketches onderzoeken en aanpassen"
+      ],
+      "documentatie": "versions/p5-editor/v1.md"
+    },
+    {
       "id": "scrumboard",
       "version": "v1",
       "name": "Scrumboard",
