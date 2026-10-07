@@ -3,6 +3,16 @@
   "generatedFrom": "../catalog.json",
   "tools": [
     {
+      "id": "goed-of-fout",
+      "version": "v1",
+      "name": "Goed of fout",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Beeldsituaties beoordelen"
+      ],
+      "documentatie": "versions/goed-of-fout/v1.md"
+    },
+    {
       "id": "juiste-volgorde",
       "version": "v1",
       "name": "Juiste volgorde",
@@ -103,6 +113,16 @@
         "Loopbaan- of toekomstverhaal"
       ],
       "documentatie": "versions/timeline/v1.md"
+    },
+    {
+      "id": "lesson-clock",
+      "version": "v1",
+      "name": "Lesklok",
+      "type": "visualization-type",
+      "toepassingen": [
+        "Resterende lestijd tonen"
+      ],
+      "documentatie": "versions/lesson-clock/v1.md"
     },
     {
       "id": "bin-hex-dec-reken",
@@ -221,6 +241,16 @@
       "documentatie": "versions/slide-show/v1.md"
     },
     {
+      "id": "breadboard",
+      "version": "v1",
+      "name": "Breadboard",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Schakelingen tekenen"
+      ],
+      "documentatie": "versions/breadboard/v1.md"
+    },
+    {
       "id": "escaperoom-futureme",
       "version": "v1",
       "name": "FutureMe escaperoom",
@@ -231,6 +261,18 @@
         "Veilig prioriteren en briefen"
       ],
       "documentatie": "versions/escaperoom-futureme/v1.md"
+    },
+    {
+      "id": "checklist",
+      "version": "v1",
+      "name": "Checklist",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Projectstappen afvinken",
+        "Persoonlijke takenlijst",
+        "Controlelijst bij een opdracht"
+      ],
+      "documentatie": "versions/checklist/v1.md"
     }
   ]
 }

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/checklist/v1/schema.json",
+  "title": "Checklist v1",
+  "description": "Een afvinkbare checklist met optionele links, lokale opslag, export en instelbare mogelijkheden voor studenten.",
+  "outputs": [
+    {
+      "type": "md",
+      "title": "Markdown",
+      "description": "Download de actuele checklist als Markdown-bestand wanneer export is toegestaan.",
+      "mimeType": "text/markdown",
+      "extensions": [
+        ".md"
+      ]
+    },
+    {
+      "type": "txt",
+      "title": "Tekst",
+      "description": "Download de actuele checklist als Tekst-bestand wanneer export is toegestaan.",
+      "mimeType": "text/plain",
+      "extensions": [
+        ".txt"
+      ]
+    },
+    {
+      "type": "json",
+      "title": "JSON",
+      "description": "Download de actuele checklist als JSON-bestand wanneer export is toegestaan.",
+      "mimeType": "application/json",
+      "extensions": [
+        ".json"
+      ]
+    }
+  ],
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "title": "Unieke ID (optioneel)",
+      "description": "Sleutel voor lokale opslag per checklist. De queryparameter unique_id heeft voorrang; zonder ID wordt de volledige data-URL gebruikt.",
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "title": "Titel",
+      "description": "Titel van de checklist; mag leeg zijn.",
+      "type": "string",
+      "default": ""
+    },
+    "readOnly": {
+      "title": "Readonly",
+      "description": "Toon de checklist zonder bewerken: vinkjes wijzigen, toevoegen, verwijderen en resetten zijn uitgeschakeld. Links en toegestane export blijven beschikbaar. Opgeslagen status wordt wel geladen maar niet gewijzigd.",
+      "type": "boolean",
+      "default": false
+    },
+    "rememberState": {
+      "title": "Status onthouden",
+      "description": "Bewaar vinkjes, toegevoegde items en verwijderingen in localStorage in deze browser. Toont ook Reset om de oorspronkelijke checklist te herstellen. Bij gewijzigde startitems wordt opgeslagen voortgang niet hergebruikt.",
+      "type": "boolean",
+      "default": false
+    },
+    "allowExport": {
+      "title": "Export toestaan",
+      "description": "Studenten kunnen de actuele checklist downloaden als Markdown, tekst of JSON.",
+      "type": "boolean",
+      "default": false
+    },
+    "allowAddition": {
+      "title": "Items toevoegen toestaan",
+      "description": "Studenten mogen items met een label en optionele URL toevoegen. Een nieuw item begint niet aangevinkt.",
+      "type": "boolean",
+      "default": false
+    },
+    "allowDeletion": {
+      "title": "Items verwijderen toestaan",
+      "description": "Studenten mogen bestaande en zelf toegevoegde items verwijderen.",
+      "type": "boolean",
+      "default": false
+    },
+    "checkboxPosition": {
+      "title": "Positie checkboxen",
+      "description": "Plaats de checkboxen links (left) of rechts (right) van de labels. De tekst blijft altijd links uitgelijnd.",
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    },
+    "showLabel": {
+      "title": "Titel tonen",
+      "description": "Toon de checklisttitel boven de items. Itemlabels blijven zichtbaar; een lege titel wordt nooit getoond.",
+      "type": "boolean",
+      "default": true
+    },
+    "items": {
+      "title": "Checklistitems",
+      "description": "Items in de volgorde waarin ze worden getoond. Een lege checklist is toegestaan.",
+      "type": "array",
+      "items": {
+        "title": "Checklistitem",
+        "description": "Een label, de beginstatus en eventueel een link.",
+        "type": "object",
+        "required": [
+          "label",
+          "checked"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "title": "Label",
+            "description": "Tekst naast de checkbox. Wordt een link wanneer een geldige URL is ingevuld.",
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "checked": {
+            "title": "Aangevinkt",
+            "description": "Beginstatus van het item.",
+            "type": "boolean",
+            "default": false
+          },
+          "url": {
+            "title": "URL (optioneel)",
+            "description": "Optionele link. Gebruik http, https, mailto, tel of een relatief pad vanaf de configuratie-URL. Laat leeg voor een gewoon label. Het Courses-formulier gebruikt hiervoor een tekstveld.",
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    }
+  }
+}

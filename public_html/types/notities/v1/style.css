@@ -65,6 +65,39 @@ body {
 .btn:hover { border-color: rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.1); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
+.download-group { position: relative; }
+.download-menu[hidden] { display: none; }
+.download-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: min(330px, calc(100vw - 24px));
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: #162238;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+.download-menu button {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: left;
+  color: #fff;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.download-menu button:hover { background: rgba(255, 255, 255, 0.1); }
+.download-group button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+
+.markdown-toolbar[hidden] { display: none; }
+.markdown-toolbar { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px 0; }
+.markdown-toolbar .btn { min-width: 36px; font: inherit; }
+.markdown-toolbar .btn:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+
 .pill {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.92);
@@ -277,6 +310,10 @@ body {
 }
 
 @media (max-width: 520px) {
+  .top { flex-wrap: wrap; }
+  .top__left { min-width: 0; max-width: 100%; }
+  .meta { overflow-wrap: anywhere; }
+  .top__right { width: 100%; justify-content: flex-start; }
   .range { width: 90px; }
   .paper__text { font-size: 14px; }
   .bookmarks { right: -14px; width: 54px; }

@@ -230,6 +230,16 @@
       "schemaUrl": "/types/escaperoom-futureme/v1/schema.json",
       "exampleDataUrl": "/types/escaperoom-futureme/v1/example.json",
       "description": "Doorloop kamers waarin je bronnen markeert, hypotheses onderzoekt, veilig prioriteert en een briefing schrijft."
+    },
+    {
+      "id": "checklist",
+      "type": "assignment-type",
+      "name": "Checklist",
+      "version": "v1",
+      "launchUrl": "/types/checklist/v1/",
+      "schemaUrl": "/types/checklist/v1/schema.json",
+      "exampleDataUrl": "/types/checklist/v1/example.json",
+      "description": "Afvinkbare checklist met optionele links, lokale opslag en reset, Markdown/tekst/JSON-export en instelbaar toevoegen of verwijderen van items."
     }
   ]
 }

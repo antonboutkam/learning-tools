@@ -14,6 +14,14 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 - Examples: `docs/examples/`
 
 ## Beschikbare tools (quiz‑types)
+- Checklist (v1)
+  - Pad: `public_html/types/checklist/v1/`
+  - Data-schema: `public_html/types/checklist/v1/schema.json`
+  - Example: `public_html/types/checklist/v1/example.json`
+  - Extra: optionele titel, items met `label`, `checked` en optionele `url` (tekstveld; het label wordt een link). Instellingen: `rememberState`, `allowExport`, `allowAddition`, `allowDeletion`, `checkboxPosition` (`left`/`right`) en `showLabel` (checklisttitel tonen). Tekst blijft links uitgelijnd.
+  - `readOnly: true` schakelt vinkjes wijzigen, toevoegen, verwijderen en resetten uit. Links en toegestane export blijven beschikbaar; opgeslagen status wordt alleen gelezen. Standaard staat `readOnly` uit.
+  - Lokale opslag bewaart de volledige lijst per `unique_id` (of data-URL); Reset herstelt de startitems en wist de opslag. Export bevat de actuele titel, vinkjes en links als Markdown, tekst of JSON. Gewijzigde startitems beginnen met een nieuwe state.
+
 - Goed of fout (v1)
   - Pad: `public_html/types/goed-of-fout/v1/`
   - Data-schema: `public_html/types/goed-of-fout/v1/schema.json`
@@ -65,6 +73,9 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/notities/v1/`
   - Data‑schema: `public_html/types/notities/v1/schema.json`
   - Example: `public_html/types/notities/v1/example.json`
+  - Markdownopmaakbalk in typmodus: vet, cursief, doorhalen, H1/H2/H3, opsommingen, genummerde lijsten, takenlijsten, citaat, link, inline code, codeblok en scheidingslijn. Selecteer tekst of regels en kies de opmaak; Ctrl/Cmd+B en Ctrl/Cmd+I werken ook. De editor toont de Markdownsyntax en slaat deze automatisch op.
+  - Downloadmenu: JSON, één Markdown-bestand, Markdown per tabblad (bookmarksectie) in ZIP en plain tekst. Notities vóór het eerste tabblad krijgen een eigen bestand. Alleen pagina’s met inhoud worden opgenomen in de tekstformaten; lege tabbladen blijven aanwezig.
+  - JSON bewaart tekst en penstreken. Markdown enkel bevat ingebedde PNG-afbeeldingen (ondersteuning verschilt per Markdown-viewer); de ZIP bevat losse PNG-afbeeldingen met relatieve links. TXT vermeldt waar pentekeningen staan.
 
 - Timeline (v1)
   - Pad: `public_html/types/timeline/v1/`
@@ -145,6 +156,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 
 ## Voorbeeld URL’s (zonder integratie)
 Gebruik de demo’s direct in de browser:
+- `/types/checklist/v1/?unique_id=demo-checklist-1&data=example.json`
 - `/types/goed-of-fout/v1/?unique_id=demo-goed-of-fout-1&data=example.json`
 - `/types/juiste-volgorde/v1/?unique_id=demo-volgorde-1&data=example.json`
 - `/types/kies-de-juiste-afbeelding/v1/?unique_id=demo-afbeelding-1&data=example.json`

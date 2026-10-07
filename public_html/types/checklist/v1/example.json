@@ -1,0 +1,26 @@
+{
+  "unique_id": "demo-checklist-1",
+  "title": "Projectchecklist",
+  "readOnly": false,
+  "rememberState": true,
+  "allowExport": true,
+  "allowAddition": true,
+  "allowDeletion": true,
+  "checkboxPosition": "left",
+  "showLabel": true,
+  "items": [
+    {
+      "label": "Lees de opdracht",
+      "checked": true
+    },
+    {
+      "label": "Bekijk de documentatie",
+      "checked": false,
+      "url": "https://developer.mozilla.org/nl/"
+    },
+    {
+      "label": "Controleer je resultaat",
+      "checked": false
+    }
+  ]
+}

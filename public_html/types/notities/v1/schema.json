@@ -2,14 +2,43 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/notities/v1/schema.json",
   "title": "Notities v1",
-  "description": "Digitaal notitieblok met pagina-omslag animatie, typen- en penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring of via JSON-config).",
+  "description": "Digitaal notitieblok met pagina-omslag animatie, typmodus met Markdownopmaakbalk, penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring of via JSON-config).",
   "outputs": [
     {
       "type": "json",
       "title": "JSON",
-      "description": "Het notitieblok kan als JSON-bestand worden gedownload.",
+      "description": "Volledig notitieblok met tekst, penstreken en bookmarks.",
       "mimeType": "application/json",
-      "extensions": [".json"]
+      "extensions": [
+        ".json"
+      ]
+    },
+    {
+      "type": "md",
+      "title": "Markdown enkel",
+      "description": "Alle tabbladen in één Markdown-bestand; pentekeningen als ingebedde PNG-afbeeldingen.",
+      "mimeType": "text/markdown",
+      "extensions": [
+        ".md"
+      ]
+    },
+    {
+      "type": "zip",
+      "title": "Markdown tabladen los",
+      "description": "ZIP met één Markdown-bestand per tabblad en losse PNG-afbeeldingen voor pentekeningen.",
+      "mimeType": "application/zip",
+      "extensions": [
+        ".zip"
+      ]
+    },
+    {
+      "type": "txt",
+      "title": "Plain tekst",
+      "description": "Alle getypte notities als tekst, met een vermelding waar pentekeningen staan.",
+      "mimeType": "text/plain",
+      "extensions": [
+        ".txt"
+      ]
     }
   ],
   "type": "object",
@@ -31,7 +60,14 @@
           "type": "string",
           "title": "Formaat",
           "description": "Kies een standaard formaat (A4/A5) of een custom verhouding.",
-          "enum": ["Standaard", "A4", "A4-landscape", "A5", "A5-landscape", "Custom"],
+          "enum": [
+            "Standaard",
+            "A4",
+            "A4-landscape",
+            "A5",
+            "A5-landscape",
+            "Custom"
+          ],
           "default": "Standaard"
         },
         "max_breedte_px": {
@@ -82,7 +118,9 @@
           },
           {
             "type": "object",
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "additionalProperties": false,
             "properties": {
               "name": {
