@@ -9,6 +9,7 @@ Deze map bevat de gegenereerde, agentvriendelijke documentatie per toolversie. D
 ## Toepassingen
 
 - **Actieve woordenschat**: Jargonwoorden presenteren (v1)
+- **Algoritmes ontwerpen en vergelijken**: Feedlab (v1)
 - **Automatische presentatie**: Slide-show (v1)
 - **Beeld met getimede tekstlagen**: Slide-show (v1)
 - **Beeldsituaties beoordelen**: Goed of fout (v1)
@@ -54,6 +55,7 @@ Deze map bevat de gegenereerde, agentvriendelijke documentatie per toolversie. D
 - **Schakelingen tekenen**: Breadboard (v1)
 - **Sfeervolle lesopening of reflectie**: Digitaal bericht — toekomst (v2) (v2)
 - **Sociale situaties bespreken**: Strip ballonnetjes (v1)
+- **Socialmedia-selectie onderzoeken**: Feedlab (v1)
 - **Stripverhaal met dialoog**: Strip ballonnetjes (v1)
 - **Tekst met directe preview schrijven**: Markdown editor (v1)
 - **Veilig prioriteren en briefen**: FutureMe escaperoom (v1)

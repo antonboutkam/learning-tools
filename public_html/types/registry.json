@@ -240,6 +240,16 @@
       "schemaUrl": "/types/checklist/v1/schema.json",
       "exampleDataUrl": "/types/checklist/v1/example.json",
       "description": "Afvinkbare checklist met optionele links, lokale opslag en reset, Markdown/tekst/JSON-export en instelbaar toevoegen of verwijderen van items."
+    },
+    {
+      "id": "feed-lab",
+      "type": "assignment-type",
+      "name": "Feedlab",
+      "version": "v1",
+      "launchUrl": "/types/feed-lab/v1/",
+      "schemaUrl": "/types/feed-lab/v1/schema.json",
+      "exampleDataUrl": "/types/feed-lab/v1/example.json",
+      "description": "Feeds met posts en geneste reacties; automatische respondentgroepen met eigen algoritmes, instelbare kleuren en configuratie-export."
     }
   ]
 }

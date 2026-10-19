@@ -42,7 +42,13 @@ function config(array $raw): array {
         if ($question !== '' && count($answers) >= 2) $questions[] = ['question' => $question, 'answers' => array_slice($answers, 0, 12)];
     }
     if (!$questions) throw new ApiError('Voeg minimaal één vraag met twee antwoorden toe.');
-    return ['titel' => $title, 'vragen' => array_slice($questions, 0, 30)];
+    $config = ['titel' => $title, 'vragen' => array_slice($questions, 0, 30)];
+    foreach (['achtergrondkleur', 'tekstkleur'] as $field) {
+        $color = $raw[$field] ?? '';
+        if (!is_string($color) || !preg_match('/^(#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)?$/D', $color)) throw new ApiError('Gebruik voor ' . $field . ' een hexcode zoals #18243d of laat het veld leeg.');
+        if ($color !== '') $config[$field] = $color;
+    }
+    return $config;
 }
 function teacher(array $session, string $token): void { if ($token === '' || !hash_equals((string)$session['teacherToken'], $token)) throw new ApiError('Alleen de docent kan dit doen.', 403); }
 function participant(array &$session, string $token): ?int { foreach ($session['participants'] as $index => $person) if ($token !== '' && hash_equals($person['token'], $token)) return $index; return null; }
@@ -63,7 +69,9 @@ function response(array $session, string $participantToken = '', bool $isTeacher
     }
     $questions = [];
     foreach ($session['config']['vragen'] as $index => $question) $questions[] = ['question' => $question['question'], 'answers' => array_map(fn($answer, $answerIndex) => ['long' => $answer['long'], 'short' => $answer['short'], 'count' => $index === $session['questionIndex'] ? $counts[$answerIndex] : 0], $question['answers'], array_keys($question['answers']))];
-    return ['config' => ['titel' => $session['config']['titel']], 'questionIndex' => $session['questionIndex'], 'questions' => $questions, 'totalVotes' => array_sum($counts), 'me' => $participantIndex === null ? null : ['name' => $session['participants'][$participantIndex]['name']], 'myVotes' => $myVotes, 'voters' => $voters, 'updatedAt' => $session['updatedAt']];
+    $displayConfig = ['titel' => $session['config']['titel']];
+    foreach (['achtergrondkleur', 'tekstkleur'] as $field) if (isset($session['config'][$field])) $displayConfig[$field] = $session['config'][$field];
+    return ['config' => $displayConfig, 'questionIndex' => $session['questionIndex'], 'questions' => $questions, 'totalVotes' => array_sum($counts), 'me' => $participantIndex === null ? null : ['name' => $session['participants'][$participantIndex]['name']], 'myVotes' => $myVotes, 'voters' => $voters, 'updatedAt' => $session['updatedAt']];
 }
 
 try {
@@ -73,7 +81,9 @@ try {
     $session = locked($code, function (?array $session) use ($action, $data, $code, $teacherActions): array {
         if ($action === 'init') {
             $newConfig = config(is_array($data['config'] ?? null) ? $data['config'] : []);
-            if (!$session || ($session['configHash'] ?? '') !== hash('sha256', json_encode($newConfig))) return ['code' => $code, 'config' => $newConfig, 'configHash' => hash('sha256', json_encode($newConfig)), 'questionIndex' => 0, 'teacherToken' => '', 'participants' => [], 'votes' => [], 'updatedAt' => now()];
+            $contentHash = hash('sha256', json_encode(['titel' => $newConfig['titel'], 'vragen' => $newConfig['vragen']]));
+            if (!$session || ($session['configHash'] ?? '') !== $contentHash) return ['code' => $code, 'config' => $newConfig, 'configHash' => $contentHash, 'questionIndex' => 0, 'teacherToken' => '', 'participants' => [], 'votes' => [], 'updatedAt' => now()];
+            if ($session['config'] !== $newConfig) { $session['config'] = $newConfig; $session['updatedAt'] = now(); }
             return $session;
         }
         if (!$session) throw new ApiError('Open eerst de docentweergave om de poll te starten.', 404);

@@ -5,7 +5,10 @@
   "description": "Interactieve oefening waarbij studenten items in de juiste volgorde slepen. De juiste volgorde is de volgorde van `items` in de JSON.",
   "outputs": [],
   "type": "object",
-  "required": ["title", "items"],
+  "required": [
+    "title",
+    "items"
+  ],
   "additionalProperties": false,
   "properties": {
     "title": {
@@ -35,7 +38,10 @@
       "type": "string",
       "title": "Startmodus",
       "description": "`re-order`: items staan al in een lijst en kunnen worden herschikt. `empty`: lege plekken + een pool met opties die je naar de plekken sleept.",
-      "enum": ["re-order", "empty"],
+      "enum": [
+        "re-order",
+        "empty"
+      ],
       "default": "re-order"
     },
     "image": {
@@ -62,7 +68,10 @@
       "items": {
         "type": "object",
         "title": "Item",
-        "required": ["id", "text"],
+        "required": [
+          "id",
+          "text"
+        ],
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -77,6 +86,12 @@
           }
         }
       }
+    },
+    "unique_id": {
+      "type": "string",
+      "title": "Unieke configuratie-ID",
+      "description": "Optionele stabiele identiteit van de Courses-data. De iframe-queryparameter unique_id blijft vereist voor de tool.",
+      "pattern": "^[a-zA-Z0-9-]{8,64}$"
     }
   }
 }

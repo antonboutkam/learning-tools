@@ -273,6 +273,17 @@
         "Controlelijst bij een opdracht"
       ],
       "documentatie": "versions/checklist/v1.md"
+    },
+    {
+      "id": "feed-lab",
+      "version": "v1",
+      "name": "Feedlab",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Socialmedia-selectie onderzoeken",
+        "Algoritmes ontwerpen en vergelijken"
+      ],
+      "documentatie": "versions/feed-lab/v1.md"
     }
   ]
 }

@@ -140,7 +140,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Pad: `public_html/types/poll-vote/v1/`
   - Data-schema: `public_html/types/poll-vote/v1/schema.json`
   - Example: `public_html/types/poll-vote/v1/example.json`
-  - Extra: live meerkeuzepoll met `canvas_course_view` (`teacher`, `student`, `presentation`), meerdere instelbare vragen, lange antwoordtekst vóór de eerste stem, korte labels in de kleurrijke staafgrafiek en docentbeheer per stem
+  - Extra: live meerkeuzepoll met `canvas_course_view` (`teacher`, `student`, `presentation`), meerdere instelbare vragen, lange antwoordtekst vóór de eerste stem, korte labels in de kleurrijke staafgrafiek en docentbeheer per stem. Optionele `achtergrondkleur` en `tekstkleur` als hexcode (leeg of weggelaten behoudt de bestaande kleuren); kleurwijzigingen behouden bestaande stemmen.
 
 - Slide-show (v1)
   - Pad: `public_html/types/slide-show/v1/`
@@ -240,3 +240,7 @@ Een schema kan op rootniveau aangeven welke bestandsformaten de tool kan exporte
 ```
 
 Gebruik voor automatische compatibiliteitscontrole altijd `outputs[].type` als stabiele extensiecode. `mimeType`, `extensions`, `title` en `description` zijn optionele presentatiemetadata voor toekomstige uitbreidingen. Een lege array (`"outputs": []`) betekent dat de versie momenteel geen bestandsoutput ondersteunt. Gebruik bijvoorbeeld `md`, `json`, `txt` en `pdf` als type-codes; voeg nieuwe codes alleen toe wanneer de tool dat formaat daadwerkelijk kan exporteren.
+
+## Feedlab v1
+
+[Feedlab](docs/tools/versions/feed-lab/v1.md) biedt posts met afbeeldingen en geneste reacties, automatische respondentgroepen met eigen algoritmes, instelbare kleuren en een verborgen instellingenpaneel. [Handleiding in de tool](public_html/types/feed-lab/v1/README.md) · [Voorbeeld](public_html/types/feed-lab/v1/index.html). Groepen en kleuren zijn lokaal te bewerken en als configuratie te exporteren. Eén groep geldt voor iedereen; meerdere groepen krijgen gelijke kans. Er is geen centrale registratie.

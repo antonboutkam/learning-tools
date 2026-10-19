@@ -15,6 +15,20 @@
       "maxLength": 120,
       "default": "Onze klas kiest"
     },
+    "achtergrondkleur": {
+      "type": "string",
+      "title": "Achtergrondkleur",
+      "description": "Optionele achtergrondkleur voor de poll en de kaarten, als hexcode zoals #18243d. Laat leeg voor de bestaande kleuren.",
+      "pattern": "^(#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)?$",
+      "default": ""
+    },
+    "tekstkleur": {
+      "type": "string",
+      "title": "Tekstkleur",
+      "description": "Optionele kleur voor de titel, vragen, antwoorden en toelichting, als hexcode zoals #ffffff. Laat leeg voor de bestaande kleuren.",
+      "pattern": "^(#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)?$",
+      "default": ""
+    },
     "vragen": {
       "type": "array",
       "title": "Vragen",
