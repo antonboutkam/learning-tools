@@ -99,6 +99,7 @@
       if (q.kind === 'likert_7' && (!text(q.min_label) || !text(q.max_label))) fail(`${q.id}: schaallabel ontbreekt.`);
     }
     if (data.algorithm_defaults !== undefined && !object(data.algorithm_defaults)) fail('Ongeldige algorithm_defaults.');
+    if (data.showAlgorithmButton !== undefined && typeof data.showAlgorithmButton !== 'boolean') fail('showAlgorithmButton: verwacht boolean.');
     if (data.showQuestions !== undefined && typeof data.showQuestions !== 'boolean') fail('showQuestions: verwacht boolean.');
     if (data.initial_settings !== undefined) validateOverrides(data, data.initial_settings);
     if (data.respondent_groups !== undefined && !Array.isArray(data.respondent_groups)) fail('respondent_groups: verwacht een lijst.');

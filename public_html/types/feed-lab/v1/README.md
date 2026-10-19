@@ -4,9 +4,15 @@ Een zelfstandige Nederlandstalige tool om feedselectie te onderzoeken. Dezelfde 
 
 Standaardpalet: blauw `#1877F3` voor accenten, donkerblauw `#3B5999` bij hover, achtergrond `#F0F2F5`, witte kaarten `#FFFFFF` en donkere leestekst `#1C1E21`. Ook avatars, onderwerpchips, feedcode en placeholders volgen dit palet. Eigen kleurinstellingen blijven mogelijk.
 
+Posts langer dan 175 tekens worden op een heel woord ingekort, met `...` en **Meer weergeven** om de volledige tekst te lezen. Een eerste woord dat zelf langer is dan 175 tekens blijft intact.
+
+## Fictieve profielfoto’s
+
+De tool bevat twintig AI-gegenereerde portretten van fictieve volwassenen in `avatars/`. Posts en reacties tonen een ronde profielfoto in plaats van initialen. De auteur-ID bepaalt steeds dezelfde foto, ook na sorteren of herladen; meerdere auteurs kunnen dezelfde foto krijgen. De koppeling doet geen uitspraak over het uiterlijk van een echte student. Er worden geen externe fotoverzoeken gedaan. Het bestand `avatars/prompts.json` bevat de gebruikte prompts.
+
 ## Starten
 
-Open `index.html` via een webserver. Standaard wordt `example.json` geladen. Gebruik `?data=URL` voor een eigen configuratie. Instellingen beginnen ingeklapt. Het kleine label linksonder toont de toegewezen respondentgroep. De feedcode staat bij het onderzoekspaneel. De app laadt `engine.min.js`, `app.min.js` en `style.min.css`.
+Open `index.html` via een webserver. Standaard wordt `example.json` geladen. Gebruik `?data=URL` voor een eigen configuratie. Het instellingenpaneel begint ingeklapt en opent via **Algoritme**. Met `showAlgorithmButton: false` in de toolconfig verberg je deze knop en blijft het paneel dicht. Zonder deze property is de knop zichtbaar. Het kleine label linksonder toont de toegewezen respondentgroep. De feedcode staat bij het onderzoekspaneel. De app laadt `engine.min.js`, `app.min.js` en `style.min.css`.
 
 ## Respondentgroepen en automatische toewijzing
 

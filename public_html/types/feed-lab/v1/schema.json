@@ -546,6 +546,12 @@
       "$ref": "#/$defs/settings",
       "title": "Standaardalgoritme"
     },
+    "showAlgorithmButton": {
+      "title": "Knop Algoritme tonen",
+      "description": "Toon de knop Algoritme waarmee het instellingenpaneel geopend wordt. Schakel uit om de feed zonder toegang tot dit paneel te tonen.",
+      "type": "boolean",
+      "default": true
+    },
     "showQuestions": {
       "type": "boolean",
       "default": true,

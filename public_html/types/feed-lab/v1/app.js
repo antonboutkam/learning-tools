@@ -37,7 +37,21 @@
   function field(parent, label, input, id) { const wrap = node('div'); input.id = id; const l = node('label', label); l.htmlFor = id; wrap.append(l, input); parent.append(wrap); return input; }
   function numeric(value, min, max, step) { const i = node('input'); i.type = 'number'; i.value = value; i.min = min; if (max !== undefined) i.max = max; i.step = step || 1; return i; }
   function date(value) { const d = new Date(value); return Number.isNaN(d.getTime()) ? value : d.toLocaleString('nl-NL', { dateStyle: 'medium', timeStyle: 'short' }); }
-  function person(item, timestamp) { const header = node('div', undefined, 'post-head'); const name = item.author_name || item.author_id; const initials = String(name).split(/\s+/).slice(0, 2).map(x => x[0]).join('').toUpperCase(); const byline = node('div', undefined, 'byline'); byline.append(node('strong', name), node('small', date(timestamp) + ' · ' + item.id)); header.append(node('span', initials, 'avatar'), byline); return header; }
+  function person(item, timestamp) {
+    const header = node('div', undefined, 'post-head');
+    const name = item.author_name || item.author_id;
+    const portrait = node('img', undefined, 'avatar');
+    const number = parseInt(hash(String(item.author_id || name)), 36) % 20 + 1;
+    portrait.src = './avatars/profile-' + String(number).padStart(2, '0') + '.png';
+    portrait.alt = '';
+    portrait.width = 44;
+    portrait.height = 44;
+    portrait.loading = 'lazy';
+    const byline = node('div', undefined, 'byline');
+    byline.append(node('strong', name), node('small', date(timestamp) + ' · ' + item.id));
+    header.append(portrait, byline);
+    return header;
+  }
   function reactionMetric(kind, text) {
     const metric = node('span', undefined, 'reaction-metric');
     const icon = node('img', undefined, 'reaction-icon');
@@ -50,7 +64,36 @@
   function metrics(item, comment) { const m = item.metrics || {}; const bar = node('div', undefined, 'metrics'); const likes = comment ? (m.likes ?? m.thumbs_up ?? 0) : (m.likes ?? 0); bar.append(reactionMetric('like', likes + ' ' + (comment ? 'eens / likes' : 'likes')), reactionMetric('angry', (m.angry ?? 0) + ' boos'), node('span', '↳ ' + (m.reply_count ?? 0) + ' reacties')); if (m.dislikes !== undefined || m.thumbs_down !== undefined) bar.append(node('span', '↓ ' + (m.dislikes ?? m.thumbs_down) + ' ' + (comment ? 'oneens' : 'dislikes'))); return bar; }
   function viewData() { return viewingInitial ? initialData : data; }
   function renderComments(postId, parentId, depth) { const list = node('div', undefined, depth ? 'thread' : 'comments'); if (depth > 100) { list.append(node('p', 'Deze thread is te diep om verder te tonen.')); return list; } const children = E.rankComments(viewData(), postId, parentId, settings); children.forEach(c => { const article = node('article', undefined, 'comment'); article.dataset.commentId = c.id; article.append(person(c, c.created_at), node('p', c.body, 'body-text'), metrics(c, true)); const replies = renderComments(postId, c.id, depth + 1); if (replies.childElementCount) article.append(replies); list.append(article); }); return list; }
-  function renderFeed() { const shownData = viewData(); const posts = E.rankPosts(shownData, settings); $('feed').replaceChildren(); posts.forEach(p => { const article = node('article', undefined, 'post'); article.dataset.postId = p.id; const topic = shownData.topics.find(t => t.id === p.topic_id); article.append(person(p, p.published_at), node('span', topic ? topic.title : p.topic_id, 'topic'), node('h3', p.headline), node('p', p.body, 'body-text')); { const img = node('img', undefined, 'post-image'); const url=p.image && safeImageUrl(p.image.url);img.src=url || './placeholder.svg';img.alt=url ? p.image.alt : 'Nog geen afbeelding';img.dataset.placeholder=String(!url);img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{if(img.dataset.placeholder==='true')return;img.dataset.placeholder='true';img.src='./placeholder.svg';img.alt='Nog geen afbeelding';});article.append(img); } article.append(metrics(p, false)); const available = shownData.comments.filter(c => c.post_id === p.id).length; const toggle = node('button', (expanded.has(p.id) ? 'Verberg' : 'Bekijk') + ' reacties · ' + available + ' beschikbaar', 'quiet comments-toggle'); toggle.type = 'button'; toggle.setAttribute('aria-expanded', String(expanded.has(p.id))); const container = node('div'); container.id = 'thread-' + p.id; toggle.setAttribute('aria-controls', container.id); container.hidden = !expanded.has(p.id); if (!container.hidden) container.append(renderComments(p.id, null, 0)); toggle.addEventListener('click', () => { if (expanded.has(p.id)) expanded.delete(p.id); else expanded.add(p.id); container.hidden = !expanded.has(p.id); toggle.setAttribute('aria-expanded', String(!container.hidden)); toggle.textContent = (container.hidden ? 'Bekijk' : 'Verberg') + ' reacties · ' + available + ' beschikbaar'; container.replaceChildren(); if (!container.hidden) container.append(renderComments(p.id, null, 0)); }); article.append(toggle, container); $('feed').append(article); }); if (!posts.length) $('feed').append(node('p', 'Er passen geen berichten bij deze instellingen.', 'panel')); $('publicSeed').textContent = 'Feedcode: ' + settings.seed; renderGroupBadge(); $('feedCount').textContent = posts.length + ' van ' + shownData.posts.length + ' berichten' + (viewingInitial ? ' · beginfeed (lokale aanvullingen bewaard)' : ''); $('selectionInfo').textContent = 'Selectie: ' + posts.length + ' berichten. Per onderwerp: ' + (settings.perTopic || 'onbeperkt') + '; totaal: ' + (settings.postLimit || 'alle') + '; reacties per ouder: ' + (settings.commentLimit || 'alle') + '. Feedcode: ' + settings.seed; }
+  function postBody(text) {
+    const body = node('p', undefined, 'body-text');
+    const characters = Array.from(text);
+    let end = Math.min(175, characters.length);
+    if (characters.length > end) {
+      while (end > 0 && !/\s/u.test(characters[end])) end--;
+      // Keep an unusually long first word intact.
+      if (!end) {
+        end = 175;
+        while (end < characters.length && !/\s/u.test(characters[end])) end++;
+      }
+    }
+    const preview = characters.slice(0, end).join('').trimEnd();
+    if (end >= characters.length || !characters.slice(end).join('').trim()) {
+      body.textContent = text;
+      return body;
+    }
+    const content = node('span', preview + '... ');
+    const more = node('button', 'Meer weergeven', 'post-more');
+    more.type = 'button';
+    more.setAttribute('aria-expanded', 'false');
+    more.addEventListener('click', () => {
+      content.textContent = text;
+      more.setAttribute('aria-expanded', 'true');
+      more.hidden = true;
+    });
+    body.append(content, more);
+    return body;
+  }
+  function renderFeed() { const shownData = viewData(); const posts = E.rankPosts(shownData, settings); $('feed').replaceChildren(); posts.forEach(p => { const article = node('article', undefined, 'post'); article.dataset.postId = p.id; const topic = shownData.topics.find(t => t.id === p.topic_id); article.append(person(p, p.published_at), node('span', topic ? topic.title : p.topic_id, 'topic'), node('h3', p.headline), postBody(p.body)); { const img = node('img', undefined, 'post-image'); const url=p.image && safeImageUrl(p.image.url);img.src=url || './placeholder.svg';img.alt=url ? p.image.alt : 'Nog geen afbeelding';img.dataset.placeholder=String(!url);img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{if(img.dataset.placeholder==='true')return;img.dataset.placeholder='true';img.src='./placeholder.svg';img.alt='Nog geen afbeelding';});article.append(img); } article.append(metrics(p, false)); const available = shownData.comments.filter(c => c.post_id === p.id).length; const toggle = node('button', (expanded.has(p.id) ? 'Verberg' : 'Bekijk') + ' reacties · ' + available + ' beschikbaar', 'quiet comments-toggle'); toggle.type = 'button'; toggle.setAttribute('aria-expanded', String(expanded.has(p.id))); const container = node('div'); container.id = 'thread-' + p.id; toggle.setAttribute('aria-controls', container.id); container.hidden = !expanded.has(p.id); if (!container.hidden) container.append(renderComments(p.id, null, 0)); toggle.addEventListener('click', () => { if (expanded.has(p.id)) expanded.delete(p.id); else expanded.add(p.id); container.hidden = !expanded.has(p.id); toggle.setAttribute('aria-expanded', String(!container.hidden)); toggle.textContent = (container.hidden ? 'Bekijk' : 'Verberg') + ' reacties · ' + available + ' beschikbaar'; container.replaceChildren(); if (!container.hidden) container.append(renderComments(p.id, null, 0)); }); article.append(toggle, container); $('feed').append(article); }); if (!posts.length) $('feed').append(node('p', 'Er passen geen berichten bij deze instellingen.', 'panel')); $('publicSeed').textContent = 'Feedcode: ' + settings.seed; renderGroupBadge(); $('feedCount').textContent = posts.length + ' van ' + shownData.posts.length + ' berichten' + (viewingInitial ? ' · beginfeed (lokale aanvullingen bewaard)' : ''); $('selectionInfo').textContent = 'Selectie: ' + posts.length + ' berichten. Per onderwerp: ' + (settings.perTopic || 'onbeperkt') + '; totaal: ' + (settings.postLimit || 'alle') + '; reacties per ouder: ' + (settings.commentLimit || 'alle') + '. Feedcode: ' + settings.seed; }
   function renderRules() { $('ruleFields').replaceChildren(); $('weightFields').replaceChildren(); const rankings = { postRank: [['weighted','Gewogen mix'],['likes','Meeste likes'],['angry','Meeste boosreacties'],['combined','Likes + boosreacties'],['reply_count','Meeste reacties'],['newest','Nieuwste eerst'],['random','Vaste toevalsvolgorde']], commentRank: [['thumbs_up','Meeste eens / likes'],['thumbs_down','Meeste oneens'],['angry','Meeste boosreacties'],['combined','Eens + boosreacties'],['reply_count','Meeste reacties'],['newest','Nieuwste eerst'],['random','Vaste toevalsvolgorde']] };
     const controls = [['seed','Feedcode',null],['postRank','Berichten rangschikken',rankings.postRank],['commentRank','Reacties rangschikken',rankings.commentRank],['commentStanceBias','Standpuntbias reacties (−1 tot 1)',null],['topicId','Onderwerp',[['','Alle onderwerpen'], ...data.topics.map(t => [t.id,t.title])]],['postLimit','Aantal berichten (0 = alle)',null],['perTopic','Maximaal per onderwerp (0 = alle)',null],['commentLimit','Reacties per ouder (0 = alle)',null],['maxPerAuthor','Maximaal per auteur (0 = alle)',null],['randomWeight','Toeval (0–1)',null],['likeWeight','Gewicht likes (0–1)',null],['angryWeight','Gewicht boosreacties (0–1)',null]];
     controls.forEach(([name,label,opts]) => { let i; if (opts) i = select(opts, settings[name]); else if (name === 'seed') { i = node('input'); i.value = settings.seed; i.maxLength = 200; } else i = numeric(settings[name],name==='commentStanceBias' ? -1 : 0,name.endsWith('Weight') || name==='commentStanceBias' ? 1 : undefined,name.endsWith('Weight') || name==='commentStanceBias' ? .05 : 1); field($('ruleFields'),label,i,'rule-'+name); i.addEventListener('input', () => { if (!i.checkValidity() || (name === 'seed' && !i.value.trim())) return; viewingInitial = false; settings[name] = opts || name === 'seed' ? i.value : Number(i.value); save(); updateUrl(); renderFeed(); }); });
@@ -196,7 +239,7 @@
     const options=select(data.topics.map(t=>[t.id,t.title]),questionTopic);
     $('questionTopic').replaceChildren(...Array.from(options.children));$('questionTopic').value=questionTopic;
     renderRules();renderFeed();renderQuestions();renderGroups();renderTheme();addAuthorForms();updateUrl();save();
-    $('settings').hidden=true;$('settingsToggle').setAttribute('aria-expanded','false');
+    $('settings').hidden=true;$('settingsToggle').hidden=data.showAlgorithmButton===false;$('settingsToggle').setAttribute('aria-expanded','false');
     $('workspace').hidden=false;$('loading').hidden=true;$('error').hidden=true;$('groupBadge').hidden=false;
     if(previous && !groups.some(g=>g.id===previous) && !imported)notice('De vorige groep bestaat niet meer. Er is automatisch een beschikbare groep toegewezen.');
   }
@@ -217,7 +260,7 @@
   $('previewGroup').addEventListener('click',()=>{const id=$('groupSelect').value;if(!data.respondent_groups?.some(g=>g.id===id))return;loadGroupPreview(id,id!==assignedGroupId);notice('Algoritme van '+groupName(id)+' geladen als lokale preview.');});
   $('returnAssigned').addEventListener('click',()=>{const url=new URL(location.href);url.searchParams.delete('group');history.replaceState(null,'',url);loadGroupPreview(assignedGroupId,false,true);updateUrl();});
   $('exportResearch').addEventListener('click',()=>download('feedlab-instellingen-onderzoek.json',JSON.stringify(research(),null,2),'application/json'));
-  $('settingsToggle').addEventListener('click',()=>{if(!settings)return;const open=$('settings').hidden;$('settings').hidden=!open;$('settingsToggle').setAttribute('aria-expanded',String(open));});
+  $('settingsToggle').addEventListener('click',()=>{if(!settings || data.showAlgorithmButton===false)return;const open=$('settings').hidden;$('settings').hidden=!open;$('settingsToggle').setAttribute('aria-expanded',String(open));});
   $('rules').addEventListener('submit',e=>e.preventDefault());$('reset').addEventListener('click',()=>{viewingInitial=true;settings=clone(initialSettings);save();updateUrl();renderRules();renderFeed();});$('newSeed').addEventListener('click',()=>{viewingInitial=false;settings.seed=freshSeed();save();updateUrl();renderRules();renderFeed();});
   $('questionTopic').addEventListener('change',e=>{questionTopic=e.target.value;renderQuestions();});$('questionPhase').addEventListener('change',e=>{phase=e.target.value;renderQuestions();});$('clearAnswers').addEventListener('click',()=>{answers={};save();renderQuestions();$('answerStatus').textContent='Alle lokale antwoorden voor deze dataset gewist.';});$('exportAnswers').addEventListener('click',()=>exportAnswers(false));$('exportText').addEventListener('click',()=>exportAnswers(true));$('exportData').addEventListener('click',()=>download('feedlab-toolconfig.json',JSON.stringify(toolConfig(),null,2),'application/json'));$('importData').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{install(JSON.parse(await file.text()),false);notice('Geïmporteerde dataset actief als lokale preview. De oorspronkelijke bron is niet gewijzigd.');}catch(error){notice('Import geweigerd: '+error.message);}e.target.value='';});$('retry').addEventListener('click',load);
   window.FeedLabUI={safeImageUrl,hash,toolConfig,research,chooseRandomGroup,accentInk,readImage};

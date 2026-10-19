@@ -1,5 +1,6 @@
 {
   "source_format": "feed-lab-v1",
+  "showAlgorithmButton": true,
   "schema_owner": "learn-tool",
   "lesson": {
     "id": "feed_algoritmes_polarisatie",

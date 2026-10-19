@@ -1,0 +1,86 @@
+{
+  "generator": "Built-in image_gen",
+  "description": "Twintig AI-gegenereerde portretten van fictieve volwassenen; geen echte studenten. Verkleind tot 192 x 192 pixels voor lokale avatars.",
+  "portraits": [
+    {
+      "file": "profile-01.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25, young man with short dark curly hair, medium brown skin, plain navy T-shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-02.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, light skin, chin-length auburn hair, green sweater. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-03.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, dark skin, short natural black hair, light grey sweatshirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-04.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, brown skin, dark blue hijab, cream blouse. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-05.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, light skin, wavy blond hair, thin round glasses, dark green shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-06.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, East Asian appearance, straight black shoulder-length hair, blue denim jacket. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-07.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, brown skin, short black hair, neatly trimmed beard, burgundy T-shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-08.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, dark skin, natural curly hair, mustard yellow top. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-09.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, East Asian appearance, short black hair, grey hoodie. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-10.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, light skin with freckles, long red hair, blue shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-11.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, light olive skin, shoulder-length dark wavy hair, black T-shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-12.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, medium brown skin, dark braided hair, lilac sweater. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-13.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, light skin, short brown hair, rectangular glasses, cream sweater. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-14.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, light olive skin, short dark pixie haircut, forest green blouse. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-15.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, dark skin, close-cropped hair, silver round glasses, blue shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-16.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, South Asian appearance, long dark hair, coral pink top. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-17.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, light skin, short red hair, light stubble, navy sweatshirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-18.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, light skin, short wavy blond hair, round glasses, teal top. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-19.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young man, medium brown skin, thick curly dark hair, white T-shirt. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    },
+    {
+      "file": "profile-20.png",
+      "prompt": "Create one square photorealistic profile photo for a fictional social media author in a Dutch educational feed simulator. Entirely fictional adult aged 20-25: young woman, dark skin, short natural hair, small stud earrings, pale blue blouse. Friendly natural expression, head and shoulders centered, full hair and chin visible with space for circular cropping, softly blurred outdoor background, natural daylight, realistic casual smartphone portrait. One person only. No text, watermark, collage or border."
+    }
+  ]
+}
