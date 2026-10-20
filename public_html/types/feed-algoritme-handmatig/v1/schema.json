@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.devroc.nl/types/feed-algoritme-handmatig/v1/schema.json",
+  "title": "Feedalgoritme: handmatig v1",
+  "description": "Een oefening waarin studenten handmatig posts en reacties zichtbaar maken en sorteren om de beeldvorming van een feed te beïnvloeden.",
+  "type": "object",
+  "required": ["source_format", "title", "instruction_title", "instruction_text", "feed_post_limit", "target", "posts", "comments"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_id": {
+      "title": "Unieke opdrachtcode",
+      "description": "Stabiele identificatie van deze toolinstantie in Courses.",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]{8,64}$"
+    },
+    "source_format": {"title": "Bronformaat", "description": "Vaste versiecode van deze tool.", "const": "feed-algoritme-handmatig-v1"},
+    "title": {"title": "Opdrachttitel", "description": "Titel boven de feed.", "type": "string", "minLength": 1},
+    "instruction_title": {"title": "Titel uitlegblok", "description": "Titel links, op de plek van 'Je eigen venster'.", "type": "string", "minLength": 1},
+    "instruction_text": {"title": "Eigen instructietekst", "description": "Tekst die boven de algemene uitleg links staat.", "type": "string", "minLength": 1},
+    "feed_post_limit": {"title": "Aantal posts in de feed", "description": "Aantal posts dat aanvankelijk boven de rode grens staat.", "type": "integer", "minimum": 1},
+    "target": {"title": "Scoredoel", "description": "De voorwaarde voor het certificaat.", "type": "object", "required": ["comparison", "score"], "additionalProperties": false, "properties": {"comparison": {"title": "Vergelijking", "description": "Kies of de score hoger of lager moet zijn dan het doel.", "type": "string", "enum": ["more_than", "less_than"]}, "score": {"title": "Doelscore", "description": "Grenswaarde voor het certificaat.", "type": "integer"}}},
+    "posts": {"title": "Posts", "description": "Alle beschikbare feedposts.", "type": "array", "minItems": 1, "items": {"title": "Post", "type": "object", "required": ["id", "author_name", "headline", "body", "image_correction"], "additionalProperties": false, "properties": {"id": {"title": "ID", "description": "Unieke technische code.", "type": "string", "minLength": 1}, "author_name": {"title": "Auteur", "description": "Weergavenaam van de auteur.", "type": "string", "minLength": 1}, "published_at": {"title": "Publicatiemoment", "description": "Korte zichtbare datumtekst.", "type": "string"}, "topic": {"title": "Onderwerp", "description": "Kort label bij de post.", "type": "string"}, "headline": {"title": "Kop", "description": "Titel van de post.", "type": "string", "minLength": 1}, "body": {"title": "Tekst", "description": "Inhoud van de post.", "type": "string", "minLength": 1}, "image": {"title": "Afbeelding", "description": "Optionele afbeelding bij de post.", "type": "object", "required": ["url", "alt"], "additionalProperties": false, "properties": {"url": {"title": "Afbeeldings-URL", "description": "URL van de afbeelding.", "type": "string", "format": "uri"}, "alt": {"title": "Alternatieve tekst", "description": "Beschrijving van de afbeelding.", "type": "string"}}}, "image_correction": {"title": "Beeldvormingcorrectie", "description": "Score wanneer deze zichtbare post de beeldvorming beïnvloedt.", "type": "integer", "minimum": -100, "maximum": 100}}}},
+    "comments": {"title": "Reacties", "description": "Reacties die per post zichtbaar kunnen worden gemaakt.", "type": "array", "items": {"title": "Reactie", "type": "object", "required": ["id", "post_id", "author_name", "body", "score"], "additionalProperties": false, "properties": {"id": {"title": "ID", "description": "Unieke technische code.", "type": "string", "minLength": 1}, "post_id": {"title": "Post-ID", "description": "ID van de post waaronder deze reactie hoort.", "type": "string", "minLength": 1}, "author_name": {"title": "Auteur", "description": "Weergavenaam van de reageerder.", "type": "string", "minLength": 1}, "body": {"title": "Reactietekst", "description": "Inhoud van de reactie.", "type": "string", "minLength": 1}, "score": {"title": "Reactiescore", "description": "Score wanneer deze reactie zichtbaar is bij Meest relevant.", "type": "integer", "minimum": -5, "maximum": 5}}}}
+  }
+}

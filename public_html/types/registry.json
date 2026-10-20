@@ -249,7 +249,17 @@
       "launchUrl": "/types/feed-lab/v1/",
       "schemaUrl": "/types/feed-lab/v1/schema.json",
       "exampleDataUrl": "/types/feed-lab/v1/example.json",
-      "description": "Feeds met posts en geneste reacties; automatische respondentgroepen met eigen algoritmes, instelbare kleuren en configuratie-export."
+      "description": "Onderzoek selectie en rangschikking van posts en reacties. Groepen, vormgeving en broninhoud worden uitsluitend via de adminconfiguratie of JSON beheerd."
+    },
+    {
+      "id": "feed-algoritme-handmatig",
+      "type": "assignment-type",
+      "name": "Feedalgoritme: handmatig",
+      "version": "v1",
+      "launchUrl": "/types/feed-algoritme-handmatig/v1/",
+      "schemaUrl": "/types/feed-algoritme-handmatig/v1/schema.json",
+      "exampleDataUrl": "/types/feed-algoritme-handmatig/v1/example.json",
+      "description": "Sorteer en maak posts en reacties zichtbaar om de beeldvorming van een feed handmatig te beïnvloeden."
     }
   ]
 }

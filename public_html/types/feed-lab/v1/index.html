@@ -1,7 +1,54 @@
 <!doctype html>
-<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Feedlab</title><link rel="stylesheet" href="./style.min.css?v=20261019-colors"><script defer src="./engine.min.js?v=20261019-colors"></script><script defer src="./app.min.js?v=20261019-colors"></script></head>
-<body><a class="skip" href="#feed">Naar de berichten</a><header class="masthead"><a class="brand" href="#">F<span>FEEDLAB <small>ONDERZOEK JE FEED</small></span></a><button id="settingsToggle" class="quiet" aria-expanded="false" aria-controls="settings" hidden>Algoritme</button></header>
-<main><p id="loading" role="status">Je feed wordt geladen…</p><section id="error" class="panel error" hidden role="alert"><h1>De feed kon niet worden geladen</h1><p id="errorText"></p><button id="retry">Opnieuw proberen</button></section><p id="notice" class="notice" role="status" hidden></p>
-<div id="workspace" hidden><section class="intro"><p class="eyebrow">Een venster op de wereld</p><h1 id="title">Wie bepaalt jouw feed?</h1><p>Lees, vergelijk en ontdek welke berichten jouw beeld bepalen.</p></section>
-<section id="settings" class="panel settings" hidden aria-labelledby="settingsTitle"><h2 id="settingsTitle">Onderzoek de selectie</h2><details id="groupManager"><summary>Respondentgroepen en standaardalgoritmen</summary><p>Voeg hier zelf groepen toe en bewaar per groep een algoritme. Nieuwe respondenten krijgen automatisch evenveel kans op elke groep, onafhankelijk van hun antwoorden en feedcode. Bij twee groepen is dat ongeveer de helft; exacte groepsgroottes zijn niet gegarandeerd. Eén groep krijgt iedereen. Zonder groepen gebruikt de tool de standaardinstellingen.</p><p>De toewijzing blijft in dit browserprofiel bewaard voor deze dataset, ook wanneer de configuratie wijzigt en de groep nog bestaat. Verschillende apparaten tellen apart; er is geen centrale telling. Een verwijderde groep wordt opnieuw toegewezen.</p><div class="grid"><div><label for="newGroupLabel">Naam nieuwe groep</label><input id="newGroupLabel" maxlength="100"><button id="addGroup" type="button">Groep toevoegen met huidige regels</button></div><div><label for="groupSelect">Groep om te bewerken</label><select id="groupSelect"></select><label for="groupLabel">Groepsnaam</label><input id="groupLabel" maxlength="100"></div></div><div class="actions"><button id="renameGroup" class="quiet" type="button">Naam bewaren</button><button id="removeGroup" class="quiet" type="button">Groep verwijderen</button><button id="saveGroupSettings" type="button">Huidige regels voor deze groep bewaren</button><button id="previewGroup" class="quiet" type="button">Groepsalgoritme laden als lokale preview</button><button id="returnAssigned" class="quiet" type="button" hidden>Terug naar toegewezen groep</button></div><p id="groupStatus" role="status"></p><p class="small">Regels aanpassen verandert alleen je eigen preview. Bewaar ze daarna voor de gekozen groep. Nieuwe groepen beginnen met de huidige regels. Standaardalgoritmen vullen geen antwoorden in. Exporteer de toolconfig om groepen, regels en vormgeving te delen. Voor een docentpreview kun je <code>?group=groeps-id</code> gebruiken, samen met <code>seed=feedcode</code>; deze preview verandert je bewaarde toewijzing niet.</p></details><details><summary>Vormgeving</summary><p>Pas de kleuren aan. De tekst op accentknoppen kiest automatisch zwart of wit. Kleuren blijven lokaal bewaard en gaan mee in de toolconfig.</p><div class="grid"><div><label for="theme-background">Achtergrond</label><input id="theme-background" type="color"></div><div><label for="theme-card">Kaarten en invoervelden</label><input id="theme-card" type="color"></div><div><label for="theme-text">Tekst</label><input id="theme-text" type="color"></div><div><label for="theme-accent">Accent voor knoppen en links</label><input id="theme-accent" type="color"></div></div><button id="resetTheme" type="button" class="quiet">Standaardkleuren herstellen</button></details><p>De beginfeed combineert vaste metadata met toeval op basis van je feedcode. De toegepaste grenzen staan hieronder. Signalen worden genormeerd; betrokkenheid zegt niets rechtstreeks over waarheid.</p><form id="rules"><div id="ruleFields" class="grid"></div><details><summary>Geavanceerde metadata en gewichten</summary><p>Gemodelleerde signalen uit deze dataset. Standpuntbias stel je zelf in; je antwoorden hebben hier geen invloed op.</p><div id="weightFields" class="grid"></div></details></form><p id="selectionInfo" role="status"></p><div class="actions"><button id="reset">Terug naar beginfeed</button><button id="newSeed" class="quiet">Nieuwe feedcode</button></div><details><summary>Beginvolgorde bekijken</summary><p id="initialIds" class="small"></p></details><details><summary>Dataset importeren of lokaal aanvullen</summary><p>Dit is alleen een lokale preview. Exporteer je wijzigingen en pas de bron later bewust aan; er wordt niets naar een server geschreven.</p><label for="importData">Importeer toolconfig (.json)</label><input id="importData" type="file" accept="application/json,.json"><button id="exportData">Exporteer toolconfig met huidige instellingen</button><div id="authorForms"></div></details></section>
-<div class="layout"><aside><section id="questionPanel" class="panel"><p class="eyebrow">Jouw onderzoek</p><h2>Geef je mening</h2><p>Vrijwillig. Sla elke vraag gerust over. Antwoorden blijven in dit browserprofiel en veranderen je feed niet.</p><label for="questionTopic">Onderwerp</label><select id="questionTopic"></select><label for="questionPhase">Moment</label><select id="questionPhase"><option value="before">Voor het lezen</option><option value="after">Na het lezen</option></select><div id="questions"></div><p id="answerStatus" class="small" role="status"></p><div class="actions"><button id="exportAnswers">Antwoorden (.json)</button><button id="exportText" class="quiet">Als tekst</button><button id="clearAnswers" class="quiet">Wis antwoorden</button></div></section><section class="panel"><h2>Je eigen venster</h2><p id="publicSeed" class="feed-code"></p><button id="exportResearch" class="quiet">Exporteer instellingen en zichtbare selectie</button><p class="small">Een feed toont een selectie. Wat ontbreekt? Welke bron zou je daarnaast willen raadplegen?</p><p class="small">Dezelfde dataset, code en instellingen geven dezelfde volgorde. Bewaar deze code om je beginfeed te vergelijken.</p></section></aside><section class="feed-column" aria-label="Berichten"><div class="feed-toolbar"><h2>Voor jou</h2><span id="feedCount" role="status" aria-live="polite"></span></div><div id="feed" tabindex="-1"></div></section></div></div></main><footer>Feedlab v1 · lokaal onderzoek · onderwijsdata</footer><p id="groupBadge" class="group-badge" role="status" hidden></p><noscript>Schakel JavaScript in om de feed te gebruiken.</noscript></body></html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Feedlab</title>
+  <link rel="stylesheet" href="./style.min.css?v=20261020-content-controls">
+  <script defer src="./engine.min.js?v=20261020-content-controls"></script>
+  <script defer src="./app.min.js?v=20261020-content-controls"></script>
+</head>
+<body>
+  <a class="skip" href="#feed">Naar de berichten</a>
+  <header class="masthead">
+    <a class="brand" href="#">F<span>FEEDLAB <small>ONDERZOEK JE FEED</small></span></a>
+    <button id="settingsToggle" class="quiet" aria-expanded="false" aria-controls="settings" hidden>Algoritme</button>
+  </header>
+  <main>
+    <p id="loading" role="status">Je feed wordt geladen…</p>
+    <section id="error" class="panel error" hidden role="alert"><h1>De feed kon niet worden geladen</h1><p id="errorText"></p><button id="retry">Opnieuw proberen</button></section>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <div id="workspace" hidden>
+      <section class="intro"><p class="eyebrow">Een venster op de wereld</p><h1 id="title">Wie bepaalt jouw feed?</h1><p>Lees, vergelijk en ontdek welke berichten jouw beeld bepalen.</p></section>
+      <section id="settings" class="panel settings" hidden aria-labelledby="settingsTitle">
+        <h2 id="settingsTitle">Onderzoek de selectie</h2>
+        <p>Kies welke berichten en reacties je ziet en hoe ze worden gerangschikt. Signalen worden genormeerd; betrokkenheid zegt niets rechtstreeks over waarheid.</p>
+        <form id="rules">
+          <div id="ruleFields" class="grid"></div>
+          <details><summary>Geavanceerde metadata en gewichten</summary><p>Gemodelleerde signalen uit deze dataset. Standpuntbias stel je zelf in; je antwoorden hebben hier geen invloed op.</p><div id="weightFields" class="grid"></div></details>
+        </form>
+        <p id="selectionInfo" role="status"></p>
+        <div class="actions"><button id="reset">Terug naar beginfeed</button><button id="newSeed" class="quiet">Nieuwe toevalsvolgorde</button></div>
+      </section>
+      <div class="layout">
+        <aside>
+          <section id="questionPanel" class="panel">
+            <p class="eyebrow">Jouw onderzoek</p><h2>Geef je mening</h2>
+            <p>Vrijwillig. Sla elke vraag gerust over. Antwoorden blijven in dit browserprofiel en veranderen je feed niet.</p>
+            <label for="questionTopic">Onderwerp</label><select id="questionTopic"></select>
+            <label for="questionPhase">Moment</label><select id="questionPhase"><option value="before">Voor het lezen</option><option value="after">Na het lezen</option></select>
+            <div id="questions"></div><p id="answerStatus" class="small" role="status"></p>
+            <div class="actions"><button id="exportAnswers">Antwoorden (.json)</button><button id="exportText" class="quiet">Als tekst</button><button id="clearAnswers" class="quiet">Wis antwoorden</button></div>
+          </section>
+          <section class="panel"><h2>Je eigen venster</h2><p id="publicSeed" class="feed-code"></p><button id="exportResearch" class="quiet">Exporteer instellingen en zichtbare selectie</button><p class="small">Een feed toont een selectie. Wat ontbreekt? Welke bron zou je daarnaast willen raadplegen?</p><p class="small">Dezelfde dataset, code en instellingen geven dezelfde volgorde. Bewaar deze code om je beginfeed te vergelijken.</p></section>
+        </aside>
+        <section class="feed-column" aria-label="Berichten"><div class="feed-toolbar"><h2>Voor jou</h2><span id="feedCount" role="status" aria-live="polite"></span></div><div id="feed" tabindex="-1"></div></section>
+      </div>
+    </div>
+  </main>
+  <footer>Feedlab v1 · lokaal onderzoek · onderwijsdata</footer>
+  <p id="groupBadge" class="group-badge" role="status" hidden></p>
+  <noscript>Schakel JavaScript in om de feed te gebruiken.</noscript>
+</body>
+</html>

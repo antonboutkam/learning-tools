@@ -369,14 +369,14 @@
       "features": [
         "Twintig lokale fictieve profielfoto’s, vast gekoppeld aan auteur-ID voor posts en reacties.",
         "Posts worden na 175 tekens op hele woorden ingekort met ... en Meer weergeven voor de volledige tekst.",
-        "Posts met afbeeldingsupload of URL, automatische placeholders en geneste reacties",
-        "Automatische respondentgroepen met eigen algoritme",
+        "Posts met afbeeldingen uit JSON, automatische placeholders en geneste reacties",
+        "Automatische respondentgroepen met eigen algoritme, beheerd via adminconfiguratie of JSON",
         "Klein groepslabel en onthouden toewijzing",
-        "Instelbare achtergrond-, kaart-, tekst- en accentkleuren",
-        "Ingeklapt instellingenpaneel met configureerbare knop Algoritme (showAlgorithmButton), groepsbeheer en lokale aanvullingen",
-        "Configuratie-export en herimport met algoritme, groep, feedcode en kleuren"
+        "Achtergrond-, kaart-, tekst- en accentkleuren uitsluitend via adminconfiguratie of JSON",
+        "Ingeklapt paneel met alleen inhoudelijke selectie- en rangschikkingsregels; knop Algoritme te verbergen met showAlgorithmButton",
+        "Onderzoeksexport van instellingen en zichtbare selectie; geen import, configuratie-export of inhoudsbewerking voor bezoekers"
       ],
-      "implementatie": "Standalone browsertool. Respondenten krijgen met gelijke kans een groep, bewaard per dataset en browser. Eén groep geldt voor iedereen. Groepsinstellingen sturen posts en reacties; kleuren gebruiken gevalideerde CSS-variabelen.",
+      "implementatie": "Standalone browsertool. Respondenten krijgen met gelijke kans een groep, bewaard per dataset en browser. Eén groep geldt voor iedereen. De geladen JSON bepaalt broninhoud, groepen en gevalideerde kleuren; oude lokale beheerpreviews worden genegeerd. Bezoekers wijzigen alleen selectie- en rangschikkingsregels en kunnen hun onderzoek exporteren.",
       "api": "Statische iframe-API via ?data=URL; ?group=ID voor expliciete docentpreview. Geen centrale deelnemersregistratie of Canvas-score-passback. Zie de README in de tool voor schema, opslag en authoring."
     }
   }

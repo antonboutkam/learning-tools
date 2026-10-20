@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Feedalgoritme: handmatig</title>
+  <link rel="stylesheet" href="./style.css?v=20261020-comments-toggle">
+  <script defer src="./app.js?v=20261020-comments-toggle"></script>
+</head>
+<body>
+  <a class="skip" href="#feed">Naar de berichten</a>
+  <header class="masthead"><a class="brand" href="#"><span>F</span><strong>FEEDLAB <small>ONDERZOEK JE FEED</small></strong></a></header>
+  <main>
+    <p id="loading" role="status">De oefening wordt geladen…</p>
+    <section id="error" class="panel error" hidden role="alert"><h1>De oefening kon niet worden geladen</h1><p id="errorText"></p><button id="retry" type="button">Opnieuw proberen</button></section>
+    <div id="workspace" hidden>
+      <section class="intro"><p class="eyebrow">Handmatig algoritme</p><h1 id="pageTitle">Stuur de beeldvorming</h1><p>Maak zichtbaar wat jij de lezer wilt laten zien. Zo ontdek je hoeveel invloed een feed op beeldvorming kan hebben.</p></section>
+      <div class="layout">
+        <aside>
+          <section class="panel instruction"><h2 id="instructionTitle">Jouw opdracht</h2><div id="instructionText"></div><hr><h3>Zo werkt het</h3><p>Gebruik de zichtbaarheidsschakelaar op iedere post en reactie. Zichtbare posts staan bovenaan; onzichtbare posts schuiven onder de rode grens.</p><p>Verplaats posts met <strong>Omhoog</strong> en <strong>Omlaag</strong>, of sleep ze naar de gewenste plek. De rode lijn bepaalt welke posts in de feed vallen. De eerste vijf reacties per post staan standaard bij <strong>Meest relevant</strong>. Je kunt ze vervangen door andere reacties; er kunnen per post maximaal vijf reacties zichtbaar zijn.</p><p id="targetText"></p><button id="checkScore" type="button">Controleer score</button><p id="result" class="result" role="status" aria-live="polite"></p></section>
+        </aside>
+        <section class="feed-column" aria-label="Handmatig gesorteerde berichten">
+          <div class="feed-toolbar"><div><h2>Voor jou</h2><span id="feedCount" role="status"></span></div><output id="score" class="score" aria-live="polite"><small>Huidige score</small><strong>…</strong></output></div>
+          <div id="feed" tabindex="-1"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer>Feedalgoritme: handmatig v1 · lokaal oefenen · onderwijsdata</footer>
+  <noscript>Schakel JavaScript in om de oefening te gebruiken.</noscript>
+</body>
+</html>

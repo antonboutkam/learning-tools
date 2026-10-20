@@ -1,0 +1,26 @@
+{
+  "source_format": "feed-algoritme-handmatig-v1",
+  "title": "Stuur de beeldvorming over de buurtactie",
+  "instruction_title": "Jouw manipulatieopdracht",
+  "instruction_text": "Zorg dat een lezer zo positief mogelijk denkt over de buurtactie. Kies bewust welke berichten en reacties zichtbaar zijn.",
+  "feed_post_limit": 4,
+  "target": {"comparison": "more_than", "score": 300},
+  "posts": [
+    {"id": "post-5", "author_name": "Anoniem account", "published_at": "Vandaag om 11:42", "topic": "Buurtactie", "headline": "Bezoeker ergert zich aan de drukte", "body": "Eén bezoeker schrijft dat het tijdelijk lastiger was om te parkeren in de straat.", "image_correction": -65},
+    {"id": "post-6", "author_name": "Luca | Omwonende", "published_at": "Vandaag om 12:08", "topic": "Buurtactie", "headline": "Niet iedereen kende de planning", "body": "Volgens een omwonende was de aankondiging voor sommige bewoners te laat zichtbaar.", "image_correction": -55},
+    {"id": "post-1", "author_name": "Sara | Buurtteam", "published_at": "Vandaag om 09:14", "topic": "Buurtactie", "headline": "Vrijwilligers ruimen het plein op", "body": "Meer dan zestig buurtgenoten hielpen vanochtend mee. Na afloop lag het plein er zichtbaar schoner bij.", "image_correction": 92},
+    {"id": "post-2", "author_name": "Milan | Stadskrant", "published_at": "Vandaag om 10:02", "topic": "Buurtactie", "headline": "Lokale ondernemers sponsoren materialen", "body": "Drie ondernemers stelden handschoenen, afvalgrijpers en drinken beschikbaar voor de deelnemers.", "image_correction": 84},
+    {"id": "post-3", "author_name": "Noor | Bewoner", "published_at": "Vandaag om 10:47", "topic": "Buurtactie", "headline": "Kinderen maken een plan voor meer groen", "body": "Een groep kinderen bedacht samen met de gemeente plekken voor plantenbakken en bankjes.", "image_correction": 78},
+    {"id": "post-4", "author_name": "Daan | Sportclub", "published_at": "Vandaag om 11:15", "topic": "Buurtactie", "headline": "Sportclub helpt met de afsluiting", "body": "Na het opruimen organiseerde de sportclub een gratis spelmiddag voor de buurt.", "image_correction": 70}
+  ],
+  "comments": [
+    {"id": "c-1", "post_id": "post-1", "author_name": "Fleur", "body": "Wat fijn dat zoveel mensen meedoen!", "score": 5},
+    {"id": "c-2", "post_id": "post-1", "author_name": "Yassin", "body": "Het plein ziet er echt beter uit.", "score": 4},
+    {"id": "c-3", "post_id": "post-2", "author_name": "Iris", "body": "Goed voorbeeld van samenwerking in de buurt.", "score": 5},
+    {"id": "c-4", "post_id": "post-2", "author_name": "Mo", "body": "Handig dat de materialen geregeld waren.", "score": 3},
+    {"id": "c-5", "post_id": "post-3", "author_name": "Liv", "body": "Ik ben benieuwd naar de plantenbakken!", "score": 4},
+    {"id": "c-6", "post_id": "post-4", "author_name": "Timo", "body": "De spelmiddag was leuk voor mijn zusje.", "score": 4},
+    {"id": "c-7", "post_id": "post-5", "author_name": "Bo", "body": "Het was inderdaad erg druk in de straat.", "score": -4},
+    {"id": "c-8", "post_id": "post-6", "author_name": "Sem", "body": "De communicatie had duidelijker gekund.", "score": -3}
+  ]
+}
