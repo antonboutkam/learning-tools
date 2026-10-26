@@ -54,6 +54,12 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Kale terminal met `$` op iedere schermregel, herstelde tikfouten en tijdelijke puntjes. Geen afzenderblok of knoppen. Het scherm scrollt binnen de vaste iframehoogte. Bij verminderde beweging verschijnt de hele tekst direct.
   - Ondersteunt de bestaande tekstvelden en pipe/backspace-notatie. V1 blijft beschikbaar met de C64-weergave. De nieuwe registry-id is `digitaal-bericht-v2`, zodat beide versies apart te kiezen zijn.
 
+- Stappenplan (v1)
+  - Pad: `public_html/types/stappenplan/v1/`
+  - Data-schema: `public_html/types/stappenplan/v1/schema.json`
+  - Example: `public_html/types/stappenplan/v1/example.json`
+  - Extra: één afbeelding en beschrijving per stap, automatische nummering, Vorige/Volgende en pijltjestoetsen. Relatieve afbeeldingspaden zijn relatief aan de JSON-configuratie.
+
 - Strip ballonnetjes (v1)
   - Pad: `public_html/types/strip-ballonnetjes/v1/`
   - Data‑schema: `public_html/types/strip-ballonnetjes/v1/schema.json`
@@ -151,6 +157,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/wat-hoort-bij-wat/v1/?unique_id=demo-koppelen-1&data=example.json`
 - `/types/pubquiz-yes-no/v1/?unique_id=demo-pubquiz-1&data=example.json`
 - `/types/digitaal-bericht/v1/?unique_id=demo-bericht-1&data=example.json`
+- `/types/stappenplan/v1/?data=example.json`
 - `/types/strip-ballonnetjes/v1/?unique_id=demo-strip-1&data=example.json`
 - `/types/notities/v1/?notitieblok_id=demo-notities-1&data=example.json`
 - `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`

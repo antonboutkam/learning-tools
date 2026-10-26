@@ -230,6 +230,16 @@
       "schemaUrl": "/types/escaperoom-futureme/v1/schema.json",
       "exampleDataUrl": "/types/escaperoom-futureme/v1/example.json",
       "description": "Doorloop kamers waarin je bronnen markeert, hypotheses onderzoekt, veilig prioriteert en een briefing schrijft."
+    },
+    {
+      "id": "stappenplan",
+      "type": "planar-type",
+      "name": "Stappenplan",
+      "version": "v1",
+      "launchUrl": "/types/stappenplan/v1/",
+      "schemaUrl": "/types/stappenplan/v1/schema.json",
+      "exampleDataUrl": "/types/stappenplan/v1/example.json",
+      "description": "Doorloop afbeeldingen met stapnummers en uitleg via Vorige en Volgende."
     }
   ]
 }
