@@ -338,6 +338,7 @@ listEl.addEventListener("click", (e) => {
 });
 
 checkBtn.addEventListener("click", () => {
+  if (completion && !completion.beginAttempt()) return;
   updateResult();
   markCorrectness();
 });
@@ -381,6 +382,7 @@ async function init() {
     const cardEl = document.querySelector(".card");
     completion = window.LearningToolsCompletion?.create?.({
       toolId: "juiste-volgorde",
+        cooldownSeconds: data.cooldownSeconds,
       version: "v1",
       dataUrl: new URL(dataUrl, window.location.href).toString(),
       uniqueId,

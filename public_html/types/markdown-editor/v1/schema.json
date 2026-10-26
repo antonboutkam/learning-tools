@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/markdown-editor/v1/schema.json",
   "title": "Markdown editor v1",
   "description": "Een eenvoudige Markdown-editor: links schrijf je Markdown, rechts zie je direct een preview.",
+  "supportsCompletion": false,
   "outputs": [
     {
       "type": "md",

@@ -201,6 +201,7 @@ function checkAnswer() {
     return;
   }
 
+  if (state.completion && !state.completion.beginAttempt()) return;
   let parsed;
   try {
     parsed = parseBaseValue(state.answer, state.config.output).value;
@@ -286,6 +287,7 @@ function normalizeConfig(data) {
   const configUniqueId = typeof data.unique_id === "string" ? data.unique_id.trim() : "";
 
   return {
+    cooldownSeconds: data.cooldownSeconds,
     title,
     input,
     output,
@@ -369,6 +371,7 @@ async function init() {
     state.completion =
       window.LearningToolsCompletion?.create?.({
         toolId: "bin-hex-dec-reken",
+        cooldownSeconds: config.cooldownSeconds,
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
         uniqueId,

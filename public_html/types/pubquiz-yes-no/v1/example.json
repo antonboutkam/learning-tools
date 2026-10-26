@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "title": "Pubquiz: Ja of Nee?",
   "rollerSeconds": 4,
   "questionSeconds": 8,

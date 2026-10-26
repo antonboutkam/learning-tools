@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "toolTitle": "Kies de juiste afbeelding",
   "vraag": "Welke afbeeldingen tonen invoerapparaten?",
   "beschrijving": "Selecteer alle afbeeldingen die bij de vraag passen.",

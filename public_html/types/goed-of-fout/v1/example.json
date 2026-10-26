@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "titel": "Veilig werken: goed of fout?",
   "introductie": "Bekijk iedere werksituatie en bepaal of er veilig wordt gewerkt.",
   "vragenRandomiseren": true,

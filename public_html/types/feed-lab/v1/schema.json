@@ -1,0 +1,801 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Feedlab v1 — bronconfiguratie",
+  "type": "object",
+  "properties": {
+    "source_format": {
+      "title": "Bronformaat",
+      "enum": [
+        "feed-lab-v1",
+        "feed-lab-v2",
+        "feed-lab-v3"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unique_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_owner": {
+      "type": "string"
+    },
+    "lesson": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "default_comments_per_post": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "available_comments_per_post": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title"
+      ],
+      "additionalProperties": true
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "driving_question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "post_selection_limit": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stance": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "likes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dislikes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "thumbs_up": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "thumbs_down": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "angry": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reply_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [],
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "emotional_intensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "controversy": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "information_quality": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "novelty": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "predicted_dwell_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "topic_affinity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "fictional": {
+            "type": "boolean"
+          },
+          "topic_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "headline": {
+            "type": "string",
+            "minLength": 1
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "title": "Afbeeldings-URL of ingesloten upload",
+                "type": "string",
+                "format": "uri",
+                "pattern": "^(?:https?://[^\\s/@]+(?::[0-9]+)?(?:[/?#][^\\s]*)?|data:image/(?:png|jpeg|webp|gif);base64,[A-Za-z0-9+/]+={0,2})$"
+              },
+              "alt": {
+                "type": "string",
+                "minLength": 1,
+                "title": "Beschrijving afbeelding"
+              }
+            },
+            "required": [
+              "url",
+              "alt"
+            ],
+            "additionalProperties": true,
+            "title": "Afbeelding bij bericht",
+            "description": "Ontbreekt deze waarde, dan toont de tool een placeholder. PNG/JPEG/WebP/GIF-upload via een data-URL: maximaal 2 MiB, extra door engine gevalideerd."
+          },
+          "comment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "author_id",
+          "author_name",
+          "body",
+          "metrics",
+          "topic_id",
+          "headline",
+          "published_at"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stance": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "likes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dislikes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "thumbs_up": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "thumbs_down": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "angry": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reply_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [],
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "emotional_intensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "controversy": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "information_quality": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "novelty": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "predicted_dwell_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "topic_affinity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "fictional": {
+            "type": "boolean"
+          },
+          "post_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parent_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "post_id",
+          "author_id",
+          "author_name",
+          "body",
+          "metrics",
+          "created_at"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "topic_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "phase": {
+            "enum": [
+              "before",
+              "after",
+              "both"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "likert_7",
+              "percentage"
+            ]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "min_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "max_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "min": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "max": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "id",
+          "topic_id",
+          "phase",
+          "kind",
+          "prompt",
+          "required"
+        ],
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "likert_7"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "min_label",
+                "max_label"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "percentage"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "min",
+                "max"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "algorithm_defaults": {
+      "type": "object",
+      "properties": {
+        "posts_per_topic": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "comments_per_post": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seed": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "comment_rank_by": {
+          "enum": [
+            "thumbs_up",
+            "thumbs_down",
+            "angry",
+            "combined",
+            "reply_count",
+            "newest",
+            "random"
+          ]
+        },
+        "post_weights": {
+          "type": "object",
+          "properties": {
+            "stance_bias": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "engagement": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "emotional_intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "information_quality": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "recency": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "controversy": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "novelty": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "predicted_dwell_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "topic_affinity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "initial_settings": {
+      "$ref": "#/$defs/settings",
+      "title": "Standaardalgoritme"
+    },
+    "showAlgorithmButton": {
+      "title": "Knop Algoritme tonen",
+      "description": "Toon de knop Algoritme waarmee het instellingenpaneel geopend wordt. Schakel uit om de feed zonder toegang tot dit paneel te tonen.",
+      "type": "boolean",
+      "default": true
+    },
+    "showQuestions": {
+      "type": "boolean",
+      "default": true,
+      "description": "Individuele vragen tonen; route en feedcode blijven altijd zichtbaar.",
+      "title": "Individuele vragen tonen"
+    },
+    "respondent_groups": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "settings"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "title": "Stabiel groeps-ID"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Groepsnaam"
+          },
+          "settings": {
+            "$ref": "#/$defs/settings",
+            "title": "Standaardalgoritme voor deze groep"
+          }
+        },
+        "title": "Respondentgroep"
+      },
+      "title": "Respondentgroepen",
+      "description": "Beheer groepen via de adminconfiguratie of JSON; bezoekers kunnen ze niet wijzigen. Iedere nieuwe respondent krijgt automatisch gelijke kans op elke groep. Eén groep krijgt iedereen; een lege lijst gebruikt de standaardinstellingen. Geen gegarandeerde exacte klasbalans."
+    },
+    "respondent_assignment": {
+      "title": "Geëxporteerde groepscontext",
+      "description": "Legacycontext uit oudere configuratie-exports. De bezoekersinterface biedt geen bestandsimport; dit veld bepaalt bij gewoon laden niet de groepstoewijzing.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "group_id"
+      ],
+      "properties": {
+        "group_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Automatisch toegewezen groep"
+        },
+        "preview_group_id": {
+          "type": "string",
+          "title": "Groep die lokaal wordt uitgeprobeerd"
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "title": "Vormgeving",
+      "description": "Stel kleuren uitsluitend in via de adminconfiguratie of JSON, in #RRGGBB. Ontbrekende kleuren gebruiken de standaardkleuren. De bezoekersinterface bevat geen kleurinstellingen.",
+      "additionalProperties": false,
+      "properties": {
+        "background": {
+          "type": "string",
+          "title": "Achtergrond",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "default": "#F0F2F5"
+        },
+        "card": {
+          "type": "string",
+          "title": "Kaarten en invoervelden",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "default": "#FFFFFF"
+        },
+        "text": {
+          "type": "string",
+          "title": "Tekst",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "default": "#1C1E21"
+        },
+        "accent": {
+          "type": "string",
+          "title": "Accent voor knoppen en links",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "default": "#1877F3"
+        }
+      }
+    }
+  },
+  "required": [
+    "source_format",
+    "title",
+    "unique_id",
+    "lesson",
+    "topics",
+    "posts",
+    "comments",
+    "questions"
+  ],
+  "additionalProperties": true,
+  "description": "Bronconfiguratie voor berichten, reacties, respondentgroepen, algoritmen en vormgeving. De engine controleert ook graphverwijzingen en unieke IDs.",
+  "supportsCompletion": false,
+  "$id": "https://learning-tools.nuive.nl/types/feed-lab/v1/schema.json",
+  "$defs": {
+    "settings": {
+      "type": "object",
+      "title": "Toegepaste algoritme-instellingen",
+      "additionalProperties": false,
+      "properties": {
+        "seed": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "title": "Feedcode"
+        },
+        "postRank": {
+          "enum": [
+            "weighted",
+            "likes",
+            "angry",
+            "combined",
+            "reply_count",
+            "newest",
+            "random"
+          ],
+          "title": "Berichten rangschikken"
+        },
+        "commentRank": {
+          "enum": [
+            "thumbs_up",
+            "thumbs_down",
+            "angry",
+            "combined",
+            "reply_count",
+            "newest",
+            "random"
+          ],
+          "title": "Reacties rangschikken"
+        },
+        "topicId": {
+          "type": "string",
+          "title": "Onderwerp-ID (leeg voor alle)"
+        },
+        "postLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "title": "Aantal berichten (0 = alle)"
+        },
+        "perTopic": {
+          "type": "integer",
+          "minimum": 0,
+          "title": "Maximaal per onderwerp (0 = alle)"
+        },
+        "commentLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "title": "Reacties per ouder (0 = alle)"
+        },
+        "maxPerAuthor": {
+          "type": "integer",
+          "minimum": 0,
+          "title": "Maximaal per auteur (0 = alle)"
+        },
+        "randomWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "title": "Gewicht toeval"
+        },
+        "likeWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "title": "Gewicht likes"
+        },
+        "angryWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "title": "Gewicht boosreacties"
+        },
+        "commentStanceBias": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "title": "Standpuntbias reacties (−1 tot 1)"
+        },
+        "weights": {
+          "type": "object",
+          "title": "Berichtgewichten",
+          "additionalProperties": false,
+          "properties": {
+            "stance_bias": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "engagement": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "emotional_intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "information_quality": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "recency": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "controversy": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "novelty": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "predicted_dwell_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "topic_affinity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

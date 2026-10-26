@@ -9,7 +9,8 @@
       "launchUrl": "/types/goed-of-fout/v1/",
       "schemaUrl": "/types/goed-of-fout/v1/schema.json",
       "exampleDataUrl": "/types/goed-of-fout/v1/example.json",
-      "description": "Beoordeel situaties op afbeeldingen als goed of fout en ontvang na afloop een feestelijke procentuele score."
+      "description": "Beoordeel situaties op afbeeldingen als goed of fout en ontvang na afloop een feestelijke procentuele score.",
+      "supportsCompletion": true
     },
     {
       "id": "juiste-volgorde",
@@ -19,7 +20,8 @@
       "launchUrl": "/types/juiste-volgorde/v1/",
       "schemaUrl": "/types/juiste-volgorde/v1/schema.json",
       "exampleDataUrl": "/types/juiste-volgorde/v1/example.json",
-      "description": "Sorteer elementen in de juiste volgorde."
+      "description": "Sorteer elementen in de juiste volgorde.",
+      "supportsCompletion": true
     },
     {
       "id": "kies-de-juiste-afbeelding",
@@ -29,7 +31,8 @@
       "launchUrl": "/types/kies-de-juiste-afbeelding/v1/",
       "schemaUrl": "/types/kies-de-juiste-afbeelding/v1/schema.json",
       "exampleDataUrl": "/types/kies-de-juiste-afbeelding/v1/example.json",
-      "description": "Selecteer een of meer juiste afbeeldingen bij een vraag of stelling."
+      "description": "Selecteer een of meer juiste afbeeldingen bij een vraag of stelling.",
+      "supportsCompletion": true
     },
     {
       "id": "wat-hoort-bij-wat",
@@ -39,7 +42,8 @@
       "launchUrl": "/types/wat-hoort-bij-wat/v1/",
       "schemaUrl": "/types/wat-hoort-bij-wat/v1/schema.json",
       "exampleDataUrl": "/types/wat-hoort-bij-wat/v1/example.json",
-      "description": "Koppel termen met hun juiste antwoord."
+      "description": "Koppel termen met hun juiste antwoord.",
+      "supportsCompletion": true
     },
     {
       "id": "pubquiz-yes-no",
@@ -49,7 +53,8 @@
       "launchUrl": "/types/pubquiz-yes-no/v1/",
       "schemaUrl": "/types/pubquiz-yes-no/v1/schema.json",
       "exampleDataUrl": "/types/pubquiz-yes-no/v1/example.json",
-      "description": "Yes/No vragen met korte random-roller."
+      "description": "Yes/No vragen met korte random-roller.",
+      "supportsCompletion": true
     },
     {
       "id": "digitaal-bericht",
@@ -59,7 +64,8 @@
       "launchUrl": "/types/digitaal-bericht/v1/",
       "schemaUrl": "/types/digitaal-bericht/v1/schema.json",
       "exampleDataUrl": "/types/digitaal-bericht/v1/example.json",
-      "description": "Toon een digitaal bericht alsof het getypt wordt op een Commodore 64 terminal. Gebruik | als backspace."
+      "description": "Toon een digitaal bericht alsof het getypt wordt op een Commodore 64 terminal. Gebruik | als backspace.",
+      "supportsCompletion": false
     },
     {
       "id": "digitaal-bericht-v2",
@@ -69,7 +75,8 @@
       "launchUrl": "/types/digitaal-bericht/v2/",
       "schemaUrl": "/types/digitaal-bericht/v2/schema.json",
       "exampleDataUrl": "/types/digitaal-bericht/v2/example.json",
-      "description": "Kale terminal met dollarprompts, herstelde tikfouten en tijdelijke puntjes. Scrollt binnen een vaste hoogte en ondersteunt verminderde beweging."
+      "description": "Kale terminal met dollarprompts, herstelde tikfouten en tijdelijke puntjes. Scrollt binnen een vaste hoogte en ondersteunt verminderde beweging.",
+      "supportsCompletion": false
     },
     {
       "id": "strip-ballonnetjes",
@@ -79,7 +86,8 @@
       "launchUrl": "/types/strip-ballonnetjes/v1/",
       "schemaUrl": "/types/strip-ballonnetjes/v1/schema.json",
       "exampleDataUrl": "/types/strip-ballonnetjes/v1/example.json",
-      "description": "Toon een reeks afbeeldingen met spraak-, gedachte- en vraagballonnen. Vraagantwoorden worden lokaal bewaard en zijn als variabele beschikbaar in vervolgteksten."
+      "description": "Toon een reeks afbeeldingen met spraak-, gedachte- en vraagballonnen. Vraagantwoorden worden lokaal bewaard en zijn als variabele beschikbaar in vervolgteksten.",
+      "supportsCompletion": false
     },
     {
       "id": "notities",
@@ -89,7 +97,8 @@
       "launchUrl": "/types/notities/v1/",
       "schemaUrl": "/types/notities/v1/schema.json",
       "exampleDataUrl": "/types/notities/v1/example.json",
-      "description": "Notitieblok met pagina-omslag animatie, typ- en penmodus, en bookmarks. Persistente opslag per notitieblok_id."
+      "description": "Notitieblok met pagina-omslag animatie, typ- en penmodus, en bookmarks. Persistente opslag per notitieblok_id.",
+      "supportsCompletion": false
     },
     {
       "id": "timeline",
@@ -99,7 +108,8 @@
       "launchUrl": "/types/timeline/v1/",
       "schemaUrl": "/types/timeline/v1/schema.json",
       "exampleDataUrl": "/types/timeline/v1/example.json",
-      "description": "Toon een tijdlijn met momenten tussen een start- en einddatum (horizontaal of verticaal) met instelbare schaal."
+      "description": "Toon een tijdlijn met momenten tussen een start- en einddatum (horizontaal of verticaal) met instelbare schaal.",
+      "supportsCompletion": false
     },
     {
       "id": "lesson-clock",
@@ -109,7 +119,8 @@
       "launchUrl": "/types/lesson-clock/v1/",
       "schemaUrl": "/types/lesson-clock/v1/schema.json",
       "exampleDataUrl": "/types/lesson-clock/v1/example.json",
-      "description": "Synchroon aftellen voor meerdere lessen met een steeds roder wordende en af en toe flitsende pie."
+      "description": "Synchroon aftellen voor meerdere lessen met een steeds roder wordende en af en toe flitsende pie.",
+      "supportsCompletion": false
     },
     {
       "id": "bin-hex-dec-reken",
@@ -119,7 +130,8 @@
       "launchUrl": "/types/bin-hex-dec-reken/v1/",
       "schemaUrl": "/types/bin-hex-dec-reken/v1/schema.json",
       "exampleDataUrl": "/types/bin-hex-dec-reken/v1/example.json",
-      "description": "Converteer een getal tussen binair, decimaal en hexadecimaal met keypad, preview en teller-posities."
+      "description": "Converteer een getal tussen binair, decimaal en hexadecimaal met keypad, preview en teller-posities.",
+      "supportsCompletion": true
     },
     {
       "id": "code-in-volgorde-zetten",
@@ -129,7 +141,8 @@
       "launchUrl": "/types/code-in-volgorde-zetten/v1/",
       "schemaUrl": "/types/code-in-volgorde-zetten/v1/schema.json",
       "exampleDataUrl": "/types/code-in-volgorde-zetten/v1/example.json",
-      "description": "Sleep code-regels van links naar rechts om een programma op te bouwen. Regels zonder positie zijn afleiders."
+      "description": "Sleep code-regels van links naar rechts om een programma op te bouwen. Regels zonder positie zijn afleiders.",
+      "supportsCompletion": true
     },
     {
       "id": "markdown-editor",
@@ -139,7 +152,8 @@
       "launchUrl": "/types/markdown-editor/v1/",
       "schemaUrl": "/types/markdown-editor/v1/schema.json",
       "exampleDataUrl": "/types/markdown-editor/v1/example.json",
-      "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview)."
+      "description": "Eenvoudige Markdown-editor met live preview (links editor, rechts preview).",
+      "supportsCompletion": false
     },
     {
       "id": "p5-editor",
@@ -149,7 +163,8 @@
       "launchUrl": "/types/p5-editor/v1/",
       "schemaUrl": "/types/p5-editor/v1/schema.json",
       "exampleDataUrl": "/types/p5-editor/v1/example.json",
-      "description": "Bewerk en voer configureerbare p5.js-demo-JavaScript uit in een streng geïsoleerde preview."
+      "description": "Bewerk en voer configureerbare p5.js-demo-JavaScript uit in een streng geïsoleerde preview.",
+      "supportsCompletion": false
     },
     {
       "id": "scrumboard",
@@ -159,7 +174,8 @@
       "launchUrl": "/types/scrumboard/v1/",
       "schemaUrl": "/types/scrumboard/v1/schema.json",
       "exampleDataUrl": "/types/scrumboard/v1/example.json",
-      "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key."
+      "description": "Scrumboard met configureerbare kolommen, geeltjes en persistente opslag per key.",
+      "supportsCompletion": false
     },
     {
       "id": "mindmap",
@@ -169,7 +185,8 @@
       "launchUrl": "/types/mindmap/v1/",
       "schemaUrl": "/types/mindmap/v1/schema.json",
       "exampleDataUrl": "/types/mindmap/v1/example.json",
-      "description": "Interactieve mindmap met verplaatsbare woorden, kleurkeuzes, lichte/donkere achtergrond en meerdere verbindingsstijlen."
+      "description": "Interactieve mindmap met verplaatsbare woorden, kleurkeuzes, lichte/donkere achtergrond en meerdere verbindingsstijlen.",
+      "supportsCompletion": false
     },
     {
       "id": "qr-team-with-role-divide",
@@ -179,7 +196,8 @@
       "launchUrl": "/types/qr-team-with-role-divide/v1/",
       "schemaUrl": "/types/qr-team-with-role-divide/v1/schema.json",
       "exampleDataUrl": "/types/qr-team-with-role-divide/v1/example.json",
-      "description": "Planar tool met QR-join, teamindeling, rolrotatie, countdowns en optionele audio/video-opnames per rol."
+      "description": "Planar tool met QR-join, teamindeling, rolrotatie, countdowns en optionele audio/video-opnames per rol.",
+      "supportsCompletion": false
     },
     {
       "id": "jargonwoorden-presenteren",
@@ -189,7 +207,8 @@
       "launchUrl": "/types/jargonwoorden-presenteren/v1/",
       "schemaUrl": "/types/jargonwoorden-presenteren/v1/schema.json",
       "exampleDataUrl": "/types/jargonwoorden-presenteren/v1/example.json",
-      "description": "Speel met jargonwoorden: verdeel woorden, laat studenten onderzoeken en rouleer presentatoren met timers, stemmen en scores."
+      "description": "Speel met jargonwoorden: verdeel woorden, laat studenten onderzoeken en rouleer presentatoren met timers, stemmen en scores.",
+      "supportsCompletion": false
     },
     {
       "id": "poll-vote",
@@ -199,7 +218,8 @@
       "launchUrl": "/types/poll-vote/v1/",
       "schemaUrl": "/types/poll-vote/v1/schema.json",
       "exampleDataUrl": "/types/poll-vote/v1/example.json",
-      "description": "Live meerkeuzepoll met student-, presentatie- en docentweergave, directe staafgrafiek en beheer van individuele stemmen."
+      "description": "Live meerkeuzepoll met student-, presentatie- en docentweergave, directe staafgrafiek en beheer van individuele stemmen.",
+      "supportsCompletion": false
     },
     {
       "id": "slide-show",
@@ -209,7 +229,8 @@
       "launchUrl": "/types/slide-show/v1/",
       "schemaUrl": "/types/slide-show/v1/schema.json",
       "exampleDataUrl": "/types/slide-show/v1/example.json",
-      "description": "Speel slides met vrij positioneerbare, getimede teksten, in- en uit-effecten en instelbare automatische voortgang af."
+      "description": "Speel slides met vrij positioneerbare, getimede teksten, in- en uit-effecten en instelbare automatische voortgang af.",
+      "supportsCompletion": false
     },
     {
       "id": "breadboard",
@@ -219,7 +240,8 @@
       "launchUrl": "/types/breadboard/v1/",
       "schemaUrl": "/types/breadboard/v1/schema.json",
       "exampleDataUrl": "/types/breadboard/v1/example.json",
-      "description": "Configureer een schakeling met Fritzing-afbeeldingen, contactpunten en gekleurde draden."
+      "description": "Configureer een schakeling met Fritzing-afbeeldingen, contactpunten en gekleurde draden.",
+      "supportsCompletion": false
     },
     {
       "id": "escaperoom-futureme",
@@ -229,7 +251,63 @@
       "launchUrl": "/types/escaperoom-futureme/v1/",
       "schemaUrl": "/types/escaperoom-futureme/v1/schema.json",
       "exampleDataUrl": "/types/escaperoom-futureme/v1/example.json",
-      "description": "Doorloop kamers waarin je bronnen markeert, hypotheses onderzoekt, veilig prioriteert en een briefing schrijft."
+      "description": "Doorloop kamers waarin je bronnen markeert, hypotheses onderzoekt, veilig prioriteert en een briefing schrijft.",
+      "supportsCompletion": true
+    },
+    {
+      "id": "checklist",
+      "type": "assignment-type",
+      "name": "Checklist",
+      "version": "v1",
+      "launchUrl": "/types/checklist/v1/",
+      "schemaUrl": "/types/checklist/v1/schema.json",
+      "exampleDataUrl": "/types/checklist/v1/example.json",
+      "description": "Afvinkbare checklist met optionele links, lokale opslag en reset, Markdown/tekst/JSON-export en instelbaar toevoegen of verwijderen van items.",
+      "supportsCompletion": false
+    },
+    {
+      "id": "feed-lab",
+      "type": "assignment-type",
+      "name": "Feedlab",
+      "version": "v1",
+      "launchUrl": "/types/feed-lab/v1/",
+      "schemaUrl": "/types/feed-lab/v1/schema.json",
+      "exampleDataUrl": "/types/feed-lab/v1/example.json",
+      "description": "Onderzoek selectie en rangschikking van posts en reacties. Groepen, vormgeving en broninhoud worden uitsluitend via de adminconfiguratie of JSON beheerd.",
+      "supportsCompletion": false
+    },
+    {
+      "id": "feed-algoritme-handmatig",
+      "type": "assignment-type",
+      "name": "Feedalgoritme: handmatig",
+      "version": "v1",
+      "launchUrl": "/types/feed-algoritme-handmatig/v1/",
+      "schemaUrl": "/types/feed-algoritme-handmatig/v1/schema.json",
+      "exampleDataUrl": "/types/feed-algoritme-handmatig/v1/example.json",
+      "description": "Sorteer en maak posts en reacties zichtbaar om de beeldvorming van een feed handmatig te beïnvloeden.",
+      "supportsCompletion": true
+    },
+    {
+      "id": "opdrachtcertificaat",
+      "type": "assignment-type",
+      "name": "Opdrachtcertificaat",
+      "version": "v1",
+      "launchUrl": "/types/opdrachtcertificaat/v1/",
+      "schemaUrl": "/types/opdrachtcertificaat/v1/schema.json",
+      "exampleDataUrl": "/types/opdrachtcertificaat/v1/example.json",
+      "description": "Verzamelt succesvolle afrondingen op dezelfde pagina en geeft een serverondertekend JSON-certificaat op naam en klas uit.",
+      "supportsCompletion": false
+    },
+    {
+      "id": "blikvanger",
+      "type": "assignment-type",
+      "name": "Blikvanger",
+      "version": "v1",
+      "launchUrl": "/types/blikvanger/v1/",
+      "schemaUrl": "/types/blikvanger/v1/schema.json",
+      "exampleDataUrl": "/types/blikvanger/v1/example.json",
+      "description": "Bekijk afbeeldingen en nieuwsberichten met vragen onderaan: één antwoord, meerdere antwoorden of waar/onwaar.",
+      "supportsCompletion": true
     },
     {
       "id": "stappenplan",

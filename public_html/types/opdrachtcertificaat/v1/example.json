@@ -1,0 +1,16 @@
+{
+  "groupId": "demo-certificaat",
+  "revision": "1",
+  "title": "Mijn eerste opdrachtcertificaat",
+  "description": "Maak beide oefeningen en haal je certificaat op.",
+  "requiredTools": [
+    {
+      "id": "cert-demo-volgorde",
+      "title": "Zet de stappen in de juiste volgorde"
+    },
+    {
+      "id": "cert-demo-koppelen",
+      "title": "Koppel de juiste begrippen"
+    }
+  ]
+}

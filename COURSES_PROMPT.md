@@ -159,3 +159,11 @@ Output:
 - Publiceer JSON naar `dataUrl`
 - Bouw iframe‑URL: `${launchUrl}?unique_id=${encodeURIComponent(uniqueId)}&data=${encodeURIComponent(dataUrl)}`
 ```
+
+## Behaald-uitkomst
+
+Lees `supportsCompletion` uit de tooldefinitie in de registry of van de schema-root. `true` betekent dat de tool automatisch een succesvolle afronding kan bepalen; `false` of een ontbrekend veld betekent dat deze mogelijkheid niet is aangegeven. Dit is vaste capability-metadata, geen formulier- of opdrachtveld en geen actuele studentstatus. Het garandeert geen opgeslagen certificaat of score-passback. Gebruik `outputs` uitsluitend voor bestandsuitvoer.
+
+## Opdrachtcertificaat op een pagina
+
+Plaats optioneel `opdrachtcertificaat/v1` naast de oefeningen. Geef alle beoordeelbare oefening-instanties een stabiele, unieke `unique_id` in hun iframe-URL. Vul `requiredTools` met precies deze ID's en titels; voeg niet de certificaattool zelf of niet-beoordeelbare tools toe. Gebruik een stabiele `groupId` en verhoog `revision` bij inhoudelijke wijzigingen. Registreer dezelfde configuratie als servermanifest voordat de pagina wordt gebruikt. Eén actieve certificaattool per pagina; alle deelnemende iframes komen van dezelfde Learning Tools-origin. Er is geen script in de Canvas-ouder nodig. Zie `docs/opdrachtcertificaat.md` voor protocol, private inrichting, downloads en automatische controle. Automatische generatie/publicatie vanuit de aparte Courses-repo moet daar nog worden aangesloten.

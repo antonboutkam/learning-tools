@@ -105,6 +105,7 @@ function normalizeData(rawData) {
   }
 
   return {
+    cooldownSeconds: rawData.cooldownSeconds,
     toolTitle:
       typeof rawData.toolTitle === "string" && rawData.toolTitle.trim()
         ? rawData.toolTitle.trim()
@@ -222,7 +223,9 @@ function startRetryPause() {
 function handleCheck() {
   if (!config || isLocked) return;
 
-  if (selectionIsCorrect()) {
+  const correct = selectionIsCorrect();
+  if (completion && !completion.beginAttempt(!correct && config.antwoordBijFout === "opnieuw-proberen" ? config.pauzeSeconden : 0)) return;
+  if (correct) {
     setLocked(true);
     setResult("Goed!", "good");
     setStatus("Alle juiste afbeeldingen zijn geselecteerd.");
@@ -287,6 +290,7 @@ async function init() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     config = normalizeData(await res.json());
+    if (Number.isInteger(config.cooldownSeconds) && config.cooldownSeconds > 0 && config.cooldownSeconds <= 86400) config.pauzeSeconden = Math.max(config.pauzeSeconden, config.cooldownSeconds);
     imagesById = new Map(config.afbeeldingen.map((image) => [image.id, image]));
     imageOrder = config.afbeeldingen.map((image) => image.id);
 
@@ -305,6 +309,7 @@ async function init() {
     completion =
       window.LearningToolsCompletion?.create?.({
         toolId: "kies-de-juiste-afbeelding",
+        cooldownSeconds: config.cooldownSeconds,
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
         uniqueId,

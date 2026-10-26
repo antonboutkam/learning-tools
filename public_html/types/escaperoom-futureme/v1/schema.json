@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/escaperoom-futureme/v1/schema.json",
   "title": "FutureMe escaperoom v1",
   "description": "Een korte fictieve escape room waarin studenten bronnen zorgvuldig bekijken, feiten en aannames onderscheiden, veilig prioriteren en een briefing voorbereiden.",
+  "supportsCompletion": true,
   "outputs": [
     {
       "type": "txt",
@@ -16,6 +17,14 @@
   "required": ["unique_id", "title", "intro", "theme", "rooms", "successMessage", "allowHints", "persistProgress"],
   "additionalProperties": false,
   "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
     "unique_id": { "type": "string", "minLength": 1, "title": "Unieke instantiecode", "description": "Stabiele sleutel voor lokale voortgang van deze instantie." },
     "title": { "type": "string", "title": "Titel", "description": "Titel van de escaperoom." },
     "intro": { "type": "string", "title": "Introductie", "description": "Korte verhaal- en lesintroductie.", "format": "textarea" },

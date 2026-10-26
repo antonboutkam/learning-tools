@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.devroc.nl/types/opdrachtcertificaat/v1/schema.json",
+  "title": "Opdrachtcertificaat v1",
+  "description": "Verzamelt succesvolle afrondingen op dezelfde pagina en geeft een serverondertekend JSON-certificaat op naam en klas uit.",
+  "supportsCompletion": false,
+  "outputs": [
+    {
+      "type": "json",
+      "title": "Ondertekend certificaat",
+      "description": "Downloadbaar bewijs met naam, klas, resultaten, datum en digitale handtekening.",
+      "mimeType": "application/json",
+      "extensions": [
+        ".json"
+      ]
+    }
+  ],
+  "type": "object",
+  "required": [
+    "groupId",
+    "revision",
+    "title",
+    "requiredTools"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "groupId": {
+      "title": "Opdrachtgroep",
+      "description": "Stabiele groepscode; moet overeenkomen met het geregistreerde servermanifest.",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,119}$"
+    },
+    "revision": {
+      "title": "Revisie",
+      "description": "Verhoog bij gewijzigde opdrachten en registreer een nieuw servermanifest.",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,119}$"
+    },
+    "title": {
+      "title": "Titel",
+      "description": "Titel van de opdracht en het certificaat.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "description": {
+      "title": "Uitleg",
+      "description": "Korte uitleg boven de voortgang.",
+      "type": "string",
+      "maxLength": 1000
+    },
+    "requiredTools": {
+      "title": "Vereiste opdrachten",
+      "description": "Alle unieke opdrachtinstanties die succesvol afgerond moeten worden. Neem deze certificaattool zelf niet op.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "title": "Opdracht",
+        "description": "Een opdracht op dezelfde pagina met supportsCompletion: true.",
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "title": "Opdracht-ID",
+            "description": "Exact de unique_id uit de iframe-URL van de oefening.",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,119}$"
+          },
+          "title": {
+            "title": "Opdrachttitel",
+            "description": "Leesbare titel in het voortgangsoverzicht.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          }
+        }
+      }
+    }
+  }
+}

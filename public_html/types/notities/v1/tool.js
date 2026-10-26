@@ -12,6 +12,10 @@
   const clearBtn = document.getElementById("clearBtn");
   const addBookmarkBtn = document.getElementById("addBookmarkBtn");
   const downloadBtn = document.getElementById("downloadBtn");
+  const downloadGroup = document.getElementById("downloadGroup");
+  const downloadMenu = document.getElementById("downloadMenu");
+  const markdownToolbar = document.getElementById("markdownToolbar");
+  let downloading = false;
 
   const bookEl = document.getElementById("book");
 
@@ -284,6 +288,14 @@
     view.tab.textContent = getPageHeaderText(view.pageIndex);
   };
 
+  const updateMarkdownToolbar = () => {
+    if (!markdownToolbar) return;
+    markdownToolbar.hidden = state.mode === "pen";
+    markdownToolbar.querySelectorAll("button").forEach((button) => {
+      button.disabled = state.animating || !state.notebook || state.mode === "pen";
+    });
+  };
+
   const setMode = (mode) => {
     state.mode = mode;
     if (modeBtn) modeBtn.textContent = mode === "pen" ? "Pen" : "Typen";
@@ -294,6 +306,7 @@
     clearBtn && (clearBtn.disabled = mode !== "pen");
     penSizeEl && (penSizeEl.disabled = mode !== "pen");
     penColorEl && (penColorEl.disabled = mode !== "pen");
+    updateMarkdownToolbar();
   };
 
   const setActiveViewInteractivity = () => {
@@ -316,6 +329,8 @@
     if (metaEl) metaEl.textContent = notebookId ? `notitieblok_id: ${notebookId}` : "";
     if (prevBtn) prevBtn.disabled = state.animating || state.currentPageIndex <= 0;
     if (nextBtn) nextBtn.disabled = state.animating || state.currentPageIndex >= pagesCount - 1;
+    if (downloadBtn) downloadBtn.disabled = downloading || state.animating || !state.notebook;
+    updateMarkdownToolbar();
     updateViewTab(state.front);
     updateViewTab(state.back);
   };
@@ -453,7 +468,38 @@
     updatedAt: p.updatedAt || null,
   });
 
-  const downloadNotebook = async () => {
+  const setDownloadMenu = (open, focus = false) => {
+    if (!downloadMenu || !downloadBtn) return;
+    downloadMenu.hidden = !open;
+    downloadBtn.setAttribute("aria-expanded", String(open));
+    if (open) {
+      downloadMenu.style.right = "0px";
+      const rect = downloadMenu.getBoundingClientRect();
+      const viewportWidth = document.documentElement.clientWidth;
+      const left = Math.max(12, Math.min(rect.left, viewportWidth - rect.width - 12));
+      downloadMenu.style.right = `${rect.left - left}px`;
+    }
+    if (focus) (open ? downloadMenu.querySelector("button") : downloadBtn)?.focus();
+  };
+
+  const exportInk = (strokes, kind) => {
+    const canvas = document.createElement("canvas");
+    const rect = state.front.canvas.getBoundingClientRect();
+    canvas.width = kind === "bookmark" ? 124 : 980;
+    canvas.height = kind === "bookmark" ? 216 : Math.round(980 * (rect.height / Math.max(1, rect.width)));
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Pentekeningen konden niet worden geëxporteerd.");
+    const scale = canvas.width / (kind === "bookmark" ? 62 : Math.max(1, rect.width));
+    drawStrokes(ctx, strokes.map((stroke) => ({ ...stroke, width: (Number(stroke.width) || 2) * scale })), canvas.width, canvas.height);
+    return canvas.toDataURL("image/png");
+  };
+
+  const downloadNotebook = async (format = "json") => {
+    if (downloading || state.animating) return;
+    if (!["json", "md", "zip", "txt"].includes(format)) return;
+    downloading = true;
+    downloadBtn && (downloadBtn.disabled = true);
+    setDownloadMenu(false, true);
     try {
       if (!state.db) throw new Error("Database is nog niet geladen.");
       if (!notebookId) throw new Error("missing notitieblok_id");
@@ -498,9 +544,13 @@
 
       const safeId = String(notebookId).replace(/[^a-z0-9_-]+/gi, "_").slice(0, 80) || "notitieblok";
       const date = new Date().toISOString().slice(0, 10);
-      const fileName = `notities_${safeId}_${date}.json`;
+      const fileName = `notities_${safeId}_${date}.${format}`;
 
-      const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: "application/json" });
+      let blob;
+      if (format === "json") blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: "application/json" });
+      else if (format === "md") blob = new Blob([NotitiesExport.markdown(exportObj, exportInk)], { type: "text/markdown;charset=utf-8" });
+      else if (format === "txt") blob = new Blob([NotitiesExport.plainText(exportObj)], { type: "text/plain;charset=utf-8" });
+      else blob = NotitiesExport.markdownZip(exportObj, exportInk);
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -508,11 +558,15 @@
       document.body.appendChild(a);
       a.click();
       a.remove();
-      URL.revokeObjectURL(url);
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 
       setHint("");
     } catch (e) {
       setHint(`Download mislukt: ${String(e.message || e)}`, "error");
+    } finally {
+      downloading = false;
+      downloadBtn && (downloadBtn.disabled = !state.notebook || state.animating);
+      downloadBtn?.focus();
     }
   };
 
@@ -736,8 +790,8 @@
       saveNotebookLastPage(targetIndex);
 
       setActiveViewInteractivity();
-      updateHeader();
       state.animating = false;
+      updateHeader();
     };
 
     // Ensure the animation reliably retriggers across turns.
@@ -790,10 +844,53 @@
     redrawAll();
   };
 
+  const applyMarkdown = (command) => {
+    if (state.animating || state.mode !== "type" || !state.notebook) return;
+    const editor = state.front.text;
+    const formatted = NotitiesMarkdown.format(editor.value, editor.selectionStart, editor.selectionEnd, command);
+    editor.focus();
+    editor.setRangeText(formatted.value, 0, editor.value.length, "end");
+    editor.setSelectionRange(formatted.start, formatted.end);
+    savePageDebounced(state.front);
+  };
+
   const initEvents = () => {
+    markdownToolbar && markdownToolbar.addEventListener("mousedown", (event) => {
+      if (event.target.closest("button")) event.preventDefault();
+    });
+    markdownToolbar && markdownToolbar.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-markdown]");
+      if (button) applyMarkdown(button.dataset.markdown);
+    });
     prevBtn && prevBtn.addEventListener("click", goPrev);
     nextBtn && nextBtn.addEventListener("click", goNext);
-    downloadBtn && downloadBtn.addEventListener("click", downloadNotebook);
+    downloadBtn && downloadBtn.addEventListener("click", () => setDownloadMenu(downloadMenu.hidden, true));
+    downloadMenu && downloadMenu.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-format]");
+      if (button) downloadNotebook(button.dataset.format);
+    });
+    document.addEventListener("click", (event) => {
+      if (downloadGroup && !downloadGroup.contains(event.target)) setDownloadMenu(false);
+    });
+    window.addEventListener("resize", () => setDownloadMenu(false));
+    downloadGroup && downloadGroup.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        setDownloadMenu(false, true);
+      }
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        event.stopPropagation();
+        const buttons = Array.from(downloadMenu.querySelectorAll("button"));
+        const index = buttons.indexOf(document.activeElement);
+        setDownloadMenu(true);
+        buttons[(index + (event.key === "ArrowDown" ? 1 : -1) + buttons.length) % buttons.length]?.focus();
+      }
+    });
+    downloadGroup && downloadGroup.addEventListener("focusout", (event) => {
+      if (!downloadGroup.contains(event.relatedTarget)) setDownloadMenu(false);
+    });
 
     modeBtn &&
       modeBtn.addEventListener("click", () => {
@@ -814,6 +911,15 @@
 
     window.addEventListener("keydown", (e) => {
       if (state.animating) return;
+      if (e.target === state.front.text && (e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey) {
+        const command = { b: "bold", i: "italic" }[e.key.toLowerCase()];
+        if (command) {
+          e.preventDefault();
+          applyMarkdown(command);
+          return;
+        }
+      }
+      if (e.target.closest("textarea, input, select, [contenteditable='true'], .markdown-toolbar")) return;
       if (e.key === "ArrowLeft") goPrev();
       if (e.key === "ArrowRight") goNext();
     });

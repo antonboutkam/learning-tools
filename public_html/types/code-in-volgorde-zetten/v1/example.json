@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "toolTitle": "PHP-code in volgorde zetten",
   "title": "Zet het PHP-programma in de juiste volgorde",
   "description": "Sleep de juiste regels naar rechts om een array aan te maken, een element te wijzigen en daarna dat element te tonen. Regels zonder functie laat je links staan.",

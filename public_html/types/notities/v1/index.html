@@ -28,9 +28,34 @@
         </label>
         <button class="btn" id="clearBtn" type="button" title="Wis tekening op deze pagina">Wis pen</button>
         <button class="btn" id="addBookmarkBtn" type="button" title="Maak een bookmark op deze pagina">+ Bookmark</button>
-        <button class="btn" id="downloadBtn" type="button" title="Download dit notitieblok als JSON" disabled>Download</button>
+        <div class="download-group" id="downloadGroup">
+          <button class="btn" id="downloadBtn" type="button" aria-expanded="false" aria-controls="downloadMenu" disabled>Download ▾</button>
+          <div class="download-menu" id="downloadMenu" aria-label="Downloadformaat" hidden>
+            <button type="button" data-format="json">Javascript object notation (.json)</button>
+            <button type="button" data-format="md">Markdown enkel (.md)</button>
+            <button type="button" data-format="zip">Markdown tabladen los (.zip)</button>
+            <button type="button" data-format="txt">Plain tekst (.txt)</button>
+          </div>
+        </div>
       </div>
     </header>
+
+    <div class="markdown-toolbar" id="markdownToolbar" role="group" aria-label="Markdownopmaak" hidden>
+      <button class="btn" type="button" data-markdown="bold" aria-label="Vet" title="Vet (Ctrl/Cmd+B)"><strong>B</strong></button>
+      <button class="btn" type="button" data-markdown="italic" aria-label="Cursief" title="Cursief (Ctrl/Cmd+I)"><em>I</em></button>
+      <button class="btn" type="button" data-markdown="strike" aria-label="Doorhalen" title="Doorhalen"><s>S</s></button>
+      <button class="btn" type="button" data-markdown="h1" aria-label="Kop 1" title="Kop 1">H1</button>
+      <button class="btn" type="button" data-markdown="h2" aria-label="Kop 2" title="Kop 2">H2</button>
+      <button class="btn" type="button" data-markdown="h3" aria-label="Kop 3" title="Kop 3">H3</button>
+      <button class="btn" type="button" data-markdown="ul" title="Opsomming">• Lijst</button>
+      <button class="btn" type="button" data-markdown="ol" title="Genummerde lijst">1. Lijst</button>
+      <button class="btn" type="button" data-markdown="checklist" title="Takenlijst">☐ Taken</button>
+      <button class="btn" type="button" data-markdown="quote" title="Citaat">Citaat</button>
+      <button class="btn" type="button" data-markdown="link" title="Link invoegen">Link</button>
+      <button class="btn" type="button" data-markdown="code" title="Code in een regel">Code</button>
+      <button class="btn" type="button" data-markdown="codeblock" title="Codeblok">Codeblok</button>
+      <button class="btn" type="button" data-markdown="hr" title="Horizontale scheidingslijn">―</button>
+    </div>
 
     <div class="hint" id="hint"></div>
 
@@ -61,6 +86,8 @@
     </section>
   </main>
 
+  <script src="./export.js"></script>
+  <script src="./markdown.js"></script>
   <script src="./tool.js"></script>
 </body>
 </html>

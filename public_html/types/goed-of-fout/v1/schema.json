@@ -3,11 +3,20 @@
   "$id": "https://example.local/types/goed-of-fout/v1/schema.json",
   "title": "Goed of fout v1",
   "description": "Beeldquiz waarin studenten per situatie kiezen of deze goed of fout is en na afloop een procentuele score krijgen.",
+  "supportsCompletion": true,
   "outputs": [],
   "type": "object",
   "required": ["vragenRandomiseren", "aantalVragen", "minimaalGoed", "situaties"],
   "additionalProperties": false,
   "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
     "titel": {
       "type": "string",
       "title": "Titel",

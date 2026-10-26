@@ -98,6 +98,7 @@ function normalizeData(raw) {
 
   const aantalVragen = integerInRange(raw.aantalVragen, situaties.length, 1, situaties.length);
   return {
+    cooldownSeconds: raw.cooldownSeconds,
     titel: typeof raw.titel === "string" && raw.titel.trim() ? raw.titel.trim() : "Goed of fout",
     introductie: typeof raw.introductie === "string" ? raw.introductie.trim() : "",
     vragenRandomiseren: raw.vragenRandomiseren === true,
@@ -158,6 +159,7 @@ function renderQuestion() {
 }
 
 function finishQuiz() {
+  completion?.startCooldown();
   const percentage = Math.round((correctAnswers / questionOrder.length) * 100);
   const perfect = correctAnswers === questionOrder.length;
   const passed = correctAnswers >= config.minimaalGoed;
@@ -187,7 +189,7 @@ function finishQuiz() {
 }
 
 function answer(value) {
-  if (locked) return;
+  if (locked || completion?.cooldownActive) return;
   locked = true;
   setButtonsDisabled(true);
   const isCorrect = questionOrder[currentIndex].goed === value;
@@ -205,6 +207,7 @@ function answer(value) {
 elements.goodButton.addEventListener("click", () => answer(true));
 elements.wrongButton.addEventListener("click", () => answer(false));
 elements.restartButton.addEventListener("click", () => {
+  if (completion?.cooldownActive) return;
   if (completion?.isCompleted) completion.reset();
   else prepareQuiz();
 });
@@ -229,6 +232,7 @@ async function init() {
     completion = window.LearningToolsCompletion?.create?.({
       uniqueId,
       toolId: "goed-of-fout",
+        cooldownSeconds: config.cooldownSeconds,
       version: "v1",
       dataUrl,
       title: config.titel,

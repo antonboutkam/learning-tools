@@ -1,0 +1,6210 @@
+{
+  "source_format": "feed-lab-v1",
+  "showAlgorithmButton": true,
+  "schema_owner": "learn-tool",
+  "lesson": {
+    "id": "feed_algoritmes_polarisatie",
+    "title": "Wie bepaalt jouw feed?",
+    "locale": "nl-NL",
+    "fictional_content_notice": "Alle berichten, accounts, cijfers en situaties zijn fictief en uitsluitend voor onderwijsdoeleinden.",
+    "learning_goals": [
+      "Verschil herkennen tussen standpunt en feit",
+      "Effect van rangschikking op beeldvorming onderzoeken",
+      "Reproduceerbare ranking configureren",
+      "Eigen mening onderscheiden van veronderstelde meerderheid"
+    ],
+    "default_comments_per_post": 5,
+    "available_comments_per_post": [
+      5,
+      10
+    ]
+  },
+  "topics": [
+    {
+      "id": "ai_onderwijs",
+      "title": "AI in het onderwijs",
+      "driving_question": "Moeten studenten AI-assistenten mogen gebruiken bij opdrachten?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    },
+    {
+      "id": "asiel_wonen",
+      "title": "Asiel en woningnood",
+      "driving_question": "Hoe moeten gemeenten omgaan met opvang en schaarse woningen?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    },
+    {
+      "id": "camera_school",
+      "title": "Cameratoezicht op school",
+      "driving_question": "Moet de school slimme camera’s bij de fietsenstalling testen?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    },
+    {
+      "id": "gender_verhoudingen",
+      "title": "Feminisme en genderverhoudingen",
+      "driving_question": "Welke aanpak helpt om gendergerelateerde ongelijkheid en verwachtingen te verminderen?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    },
+    {
+      "id": "klimaat",
+      "title": "Klimaatmaatregelen",
+      "driving_question": "Moet de overheid klimaatmaatregelen sneller invoeren?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    },
+    {
+      "id": "smartphones_school",
+      "title": "Smartphones op school",
+      "driving_question": "Moet de school smartphones tijdens lessen verbieden?",
+      "post_selection_limit": 2,
+      "expected_posts": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": "post_01",
+      "topic_id": "ai_onderwijs",
+      "author_id": "creator_01",
+      "author_name": "Naomi | Campusforum",
+      "published_at": "2026-10-01T12:00:00+02:00",
+      "headline": "AI in het onderwijs: Leren met uitleg",
+      "body": "AI kan je juist helpen begrijpen hoe ingewikkelde code werkt. Waarom zouden we zo’n hulpmiddel verbieden?",
+      "stance": 1,
+      "frame": "leren met uitleg",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.41,
+        "controversy": 0.63,
+        "information_quality": 0.64,
+        "novelty": 0.44,
+        "predicted_dwell_seconds": 17,
+        "topic_affinity": 0.48
+      },
+      "metrics": {
+        "likes": 344,
+        "dislikes": 271,
+        "angry": 198,
+        "reply_count": 879
+      },
+      "comment_ids": [
+        "comment_01_01",
+        "comment_01_02",
+        "comment_01_03",
+        "comment_01_04",
+        "comment_01_05",
+        "comment_01_06",
+        "comment_01_07",
+        "comment_01_08",
+        "comment_01_09",
+        "comment_01_10",
+        "comment_01_11",
+        "comment_01_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_02",
+      "topic_id": "ai_onderwijs",
+      "author_id": "creator_02",
+      "author_name": "Daan | Campusforum",
+      "published_at": "2026-10-01T21:00:00+02:00",
+      "headline": "AI in het onderwijs: Snelle feedback",
+      "body": "Als je AI gebruikt om code uit te leggen, krijg je sneller feedback dan wanneer je op een docent wacht.",
+      "stance": 1,
+      "frame": "snelle feedback",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.73,
+        "controversy": 0.73,
+        "information_quality": 0.75,
+        "novelty": 0.59,
+        "predicted_dwell_seconds": 18,
+        "topic_affinity": 0.44
+      },
+      "metrics": {
+        "likes": 279,
+        "dislikes": 213,
+        "angry": 146,
+        "reply_count": 856
+      },
+      "comment_ids": [
+        "comment_02_01",
+        "comment_02_02",
+        "comment_02_03",
+        "comment_02_04",
+        "comment_02_05",
+        "comment_02_06",
+        "comment_02_07",
+        "comment_02_08",
+        "comment_02_09",
+        "comment_02_10",
+        "comment_02_11",
+        "comment_02_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_03",
+      "topic_id": "ai_onderwijs",
+      "author_id": "creator_03",
+      "author_name": "Luca | Campusforum",
+      "published_at": "2026-10-02T06:00:00+02:00",
+      "headline": "AI in het onderwijs: Zelfstandig denken",
+      "body": "Als een chatbot al je code schrijft, wat leer je dan nog voor je examen?",
+      "stance": -1,
+      "frame": "zelfstandig denken",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.73,
+        "controversy": 0.63,
+        "information_quality": 0.61,
+        "novelty": 0.52,
+        "predicted_dwell_seconds": 84,
+        "topic_affinity": 0.36
+      },
+      "metrics": {
+        "likes": 482,
+        "dislikes": 177,
+        "angry": 68,
+        "reply_count": 729
+      },
+      "comment_ids": [
+        "comment_03_01",
+        "comment_03_02",
+        "comment_03_03",
+        "comment_03_04",
+        "comment_03_05",
+        "comment_03_06",
+        "comment_03_07",
+        "comment_03_08",
+        "comment_03_09",
+        "comment_03_10",
+        "comment_03_11",
+        "comment_03_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_04",
+      "topic_id": "ai_onderwijs",
+      "author_id": "creator_04",
+      "author_name": "Sam | Campusforum",
+      "published_at": "2026-10-02T15:00:00+02:00",
+      "headline": "AI in het onderwijs: Betrouwbaarheid",
+      "body": "Een AI-oplossing lijkt soms overtuigend maar bevat fouten. Studenten moeten kunnen uitleggen wat hun code doet.",
+      "stance": -1,
+      "frame": "betrouwbaarheid",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.69,
+        "controversy": 0.51,
+        "information_quality": 0.82,
+        "novelty": 0.47,
+        "predicted_dwell_seconds": 83,
+        "topic_affinity": 0.76
+      },
+      "metrics": {
+        "likes": 58,
+        "dislikes": 264,
+        "angry": 178,
+        "reply_count": 820
+      },
+      "comment_ids": [
+        "comment_04_01",
+        "comment_04_02",
+        "comment_04_03",
+        "comment_04_04",
+        "comment_04_05",
+        "comment_04_06",
+        "comment_04_07",
+        "comment_04_08",
+        "comment_04_09",
+        "comment_04_10",
+        "comment_04_11",
+        "comment_04_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_05",
+      "topic_id": "asiel_wonen",
+      "author_id": "creator_05",
+      "author_name": "Nora | Campusforum",
+      "published_at": "2026-10-03T00:00:00+02:00",
+      "headline": "Asiel en woningnood: Menselijke bescherming",
+      "body": "Mensen die vluchten voor gevaar hebben bescherming nodig. Woningnood vraagt om meer bouwplannen, niet om elkaar de schuld te geven.",
+      "stance": 1,
+      "frame": "menselijke bescherming",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.84,
+        "controversy": 0.8,
+        "information_quality": 0.62,
+        "novelty": 0.68,
+        "predicted_dwell_seconds": 90,
+        "topic_affinity": 0.31
+      },
+      "metrics": {
+        "likes": 689,
+        "dislikes": 52,
+        "angry": 225,
+        "reply_count": 713
+      },
+      "comment_ids": [
+        "comment_05_01",
+        "comment_05_02",
+        "comment_05_03",
+        "comment_05_04",
+        "comment_05_05",
+        "comment_05_06",
+        "comment_05_07",
+        "comment_05_08",
+        "comment_05_09",
+        "comment_05_10",
+        "comment_05_11",
+        "comment_05_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_06",
+      "topic_id": "asiel_wonen",
+      "author_id": "creator_06",
+      "author_name": "Naomi | Campusforum",
+      "published_at": "2026-10-03T09:00:00+02:00",
+      "headline": "Asiel en woningnood: Samen oplossingen zoeken",
+      "body": "Een gemeente kan zowel opvang organiseren als extra betaalbare woningen bouwen. Waarom zetten we die belangen tegenover elkaar?",
+      "stance": 1,
+      "frame": "samen oplossingen zoeken",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.86,
+        "controversy": 0.67,
+        "information_quality": 0.74,
+        "novelty": 0.85,
+        "predicted_dwell_seconds": 59,
+        "topic_affinity": 0.47
+      },
+      "metrics": {
+        "likes": 91,
+        "dislikes": 139,
+        "angry": 234,
+        "reply_count": 844
+      },
+      "comment_ids": [
+        "comment_06_01",
+        "comment_06_02",
+        "comment_06_03",
+        "comment_06_04",
+        "comment_06_05",
+        "comment_06_06",
+        "comment_06_07",
+        "comment_06_08",
+        "comment_06_09",
+        "comment_06_10",
+        "comment_06_11",
+        "comment_06_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_07",
+      "topic_id": "asiel_wonen",
+      "author_id": "creator_07",
+      "author_name": "Bo | Campusforum",
+      "published_at": "2026-10-03T18:00:00+02:00",
+      "headline": "Asiel en woningnood: Eerlijke verdeling",
+      "body": "Veel starters wachten al jaren op een betaalbare woning. De gemeente moet helder uitleggen hoe woonruimte verdeeld wordt.",
+      "stance": -1,
+      "frame": "eerlijke verdeling",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.74,
+        "controversy": 0.81,
+        "information_quality": 0.79,
+        "novelty": 0.53,
+        "predicted_dwell_seconds": 48,
+        "topic_affinity": 0.6
+      },
+      "metrics": {
+        "likes": 173,
+        "dislikes": 129,
+        "angry": 159,
+        "reply_count": 756
+      },
+      "comment_ids": [
+        "comment_07_01",
+        "comment_07_02",
+        "comment_07_03",
+        "comment_07_04",
+        "comment_07_05",
+        "comment_07_06",
+        "comment_07_07",
+        "comment_07_08",
+        "comment_07_09",
+        "comment_07_10",
+        "comment_07_11",
+        "comment_07_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_08",
+      "topic_id": "asiel_wonen",
+      "author_id": "creator_08",
+      "author_name": "Sam | Campusforum",
+      "published_at": "2026-10-04T03:00:00+02:00",
+      "headline": "Asiel en woningnood: Lokale inspraak",
+      "body": "Bij nieuwe opvanglocaties willen bewoners inspraak over voorzieningen en capaciteit. Transparantie ontbreekt vaak in het debat.",
+      "stance": -1,
+      "frame": "lokale inspraak",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.66,
+        "controversy": 0.74,
+        "information_quality": 0.87,
+        "novelty": 0.52,
+        "predicted_dwell_seconds": 55,
+        "topic_affinity": 0.53
+      },
+      "metrics": {
+        "likes": 749,
+        "dislikes": 240,
+        "angry": 183,
+        "reply_count": 698
+      },
+      "comment_ids": [
+        "comment_08_01",
+        "comment_08_02",
+        "comment_08_03",
+        "comment_08_04",
+        "comment_08_05",
+        "comment_08_06",
+        "comment_08_07",
+        "comment_08_08",
+        "comment_08_09",
+        "comment_08_10",
+        "comment_08_11",
+        "comment_08_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_09",
+      "topic_id": "camera_school",
+      "author_id": "creator_09",
+      "author_name": "Lotte | Campusforum",
+      "published_at": "2026-10-04T12:00:00+02:00",
+      "headline": "Cameratoezicht op school: Diefstalpreventie",
+      "body": "Er zijn fietsen gestolen. Een zorgvuldig afgebakende cameraproef kan misschien helpen diefstal te voorkomen.",
+      "stance": 1,
+      "frame": "diefstalpreventie",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.56,
+        "controversy": 0.68,
+        "information_quality": 0.75,
+        "novelty": 0.75,
+        "predicted_dwell_seconds": 34,
+        "topic_affinity": 0.58
+      },
+      "metrics": {
+        "likes": 79,
+        "dislikes": 171,
+        "angry": 211,
+        "reply_count": 829
+      },
+      "comment_ids": [
+        "comment_09_01",
+        "comment_09_02",
+        "comment_09_03",
+        "comment_09_04",
+        "comment_09_05",
+        "comment_09_06",
+        "comment_09_07",
+        "comment_09_08",
+        "comment_09_09",
+        "comment_09_10",
+        "comment_09_11",
+        "comment_09_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_10",
+      "topic_id": "camera_school",
+      "author_id": "creator_10",
+      "author_name": "Luca | Campusforum",
+      "published_at": "2026-10-04T21:00:00+02:00",
+      "headline": "Cameratoezicht op school: Proef met regels",
+      "body": "Waarom geen tijdelijke proef met strenge bewaartermijnen en controle door studenten? Veiligheid verdient onderzoek.",
+      "stance": 1,
+      "frame": "proef met regels",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.75,
+        "controversy": 0.56,
+        "information_quality": 0.8,
+        "novelty": 0.61,
+        "predicted_dwell_seconds": 56,
+        "topic_affinity": 0.54
+      },
+      "metrics": {
+        "likes": 330,
+        "dislikes": 238,
+        "angry": 62,
+        "reply_count": 690
+      },
+      "comment_ids": [
+        "comment_10_01",
+        "comment_10_02",
+        "comment_10_03",
+        "comment_10_04",
+        "comment_10_05",
+        "comment_10_06",
+        "comment_10_07",
+        "comment_10_08",
+        "comment_10_09",
+        "comment_10_10",
+        "comment_10_11",
+        "comment_10_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_11",
+      "topic_id": "camera_school",
+      "author_id": "creator_11",
+      "author_name": "Jesse | Campusforum",
+      "published_at": "2026-10-05T06:00:00+02:00",
+      "headline": "Cameratoezicht op school: Privacy",
+      "body": "Moet iedere student gefilmd worden om zijn fiets te parkeren? Privacy is ook een vorm van veiligheid.",
+      "stance": -1,
+      "frame": "privacy",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.73,
+        "controversy": 0.86,
+        "information_quality": 0.85,
+        "novelty": 0.79,
+        "predicted_dwell_seconds": 79,
+        "topic_affinity": 0.45
+      },
+      "metrics": {
+        "likes": 149,
+        "dislikes": 136,
+        "angry": 88,
+        "reply_count": 794
+      },
+      "comment_ids": [
+        "comment_11_01",
+        "comment_11_02",
+        "comment_11_03",
+        "comment_11_04",
+        "comment_11_05",
+        "comment_11_06",
+        "comment_11_07",
+        "comment_11_08",
+        "comment_11_09",
+        "comment_11_10",
+        "comment_11_11",
+        "comment_11_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_12",
+      "topic_id": "camera_school",
+      "author_id": "creator_12",
+      "author_name": "Lotte | Campusforum",
+      "published_at": "2026-10-05T15:00:00+02:00",
+      "headline": "Cameratoezicht op school: Dataminimalisatie",
+      "body": "Slimme camera’s kunnen meer gegevens verzamelen dan nodig. De school moet eerst minder ingrijpende maatregelen bekijken.",
+      "stance": -1,
+      "frame": "dataminimalisatie",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.42,
+        "controversy": 0.53,
+        "information_quality": 0.6,
+        "novelty": 0.52,
+        "predicted_dwell_seconds": 42,
+        "topic_affinity": 0.51
+      },
+      "metrics": {
+        "likes": 457,
+        "dislikes": 220,
+        "angry": 134,
+        "reply_count": 768
+      },
+      "comment_ids": [
+        "comment_12_01",
+        "comment_12_02",
+        "comment_12_03",
+        "comment_12_04",
+        "comment_12_05",
+        "comment_12_06",
+        "comment_12_07",
+        "comment_12_08",
+        "comment_12_09",
+        "comment_12_10",
+        "comment_12_11",
+        "comment_12_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_13",
+      "topic_id": "gender_verhoudingen",
+      "author_id": "creator_13",
+      "author_name": "Noor | Campusforum",
+      "published_at": "2026-10-06T00:00:00+02:00",
+      "headline": "Feminisme en genderverhoudingen: Gelijke kansen",
+      "body": "Ook nu ervaren mensen ongelijkheid in kansen en verwachtingen. Daarover praten helpt om drempels weg te nemen.",
+      "stance": 1,
+      "frame": "gelijke kansen",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.41,
+        "controversy": 0.89,
+        "information_quality": 0.65,
+        "novelty": 0.48,
+        "predicted_dwell_seconds": 64,
+        "topic_affinity": 0.57
+      },
+      "metrics": {
+        "likes": 672,
+        "dislikes": 53,
+        "angry": 195,
+        "reply_count": 820
+      },
+      "comment_ids": [
+        "comment_13_01",
+        "comment_13_02",
+        "comment_13_03",
+        "comment_13_04",
+        "comment_13_05",
+        "comment_13_06",
+        "comment_13_07",
+        "comment_13_08",
+        "comment_13_09",
+        "comment_13_10",
+        "comment_13_11",
+        "comment_13_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_14",
+      "topic_id": "gender_verhoudingen",
+      "author_id": "creator_14",
+      "author_name": "Daan | Campusforum",
+      "published_at": "2026-10-06T09:00:00+02:00",
+      "headline": "Feminisme en genderverhoudingen: Vrije keuzes",
+      "body": "Iedere student moet zich vrij voelen in studiekeuze en gedrag, zonder vastgepind te worden op traditionele rolpatronen.",
+      "stance": 1,
+      "frame": "vrije keuzes",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.84,
+        "controversy": 0.88,
+        "information_quality": 0.6,
+        "novelty": 0.62,
+        "predicted_dwell_seconds": 45,
+        "topic_affinity": 0.33
+      },
+      "metrics": {
+        "likes": 520,
+        "dislikes": 109,
+        "angry": 205,
+        "reply_count": 822
+      },
+      "comment_ids": [
+        "comment_14_01",
+        "comment_14_02",
+        "comment_14_03",
+        "comment_14_04",
+        "comment_14_05",
+        "comment_14_06",
+        "comment_14_07",
+        "comment_14_08",
+        "comment_14_09",
+        "comment_14_10",
+        "comment_14_11",
+        "comment_14_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_15",
+      "topic_id": "gender_verhoudingen",
+      "author_id": "creator_15",
+      "author_name": "Noor | Campusforum",
+      "published_at": "2026-10-06T18:00:00+02:00",
+      "headline": "Feminisme en genderverhoudingen: Ruimte voor jongens",
+      "body": "Sommige jongens ervaren weinig ruimte om over hun eigen onzekerheid te praten. Dat verdient óók aandacht.",
+      "stance": -1,
+      "frame": "ruimte voor jongens",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.67,
+        "controversy": 0.77,
+        "information_quality": 0.59,
+        "novelty": 0.41,
+        "predicted_dwell_seconds": 22,
+        "topic_affinity": 0.68
+      },
+      "metrics": {
+        "likes": 199,
+        "dislikes": 164,
+        "angry": 198,
+        "reply_count": 777
+      },
+      "comment_ids": [
+        "comment_15_01",
+        "comment_15_02",
+        "comment_15_03",
+        "comment_15_04",
+        "comment_15_05",
+        "comment_15_06",
+        "comment_15_07",
+        "comment_15_08",
+        "comment_15_09",
+        "comment_15_10",
+        "comment_15_11",
+        "comment_15_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_16",
+      "topic_id": "gender_verhoudingen",
+      "author_id": "creator_16",
+      "author_name": "Finn | Campusforum",
+      "published_at": "2026-10-07T03:00:00+02:00",
+      "headline": "Feminisme en genderverhoudingen: Minder groepsdenken",
+      "body": "Online discussies over gender veranderen al snel in een wedstrijd wie het zwaarder heeft. Kunnen we zorgen van alle kanten serieus nemen?",
+      "stance": -1,
+      "frame": "minder groepsdenken",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.64,
+        "controversy": 0.83,
+        "information_quality": 0.61,
+        "novelty": 0.64,
+        "predicted_dwell_seconds": 49,
+        "topic_affinity": 0.32
+      },
+      "metrics": {
+        "likes": 497,
+        "dislikes": 17,
+        "angry": 18,
+        "reply_count": 666
+      },
+      "comment_ids": [
+        "comment_16_01",
+        "comment_16_02",
+        "comment_16_03",
+        "comment_16_04",
+        "comment_16_05",
+        "comment_16_06",
+        "comment_16_07",
+        "comment_16_08",
+        "comment_16_09",
+        "comment_16_10",
+        "comment_16_11",
+        "comment_16_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_17",
+      "topic_id": "klimaat",
+      "author_id": "creator_17",
+      "author_name": "Daan | Campusforum",
+      "published_at": "2026-10-07T12:00:00+02:00",
+      "headline": "Klimaatmaatregelen: Tijdig handelen",
+      "body": "Uitstel maakt de energietransitie lastiger. Met slimme investeringen kunnen we schoner produceren en wonen.",
+      "stance": 1,
+      "frame": "tijdig handelen",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.61,
+        "controversy": 0.55,
+        "information_quality": 0.88,
+        "novelty": 0.6,
+        "predicted_dwell_seconds": 28,
+        "topic_affinity": 0.8
+      },
+      "metrics": {
+        "likes": 789,
+        "dislikes": 280,
+        "angry": 318,
+        "reply_count": 764
+      },
+      "comment_ids": [
+        "comment_17_01",
+        "comment_17_02",
+        "comment_17_03",
+        "comment_17_04",
+        "comment_17_05",
+        "comment_17_06",
+        "comment_17_07",
+        "comment_17_08",
+        "comment_17_09",
+        "comment_17_10",
+        "comment_17_11",
+        "comment_17_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_18",
+      "topic_id": "klimaat",
+      "author_id": "creator_18",
+      "author_name": "Daan | Campusforum",
+      "published_at": "2026-10-07T21:00:00+02:00",
+      "headline": "Klimaatmaatregelen: Schone technologie",
+      "body": "Meer isolatie en schone energie kunnen op termijn zowel uitstoot als energiegebruik verminderen.",
+      "stance": 1,
+      "frame": "schone technologie",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.76,
+        "controversy": 0.66,
+        "information_quality": 0.84,
+        "novelty": 0.56,
+        "predicted_dwell_seconds": 21,
+        "topic_affinity": 0.41
+      },
+      "metrics": {
+        "likes": 558,
+        "dislikes": 175,
+        "angry": 22,
+        "reply_count": 654
+      },
+      "comment_ids": [
+        "comment_18_01",
+        "comment_18_02",
+        "comment_18_03",
+        "comment_18_04",
+        "comment_18_05",
+        "comment_18_06",
+        "comment_18_07",
+        "comment_18_08",
+        "comment_18_09",
+        "comment_18_10",
+        "comment_18_11",
+        "comment_18_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_19",
+      "topic_id": "klimaat",
+      "author_id": "creator_19",
+      "author_name": "Demi | Campusforum",
+      "published_at": "2026-10-08T06:00:00+02:00",
+      "headline": "Klimaatmaatregelen: Betaalbaarheid",
+      "body": "Wie weinig verdient, kan vaak niet zomaar investeren in verduurzaming. Nieuwe regels moeten betaalbaar zijn.",
+      "stance": -1,
+      "frame": "betaalbaarheid",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.81,
+        "controversy": 0.51,
+        "information_quality": 0.84,
+        "novelty": 0.64,
+        "predicted_dwell_seconds": 43,
+        "topic_affinity": 0.51
+      },
+      "metrics": {
+        "likes": 339,
+        "dislikes": 270,
+        "angry": 125,
+        "reply_count": 809
+      },
+      "comment_ids": [
+        "comment_19_01",
+        "comment_19_02",
+        "comment_19_03",
+        "comment_19_04",
+        "comment_19_05",
+        "comment_19_06",
+        "comment_19_07",
+        "comment_19_08",
+        "comment_19_09",
+        "comment_19_10",
+        "comment_19_11",
+        "comment_19_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_20",
+      "topic_id": "klimaat",
+      "author_id": "creator_20",
+      "author_name": "Yara | Campusforum",
+      "published_at": "2026-10-08T15:00:00+02:00",
+      "headline": "Klimaatmaatregelen: Haalbaarheid",
+      "body": "Een klimaatplan werkt alleen als mensen een haalbaar alternatief hebben voor auto, verwarming en werk.",
+      "stance": -1,
+      "frame": "haalbaarheid",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.61,
+        "controversy": 0.79,
+        "information_quality": 0.81,
+        "novelty": 0.44,
+        "predicted_dwell_seconds": 50,
+        "topic_affinity": 0.84
+      },
+      "metrics": {
+        "likes": 205,
+        "dislikes": 250,
+        "angry": 262,
+        "reply_count": 746
+      },
+      "comment_ids": [
+        "comment_20_01",
+        "comment_20_02",
+        "comment_20_03",
+        "comment_20_04",
+        "comment_20_05",
+        "comment_20_06",
+        "comment_20_07",
+        "comment_20_08",
+        "comment_20_09",
+        "comment_20_10",
+        "comment_20_11",
+        "comment_20_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_21",
+      "topic_id": "smartphones_school",
+      "author_id": "creator_21",
+      "author_name": "Lotte | Campusforum",
+      "published_at": "2026-10-09T00:00:00+02:00",
+      "headline": "Smartphones op school: Concentratie",
+      "body": "Zonder meldingen kun je je langer concentreren. Een duidelijke telefoonregel geeft rust in het lokaal.",
+      "stance": 1,
+      "frame": "concentratie",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.78,
+        "controversy": 0.85,
+        "information_quality": 0.83,
+        "novelty": 0.87,
+        "predicted_dwell_seconds": 39,
+        "topic_affinity": 0.62
+      },
+      "metrics": {
+        "likes": 657,
+        "dislikes": 153,
+        "angry": 319,
+        "reply_count": 710
+      },
+      "comment_ids": [
+        "comment_21_01",
+        "comment_21_02",
+        "comment_21_03",
+        "comment_21_04",
+        "comment_21_05",
+        "comment_21_06",
+        "comment_21_07",
+        "comment_21_08",
+        "comment_21_09",
+        "comment_21_10",
+        "comment_21_11",
+        "comment_21_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_22",
+      "topic_id": "smartphones_school",
+      "author_id": "creator_22",
+      "author_name": "Lotte | Campusforum",
+      "published_at": "2026-10-09T09:00:00+02:00",
+      "headline": "Smartphones op school: Duidelijke afspraken",
+      "body": "Niet iedereen kan sociale media negeren tijdens de les. Eén gezamenlijke afspraak kan eerlijker zijn.",
+      "stance": 1,
+      "frame": "duidelijke afspraken",
+      "sentiment": "positive",
+      "metadata": {
+        "emotional_intensity": 0.46,
+        "controversy": 0.42,
+        "information_quality": 0.88,
+        "novelty": 0.54,
+        "predicted_dwell_seconds": 76,
+        "topic_affinity": 0.53
+      },
+      "metrics": {
+        "likes": 249,
+        "dislikes": 125,
+        "angry": 173,
+        "reply_count": 713
+      },
+      "comment_ids": [
+        "comment_22_01",
+        "comment_22_02",
+        "comment_22_03",
+        "comment_22_04",
+        "comment_22_05",
+        "comment_22_06",
+        "comment_22_07",
+        "comment_22_08",
+        "comment_22_09",
+        "comment_22_10",
+        "comment_22_11",
+        "comment_22_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_23",
+      "topic_id": "smartphones_school",
+      "author_id": "creator_23",
+      "author_name": "Lotte | Campusforum",
+      "published_at": "2026-10-09T18:00:00+02:00",
+      "headline": "Smartphones op school: Zelfregulatie",
+      "body": "Studenten moeten ook leren om zelf verantwoordelijk met hun telefoon om te gaan, niet alleen gehoorzamen.",
+      "stance": -1,
+      "frame": "zelfregulatie",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.51,
+        "controversy": 0.75,
+        "information_quality": 0.7,
+        "novelty": 0.73,
+        "predicted_dwell_seconds": 68,
+        "topic_affinity": 0.77
+      },
+      "metrics": {
+        "likes": 163,
+        "dislikes": 169,
+        "angry": 121,
+        "reply_count": 745
+      },
+      "comment_ids": [
+        "comment_23_01",
+        "comment_23_02",
+        "comment_23_03",
+        "comment_23_04",
+        "comment_23_05",
+        "comment_23_06",
+        "comment_23_07",
+        "comment_23_08",
+        "comment_23_09",
+        "comment_23_10",
+        "comment_23_11",
+        "comment_23_12"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "post_24",
+      "topic_id": "smartphones_school",
+      "author_id": "creator_24",
+      "author_name": "Luca | Campusforum",
+      "published_at": "2026-10-10T03:00:00+02:00",
+      "headline": "Smartphones op school: Praktisch gebruik",
+      "body": "Je telefoon is soms nodig voor je rooster, authenticatie of een leerapp. Een totaalverbod kan onpraktisch zijn.",
+      "stance": -1,
+      "frame": "praktisch gebruik",
+      "sentiment": "negative",
+      "metadata": {
+        "emotional_intensity": 0.64,
+        "controversy": 0.86,
+        "information_quality": 0.71,
+        "novelty": 0.47,
+        "predicted_dwell_seconds": 29,
+        "topic_affinity": 0.75
+      },
+      "metrics": {
+        "likes": 592,
+        "dislikes": 247,
+        "angry": 71,
+        "reply_count": 698
+      },
+      "comment_ids": [
+        "comment_24_01",
+        "comment_24_02",
+        "comment_24_03",
+        "comment_24_04",
+        "comment_24_05",
+        "comment_24_06",
+        "comment_24_07",
+        "comment_24_08",
+        "comment_24_09",
+        "comment_24_10",
+        "comment_24_11",
+        "comment_24_12"
+      ],
+      "fictional": true
+    }
+  ],
+  "comments": [
+    {
+      "id": "comment_01_01",
+      "post_id": "post_01",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 84,
+        "thumbs_down": 77,
+        "angry": 99,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T10:00:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_02",
+      "post_id": "post_01",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 321,
+        "thumbs_down": 4,
+        "angry": 6,
+        "reply_count": 33
+      },
+      "created_at": "2026-10-02T10:03:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_03",
+      "post_id": "post_01",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 90,
+        "thumbs_down": 66,
+        "angry": 253,
+        "reply_count": 147
+      },
+      "created_at": "2026-10-02T10:06:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_04",
+      "post_id": "post_01",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 280,
+        "thumbs_down": 118,
+        "angry": 156,
+        "reply_count": 69
+      },
+      "created_at": "2026-10-02T10:09:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_05",
+      "post_id": "post_01",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 147,
+        "thumbs_down": 63,
+        "angry": 62,
+        "reply_count": 69
+      },
+      "created_at": "2026-10-02T10:12:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_06",
+      "post_id": "post_01",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 496,
+        "thumbs_down": 2,
+        "angry": 18,
+        "reply_count": 74
+      },
+      "created_at": "2026-10-02T10:15:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_07",
+      "post_id": "post_01",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 385,
+        "thumbs_down": 73,
+        "angry": 517,
+        "reply_count": 47
+      },
+      "created_at": "2026-10-02T10:18:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_08",
+      "post_id": "post_01",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 173,
+        "thumbs_down": 4,
+        "angry": 495,
+        "reply_count": 27
+      },
+      "created_at": "2026-10-02T10:21:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_09",
+      "post_id": "post_01",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 148,
+        "thumbs_down": 117,
+        "angry": 515,
+        "reply_count": 43
+      },
+      "created_at": "2026-10-02T10:24:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_10",
+      "post_id": "post_01",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 399,
+        "thumbs_down": 26,
+        "angry": 59,
+        "reply_count": 143
+      },
+      "created_at": "2026-10-02T10:27:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_11",
+      "post_id": "post_01",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 195,
+        "thumbs_down": 33,
+        "angry": 142,
+        "reply_count": 125
+      },
+      "created_at": "2026-10-02T10:30:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_01_12",
+      "post_id": "post_01",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 255,
+        "thumbs_down": 69,
+        "angry": 24,
+        "reply_count": 31
+      },
+      "created_at": "2026-10-02T10:33:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_01",
+      "post_id": "post_02",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 215,
+        "thumbs_down": 48,
+        "angry": 16,
+        "reply_count": 55
+      },
+      "created_at": "2026-10-02T10:28:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_02",
+      "post_id": "post_02",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 327,
+        "thumbs_down": 112,
+        "angry": 6,
+        "reply_count": 40
+      },
+      "created_at": "2026-10-02T10:31:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_03",
+      "post_id": "post_02",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 183,
+        "thumbs_down": 86,
+        "angry": 212,
+        "reply_count": 151
+      },
+      "created_at": "2026-10-02T10:34:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_04",
+      "post_id": "post_02",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 538,
+        "thumbs_down": 76,
+        "angry": 174,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T10:37:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_05",
+      "post_id": "post_02",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 62,
+        "thumbs_down": 49,
+        "angry": 241,
+        "reply_count": 64
+      },
+      "created_at": "2026-10-02T10:40:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_06",
+      "post_id": "post_02",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 502,
+        "thumbs_down": 104,
+        "angry": 201,
+        "reply_count": 22
+      },
+      "created_at": "2026-10-02T10:43:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_07",
+      "post_id": "post_02",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 292,
+        "thumbs_down": 81,
+        "angry": 483,
+        "reply_count": 32
+      },
+      "created_at": "2026-10-02T10:46:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_08",
+      "post_id": "post_02",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 349,
+        "thumbs_down": 0,
+        "angry": 433,
+        "reply_count": 46
+      },
+      "created_at": "2026-10-02T10:49:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_09",
+      "post_id": "post_02",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 230,
+        "thumbs_down": 63,
+        "angry": 384,
+        "reply_count": 75
+      },
+      "created_at": "2026-10-02T10:52:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_10",
+      "post_id": "post_02",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 235,
+        "thumbs_down": 20,
+        "angry": 223,
+        "reply_count": 112
+      },
+      "created_at": "2026-10-02T10:55:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_11",
+      "post_id": "post_02",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 325,
+        "thumbs_down": 112,
+        "angry": 109,
+        "reply_count": 165
+      },
+      "created_at": "2026-10-02T10:58:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_02_12",
+      "post_id": "post_02",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 154,
+        "thumbs_down": 90,
+        "angry": 155,
+        "reply_count": 57
+      },
+      "created_at": "2026-10-02T11:01:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_01",
+      "post_id": "post_03",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 294,
+        "thumbs_down": 50,
+        "angry": 57,
+        "reply_count": 55
+      },
+      "created_at": "2026-10-02T10:56:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_02",
+      "post_id": "post_03",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 548,
+        "thumbs_down": 27,
+        "angry": 151,
+        "reply_count": 72
+      },
+      "created_at": "2026-10-02T10:59:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_03",
+      "post_id": "post_03",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 365,
+        "thumbs_down": 115,
+        "angry": 213,
+        "reply_count": 148
+      },
+      "created_at": "2026-10-02T11:02:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_04",
+      "post_id": "post_03",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 314,
+        "thumbs_down": 67,
+        "angry": 23,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T11:05:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_05",
+      "post_id": "post_03",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 258,
+        "thumbs_down": 110,
+        "angry": 268,
+        "reply_count": 48
+      },
+      "created_at": "2026-10-02T11:08:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_06",
+      "post_id": "post_03",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 480,
+        "thumbs_down": 106,
+        "angry": 274,
+        "reply_count": 2
+      },
+      "created_at": "2026-10-02T11:11:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_07",
+      "post_id": "post_03",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Hier ben ik het mee eens.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 66,
+        "thumbs_down": 123,
+        "angry": 363,
+        "reply_count": 64
+      },
+      "created_at": "2026-10-02T11:14:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_08",
+      "post_id": "post_03",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 63,
+        "thumbs_down": 68,
+        "angry": 424,
+        "reply_count": 18
+      },
+      "created_at": "2026-10-02T11:17:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_09",
+      "post_id": "post_03",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 126,
+        "thumbs_down": 71,
+        "angry": 377,
+        "reply_count": 35
+      },
+      "created_at": "2026-10-02T11:20:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_10",
+      "post_id": "post_03",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 162,
+        "thumbs_down": 89,
+        "angry": 41,
+        "reply_count": 102
+      },
+      "created_at": "2026-10-02T11:23:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_11",
+      "post_id": "post_03",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 385,
+        "thumbs_down": 122,
+        "angry": 135,
+        "reply_count": 101
+      },
+      "created_at": "2026-10-02T11:26:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_03_12",
+      "post_id": "post_03",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 398,
+        "thumbs_down": 43,
+        "angry": 62,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T11:29:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_01",
+      "post_id": "post_04",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 258,
+        "thumbs_down": 113,
+        "angry": 2,
+        "reply_count": 63
+      },
+      "created_at": "2026-10-02T11:24:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_02",
+      "post_id": "post_04",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 337,
+        "thumbs_down": 106,
+        "angry": 86,
+        "reply_count": 57
+      },
+      "created_at": "2026-10-02T11:27:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_03",
+      "post_id": "post_04",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 37,
+        "thumbs_down": 122,
+        "angry": 15,
+        "reply_count": 137
+      },
+      "created_at": "2026-10-02T11:30:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_04",
+      "post_id": "post_04",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 475,
+        "thumbs_down": 49,
+        "angry": 171,
+        "reply_count": 53
+      },
+      "created_at": "2026-10-02T11:33:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_05",
+      "post_id": "post_04",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 235,
+        "thumbs_down": 71,
+        "angry": 97,
+        "reply_count": 29
+      },
+      "created_at": "2026-10-02T11:36:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_06",
+      "post_id": "post_04",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 225,
+        "thumbs_down": 90,
+        "angry": 146,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T11:39:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_07",
+      "post_id": "post_04",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 251,
+        "thumbs_down": 115,
+        "angry": 402,
+        "reply_count": 73
+      },
+      "created_at": "2026-10-02T11:42:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_08",
+      "post_id": "post_04",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 164,
+        "thumbs_down": 9,
+        "angry": 411,
+        "reply_count": 10
+      },
+      "created_at": "2026-10-02T11:45:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_09",
+      "post_id": "post_04",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 60,
+        "thumbs_down": 77,
+        "angry": 400,
+        "reply_count": 29
+      },
+      "created_at": "2026-10-02T11:48:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_10",
+      "post_id": "post_04",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 217,
+        "thumbs_down": 94,
+        "angry": 257,
+        "reply_count": 109
+      },
+      "created_at": "2026-10-02T11:51:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_11",
+      "post_id": "post_04",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 76,
+        "thumbs_down": 55,
+        "angry": 143,
+        "reply_count": 129
+      },
+      "created_at": "2026-10-02T11:54:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_04_12",
+      "post_id": "post_04",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 214,
+        "thumbs_down": 18,
+        "angry": 256,
+        "reply_count": 61
+      },
+      "created_at": "2026-10-02T11:57:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_01",
+      "post_id": "post_05",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 20,
+        "thumbs_down": 74,
+        "angry": 138,
+        "reply_count": 62
+      },
+      "created_at": "2026-10-02T11:52:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_02",
+      "post_id": "post_05",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 602,
+        "thumbs_down": 1,
+        "angry": 198,
+        "reply_count": 26
+      },
+      "created_at": "2026-10-02T11:55:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_03",
+      "post_id": "post_05",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 149,
+        "thumbs_down": 50,
+        "angry": 190,
+        "reply_count": 117
+      },
+      "created_at": "2026-10-02T11:58:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_04",
+      "post_id": "post_05",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 311,
+        "thumbs_down": 121,
+        "angry": 85,
+        "reply_count": 38
+      },
+      "created_at": "2026-10-02T12:01:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_05",
+      "post_id": "post_05",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 269,
+        "thumbs_down": 51,
+        "angry": 162,
+        "reply_count": 3
+      },
+      "created_at": "2026-10-02T12:04:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_06",
+      "post_id": "post_05",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 505,
+        "thumbs_down": 66,
+        "angry": 147,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T12:07:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_07",
+      "post_id": "post_05",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 128,
+        "thumbs_down": 89,
+        "angry": 291,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T12:10:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_08",
+      "post_id": "post_05",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 318,
+        "thumbs_down": 48,
+        "angry": 314,
+        "reply_count": 25
+      },
+      "created_at": "2026-10-02T12:13:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_09",
+      "post_id": "post_05",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 174,
+        "thumbs_down": 69,
+        "angry": 266,
+        "reply_count": 31
+      },
+      "created_at": "2026-10-02T12:16:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_10",
+      "post_id": "post_05",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 298,
+        "thumbs_down": 6,
+        "angry": 213,
+        "reply_count": 149
+      },
+      "created_at": "2026-10-02T12:19:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_11",
+      "post_id": "post_05",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 10,
+        "thumbs_down": 51,
+        "angry": 72,
+        "reply_count": 109
+      },
+      "created_at": "2026-10-02T12:22:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_05_12",
+      "post_id": "post_05",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 322,
+        "thumbs_down": 111,
+        "angry": 217,
+        "reply_count": 46
+      },
+      "created_at": "2026-10-02T12:25:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_01",
+      "post_id": "post_06",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 227,
+        "thumbs_down": 100,
+        "angry": 221,
+        "reply_count": 62
+      },
+      "created_at": "2026-10-02T12:20:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_02",
+      "post_id": "post_06",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 423,
+        "thumbs_down": 17,
+        "angry": 101,
+        "reply_count": 49
+      },
+      "created_at": "2026-10-02T12:23:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_03",
+      "post_id": "post_06",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 294,
+        "thumbs_down": 126,
+        "angry": 18,
+        "reply_count": 122
+      },
+      "created_at": "2026-10-02T12:26:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_04",
+      "post_id": "post_06",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 591,
+        "thumbs_down": 1,
+        "angry": 264,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T12:29:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_05",
+      "post_id": "post_06",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 208,
+        "thumbs_down": 43,
+        "angry": 88,
+        "reply_count": 64
+      },
+      "created_at": "2026-10-02T12:32:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_06",
+      "post_id": "post_06",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 528,
+        "thumbs_down": 111,
+        "angry": 100,
+        "reply_count": 26
+      },
+      "created_at": "2026-10-02T12:35:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_07",
+      "post_id": "post_06",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 39,
+        "thumbs_down": 99,
+        "angry": 428,
+        "reply_count": 56
+      },
+      "created_at": "2026-10-02T12:38:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_08",
+      "post_id": "post_06",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 247,
+        "thumbs_down": 96,
+        "angry": 387,
+        "reply_count": 38
+      },
+      "created_at": "2026-10-02T12:41:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_09",
+      "post_id": "post_06",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 63,
+        "thumbs_down": 120,
+        "angry": 306,
+        "reply_count": 68
+      },
+      "created_at": "2026-10-02T12:44:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_10",
+      "post_id": "post_06",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 121,
+        "thumbs_down": 43,
+        "angry": 85,
+        "reply_count": 166
+      },
+      "created_at": "2026-10-02T12:47:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_11",
+      "post_id": "post_06",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 285,
+        "thumbs_down": 37,
+        "angry": 250,
+        "reply_count": 125
+      },
+      "created_at": "2026-10-02T12:50:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_06_12",
+      "post_id": "post_06",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 331,
+        "thumbs_down": 11,
+        "angry": 136,
+        "reply_count": 54
+      },
+      "created_at": "2026-10-02T12:53:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_01",
+      "post_id": "post_07",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 51,
+        "thumbs_down": 10,
+        "angry": 181,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T12:48:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_02",
+      "post_id": "post_07",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 520,
+        "thumbs_down": 85,
+        "angry": 145,
+        "reply_count": 11
+      },
+      "created_at": "2026-10-02T12:51:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_03",
+      "post_id": "post_07",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 284,
+        "thumbs_down": 16,
+        "angry": 141,
+        "reply_count": 107
+      },
+      "created_at": "2026-10-02T12:54:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_04",
+      "post_id": "post_07",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 246,
+        "thumbs_down": 89,
+        "angry": 264,
+        "reply_count": 64
+      },
+      "created_at": "2026-10-02T12:57:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_05",
+      "post_id": "post_07",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 109,
+        "thumbs_down": 115,
+        "angry": 125,
+        "reply_count": 48
+      },
+      "created_at": "2026-10-02T13:00:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_06",
+      "post_id": "post_07",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 270,
+        "thumbs_down": 91,
+        "angry": 125,
+        "reply_count": 60
+      },
+      "created_at": "2026-10-02T13:03:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_07",
+      "post_id": "post_07",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 158,
+        "thumbs_down": 83,
+        "angry": 408,
+        "reply_count": 60
+      },
+      "created_at": "2026-10-02T13:06:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_08",
+      "post_id": "post_07",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 382,
+        "thumbs_down": 60,
+        "angry": 448,
+        "reply_count": 21
+      },
+      "created_at": "2026-10-02T13:09:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_09",
+      "post_id": "post_07",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 37,
+        "thumbs_down": 54,
+        "angry": 367,
+        "reply_count": 10
+      },
+      "created_at": "2026-10-02T13:12:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_10",
+      "post_id": "post_07",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 60,
+        "thumbs_down": 57,
+        "angry": 270,
+        "reply_count": 167
+      },
+      "created_at": "2026-10-02T13:15:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_11",
+      "post_id": "post_07",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 134,
+        "thumbs_down": 77,
+        "angry": 18,
+        "reply_count": 103
+      },
+      "created_at": "2026-10-02T13:18:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_07_12",
+      "post_id": "post_07",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 124,
+        "thumbs_down": 7,
+        "angry": 151,
+        "reply_count": 68
+      },
+      "created_at": "2026-10-02T13:21:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_01",
+      "post_id": "post_08",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 373,
+        "thumbs_down": 122,
+        "angry": 181,
+        "reply_count": 18
+      },
+      "created_at": "2026-10-02T13:16:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_02",
+      "post_id": "post_08",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 556,
+        "thumbs_down": 91,
+        "angry": 11,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T13:19:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_03",
+      "post_id": "post_08",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 352,
+        "thumbs_down": 11,
+        "angry": 70,
+        "reply_count": 113
+      },
+      "created_at": "2026-10-02T13:22:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_04",
+      "post_id": "post_08",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 541,
+        "thumbs_down": 113,
+        "angry": 247,
+        "reply_count": 0
+      },
+      "created_at": "2026-10-02T13:25:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_05",
+      "post_id": "post_08",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 394,
+        "thumbs_down": 119,
+        "angry": 151,
+        "reply_count": 42
+      },
+      "created_at": "2026-10-02T13:28:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_06",
+      "post_id": "post_08",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 602,
+        "thumbs_down": 0,
+        "angry": 235,
+        "reply_count": 54
+      },
+      "created_at": "2026-10-02T13:31:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_07",
+      "post_id": "post_08",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 342,
+        "thumbs_down": 78,
+        "angry": 366,
+        "reply_count": 42
+      },
+      "created_at": "2026-10-02T13:34:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_08",
+      "post_id": "post_08",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 62,
+        "thumbs_down": 51,
+        "angry": 406,
+        "reply_count": 44
+      },
+      "created_at": "2026-10-02T13:37:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_09",
+      "post_id": "post_08",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 264,
+        "thumbs_down": 70,
+        "angry": 406,
+        "reply_count": 0
+      },
+      "created_at": "2026-10-02T13:40:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_10",
+      "post_id": "post_08",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 220,
+        "thumbs_down": 104,
+        "angry": 52,
+        "reply_count": 164
+      },
+      "created_at": "2026-10-02T13:43:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_11",
+      "post_id": "post_08",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 170,
+        "thumbs_down": 0,
+        "angry": 240,
+        "reply_count": 124
+      },
+      "created_at": "2026-10-02T13:46:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_08_12",
+      "post_id": "post_08",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 71,
+        "thumbs_down": 25,
+        "angry": 187,
+        "reply_count": 26
+      },
+      "created_at": "2026-10-02T13:49:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_01",
+      "post_id": "post_09",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 192,
+        "thumbs_down": 19,
+        "angry": 23,
+        "reply_count": 24
+      },
+      "created_at": "2026-10-02T13:44:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_02",
+      "post_id": "post_09",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 324,
+        "thumbs_down": 46,
+        "angry": 238,
+        "reply_count": 20
+      },
+      "created_at": "2026-10-02T13:47:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_03",
+      "post_id": "post_09",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 138,
+        "thumbs_down": 18,
+        "angry": 120,
+        "reply_count": 170
+      },
+      "created_at": "2026-10-02T13:50:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_04",
+      "post_id": "post_09",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 421,
+        "thumbs_down": 89,
+        "angry": 3,
+        "reply_count": 69
+      },
+      "created_at": "2026-10-02T13:53:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_05",
+      "post_id": "post_09",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 313,
+        "thumbs_down": 71,
+        "angry": 45,
+        "reply_count": 67
+      },
+      "created_at": "2026-10-02T13:56:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_06",
+      "post_id": "post_09",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 340,
+        "thumbs_down": 67,
+        "angry": 258,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T13:59:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_07",
+      "post_id": "post_09",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 281,
+        "thumbs_down": 101,
+        "angry": 252,
+        "reply_count": 28
+      },
+      "created_at": "2026-10-02T14:02:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_08",
+      "post_id": "post_09",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 134,
+        "thumbs_down": 28,
+        "angry": 406,
+        "reply_count": 6
+      },
+      "created_at": "2026-10-02T14:05:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_09",
+      "post_id": "post_09",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 261,
+        "thumbs_down": 93,
+        "angry": 477,
+        "reply_count": 64
+      },
+      "created_at": "2026-10-02T14:08:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_10",
+      "post_id": "post_09",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 64,
+        "thumbs_down": 54,
+        "angry": 227,
+        "reply_count": 99
+      },
+      "created_at": "2026-10-02T14:11:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_11",
+      "post_id": "post_09",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 309,
+        "thumbs_down": 45,
+        "angry": 204,
+        "reply_count": 138
+      },
+      "created_at": "2026-10-02T14:14:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_09_12",
+      "post_id": "post_09",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 64,
+        "thumbs_down": 122,
+        "angry": 123,
+        "reply_count": 74
+      },
+      "created_at": "2026-10-02T14:17:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_01",
+      "post_id": "post_10",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 150,
+        "thumbs_down": 125,
+        "angry": 201,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T14:12:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_02",
+      "post_id": "post_10",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 502,
+        "thumbs_down": 28,
+        "angry": 88,
+        "reply_count": 2
+      },
+      "created_at": "2026-10-02T14:15:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_03",
+      "post_id": "post_10",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 289,
+        "thumbs_down": 21,
+        "angry": 51,
+        "reply_count": 128
+      },
+      "created_at": "2026-10-02T14:18:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_04",
+      "post_id": "post_10",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 508,
+        "thumbs_down": 39,
+        "angry": 100,
+        "reply_count": 72
+      },
+      "created_at": "2026-10-02T14:21:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_05",
+      "post_id": "post_10",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 161,
+        "thumbs_down": 28,
+        "angry": 34,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T14:24:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_06",
+      "post_id": "post_10",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 378,
+        "thumbs_down": 81,
+        "angry": 213,
+        "reply_count": 49
+      },
+      "created_at": "2026-10-02T14:27:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_07",
+      "post_id": "post_10",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 304,
+        "thumbs_down": 2,
+        "angry": 511,
+        "reply_count": 7
+      },
+      "created_at": "2026-10-02T14:30:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_08",
+      "post_id": "post_10",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 107,
+        "thumbs_down": 54,
+        "angry": 419,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T14:33:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_09",
+      "post_id": "post_10",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 338,
+        "thumbs_down": 61,
+        "angry": 405,
+        "reply_count": 6
+      },
+      "created_at": "2026-10-02T14:36:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_10",
+      "post_id": "post_10",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 390,
+        "thumbs_down": 9,
+        "angry": 93,
+        "reply_count": 154
+      },
+      "created_at": "2026-10-02T14:39:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_11",
+      "post_id": "post_10",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 356,
+        "thumbs_down": 49,
+        "angry": 93,
+        "reply_count": 96
+      },
+      "created_at": "2026-10-02T14:42:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_10_12",
+      "post_id": "post_10",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 371,
+        "thumbs_down": 110,
+        "angry": 61,
+        "reply_count": 21
+      },
+      "created_at": "2026-10-02T14:45:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_01",
+      "post_id": "post_11",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 239,
+        "thumbs_down": 91,
+        "angry": 45,
+        "reply_count": 57
+      },
+      "created_at": "2026-10-02T14:40:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_02",
+      "post_id": "post_11",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 615,
+        "thumbs_down": 98,
+        "angry": 202,
+        "reply_count": 3
+      },
+      "created_at": "2026-10-02T14:43:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_03",
+      "post_id": "post_11",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 369,
+        "thumbs_down": 32,
+        "angry": 189,
+        "reply_count": 102
+      },
+      "created_at": "2026-10-02T14:46:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_04",
+      "post_id": "post_11",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 615,
+        "thumbs_down": 77,
+        "angry": 25,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T14:49:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_05",
+      "post_id": "post_11",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 213,
+        "thumbs_down": 9,
+        "angry": 88,
+        "reply_count": 41
+      },
+      "created_at": "2026-10-02T14:52:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_06",
+      "post_id": "post_11",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 519,
+        "thumbs_down": 114,
+        "angry": 121,
+        "reply_count": 29
+      },
+      "created_at": "2026-10-02T14:55:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_07",
+      "post_id": "post_11",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 113,
+        "thumbs_down": 130,
+        "angry": 469,
+        "reply_count": 55
+      },
+      "created_at": "2026-10-02T14:58:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_08",
+      "post_id": "post_11",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 6,
+        "thumbs_down": 58,
+        "angry": 266,
+        "reply_count": 62
+      },
+      "created_at": "2026-10-02T15:01:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_09",
+      "post_id": "post_11",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Hier ben ik het mee eens.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 111,
+        "thumbs_down": 92,
+        "angry": 396,
+        "reply_count": 46
+      },
+      "created_at": "2026-10-02T15:04:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_10",
+      "post_id": "post_11",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 17,
+        "thumbs_down": 100,
+        "angry": 111,
+        "reply_count": 110
+      },
+      "created_at": "2026-10-02T15:07:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_11",
+      "post_id": "post_11",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 146,
+        "thumbs_down": 55,
+        "angry": 48,
+        "reply_count": 162
+      },
+      "created_at": "2026-10-02T15:10:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_11_12",
+      "post_id": "post_11",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 272,
+        "thumbs_down": 53,
+        "angry": 198,
+        "reply_count": 56
+      },
+      "created_at": "2026-10-02T15:13:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_01",
+      "post_id": "post_12",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Ik zie dit echt anders.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 143,
+        "thumbs_down": 128,
+        "angry": 151,
+        "reply_count": 3
+      },
+      "created_at": "2026-10-02T15:08:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_02",
+      "post_id": "post_12",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 233,
+        "thumbs_down": 129,
+        "angry": 151,
+        "reply_count": 34
+      },
+      "created_at": "2026-10-02T15:11:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_03",
+      "post_id": "post_12",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 397,
+        "thumbs_down": 29,
+        "angry": 119,
+        "reply_count": 101
+      },
+      "created_at": "2026-10-02T15:14:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_04",
+      "post_id": "post_12",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 493,
+        "thumbs_down": 109,
+        "angry": 212,
+        "reply_count": 31
+      },
+      "created_at": "2026-10-02T15:17:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_05",
+      "post_id": "post_12",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 153,
+        "thumbs_down": 65,
+        "angry": 255,
+        "reply_count": 66
+      },
+      "created_at": "2026-10-02T15:20:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_06",
+      "post_id": "post_12",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 607,
+        "thumbs_down": 110,
+        "angry": 5,
+        "reply_count": 46
+      },
+      "created_at": "2026-10-02T15:23:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_07",
+      "post_id": "post_12",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 297,
+        "thumbs_down": 22,
+        "angry": 370,
+        "reply_count": 58
+      },
+      "created_at": "2026-10-02T15:26:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_08",
+      "post_id": "post_12",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 35,
+        "thumbs_down": 13,
+        "angry": 289,
+        "reply_count": 60
+      },
+      "created_at": "2026-10-02T15:29:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_09",
+      "post_id": "post_12",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 156,
+        "thumbs_down": 90,
+        "angry": 272,
+        "reply_count": 27
+      },
+      "created_at": "2026-10-02T15:32:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_10",
+      "post_id": "post_12",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 276,
+        "thumbs_down": 67,
+        "angry": 160,
+        "reply_count": 159
+      },
+      "created_at": "2026-10-02T15:35:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_11",
+      "post_id": "post_12",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 126,
+        "thumbs_down": 46,
+        "angry": 254,
+        "reply_count": 157
+      },
+      "created_at": "2026-10-02T15:38:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_12_12",
+      "post_id": "post_12",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 289,
+        "thumbs_down": 0,
+        "angry": 132,
+        "reply_count": 26
+      },
+      "created_at": "2026-10-02T15:41:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_01",
+      "post_id": "post_13",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 176,
+        "thumbs_down": 74,
+        "angry": 232,
+        "reply_count": 67
+      },
+      "created_at": "2026-10-02T15:36:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_02",
+      "post_id": "post_13",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 560,
+        "thumbs_down": 64,
+        "angry": 80,
+        "reply_count": 73
+      },
+      "created_at": "2026-10-02T15:39:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_03",
+      "post_id": "post_13",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 368,
+        "thumbs_down": 42,
+        "angry": 74,
+        "reply_count": 138
+      },
+      "created_at": "2026-10-02T15:42:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_04",
+      "post_id": "post_13",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 453,
+        "thumbs_down": 53,
+        "angry": 81,
+        "reply_count": 41
+      },
+      "created_at": "2026-10-02T15:45:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_05",
+      "post_id": "post_13",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 241,
+        "thumbs_down": 10,
+        "angry": 111,
+        "reply_count": 22
+      },
+      "created_at": "2026-10-02T15:48:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_06",
+      "post_id": "post_13",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 409,
+        "thumbs_down": 35,
+        "angry": 253,
+        "reply_count": 6
+      },
+      "created_at": "2026-10-02T15:51:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_07",
+      "post_id": "post_13",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 281,
+        "thumbs_down": 6,
+        "angry": 288,
+        "reply_count": 67
+      },
+      "created_at": "2026-10-02T15:54:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_08",
+      "post_id": "post_13",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 80,
+        "thumbs_down": 67,
+        "angry": 276,
+        "reply_count": 32
+      },
+      "created_at": "2026-10-02T15:57:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_09",
+      "post_id": "post_13",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 7,
+        "thumbs_down": 20,
+        "angry": 458,
+        "reply_count": 49
+      },
+      "created_at": "2026-10-02T16:00:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_10",
+      "post_id": "post_13",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 332,
+        "thumbs_down": 121,
+        "angry": 94,
+        "reply_count": 125
+      },
+      "created_at": "2026-10-02T16:03:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_11",
+      "post_id": "post_13",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 6,
+        "thumbs_down": 18,
+        "angry": 260,
+        "reply_count": 134
+      },
+      "created_at": "2026-10-02T16:06:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_13_12",
+      "post_id": "post_13",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 382,
+        "thumbs_down": 89,
+        "angry": 192,
+        "reply_count": 66
+      },
+      "created_at": "2026-10-02T16:09:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_01",
+      "post_id": "post_14",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 137,
+        "thumbs_down": 35,
+        "angry": 214,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T16:04:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_02",
+      "post_id": "post_14",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 604,
+        "thumbs_down": 16,
+        "angry": 164,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T16:07:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_03",
+      "post_id": "post_14",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 237,
+        "thumbs_down": 6,
+        "angry": 190,
+        "reply_count": 109
+      },
+      "created_at": "2026-10-02T16:10:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_04",
+      "post_id": "post_14",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 481,
+        "thumbs_down": 0,
+        "angry": 25,
+        "reply_count": 52
+      },
+      "created_at": "2026-10-02T16:13:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_05",
+      "post_id": "post_14",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 327,
+        "thumbs_down": 19,
+        "angry": 13,
+        "reply_count": 42
+      },
+      "created_at": "2026-10-02T16:16:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_06",
+      "post_id": "post_14",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 442,
+        "thumbs_down": 54,
+        "angry": 19,
+        "reply_count": 59
+      },
+      "created_at": "2026-10-02T16:19:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_07",
+      "post_id": "post_14",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 226,
+        "thumbs_down": 12,
+        "angry": 241,
+        "reply_count": 29
+      },
+      "created_at": "2026-10-02T16:22:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_08",
+      "post_id": "post_14",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 260,
+        "thumbs_down": 42,
+        "angry": 503,
+        "reply_count": 39
+      },
+      "created_at": "2026-10-02T16:25:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_09",
+      "post_id": "post_14",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 158,
+        "thumbs_down": 62,
+        "angry": 421,
+        "reply_count": 68
+      },
+      "created_at": "2026-10-02T16:28:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_10",
+      "post_id": "post_14",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 291,
+        "thumbs_down": 13,
+        "angry": 242,
+        "reply_count": 95
+      },
+      "created_at": "2026-10-02T16:31:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_11",
+      "post_id": "post_14",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 118,
+        "thumbs_down": 40,
+        "angry": 189,
+        "reply_count": 152
+      },
+      "created_at": "2026-10-02T16:34:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_14_12",
+      "post_id": "post_14",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 341,
+        "thumbs_down": 88,
+        "angry": 232,
+        "reply_count": 69
+      },
+      "created_at": "2026-10-02T16:37:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_01",
+      "post_id": "post_15",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Ik zie dit echt anders.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 267,
+        "thumbs_down": 117,
+        "angry": 272,
+        "reply_count": 24
+      },
+      "created_at": "2026-10-02T16:32:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_02",
+      "post_id": "post_15",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 576,
+        "thumbs_down": 15,
+        "angry": 180,
+        "reply_count": 46
+      },
+      "created_at": "2026-10-02T16:35:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_03",
+      "post_id": "post_15",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 296,
+        "thumbs_down": 108,
+        "angry": 50,
+        "reply_count": 157
+      },
+      "created_at": "2026-10-02T16:38:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_04",
+      "post_id": "post_15",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 549,
+        "thumbs_down": 124,
+        "angry": 7,
+        "reply_count": 15
+      },
+      "created_at": "2026-10-02T16:41:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_05",
+      "post_id": "post_15",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 384,
+        "thumbs_down": 121,
+        "angry": 237,
+        "reply_count": 53
+      },
+      "created_at": "2026-10-02T16:44:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_06",
+      "post_id": "post_15",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 241,
+        "thumbs_down": 96,
+        "angry": 141,
+        "reply_count": 4
+      },
+      "created_at": "2026-10-02T16:47:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_07",
+      "post_id": "post_15",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 340,
+        "thumbs_down": 5,
+        "angry": 472,
+        "reply_count": 67
+      },
+      "created_at": "2026-10-02T16:50:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_08",
+      "post_id": "post_15",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 219,
+        "thumbs_down": 42,
+        "angry": 438,
+        "reply_count": 12
+      },
+      "created_at": "2026-10-02T16:53:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_09",
+      "post_id": "post_15",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 107,
+        "thumbs_down": 18,
+        "angry": 309,
+        "reply_count": 21
+      },
+      "created_at": "2026-10-02T16:56:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_10",
+      "post_id": "post_15",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 327,
+        "thumbs_down": 14,
+        "angry": 123,
+        "reply_count": 158
+      },
+      "created_at": "2026-10-02T16:59:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_11",
+      "post_id": "post_15",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 88,
+        "thumbs_down": 92,
+        "angry": 219,
+        "reply_count": 146
+      },
+      "created_at": "2026-10-02T17:02:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_15_12",
+      "post_id": "post_15",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 310,
+        "thumbs_down": 80,
+        "angry": 234,
+        "reply_count": 74
+      },
+      "created_at": "2026-10-02T17:05:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_01",
+      "post_id": "post_16",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 180,
+        "thumbs_down": 54,
+        "angry": 230,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T17:00:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_02",
+      "post_id": "post_16",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Ik zie dit echt anders.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 374,
+        "thumbs_down": 106,
+        "angry": 174,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T17:03:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_03",
+      "post_id": "post_16",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 212,
+        "thumbs_down": 94,
+        "angry": 105,
+        "reply_count": 135
+      },
+      "created_at": "2026-10-02T17:06:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_04",
+      "post_id": "post_16",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 242,
+        "thumbs_down": 23,
+        "angry": 139,
+        "reply_count": 19
+      },
+      "created_at": "2026-10-02T17:09:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_05",
+      "post_id": "post_16",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 293,
+        "thumbs_down": 87,
+        "angry": 257,
+        "reply_count": 51
+      },
+      "created_at": "2026-10-02T17:12:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_06",
+      "post_id": "post_16",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 317,
+        "thumbs_down": 76,
+        "angry": 85,
+        "reply_count": 16
+      },
+      "created_at": "2026-10-02T17:15:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_07",
+      "post_id": "post_16",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 62,
+        "thumbs_down": 46,
+        "angry": 446,
+        "reply_count": 11
+      },
+      "created_at": "2026-10-02T17:18:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_08",
+      "post_id": "post_16",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 208,
+        "thumbs_down": 66,
+        "angry": 494,
+        "reply_count": 1
+      },
+      "created_at": "2026-10-02T17:21:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_09",
+      "post_id": "post_16",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Hier ben ik het mee eens.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 295,
+        "thumbs_down": 66,
+        "angry": 464,
+        "reply_count": 23
+      },
+      "created_at": "2026-10-02T17:24:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_10",
+      "post_id": "post_16",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 8,
+        "thumbs_down": 48,
+        "angry": 191,
+        "reply_count": 168
+      },
+      "created_at": "2026-10-02T17:27:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_11",
+      "post_id": "post_16",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 327,
+        "thumbs_down": 101,
+        "angry": 94,
+        "reply_count": 118
+      },
+      "created_at": "2026-10-02T17:30:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_16_12",
+      "post_id": "post_16",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 292,
+        "thumbs_down": 58,
+        "angry": 236,
+        "reply_count": 40
+      },
+      "created_at": "2026-10-02T17:33:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_01",
+      "post_id": "post_17",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 227,
+        "thumbs_down": 125,
+        "angry": 185,
+        "reply_count": 19
+      },
+      "created_at": "2026-10-02T17:28:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_02",
+      "post_id": "post_17",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 340,
+        "thumbs_down": 123,
+        "angry": 14,
+        "reply_count": 8
+      },
+      "created_at": "2026-10-02T17:31:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_03",
+      "post_id": "post_17",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 94,
+        "thumbs_down": 74,
+        "angry": 22,
+        "reply_count": 118
+      },
+      "created_at": "2026-10-02T17:34:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_04",
+      "post_id": "post_17",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 582,
+        "thumbs_down": 18,
+        "angry": 61,
+        "reply_count": 74
+      },
+      "created_at": "2026-10-02T17:37:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_05",
+      "post_id": "post_17",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 224,
+        "thumbs_down": 82,
+        "angry": 180,
+        "reply_count": 59
+      },
+      "created_at": "2026-10-02T17:40:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_06",
+      "post_id": "post_17",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 599,
+        "thumbs_down": 119,
+        "angry": 235,
+        "reply_count": 36
+      },
+      "created_at": "2026-10-02T17:43:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_07",
+      "post_id": "post_17",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 281,
+        "thumbs_down": 31,
+        "angry": 385,
+        "reply_count": 23
+      },
+      "created_at": "2026-10-02T17:46:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_08",
+      "post_id": "post_17",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 151,
+        "thumbs_down": 58,
+        "angry": 382,
+        "reply_count": 22
+      },
+      "created_at": "2026-10-02T17:49:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_09",
+      "post_id": "post_17",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 25,
+        "thumbs_down": 101,
+        "angry": 392,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T17:52:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_10",
+      "post_id": "post_17",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 175,
+        "thumbs_down": 73,
+        "angry": 138,
+        "reply_count": 109
+      },
+      "created_at": "2026-10-02T17:55:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_11",
+      "post_id": "post_17",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Ik wil eerst meer informatie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 46,
+        "thumbs_down": 74,
+        "angry": 63,
+        "reply_count": 160
+      },
+      "created_at": "2026-10-02T17:58:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_17_12",
+      "post_id": "post_17",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 67,
+        "thumbs_down": 118,
+        "angry": 153,
+        "reply_count": 65
+      },
+      "created_at": "2026-10-02T18:01:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_01",
+      "post_id": "post_18",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 159,
+        "thumbs_down": 91,
+        "angry": 105,
+        "reply_count": 6
+      },
+      "created_at": "2026-10-02T17:56:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_02",
+      "post_id": "post_18",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 290,
+        "thumbs_down": 25,
+        "angry": 0,
+        "reply_count": 4
+      },
+      "created_at": "2026-10-02T17:59:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_03",
+      "post_id": "post_18",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 81,
+        "thumbs_down": 104,
+        "angry": 93,
+        "reply_count": 97
+      },
+      "created_at": "2026-10-02T18:02:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_04",
+      "post_id": "post_18",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 279,
+        "thumbs_down": 56,
+        "angry": 206,
+        "reply_count": 22
+      },
+      "created_at": "2026-10-02T18:05:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_05",
+      "post_id": "post_18",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 229,
+        "thumbs_down": 122,
+        "angry": 8,
+        "reply_count": 24
+      },
+      "created_at": "2026-10-02T18:08:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_06",
+      "post_id": "post_18",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 406,
+        "thumbs_down": 118,
+        "angry": 3,
+        "reply_count": 26
+      },
+      "created_at": "2026-10-02T18:11:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_07",
+      "post_id": "post_18",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 336,
+        "thumbs_down": 79,
+        "angry": 460,
+        "reply_count": 32
+      },
+      "created_at": "2026-10-02T18:14:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_08",
+      "post_id": "post_18",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 227,
+        "thumbs_down": 95,
+        "angry": 410,
+        "reply_count": 65
+      },
+      "created_at": "2026-10-02T18:17:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_09",
+      "post_id": "post_18",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 188,
+        "thumbs_down": 92,
+        "angry": 300,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T18:20:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_10",
+      "post_id": "post_18",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 217,
+        "thumbs_down": 29,
+        "angry": 124,
+        "reply_count": 132
+      },
+      "created_at": "2026-10-02T18:23:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_11",
+      "post_id": "post_18",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 286,
+        "thumbs_down": 92,
+        "angry": 148,
+        "reply_count": 113
+      },
+      "created_at": "2026-10-02T18:26:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_18_12",
+      "post_id": "post_18",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 368,
+        "thumbs_down": 7,
+        "angry": 144,
+        "reply_count": 62
+      },
+      "created_at": "2026-10-02T18:29:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_01",
+      "post_id": "post_19",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 151,
+        "thumbs_down": 38,
+        "angry": 117,
+        "reply_count": 30
+      },
+      "created_at": "2026-10-02T18:24:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_02",
+      "post_id": "post_19",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 437,
+        "thumbs_down": 34,
+        "angry": 133,
+        "reply_count": 45
+      },
+      "created_at": "2026-10-02T18:27:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_03",
+      "post_id": "post_19",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 135,
+        "thumbs_down": 113,
+        "angry": 214,
+        "reply_count": 148
+      },
+      "created_at": "2026-10-02T18:30:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_04",
+      "post_id": "post_19",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 372,
+        "thumbs_down": 71,
+        "angry": 144,
+        "reply_count": 70
+      },
+      "created_at": "2026-10-02T18:33:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_05",
+      "post_id": "post_19",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 347,
+        "thumbs_down": 97,
+        "angry": 226,
+        "reply_count": 57
+      },
+      "created_at": "2026-10-02T18:36:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_06",
+      "post_id": "post_19",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 470,
+        "thumbs_down": 126,
+        "angry": 252,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T18:39:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_07",
+      "post_id": "post_19",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 362,
+        "thumbs_down": 94,
+        "angry": 319,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T18:42:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_08",
+      "post_id": "post_19",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 240,
+        "thumbs_down": 7,
+        "angry": 355,
+        "reply_count": 66
+      },
+      "created_at": "2026-10-02T18:45:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_09",
+      "post_id": "post_19",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 205,
+        "thumbs_down": 57,
+        "angry": 322,
+        "reply_count": 2
+      },
+      "created_at": "2026-10-02T18:48:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_10",
+      "post_id": "post_19",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 235,
+        "thumbs_down": 111,
+        "angry": 169,
+        "reply_count": 137
+      },
+      "created_at": "2026-10-02T18:51:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_11",
+      "post_id": "post_19",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 129,
+        "thumbs_down": 102,
+        "angry": 21,
+        "reply_count": 168
+      },
+      "created_at": "2026-10-02T18:54:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_19_12",
+      "post_id": "post_19",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 245,
+        "thumbs_down": 14,
+        "angry": 25,
+        "reply_count": 35
+      },
+      "created_at": "2026-10-02T18:57:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_01",
+      "post_id": "post_20",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 323,
+        "thumbs_down": 59,
+        "angry": 205,
+        "reply_count": 29
+      },
+      "created_at": "2026-10-02T18:52:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_02",
+      "post_id": "post_20",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 362,
+        "thumbs_down": 47,
+        "angry": 189,
+        "reply_count": 1
+      },
+      "created_at": "2026-10-02T18:55:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_03",
+      "post_id": "post_20",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 236,
+        "thumbs_down": 19,
+        "angry": 263,
+        "reply_count": 139
+      },
+      "created_at": "2026-10-02T18:58:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_04",
+      "post_id": "post_20",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 520,
+        "thumbs_down": 52,
+        "angry": 272,
+        "reply_count": 36
+      },
+      "created_at": "2026-10-02T19:01:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_05",
+      "post_id": "post_20",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 183,
+        "thumbs_down": 112,
+        "angry": 27,
+        "reply_count": 53
+      },
+      "created_at": "2026-10-02T19:04:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_06",
+      "post_id": "post_20",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 370,
+        "thumbs_down": 115,
+        "angry": 6,
+        "reply_count": 0
+      },
+      "created_at": "2026-10-02T19:07:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_07",
+      "post_id": "post_20",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 205,
+        "thumbs_down": 121,
+        "angry": 435,
+        "reply_count": 54
+      },
+      "created_at": "2026-10-02T19:10:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_08",
+      "post_id": "post_20",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 356,
+        "thumbs_down": 3,
+        "angry": 387,
+        "reply_count": 45
+      },
+      "created_at": "2026-10-02T19:13:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_09",
+      "post_id": "post_20",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Hier ben ik het mee eens.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 321,
+        "thumbs_down": 50,
+        "angry": 285,
+        "reply_count": 58
+      },
+      "created_at": "2026-10-02T19:16:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_10",
+      "post_id": "post_20",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 254,
+        "thumbs_down": 73,
+        "angry": 215,
+        "reply_count": 112
+      },
+      "created_at": "2026-10-02T19:19:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_11",
+      "post_id": "post_20",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 217,
+        "thumbs_down": 34,
+        "angry": 87,
+        "reply_count": 153
+      },
+      "created_at": "2026-10-02T19:22:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_20_12",
+      "post_id": "post_20",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 118,
+        "thumbs_down": 5,
+        "angry": 241,
+        "reply_count": 66
+      },
+      "created_at": "2026-10-02T19:25:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_01",
+      "post_id": "post_21",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 330,
+        "thumbs_down": 112,
+        "angry": 80,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T19:20:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_02",
+      "post_id": "post_21",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 308,
+        "thumbs_down": 26,
+        "angry": 25,
+        "reply_count": 42
+      },
+      "created_at": "2026-10-02T19:23:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_03",
+      "post_id": "post_21",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 127,
+        "thumbs_down": 4,
+        "angry": 117,
+        "reply_count": 139
+      },
+      "created_at": "2026-10-02T19:26:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_04",
+      "post_id": "post_21",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 410,
+        "thumbs_down": 9,
+        "angry": 71,
+        "reply_count": 25
+      },
+      "created_at": "2026-10-02T19:29:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_05",
+      "post_id": "post_21",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Hier ben ik het mee eens.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 388,
+        "thumbs_down": 45,
+        "angry": 6,
+        "reply_count": 41
+      },
+      "created_at": "2026-10-02T19:32:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_06",
+      "post_id": "post_21",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 320,
+        "thumbs_down": 6,
+        "angry": 206,
+        "reply_count": 1
+      },
+      "created_at": "2026-10-02T19:35:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_07",
+      "post_id": "post_21",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 264,
+        "thumbs_down": 4,
+        "angry": 415,
+        "reply_count": 49
+      },
+      "created_at": "2026-10-02T19:38:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_08",
+      "post_id": "post_21",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 201,
+        "thumbs_down": 128,
+        "angry": 300,
+        "reply_count": 37
+      },
+      "created_at": "2026-10-02T19:41:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_09",
+      "post_id": "post_21",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 22,
+        "thumbs_down": 113,
+        "angry": 405,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T19:44:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_10",
+      "post_id": "post_21",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 251,
+        "thumbs_down": 91,
+        "angry": 149,
+        "reply_count": 167
+      },
+      "created_at": "2026-10-02T19:47:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_11",
+      "post_id": "post_21",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 126,
+        "thumbs_down": 9,
+        "angry": 1,
+        "reply_count": 106
+      },
+      "created_at": "2026-10-02T19:50:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_21_12",
+      "post_id": "post_21",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 303,
+        "thumbs_down": 96,
+        "angry": 185,
+        "reply_count": 52
+      },
+      "created_at": "2026-10-02T19:53:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_01",
+      "post_id": "post_22",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 77,
+        "thumbs_down": 123,
+        "angry": 272,
+        "reply_count": 49
+      },
+      "created_at": "2026-10-02T19:48:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_02",
+      "post_id": "post_22",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 361,
+        "thumbs_down": 127,
+        "angry": 175,
+        "reply_count": 36
+      },
+      "created_at": "2026-10-02T19:51:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_03",
+      "post_id": "post_22",
+      "author_id": "user_06",
+      "author_name": "Fatima",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 224,
+        "thumbs_down": 123,
+        "angry": 91,
+        "reply_count": 107
+      },
+      "created_at": "2026-10-02T19:54:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_04",
+      "post_id": "post_22",
+      "author_id": "user_07",
+      "author_name": "Jesse",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 299,
+        "thumbs_down": 20,
+        "angry": 112,
+        "reply_count": 55
+      },
+      "created_at": "2026-10-02T19:57:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_05",
+      "post_id": "post_22",
+      "author_id": "user_08",
+      "author_name": "Sophie",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": 1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 273,
+        "thumbs_down": 13,
+        "angry": 0,
+        "reply_count": 59
+      },
+      "created_at": "2026-10-02T20:00:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_06",
+      "post_id": "post_22",
+      "author_id": "user_09",
+      "author_name": "Amir",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 373,
+        "thumbs_down": 1,
+        "angry": 160,
+        "reply_count": 73
+      },
+      "created_at": "2026-10-02T20:03:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_07",
+      "post_id": "post_22",
+      "author_id": "user_10",
+      "author_name": "Iris",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 113,
+        "thumbs_down": 53,
+        "angry": 354,
+        "reply_count": 36
+      },
+      "created_at": "2026-10-02T20:06:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_08",
+      "post_id": "post_22",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 241,
+        "thumbs_down": 103,
+        "angry": 288,
+        "reply_count": 13
+      },
+      "created_at": "2026-10-02T20:09:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_09",
+      "post_id": "post_22",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Ik zie dit echt anders.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 342,
+        "thumbs_down": 40,
+        "angry": 245,
+        "reply_count": 15
+      },
+      "created_at": "2026-10-02T20:12:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_10",
+      "post_id": "post_22",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": -1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 112,
+        "thumbs_down": 2,
+        "angry": 274,
+        "reply_count": 148
+      },
+      "created_at": "2026-10-02T20:15:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_11",
+      "post_id": "post_22",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Wat zou een eerlijk compromis zijn?",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 134,
+        "thumbs_down": 11,
+        "angry": 68,
+        "reply_count": 101
+      },
+      "created_at": "2026-10-02T20:18:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_22_12",
+      "post_id": "post_22",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 82,
+        "thumbs_down": 59,
+        "angry": 150,
+        "reply_count": 21
+      },
+      "created_at": "2026-10-02T20:21:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_01",
+      "post_id": "post_23",
+      "author_id": "user_11",
+      "author_name": "Luca",
+      "body": "Ik zie dit echt anders.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 154,
+        "thumbs_down": 24,
+        "angry": 28,
+        "reply_count": 56
+      },
+      "created_at": "2026-10-02T20:16:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_02",
+      "post_id": "post_23",
+      "author_id": "user_12",
+      "author_name": "Eva",
+      "body": "Hier ben ik het niet mee eens.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 478,
+        "thumbs_down": 67,
+        "angry": 14,
+        "reply_count": 13
+      },
+      "created_at": "2026-10-02T20:19:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_03",
+      "post_id": "post_23",
+      "author_id": "user_13",
+      "author_name": "Sam",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 123,
+        "thumbs_down": 125,
+        "angry": 177,
+        "reply_count": 134
+      },
+      "created_at": "2026-10-02T20:22:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_04",
+      "post_id": "post_23",
+      "author_id": "user_14",
+      "author_name": "Rayan",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 275,
+        "thumbs_down": 109,
+        "angry": 65,
+        "reply_count": 71
+      },
+      "created_at": "2026-10-02T20:25:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_05",
+      "post_id": "post_23",
+      "author_id": "user_15",
+      "author_name": "Tess",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 93,
+        "thumbs_down": 37,
+        "angry": 130,
+        "reply_count": 24
+      },
+      "created_at": "2026-10-02T20:28:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_06",
+      "post_id": "post_23",
+      "author_id": "user_16",
+      "author_name": "Nora",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 603,
+        "thumbs_down": 111,
+        "angry": 77,
+        "reply_count": 31
+      },
+      "created_at": "2026-10-02T20:31:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_07",
+      "post_id": "post_23",
+      "author_id": "user_17",
+      "author_name": "Daan",
+      "body": "Dat lijkt me een redelijke afweging.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 395,
+        "thumbs_down": 0,
+        "angry": 391,
+        "reply_count": 33
+      },
+      "created_at": "2026-10-02T20:34:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_08",
+      "post_id": "post_23",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 319,
+        "thumbs_down": 47,
+        "angry": 511,
+        "reply_count": 65
+      },
+      "created_at": "2026-10-02T20:37:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_09",
+      "post_id": "post_23",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 58,
+        "thumbs_down": 127,
+        "angry": 244,
+        "reply_count": 34
+      },
+      "created_at": "2026-10-02T20:40:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_10",
+      "post_id": "post_23",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 224,
+        "thumbs_down": 70,
+        "angry": 277,
+        "reply_count": 144
+      },
+      "created_at": "2026-10-02T20:43:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_11",
+      "post_id": "post_23",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 334,
+        "thumbs_down": 93,
+        "angry": 222,
+        "reply_count": 140
+      },
+      "created_at": "2026-10-02T20:46:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_23_12",
+      "post_id": "post_23",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 103,
+        "thumbs_down": 68,
+        "angry": 205,
+        "reply_count": 0
+      },
+      "created_at": "2026-10-02T20:49:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_01",
+      "post_id": "post_24",
+      "author_id": "user_18",
+      "author_name": "Robin",
+      "body": "Zo eenvoudig ligt het volgens mij niet.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 60,
+        "thumbs_down": 13,
+        "angry": 155,
+        "reply_count": 30
+      },
+      "created_at": "2026-10-02T20:44:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_02",
+      "post_id": "post_24",
+      "author_id": "user_19",
+      "author_name": "Esmee",
+      "body": "Dit gaat me te kort door de bocht.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 609,
+        "thumbs_down": 1,
+        "angry": 111,
+        "reply_count": 16
+      },
+      "created_at": "2026-10-02T20:47:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_03",
+      "post_id": "post_24",
+      "author_id": "user_20",
+      "author_name": "Yara",
+      "body": "Ik zie dit echt anders.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 284,
+        "thumbs_down": 8,
+        "angry": 184,
+        "reply_count": 161
+      },
+      "created_at": "2026-10-02T20:50:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_04",
+      "post_id": "post_24",
+      "author_id": "user_21",
+      "author_name": "Finn",
+      "body": "Wat is de onderbouwing hiervoor?",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 382,
+        "thumbs_down": 49,
+        "angry": 47,
+        "reply_count": 18
+      },
+      "created_at": "2026-10-02T20:53:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_05",
+      "post_id": "post_24",
+      "author_id": "user_22",
+      "author_name": "Bo",
+      "body": "Volgens mij ontbreekt een belangrijk argument.",
+      "stance": 1,
+      "vote": "thumbs_down",
+      "metrics": {
+        "thumbs_up": 114,
+        "thumbs_down": 117,
+        "angry": 169,
+        "reply_count": 58
+      },
+      "created_at": "2026-10-02T20:56:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_06",
+      "post_id": "post_24",
+      "author_id": "user_23",
+      "author_name": "Naomi",
+      "body": "Fijn dat iemand dit benoemt.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 557,
+        "thumbs_down": 98,
+        "angry": 96,
+        "reply_count": 65
+      },
+      "created_at": "2026-10-02T20:59:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_07",
+      "post_id": "post_24",
+      "author_id": "user_24",
+      "author_name": "Demi",
+      "body": "Dit punt wordt vaak vergeten.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 306,
+        "thumbs_down": 79,
+        "angry": 308,
+        "reply_count": 9
+      },
+      "created_at": "2026-10-02T21:02:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_08",
+      "post_id": "post_24",
+      "author_id": "user_01",
+      "author_name": "Noor",
+      "body": "Goed om dit perspectief te lezen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 97,
+        "thumbs_down": 108,
+        "angry": 275,
+        "reply_count": 14
+      },
+      "created_at": "2026-10-02T21:05:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_09",
+      "post_id": "post_24",
+      "author_id": "user_02",
+      "author_name": "Yasin",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 166,
+        "thumbs_down": 129,
+        "angry": 446,
+        "reply_count": 51
+      },
+      "created_at": "2026-10-02T21:08:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_10",
+      "post_id": "post_24",
+      "author_id": "user_03",
+      "author_name": "Milan",
+      "body": "Precies de vraag die we moeten stellen.",
+      "stance": -1,
+      "vote": "thumbs_up",
+      "metrics": {
+        "thumbs_up": 329,
+        "thumbs_down": 51,
+        "angry": 152,
+        "reply_count": 99
+      },
+      "created_at": "2026-10-02T21:11:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_11",
+      "post_id": "post_24",
+      "author_id": "user_04",
+      "author_name": "Lotte",
+      "body": "Er zitten twee kanten aan deze kwestie.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 151,
+        "thumbs_down": 22,
+        "angry": 260,
+        "reply_count": 160
+      },
+      "created_at": "2026-10-02T21:14:00+02:00",
+      "fictional": true
+    },
+    {
+      "id": "comment_24_12",
+      "post_id": "post_24",
+      "author_id": "user_05",
+      "author_name": "Jayden",
+      "body": "Dit hangt sterk af van de uitvoering.",
+      "stance": 0,
+      "vote": "neutral",
+      "metrics": {
+        "thumbs_up": 223,
+        "thumbs_down": 115,
+        "angry": 122,
+        "reply_count": 17
+      },
+      "created_at": "2026-10-02T21:17:00+02:00",
+      "fictional": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "ai_onderwijs_position",
+      "topic_id": "ai_onderwijs",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Moeten studenten AI-assistenten mogen gebruiken bij opdrachten?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "ai_onderwijs_consensus",
+      "topic_id": "ai_onderwijs",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "ai_onderwijs_certainty",
+      "topic_id": "ai_onderwijs",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    },
+    {
+      "id": "asiel_wonen_position",
+      "topic_id": "asiel_wonen",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe moeten gemeenten omgaan met opvang en schaarse woningen?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "asiel_wonen_consensus",
+      "topic_id": "asiel_wonen",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "asiel_wonen_certainty",
+      "topic_id": "asiel_wonen",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    },
+    {
+      "id": "camera_school_position",
+      "topic_id": "camera_school",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Moet de school slimme camera’s bij de fietsenstalling testen?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "camera_school_consensus",
+      "topic_id": "camera_school",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "camera_school_certainty",
+      "topic_id": "camera_school",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    },
+    {
+      "id": "gender_verhoudingen_position",
+      "topic_id": "gender_verhoudingen",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Welke aanpak helpt om gendergerelateerde ongelijkheid en verwachtingen te verminderen?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "gender_verhoudingen_consensus",
+      "topic_id": "gender_verhoudingen",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "gender_verhoudingen_certainty",
+      "topic_id": "gender_verhoudingen",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    },
+    {
+      "id": "klimaat_position",
+      "topic_id": "klimaat",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Moet de overheid klimaatmaatregelen sneller invoeren?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "klimaat_consensus",
+      "topic_id": "klimaat",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "klimaat_certainty",
+      "topic_id": "klimaat",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    },
+    {
+      "id": "smartphones_school_position",
+      "topic_id": "smartphones_school",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Moet de school smartphones tijdens lessen verbieden?",
+      "min_label": "Sterk tegen",
+      "max_label": "Sterk voor",
+      "required": false
+    },
+    {
+      "id": "smartphones_school_consensus",
+      "topic_id": "smartphones_school",
+      "phase": "both",
+      "kind": "percentage",
+      "prompt": "Hoeveel procent van je medestudenten denk je dat vóór dit voorstel is?",
+      "min": 0,
+      "max": 100,
+      "required": false
+    },
+    {
+      "id": "smartphones_school_certainty",
+      "topic_id": "smartphones_school",
+      "phase": "both",
+      "kind": "likert_7",
+      "prompt": "Hoe zeker ben je van je mening over dit onderwerp?",
+      "min_label": "Helemaal niet zeker",
+      "max_label": "Heel zeker",
+      "required": false
+    }
+  ],
+  "algorithm_defaults": {
+    "posts_per_topic": 2,
+    "comments_per_post": 5,
+    "post_weights": {
+      "stance_bias": 0,
+      "engagement": 0.45,
+      "emotional_intensity": 0.3,
+      "information_quality": 0.15,
+      "recency": 0.1
+    },
+    "comment_rank_by": "thumbs_up",
+    "seed": 42
+  },
+  "comment_rank_options": [
+    "thumbs_up",
+    "thumbs_down",
+    "angry",
+    "reply_count"
+  ],
+  "notes": [
+    "Stance: +1 staat voor vóór het voorstel, -1 voor kritisch/tegen. Dit is geen waarheidsscore.",
+    "Fictieve engagementcijfers zijn didactisch gekozen en meten geen echte publieke opinie.",
+    "Questions zitten zowel in voor- als nameting; anonimiteit en opt-out behouden."
+  ],
+  "title": "Wie bepaalt jouw feed?",
+  "unique_id": "ad7ef4faf6cb14dd7da837c4353c777f",
+  "respondent_groups": [
+    {
+      "id": "A",
+      "label": "Groep A",
+      "settings": {
+        "postLimit": 6,
+        "perTopic": 2,
+        "commentLimit": 3,
+        "randomWeight": 0.05,
+        "commentStanceBias": 1,
+        "weights": {
+          "stance_bias": 1,
+          "engagement": 0.1,
+          "emotional_intensity": 0,
+          "information_quality": 0,
+          "recency": 0,
+          "controversy": 0,
+          "novelty": 0,
+          "predicted_dwell_seconds": 0,
+          "topic_affinity": 0
+        }
+      }
+    },
+    {
+      "id": "B",
+      "label": "Groep B",
+      "settings": {
+        "postLimit": 6,
+        "perTopic": 2,
+        "commentLimit": 3,
+        "randomWeight": 0.05,
+        "commentStanceBias": -1,
+        "weights": {
+          "stance_bias": -1,
+          "engagement": 0.1,
+          "emotional_intensity": 0,
+          "information_quality": 0,
+          "recency": 0,
+          "controversy": 0,
+          "novelty": 0,
+          "predicted_dwell_seconds": 0,
+          "topic_affinity": 0
+        }
+      }
+    }
+  ],
+  "theme": {
+    "background": "#F0F2F5",
+    "card": "#FFFFFF",
+    "text": "#1C1E21",
+    "accent": "#1877F3"
+  }
+}

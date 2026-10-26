@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blikvanger</title>
+  <link rel="stylesheet" href="/shared/ui.css?v=20261026-cooldown">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header><div><p class="eyebrow">◉ Blikvanger · Kijk. Lees. Denk.</p><h1 id="title">Blikvanger</h1><p id="intro"></p></div><p id="progress" aria-live="polite"></p></header>
+    <progress id="meter" value="0" max="1" aria-label="Voortgang"></progress>
+    <section id="quiz" hidden>
+      <div id="source" class="source">
+        <figure id="figure"><img id="image" alt=""><figcaption id="caption"></figcaption></figure>
+        <article id="article"><p class="eyebrow">In beeld</p><h2 id="headline"></h2><p id="article-text"></p><a id="source-link" target="_blank" rel="noopener noreferrer">Bekijk de bron ↗</a></article>
+      </div>
+      <form id="question-form" class="question-area">
+        <p id="question-count" class="eyebrow"></p>
+        <fieldset><legend id="question" tabindex="-1"></legend><p id="hint"></p><div id="answers"></div></fieldset>
+        <p id="feedback" role="status"></p>
+        <div class="actions"><button id="check" type="submit" disabled>Controleer antwoord</button><button id="next" type="button" hidden>Volgende vraag →</button></div>
+      </form>
+    </section>
+    <section id="result" class="result" hidden><p class="eyebrow">Goed bekeken</p><h2 tabindex="-1" id="result-title">Dit is jouw resultaat</h2><p id="score"></p><p id="score-detail"></p><button id="restart" type="button">Opnieuw oefenen</button></section>
+    <section id="error" class="error" hidden role="alert"><h2>De oefening kan niet worden geladen</h2><p id="error-message"></p></section>
+  </main>
+  <script src="/shared/certificate-channel.js" defer></script>
+  <script src="/shared/completion.js?v=20261026-cooldown" defer></script>
+  <script src="app.js?v=20261026-cooldown" defer></script>
+</body>
+</html>

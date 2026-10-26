@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "unique_id": "dv02-bob-escape-v1",
   "title": "Fix Bob's shit",
   "intro": "Help je toekomstige zelf. Verzamel bewijs, prioriteer veilig en maak een briefing.",

@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "title": "Reken om: BIN naar HEX",
   "input": "bin",
   "output": "hex",

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="checklist" id="checklist" aria-label="Checklist">
+    <h1 id="title" hidden></h1>
+    <p id="status" role="status">Checklist laden…</p>
+    <ul id="items" class="items"></ul>
+    <p id="empty" hidden>Deze checklist heeft nog geen items.</p>
+    <form id="addition" class="addition" hidden>
+      <label for="newLabel">Nieuw item</label>
+      <input id="newLabel" type="text" required autocomplete="off">
+      <label for="newUrl">URL (optioneel)</label>
+      <input id="newUrl" type="text" inputmode="url" autocomplete="off" placeholder="https://…">
+      <button type="submit">Item toevoegen</button>
+    </form>
+    <div id="actions" class="actions" hidden>
+      <div id="export" class="export" hidden>
+        <label for="exportFormat">Exportformaat</label>
+        <select id="exportFormat">
+          <option value="md">Markdown (.md)</option>
+          <option value="txt">Tekst (.txt)</option>
+          <option value="json">JSON (.json)</option>
+        </select>
+        <button id="download" type="button">Exporteren</button>
+      </div>
+      <button id="reset" type="button" hidden>Reset</button>
+    </div>
+  </main>
+</body>
+</html>

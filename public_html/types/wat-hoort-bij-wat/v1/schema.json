@@ -3,11 +3,20 @@
   "$id": "https://example.local/types/wat-hoort-bij-wat/v1/schema.json",
   "title": "Wat hoort bij wat v1",
   "description": "Koppel-oefening waarbij studenten items uit de linker kolom verbinden met de juiste items uit de rechter kolom. Je kunt ook extra afleiders toevoegen door alleen een rechter-item op te geven.",
+  "supportsCompletion": true,
   "outputs": [],
   "type": "object",
   "required": ["title", "pairs"],
   "additionalProperties": false,
   "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
     "title": {
       "type": "string",
       "title": "Titel",
