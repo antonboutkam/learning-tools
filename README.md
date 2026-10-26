@@ -53,6 +53,11 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/wat-hoort-bij-wat/v1/example.json`
   - Extra: ondersteunt configureerbare `title` + `description` (uitleg), shuffle van rechter- en linkerkolom, en afleiders in de rechterkolom via een `pairs` item met alleen `right` (zonder `left`)
 
+- Sleep naar de juiste kant (v1)
+  - Pad: `public_html/types/sleep-naar-de-juiste-kant/v1/`
+  - Data-schema en voorbeeld: `schema.json` en `example.json` in dezelfde map.
+  - Configureer unieke kolomopschriften via `columns` en per stelling een `label` en een of meer exacte kolomopschriften in `correctColumns`. Stellingen kunnen in meerdere kolommen staan; Controleer kleurt elke kolom groen of rood.
+
 - Pubquiz yes/no (v1)
   - Pad: `public_html/types/pubquiz-yes-no/v1/`
   - Data‑schema: `public_html/types/pubquiz-yes-no/v1/schema.json`

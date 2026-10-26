@@ -46,6 +46,17 @@
       "supportsCompletion": true
     },
     {
+      "id": "sleep-naar-de-juiste-kant",
+      "type": "assignment-type",
+      "name": "Sleep naar de juiste kant",
+      "version": "v1",
+      "launchUrl": "/types/sleep-naar-de-juiste-kant/v1/",
+      "schemaUrl": "/types/sleep-naar-de-juiste-kant/v1/schema.json",
+      "exampleDataUrl": "/types/sleep-naar-de-juiste-kant/v1/example.json",
+      "description": "Sleep stellingen naar een of meer juiste kolommen en controleer per kolom of de indeling klopt.",
+      "supportsCompletion": true
+    },
+    {
       "id": "pubquiz-yes-no",
       "type": "assignment-type",
       "name": "Pubquiz Yes/No",

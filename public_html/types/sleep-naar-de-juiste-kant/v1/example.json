@@ -1,0 +1,20 @@
+{
+  "title": "Welke webshop heeft dit?",
+  "description": "Sleep elke eigenschap naar de juiste webshop. Sommige eigenschappen horen bij beide winkels.",
+  "cooldownSeconds": 0,
+  "columns": ["Website A", "Website B"],
+  "statements": [
+    {
+      "label": "Heeft algemene voorwaarden",
+      "correctColumns": ["Website A"]
+    },
+    {
+      "label": "Heeft een contactpagina",
+      "correctColumns": ["Website A", "Website B"]
+    },
+    {
+      "label": "Toont verzendkosten vóór het afrekenen",
+      "correctColumns": ["Website B"]
+    }
+  ]
+}

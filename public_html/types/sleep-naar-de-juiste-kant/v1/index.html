@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep naar de juiste kant</title>
+  <link rel="stylesheet" href="/shared/ui.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="/shared/certificate-channel.js" defer></script>
+  <script src="/shared/completion.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <h1 id="title">Sleep naar de juiste kant</h1>
+    <p id="description" class="intro">Laadt opdracht…</p>
+    <div id="exercise" hidden>
+      <section class="pool" aria-labelledby="pool-title">
+        <h2 id="pool-title">Stellingen</h2>
+        <p class="hint">Sleep een stelling naar een kolom. Een stelling mag in meerdere kolommen staan. Je kunt ook een stelling aanklikken en daarna een kolom kiezen.</p>
+        <div id="statements" class="statement-list"></div>
+      </section>
+      <div id="columns" class="columns"></div>
+      <div class="actions">
+        <button id="check" type="button">Controleer</button>
+        <p id="result" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <p id="status" role="alert"></p>
+  </main>
+</body>
+</html>

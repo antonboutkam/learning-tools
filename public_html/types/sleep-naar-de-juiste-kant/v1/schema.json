@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/types/sleep-naar-de-juiste-kant/v1/schema.json",
+  "title": "Sleep naar de juiste kant v1",
+  "description": "Sleep stellingen naar een of meer juiste kolommen en controleer per kolom het resultaat.",
+  "supportsCompletion": true,
+  "outputs": [],
+  "type": "object",
+  "required": ["title", "columns", "statements"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "title": "Titel",
+      "description": "Kop boven de opdracht.",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Uitleg",
+      "description": "Korte instructie onder de titel.",
+      "type": "string",
+      "format": "textarea"
+    },
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na controleren; 0 betekent geen wachttijd.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
+    "columns": {
+      "title": "Kolommen",
+      "description": "De opschriften boven de kolommen. Gebruik unieke namen.",
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "title": "Kolomopschrift",
+        "description": "Bijvoorbeeld Waar, Onwaar of Website A.",
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "statements": {
+      "title": "Stellingen",
+      "description": "Geef iedere stelling een opschrift en kies een of meer kolomnamen waarin zij hoort.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Stelling",
+        "description": "Een versleepbare stelling met de juiste kolommen.",
+        "type": "object",
+        "required": ["label", "correctColumns"],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "title": "Opschrift",
+            "description": "Tekst die de student op de stelling ziet.",
+            "type": "string",
+            "minLength": 1
+          },
+          "correctColumns": {
+            "title": "Juiste kolommen",
+            "description": "Vul voor iedere juiste kolom precies het kolomopschrift in. Een stelling kan in meerdere kolommen horen.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "title": "Juiste kolom",
+              "description": "Exacte naam van een kolom hierboven.",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
