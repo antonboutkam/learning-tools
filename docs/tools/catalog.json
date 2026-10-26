@@ -11,10 +11,12 @@
       "features": [
         "Groene en rode antwoordknop",
         "Instelbare randomisatie en slagingsgrens",
-        "Procentuele eindscore en herkansing"
+        "Procentuele eindscore en herkansing",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js laadt situaties uit JSON en beoordeelt de antwoorden in de browser.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "lesson-clock/v1": {
       "toepassingen": [
@@ -67,10 +69,12 @@
       "features": [
         "Kassastijl toetsenbord",
         "Bin/dec/hex-preview",
-        "Instelbare bytegrootte"
+        "Instelbare bytegrootte",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "Zelfstandige oefening in app.js; laadt JSON-configuratie en houdt de invoer alleen in het actieve scherm.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "code-in-volgorde-zetten/v1": {
       "toepassingen": [
@@ -80,10 +84,12 @@
       "features": [
         "Sleepbare coderegels",
         "Afleiders zonder positie",
-        "Nakijken en juiste antwoord tonen"
+        "Nakijken en juiste antwoord tonen",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js bouwt twee codekolommen en valideert de volgorde aan de hand van positie in de configuratie.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "digitaal-bericht/v1": {
       "toepassingen": [
@@ -154,10 +160,12 @@
       "features": [
         "Sleepbare items",
         "Optioneel schudden",
-        "Nakijken en correcte volgorde"
+        "Nakijken en correcte volgorde",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js beschouwt de volgorde van items in de JSON als correct antwoord en ondersteunt een starttoestand.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "kies-de-juiste-afbeelding/v1": {
       "toepassingen": [
@@ -167,10 +175,12 @@
       "features": [
         "Een of meer afbeeldingen kiezen",
         "Feedback bij fout",
-        "Instelbaar aantal per rij"
+        "Instelbaar aantal per rij",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js normaliseert de afbeeldingenconfiguratie, verwerkt selectie en toont lokale feedback.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "markdown-editor/v1": {
       "toepassingen": [
@@ -245,10 +255,12 @@
         "Willekeurige vragen",
         "Tijdslimiet per vraag",
         "Random roller",
-        "Slaaggrens"
+        "Slaaggrens",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js kiest en beoordeelt vragen client-side; de sessie leeft alleen in het scherm.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "qr-team-with-role-divide/v1": {
       "toepassingen": [
@@ -342,10 +354,12 @@
         "Order, match, classify, text en checklist",
         "Hints en herstel zonder voortgangsverlies",
         "Toegankelijke tekstalternatieven",
-        "Lokale voortgang per unique_id"
+        "Lokale voortgang per unique_id",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "tool.js rendert kamers en taaktypen client-side. De escaperoomheader en intro worden niet zichtbaar gerenderd, zodat de tool als fullscreen iframe-systeem werkt. Theme-presets en gecontroleerde kleur- en radiusvariabelen worden vanuit JSON op CSS custom properties gezet. Voortgangsbalk en resetknop zijn via configuratie in- en uitschakelbaar. Antwoorden, markeringen en hints worden optioneel in localStorage per unique_id bewaard. Er is geen upload, account of automatische inleverclaim.",
-      "api": "Statische iframe-API; geen eigen server-endpoint, externe account of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint, externe account of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "wat-hoort-bij-wat/v1": {
       "toepassingen": [
@@ -356,10 +370,12 @@
         "Twee kolommen verbinden",
         "Afleiders",
         "Optioneel schudden",
-        "Nakijken en correcte koppelingen"
+        "Nakijken en correcte koppelingen",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat op dezelfde pagina",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
       ],
       "implementatie": "app.js bouwt de koppelinterface uit pairs en beoordeelt de lokale verbindingen.",
-      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
+      "api": "Statische iframe-API; geen eigen server-endpoint of score-passback. Ondersteunt het same-origin certificaatprotocol via shared/certificate-channel.js; dit geeft geen Canvas-cijfer door."
     },
     "feed-lab/v1": {
       "toepassingen": [
@@ -378,6 +394,49 @@
       ],
       "implementatie": "Standalone browsertool. Respondenten krijgen met gelijke kans een groep, bewaard per dataset en browser. Eén groep geldt voor iedereen. De geladen JSON bepaalt broninhoud, groepen en gevalideerde kleuren; oude lokale beheerpreviews worden genegeerd. Bezoekers wijzigen alleen selectie- en rangschikkingsregels en kunnen hun onderzoek exporteren.",
       "api": "Statische iframe-API via ?data=URL; ?group=ID voor expliciete docentpreview. Geen centrale deelnemersregistratie of Canvas-score-passback. Zie de README in de tool voor schema, opslag en authoring."
+    },
+    "feed-algoritme-handmatig/v1": {
+      "toepassingen": [
+        "Beeldvorming door feedselectie onderzoeken"
+      ],
+      "features": [
+        "Posts en reacties zichtbaar maken en sorteren",
+        "Actuele score en configureerbaar scoredoel",
+        "Optionele gezamenlijke afronding met Opdrachtcertificaat",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
+      ],
+      "implementatie": "app.js berekent zichtbare posts en reacties. Na Controleer score meldt completion.js een succesvolle afronding met de ruwe puntenscore. Zonder coordinator blijft de bestaande succesmelding behouden.",
+      "api": "Statische iframe-API; optioneel same-origin certificaatprotocol, geen Canvas-score-passback."
+    },
+    "opdrachtcertificaat/v1": {
+      "toepassingen": [
+        "Formatieve les afronden",
+        "Ondertekende certificaten inleveren en automatisch controleren"
+      ],
+      "features": [
+        "Voortgang van vereiste oefeningen op dezelfde pagina",
+        "Feestelijke afronding en naam/klasformulier",
+        "Ondertekende JSON-download met servertijd",
+        "Idempotente uitgifte per poging",
+        "Publieke-sleutelverificatie via CLI"
+      ],
+      "implementatie": "app.js gebruikt shared/certificate-channel.js voor gecontroleerde same-origin berichten in dezelfde bovenliggende pagina. api.php gebruikt een privaat servermanifest en lib/certificates/service.php voor Ed25519-uitgifte. Zie docs/opdrachtcertificaat.md voor inrichting.",
+      "api": "POST api.php met action manifest of issue. Vereist LT_CERTIFICATE_CONFIG buiten de webroot. Geen Canvas-login, AGS of automatische inlevering."
+    },
+    "blikvanger/v1": {
+      "toepassingen": [
+        "Beeldsituaties beoordelen",
+        "Nieuwsberichten kritisch lezen"
+      ],
+      "features": [
+        "Afbeelding of nieuwsbericht over de volle breedte, of beeld en tekst naast elkaar",
+        "Meerdere vragen per bron, steeds onderaan",
+        "Enkelvoudige keuze, meerdere juiste antwoorden en waar/onwaar",
+        "Feedback, procentuele eindscore, instelbare slaaggrens en herkansing",
+        "Optionele cooldownSeconds met zichtbare afteller tussen pogingen"
+      ],
+      "implementatie": "Standalone app.js met veilige tekstweergave. Relatieve afbeeldings- en bronpaden worden opgelost ten opzichte van de geladen JSON-URL. Bij meerdere antwoorden moet de selectie exact kloppen; elke vraag telt even zwaar.",
+      "api": "Laadt ?data=<JSON-URL>; zonder data wordt example.json getoond. Optioneel unique_id activeert shared/completion.js en het certificaatprotocol. Geen Canvas-score-passback. Een nieuwsbericht wordt als tekst in de configuratie opgenomen; bronUrl is een link en haalt geen artikel op."
     }
   }
 }

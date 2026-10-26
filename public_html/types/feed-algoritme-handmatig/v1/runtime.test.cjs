@@ -31,6 +31,7 @@ async function harness(options = {}) {
   options.configure?.(data);
   let fetched;
   const context = {URL, setTimeout() {}, location: {href: options.url || 'https://example.test/tool/'}, document: {getElementById: id => elements[id] || findById(elements.feed, id), createElement: tag => new Element(tag)}, fetch: async url => { fetched = url; if (options.fail) throw Error('offline'); return {ok: true, json: async () => data}; }};
+  context.window = {};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8'), context);
   await new Promise(resolve => setImmediate(resolve));
   return {elements, data, get fetched() { return fetched; }};

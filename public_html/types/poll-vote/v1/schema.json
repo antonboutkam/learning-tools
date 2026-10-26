@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/poll-vote/v1/schema.json",
   "title": "Poll & vote v1",
   "description": "Een live meerkeuzepoll met een student-, presentatie- en docentweergave.",
+  "supportsCompletion": false,
   "type": "object",
   "required": ["titel", "vragen"],
   "additionalProperties": false,

@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "title": "Zet de stappen van de waterkringloop in de juiste volgorde",
   "shuffle": true,
   "showCheck": true,

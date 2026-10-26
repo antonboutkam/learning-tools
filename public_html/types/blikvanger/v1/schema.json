@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.devroc.nl/types/blikvanger/v1/schema.json",
+  "title": "Blikvanger",
+  "description": "Bekijk afbeeldingen en nieuwsberichten en beantwoord vragen over de bron.",
+  "type": "object",
+  "required": [
+    "slides"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
+    "titel": {
+      "title": "Titel",
+      "description": "Titel boven de oefening.",
+      "type": "string",
+      "default": "Blikvanger"
+    },
+    "introductie": {
+      "title": "Introductie",
+      "description": "Korte instructie voor de student.",
+      "type": "string",
+      "format": "textarea"
+    },
+    "slaaggrens": {
+      "title": "Slaaggrens (%)",
+      "description": "Minimaal percentage volledig goed beantwoorde vragen voor afronding.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 70
+    },
+    "slides": {
+      "title": "Slides",
+      "description": "Bronnen in de volgorde waarin de student ze ziet.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Slide",
+        "description": "Een bron met één of meer vragen.",
+        "type": "object",
+        "required": [
+          "indeling",
+          "vragen"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "indeling": {
+            "title": "Indeling",
+            "description": "breed: afbeelding en/of bericht over de volle breedte; split: afbeelding links en bericht rechts. Op smalle schermen staan ze onder elkaar. Vragen staan altijd onderaan.",
+            "type": "string",
+            "enum": [
+              "breed",
+              "split"
+            ],
+            "default": "breed"
+          },
+          "afbeelding": {
+            "title": "Afbeelding",
+            "description": "Een http(s)-URL of pad relatief aan het configuratiebestand.",
+            "type": "string",
+            "minLength": 1
+          },
+          "alt": {
+            "title": "Beschrijving van de afbeelding",
+            "description": "Beschrijf wat er op de afbeelding te zien is.",
+            "type": "string",
+            "minLength": 1
+          },
+          "bijschrift": {
+            "title": "Bijschrift",
+            "description": "Korte toelichting of beeldverantwoording onder de afbeelding.",
+            "type": "string"
+          },
+          "kop": {
+            "title": "Kop van het bericht",
+            "description": "Titel boven de berichttekst.",
+            "type": "string"
+          },
+          "bericht": {
+            "title": "Nieuwsbericht",
+            "description": "De volledige berichttekst. Alinea’s blijven behouden. HTML wordt als tekst getoond.",
+            "type": "string",
+            "minLength": 1,
+            "format": "textarea"
+          },
+          "bronUrl": {
+            "title": "Bronlink",
+            "description": "Optionele http(s)-URL naar het oorspronkelijke artikel.",
+            "type": "string",
+            "minLength": 1
+          },
+          "vragen": {
+            "title": "Vragen",
+            "description": "Deze vragen verschijnen één voor één onder dezelfde bron.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "title": "Vraag",
+              "description": "Een vraag onder de bron.",
+              "type": "object",
+              "required": [
+                "vraag",
+                "type"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "vraag": {
+                  "title": "Vraag",
+                  "description": "De vraag of stelling voor de student.",
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "title": "Vraagtype",
+                  "description": "enkel: één goed antwoord; meerdere: selecteer alle goede antwoorden; waar-onwaar: beoordeel een stelling.",
+                  "type": "string",
+                  "enum": [
+                    "enkel",
+                    "meerdere",
+                    "waar-onwaar"
+                  ],
+                  "default": "enkel"
+                },
+                "antwoorden": {
+                  "title": "Antwoorden",
+                  "description": "Gebruik bij enkel of meerdere. Bij enkel is precies één antwoord juist.",
+                  "type": "array",
+                  "items": {
+                    "title": "Antwoord",
+                    "description": "Een antwoordmogelijkheid.",
+                    "type": "object",
+                    "required": [
+                      "tekst",
+                      "juist"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "tekst": {
+                        "title": "Antwoordtekst",
+                        "description": "Tekst die de student kan kiezen.",
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "juist": {
+                        "title": "Juist antwoord",
+                        "description": "Vink aan als dit antwoord goed is.",
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  },
+                  "minItems": 2
+                },
+                "waar": {
+                  "title": "Stelling is waar",
+                  "description": "Alleen bij waar-onwaar: aan is waar, uit is onwaar.",
+                  "type": "boolean",
+                  "default": true
+                },
+                "uitleg": {
+                  "title": "Uitleg na antwoorden",
+                  "description": "Wordt na het controleren getoond.",
+                  "type": "string",
+                  "format": "textarea"
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "waar-onwaar"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "waar"
+                    ]
+                  },
+                  "else": {
+                    "required": [
+                      "antwoorden"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "enkel"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "antwoorden": {
+                        "contains": {
+                          "properties": {
+                            "juist": {
+                              "const": true
+                            }
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "meerdere"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "antwoorden": {
+                        "contains": {
+                          "properties": {
+                            "juist": {
+                              "const": true
+                            }
+                          }
+                        },
+                        "minContains": 1
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "afbeelding"
+            ]
+          },
+          {
+            "required": [
+              "bericht"
+            ]
+          }
+        ],
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "afbeelding"
+              ]
+            },
+            "then": {
+              "required": [
+                "alt"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "indeling": {
+                  "const": "split"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "afbeelding",
+                "bericht"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

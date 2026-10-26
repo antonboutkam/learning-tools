@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/breadboard/v1/schema.json",
   "title": "Breadboard v1",
   "description": "Configureer en bekijk een schakeling met componenten, contactpunten en gekleurde draden.",
+  "supportsCompletion": false,
   "type": "object",
   "required": [
     "configuratie"

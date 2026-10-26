@@ -14,6 +14,14 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
 - Examples: `docs/examples/`
 
 ## Beschikbare tools (quiz‑types)
+- Blikvanger (v1)
+  - Pad: `public_html/types/blikvanger/v1/`
+  - Schema en voorbeeld: `schema.json` en `example.json` in dezelfde map. Zonder `data` opent de voorbeeldquiz.
+  - Afbeeldingen en nieuwsberichten op volle breedte of naast elkaar; één of meer vragen per slide, steeds onderaan.
+  - Vraagtypen: één juist antwoord, meerdere juiste antwoorden en waar/onwaar. Inclusief uitleg, eindscore, slaaggrens en herkansing.
+  - Nieuwsinhoud staat in `bericht`; `bronUrl` is een optionele bronlink. Relatieve afbeeldingen verwijzen naar de locatie van het JSON-bestand.
+  - `?data=<JSON-URL>&unique_id=<instantie>` activeert de bestaande afrondingsintegratie; geen Canvas-cijferoverdracht.
+
 - Checklist (v1)
   - Pad: `public_html/types/checklist/v1/`
   - Data-schema: `public_html/types/checklist/v1/schema.json`
@@ -254,3 +262,24 @@ Per post klap je het reactieblok in of uit met **Reacties tonen/verbergen**. De 
 [Feedalgoritme: handmatig](public_html/types/feed-algoritme-handmatig/v1/index.html) laat studenten posts en reacties handmatig zichtbaar of onzichtbaar maken en posts verslepen. De maker stelt een eigen opdrachttitel, instructie, aantal plaatsen boven de rode feedgrens, scoredoel en score per post/reactie in. Per post staan de eerste vijf beschikbare reacties standaard zichtbaar bij **Meest relevant**; vijf is ook het maximum. De actuele score verschijnt direct boven de feed en in het uitlegblok en telt uitsluitend zichtbare posts en hun zichtbare reacties mee. Na elke wijziging wordt de stand bijgewerkt; de leerling controleert zelf of het certificaat is behaald.
 
 Start de tool met `/types/feed-algoritme-handmatig/v1/?data=<URL-van-configuratie.json>`. Zonder `data` gebruikt de tool het lokale voorbeeld. De JSON-velden staan in het [schema](public_html/types/feed-algoritme-handmatig/v1/schema.json); een eigen configuratie moet via dezelfde origin of met passende CORS-headers bereikbaar zijn. `target.comparison` is `more_than` of `less_than`: de grens telt zelf niet als behaald. De score is de som van postcorrecties en geselecteerde reacties van zichtbare posts; er is geen positiegewicht. Een certificaat is een melding in de oefening.
+
+## Behaald-uitkomst herkennen
+
+Elke tooldefinitie in `public_html/types/registry.json` en elk bijbehorend schema bevat op rootniveau de boolean `supportsCompletion`. Dit is capability-metadata, geen instelbaar veld in `properties` of de opdracht-JSON. Ontbreekt het veld in oudere definities, behandel het dan als `false`.
+
+- `true`: de tool kan automatisch bepalen dat de oefening succesvol is afgerond. Dit geldt voor Goed of fout, Juiste volgorde, Kies de juiste afbeelding, Wat hoort bij wat, Pubquiz Yes/No, Bin/Hex/Dec Reken, Code in volgorde zetten, Feedalgoritme: handmatig en FutureMe escaperoom.
+- `false`: de tool biedt geen automatische behaald-uitkomst voor de hele oefening. Handmatig afvinken, een scorebord of een sessie afsluiten telt hiervoor niet mee.
+
+Het veld beschrijft de mogelijkheid van de tool, niet de actuele status van een student. Het garandeert geen gedeelde certificaatopslag, statusbericht aan het bovenliggende iframe of Canvas-scoreterugkoppeling. `outputs` blijft uitsluitend bedoeld voor downloadbare bestandsformaten. Alle bestaande toolversies en succesvoorwaarden blijven gelijk.
+
+## Opdrachtcertificaat (v1)
+
+Nieuwe tool: `public_html/types/opdrachtcertificaat/v1/`. Verzamelt de succesvolle afrondingen van een expliciete lijst oefeningen op dezelfde pagina. Na alle afrondingen vult de student naam en klas in en downloadt een Ed25519-ondertekend JSON-certificaat. De negen bestaande beoordeelbare tools werken samen via gedeelde completion-/berichtcode binnen hun huidige versie. Zonder actieve certificaattool blijven ze zelfstandig werken.
+
+Zie [inrichting, iframe-contract en automatisch nakijken](docs/opdrachtcertificaat.md). Eenmalige private serverinrichting is nodig voor uitgifte. De tool zelf heeft `supportsCompletion: false`, omdat hij resultaten verzamelt en niet als vereiste oefening in zijn eigen opdrachtenlijst mag komen. `outputs` bevat `json`. De voorbeeldles staat op `/types/opdrachtcertificaat/v1/demo.html`.
+
+## Wachttijd tussen pogingen
+
+Alle tien tools met `supportsCompletion: true`, inclusief Blikvanger, ondersteunen optioneel `"cooldownSeconds": 10` in hun opdrachtconfiguratie (geheel aantal seconden, 0–86400). Weglaten of 0 behoudt het bestaande gedrag. Na elke antwoordcontrole, goed of fout, verschijnt “Nieuwe poging mogelijk over … seconden”. Goed of fout, Pubquiz en Blikvanger starten de wachttijd pas na de volledige quiz, niet tussen vragen. FutureMe start deze na elke taakcontrole. Controleren en herstarten zijn tijdens de wachttijd geblokkeerd; antwoorden voorbereiden en feedback lezen blijven mogelijk. Bij Code in volgorde zetten zonder controleknop geldt iedere automatische controle na een verplaatsing als poging; volgende verplaatsingen wachten op de timer.
+
+De timer werkt ook zonder Opdrachtcertificaat en bewaart zijn eindtijd lokaal per tool, opdracht-ID en data-URL, zodat herladen de wachttijd niet wist. Zonder browseropslag blijft de timer actief zolang het document open is. Dit is een formatieve rem, geen fraudebeveiliging. Bij Kies de juiste afbeelding blijft `pauzeSeconden` gelden: na een fout telt de langste van beide wachttijden, gelijktijdig in plaats van achter elkaar. De bestaande antwoordvergrendeling bij “toon-juiste-antwoord” blijft behouden.

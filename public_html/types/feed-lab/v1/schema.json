@@ -657,6 +657,7 @@
   ],
   "additionalProperties": true,
   "description": "Bronconfiguratie voor berichten, reacties, respondentgroepen, algoritmen en vormgeving. De engine controleert ook graphverwijzingen en unieke IDs.",
+  "supportsCompletion": false,
   "$id": "https://learning-tools.nuive.nl/types/feed-lab/v1/schema.json",
   "$defs": {
     "settings": {

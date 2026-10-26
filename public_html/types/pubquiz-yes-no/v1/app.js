@@ -96,6 +96,7 @@ function prepareQuiz() {
 }
 
 function startRoller() {
+  if (completion?.cooldownActive) return;
   if (quizFinished) {
     prepareQuiz();
   }
@@ -125,6 +126,7 @@ function startRoller() {
 }
 
 function finishQuiz() {
+  completion?.startCooldown();
   quizFinished = true;
   activeQuestion = null;
   stopIntervals();
@@ -132,8 +134,8 @@ function finishQuiz() {
 
   const passed = correctAnswers >= minCorrectToPass;
   resultEl.textContent = passed
-    ? `Eindscore: ${correctAnswers}/${totalQuestionsToAsk}. Certificaat behaald.`
-    : `Eindscore: ${correctAnswers}/${totalQuestionsToAsk}. Certificaat niet behaald.`;
+    ? `Eindscore: ${correctAnswers}/${totalQuestionsToAsk}. ${completion?.isGrouped ? "Je hebt deze opdracht goed gemaakt." : "Certificaat behaald."}`
+    : `Eindscore: ${correctAnswers}/${totalQuestionsToAsk}. ${completion?.isGrouped ? "Probeer de opdracht opnieuw." : "Certificaat niet behaald."}`;
   resultEl.className = passed ? "status good" : "status bad";
   setStatus(
     passed
@@ -188,7 +190,7 @@ function startTimer() {
 }
 
 function answer(value) {
-  if (!activeQuestion || quizFinished) return;
+  if (!activeQuestion || quizFinished || completion?.cooldownActive) return;
   stopIntervals();
   const isCorrect = activeQuestion.answer === value;
   resultEl.textContent = isCorrect ? "Goed!" : "Fout.";
@@ -246,6 +248,7 @@ async function init() {
     const cardEl = document.querySelector(".card");
     completion = window.LearningToolsCompletion?.create?.({
       toolId: "pubquiz-yes-no",
+        cooldownSeconds: data.cooldownSeconds,
       version: "v1",
       dataUrl: new URL(dataUrl, window.location.href).toString(),
       uniqueId,

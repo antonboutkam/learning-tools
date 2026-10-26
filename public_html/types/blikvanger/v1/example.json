@@ -1,0 +1,82 @@
+{
+  "cooldownSeconds": 0,
+  "titel": "Blikvanger: nieuws onder de loep",
+  "introductie": "Kijk goed, lees rustig en kies je antwoord. De berichten zijn fictieve oefenvoorbeelden.",
+  "slaaggrens": 70,
+  "slides": [
+    {
+      "indeling": "breed",
+      "afbeelding": "voorbeeld.svg",
+      "alt": "Poster: Fietsweek. Van 12 tot en met 16 mei. Kom op de fiets. Gratis fietscheck op vrijdag.",
+      "bijschrift": "Fictieve poster voor deze oefening.",
+      "vragen": [
+        {
+          "vraag": "Op welke dag kun je je fiets gratis laten controleren?",
+          "type": "enkel",
+          "antwoorden": [
+            {
+              "tekst": "Maandag",
+              "juist": false
+            },
+            {
+              "tekst": "Vrijdag",
+              "juist": true
+            },
+            {
+              "tekst": "Elke dag",
+              "juist": false
+            }
+          ],
+          "uitleg": "Onderaan de poster staat: gratis fietscheck op vrijdag."
+        }
+      ]
+    },
+    {
+      "indeling": "split",
+      "afbeelding": "voorbeeld.svg",
+      "alt": "Poster voor een fietsweek van 12 tot en met 16 mei, met een gratis fietscheck op vrijdag.",
+      "kop": "School test een fietsweek",
+      "bericht": "FICTIEF OEFENBERICHT\n\nEen school organiseert van 12 tot en met 16 mei een fietsweek. Studenten en medewerkers worden uitgenodigd om op de fiets te komen.\n\nOp vrijdag controleert een fietsenmaker gratis de remmen en verlichting. Meedoen is vrijwillig. De school telt het aantal fietsen, maar heeft nog geen resultaten bekendgemaakt.",
+      "vragen": [
+        {
+          "vraag": "Welke uitspraken worden ondersteund door dit bericht?",
+          "type": "meerdere",
+          "antwoorden": [
+            {
+              "tekst": "Meedoen is vrijwillig.",
+              "juist": true
+            },
+            {
+              "tekst": "De fietscheck is gratis.",
+              "juist": true
+            },
+            {
+              "tekst": "Alle studenten komen op de fiets.",
+              "juist": false
+            }
+          ],
+          "uitleg": "Vrijwillige deelname en de gratis controle staan in het bericht. Er staat niet dat iedereen meedoet."
+        },
+        {
+          "vraag": "De school weet al dat er meer studenten fietsen door de fietsweek.",
+          "type": "waar-onwaar",
+          "waar": false,
+          "uitleg": "Er zijn nog geen resultaten bekendgemaakt."
+        }
+      ]
+    },
+    {
+      "indeling": "breed",
+      "kop": "Een kop vertelt niet het hele verhaal",
+      "bericht": "FICTIEF OEFENBERICHT\n\n“Meer groen op het schoolplein”, staat boven een bericht. In de tekst staat dat een groep studenten een voorstel heeft ingediend voor zes plantenbakken. De school moet nog beslissen of het plan doorgaat.",
+      "vragen": [
+        {
+          "vraag": "De plantenbakken staan al op het schoolplein.",
+          "type": "waar-onwaar",
+          "waar": false,
+          "uitleg": "Er ligt alleen een voorstel. De school moet nog beslissen."
+        }
+      ]
+    }
+  ]
+}

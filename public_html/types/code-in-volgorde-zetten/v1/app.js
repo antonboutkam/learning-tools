@@ -133,6 +133,7 @@ function handleDragStart(e, source) {
 }
 
 function moveDraggedToSlot(targetSlot) {
+  if (!showCheck && completion?.cooldownActive) return;
   if (!draggedId) return;
   const targetId = slots[targetSlot];
 
@@ -156,12 +157,14 @@ function moveDraggedToSlot(targetSlot) {
   render();
   clearResultFeedback();
   if (!showCheck) {
+    if (completion && !completion.beginAttempt()) return;
     updateResult();
     markCorrectness();
   }
 }
 
 function moveDraggedToPool() {
+  if (!showCheck && completion?.cooldownActive) return;
   if (!draggedId || dragSource !== "slot") return;
   if (dragSourceSlot == null) return;
 
@@ -176,6 +179,7 @@ function moveDraggedToPool() {
   render();
   clearResultFeedback();
   if (!showCheck) {
+    if (completion && !completion.beginAttempt()) return;
     updateResult();
     markCorrectness();
   }
@@ -266,6 +270,7 @@ function normalizeData(data) {
   });
 
   return {
+    cooldownSeconds: data.cooldownSeconds,
     toolTitle:
       typeof data.toolTitle === "string" && data.toolTitle.trim()
         ? data.toolTitle.trim()
@@ -382,6 +387,7 @@ async function init() {
     completion =
       window.LearningToolsCompletion?.create?.({
         toolId: "code-in-volgorde-zetten",
+        cooldownSeconds: data.cooldownSeconds,
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
         uniqueId,
@@ -400,6 +406,7 @@ async function init() {
 }
 
 checkBtn.addEventListener("click", () => {
+  if (completion && !completion.beginAttempt()) return;
   updateResult();
   markCorrectness();
 });

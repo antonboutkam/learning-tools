@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/lesson-clock/v1/schema.json",
   "title": "Lesklok v1",
   "description": "Toon een synchroon aftellende klok voor meerdere lessen. De resterende tijd wordt als een pie weergegeven die richting het einde rood kleurt en af en toe flitst.",
+  "supportsCompletion": false,
   "type": "object",
   "required": ["lessons"],
   "additionalProperties": false,

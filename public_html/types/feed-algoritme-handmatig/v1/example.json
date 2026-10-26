@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "source_format": "feed-algoritme-handmatig-v1",
   "title": "Stuur de beeldvorming over de buurtactie",
   "instruction_title": "Jouw manipulatieopdracht",

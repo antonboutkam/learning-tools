@@ -284,6 +284,38 @@
         "Algoritmes ontwerpen en vergelijken"
       ],
       "documentatie": "versions/feed-lab/v1.md"
+    },
+    {
+      "id": "feed-algoritme-handmatig",
+      "version": "v1",
+      "name": "Feedalgoritme: handmatig",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Beeldvorming door feedselectie onderzoeken"
+      ],
+      "documentatie": "versions/feed-algoritme-handmatig/v1.md"
+    },
+    {
+      "id": "opdrachtcertificaat",
+      "version": "v1",
+      "name": "Opdrachtcertificaat",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Formatieve les afronden",
+        "Ondertekende certificaten inleveren en automatisch controleren"
+      ],
+      "documentatie": "versions/opdrachtcertificaat/v1.md"
+    },
+    {
+      "id": "blikvanger",
+      "version": "v1",
+      "name": "Blikvanger",
+      "type": "assignment-type",
+      "toepassingen": [
+        "Beeldsituaties beoordelen",
+        "Nieuwsberichten kritisch lezen"
+      ],
+      "documentatie": "versions/blikvanger/v1.md"
     }
   ]
 }

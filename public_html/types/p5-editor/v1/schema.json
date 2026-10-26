@@ -3,6 +3,7 @@
   "$id": "https://learning-tools.example/types/p5-editor/v1/schema.json",
   "title": "p5.js editor v1",
   "description": "Een JavaScript-editor waarin studenten een configureerbare p5.js-demo veilig kunnen aanpassen en uitvoeren in een geïsoleerde preview.",
+  "supportsCompletion": false,
   "type": "object",
   "required": ["demoJavaScript"],
   "additionalProperties": false,

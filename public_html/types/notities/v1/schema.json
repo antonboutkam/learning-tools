@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/notities/v1/schema.json",
   "title": "Notities v1",
   "description": "Digitaal notitieblok met pagina-omslag animatie, typmodus met Markdownopmaakbalk, penmodus en bookmarks. Opslag is persistent per `notitieblok_id` (via querystring of via JSON-config).",
+  "supportsCompletion": false,
   "outputs": [
     {
       "type": "json",

@@ -3,6 +3,7 @@
   "$id": "https://example.local/types/checklist/v1/schema.json",
   "title": "Checklist v1",
   "description": "Een afvinkbare checklist met optionele links, lokale opslag, export en instelbare mogelijkheden voor studenten.",
+  "supportsCompletion": false,
   "outputs": [
     {
       "type": "md",

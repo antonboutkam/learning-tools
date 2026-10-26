@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opdrachtcertificaat</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="/shared/certificate-channel.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="certificate" id="certificate">
+    <div class="confetti" aria-hidden="true">✦ · ✧ · ✦ · ✧ · ✦</div>
+    <div class="seal" aria-hidden="true">★</div>
+    <p class="eyebrow">Jouw volgende mijlpaal</p>
+    <h1 id="title">Opdrachtcertificaat</h1>
+    <p id="intro">Maak de opdrachten op deze pagina. Hier komt jouw certificaat.</p>
+    <p id="progressText" role="status" aria-live="polite">Opdrachten ophalen…</p>
+    <progress id="progress" max="1" value="0" aria-label="Afgeronde opdrachten"></progress>
+    <ul id="tasks" aria-label="Opdrachten"></ul>
+    <section id="earned" hidden>
+      <h2>Certificaat behaald!</h2>
+      <p>Je hebt alle opdrachten goed gemaakt. Vul je naam en klas in, controleer ze en download je certificaat om in te leveren.</p>
+    </section>
+    <form id="identity" hidden>
+      <label for="studentName">Naam</label>
+      <input id="studentName" name="studentName" autocomplete="name" maxlength="100" required>
+      <label for="studentClass">Klas</label>
+      <input id="studentClass" name="studentClass" autocomplete="off" maxlength="60" required>
+      <p class="hint">Je naam en klas staan vast zodra je het certificaat downloadt.</p>
+      <button id="download" type="submit">Download mijn certificaat</button>
+    </form>
+    <p id="receipt" hidden></p>
+    <p id="error" role="alert" hidden></p>
+    <button id="retry" type="button" hidden>Opnieuw verbinden</button>
+    <button id="newAttempt" class="secondary" type="button" hidden>Nieuwe poging voor een andere student</button>
+    <p class="footnote">Download het JSON-bestand en lever het ongewijzigd in bij je opdracht.</p>
+  </main>
+</body>
+</html>

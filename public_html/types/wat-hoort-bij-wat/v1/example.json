@@ -1,4 +1,5 @@
 {
+  "cooldownSeconds": 0,
   "title": "Wat hoort bij wat?",
   "description": "Verbind elke persoon links met de juiste omschrijving rechts. Er staan ook extra afleiders tussen.",
   "showCheck": true,

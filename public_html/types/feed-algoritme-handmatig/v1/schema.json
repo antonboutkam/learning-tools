@@ -3,10 +3,19 @@
   "$id": "https://learning-tools.devroc.nl/types/feed-algoritme-handmatig/v1/schema.json",
   "title": "Feedalgoritme: handmatig v1",
   "description": "Een oefening waarin studenten handmatig posts en reacties zichtbaar maken en sorteren om de beeldvorming van een feed te beïnvloeden.",
+  "supportsCompletion": true,
   "type": "object",
   "required": ["source_format", "title", "instruction_title", "instruction_text", "feed_post_limit", "target", "posts", "comments"],
   "additionalProperties": false,
   "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
     "unique_id": {
       "title": "Unieke opdrachtcode",
       "description": "Stabiele identificatie van deze toolinstantie in Courses.",

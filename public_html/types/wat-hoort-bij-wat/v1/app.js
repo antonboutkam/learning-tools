@@ -376,6 +376,7 @@ document.addEventListener(
 );
 
 checkBtn.addEventListener("click", () => {
+  if (completion && !completion.beginAttempt()) return;
   checked = true;
   updateResultAndMaybeComplete();
 });
@@ -433,6 +434,7 @@ async function init() {
     completion =
       window.LearningToolsCompletion?.create?.({
         toolId: "wat-hoort-bij-wat",
+        cooldownSeconds: data.cooldownSeconds,
         version: "v1",
         dataUrl: new URL(dataUrl, window.location.href).toString(),
         uniqueId,

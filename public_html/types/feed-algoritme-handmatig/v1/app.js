@@ -3,6 +3,7 @@
   const $ = id => document.getElementById(id);
   const COMMENT_LIMIT = 5;
   const collapsedComments = new Set();
+  let completion = null;
   let config, visiblePosts = new Set(), visibleComments = new Set(), order = [], previouslyPassed = false;
   const text = (element, value) => { element.textContent = value; return element; };
   const clone = value => JSON.parse(JSON.stringify(value));
@@ -136,6 +137,11 @@
       const response = await fetch(path, {cache: 'no-store'});
       if (!response.ok) throw Error(`HTTP ${response.status}`);
       const next = clone(await response.json()); validate(next); config = next;
+      if (!completion) completion = window.LearningToolsCompletion?.create({
+        cooldownSeconds: config.cooldownSeconds, toolId: 'feed-algoritme-handmatig', version: 'v1', dataUrl: path,
+        uniqueId: new URL(location.href).searchParams.get('unique_id') || config.unique_id || `feed-algoritme-handmatig:${new URL(path, location.href).href}`,
+        title: config.title, containerEl: $('workspace'), onReset: load, standalone: false,
+      });
       collapsedComments.clear();
       order = config.posts.map(post => post.id);
       visiblePosts = new Set(order.slice(0, config.feed_post_limit)); visibleComments = new Set(); previouslyPassed = false;
@@ -154,9 +160,11 @@
   $('feed').addEventListener('dragover', event => event.preventDefault());
   $('feed').addEventListener('drop', drop);
   $('checkScore').addEventListener('click', () => {
+    if (completion && !completion.beginAttempt()) return;
     const current = score(), ok = passes(current), result = $('result');
+    if (ok) completion?.markCompleted({ score: { value: current } });
     result.className = `result ${ok ? 'success' : 'failure'}`;
-    result.textContent = ok ? `Certificaat behaald — je score is ${current}.` : `Helaas certificaat nog niet behaald — je score is ${current}.`;
+    result.textContent = ok ? (completion?.isGrouped ? `Je hebt deze opdracht goed gemaakt. Score: ${current}.` : `Certificaat behaald — je score is ${current}.`) : `Helaas certificaat nog niet behaald — je score is ${current}.`;
   });
   $('retry').addEventListener('click', load); load();
 })();

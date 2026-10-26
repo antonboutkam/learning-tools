@@ -3,11 +3,20 @@
   "$id": "https://example.local/types/code-in-volgorde-zetten/v1/schema.json",
   "title": "Code in volgorde zetten v1",
   "description": "Interactieve oefening waarbij studenten losse code-regels naar de juiste volgorde slepen om een programma te vormen. Regels zonder `positie` zijn afleiders en hoeven niet gebruikt te worden.",
+  "supportsCompletion": true,
   "outputs": [],
   "type": "object",
   "required": ["title", "regels"],
   "additionalProperties": false,
   "properties": {
+    "cooldownSeconds": {
+      "title": "Wachttijd tussen pogingen (seconden)",
+      "description": "Wachttijd na een antwoordcontrole of volledige quiz, ook na succes. Tijdens de afteller zijn een nieuwe controle en herstart geblokkeerd. Bij 0 of weglaten blijft het bestaande gedrag behouden.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0
+    },
     "toolTitle": {
       "type": "string",
       "title": "Tooltitel (kop bovenaan)",
