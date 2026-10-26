@@ -19,7 +19,9 @@ p { line-height: 1.45; }
 .column h2 { overflow-wrap: anywhere; }
 .column.over { border-color: #2767b5; background: #edf5ff; }
 .column.correct { border-color: #238348; background: #e8f7ed; }
+.column.incomplete { border-color: #b77912; background: #fff7e5; }
 .column.incorrect { border-color: #c53535; background: #fff0ef; }
+.feedback { margin: 12px 0 0; font-weight: 700; }
 .placed-list { min-height: 105px; }
 .placed { display: inline-flex; align-items: center; gap: 6px; align-self: start; background: #fff; border: 1px solid #9eafc5; border-radius: 9px; padding: 3px; max-width: 100%; }
 .placed .statement { padding: 6px 8px; border: 0; background: transparent; }

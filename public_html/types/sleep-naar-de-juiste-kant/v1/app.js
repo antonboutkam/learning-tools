@@ -38,8 +38,9 @@ function validate(data) {
 
 function clearFeedback() {
   columnsEl.querySelectorAll('.column').forEach((column) => {
-    column.classList.remove('correct', 'incorrect');
+    column.classList.remove('correct', 'incorrect', 'incomplete');
     column.removeAttribute('aria-label');
+    column.querySelector('.feedback')?.remove();
   });
   resultEl.textContent = '';
 }
@@ -149,14 +150,22 @@ checkEl.addEventListener('click', () => {
   if (completion && !completion.beginAttempt()) return;
   let correct = 0;
   columnsEl.querySelectorAll('.column').forEach((column, columnIndex) => {
+    column.querySelector('.feedback')?.remove();
     const expected = new Set(config.statements.flatMap((statement, index) =>
       statement.correctColumns.includes(config.columns[columnIndex]) ? [index] : []));
     const actual = placements[columnIndex];
-    const okay = actual.size === expected.size && [...actual].every((index) => expected.has(index));
-    column.classList.toggle('correct', okay);
-    column.classList.toggle('incorrect', !okay);
-    column.setAttribute('aria-label', `${config.columns[columnIndex]}: ${okay ? 'goed' : 'fout'}`);
-    if (okay) correct++;
+    const hasWrong = [...actual].some((index) => !expected.has(index));
+    const missing = [...expected].filter((index) => !actual.has(index)).length;
+    const state = hasWrong ? 'incorrect' : missing ? 'incomplete' : 'correct';
+    column.classList.remove('correct', 'incorrect', 'incomplete');
+    column.classList.add(state);
+    const feedback = state === 'correct' ? 'Goed' : state === 'incomplete' ? `Nog ${missing} stelling${missing === 1 ? '' : 'en'} ontbreekt${missing === 1 ? '' : 'en'}` : 'Er staat een verkeerde stelling in deze kolom';
+    column.setAttribute('aria-label', `${config.columns[columnIndex]}: ${feedback}`);
+    const feedbackEl = document.createElement('p');
+    feedbackEl.className = 'feedback';
+    feedbackEl.textContent = feedback;
+    column.appendChild(feedbackEl);
+    if (state === 'correct') correct++;
   });
   resultEl.textContent = `${correct} van ${config.columns.length} kolommen goed.`;
   if (correct === config.columns.length) {
