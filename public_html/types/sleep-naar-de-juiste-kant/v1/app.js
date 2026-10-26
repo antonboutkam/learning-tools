@@ -9,11 +9,41 @@ const columnsEl = document.getElementById('columns');
 const resultEl = document.getElementById('result');
 const statusEl = document.getElementById('status');
 const checkEl = document.getElementById('check');
+const boardEl = document.getElementById('board');
+const earnedEl = document.getElementById('earned');
+const earnedScoreEl = document.getElementById('earned-score');
+const certificateFormEl = document.getElementById('certificate-form');
+const restartEl = document.getElementById('restart');
 let config;
 let placements = [];
 let selected = null;
 let dragging = null;
 let completion = null;
+let resultSnapshot = null;
+let resultStorageKey = null;
+
+function storeResult(value) {
+  if (!resultStorageKey) return;
+  try {
+    if (value) localStorage.setItem(resultStorageKey, JSON.stringify(value));
+    else localStorage.removeItem(resultStorageKey);
+  } catch { /* De download blijft in deze sessie beschikbaar. */ }
+}
+
+function savedResult() {
+  if (!resultStorageKey) return null;
+  try {
+    const value = JSON.parse(localStorage.getItem(resultStorageKey));
+    return value && typeof value.completedAt === 'string' && Array.isArray(value.columns) ? value : null;
+  } catch { return null; }
+}
+
+function showEarned() {
+  boardEl.hidden = true;
+  earnedEl.hidden = false;
+  earnedScoreEl.textContent = `${config.columns.length} van ${config.columns.length} kolommen goed.`;
+  earnedEl.querySelector('h2').focus?.();
+}
 
 function validate(data) {
   if (!data || !Array.isArray(data.columns) || data.columns.length < 2 ||
@@ -169,8 +199,55 @@ checkEl.addEventListener('click', () => {
   });
   resultEl.textContent = `${correct} van ${config.columns.length} kolommen goed.`;
   if (correct === config.columns.length) {
+    resultSnapshot = {
+      completedAt: new Date().toISOString(),
+      columns: config.columns.map((label, columnIndex) => ({
+        label,
+        statements: [...placements[columnIndex]].map((index) => ({ number: index + 1, label: config.statements[index].label }))
+      }))
+    };
+    storeResult(resultSnapshot);
     completion?.markCompleted({ score: { correct, total: config.columns.length } });
+    showEarned();
   }
+});
+
+certificateFormEl.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!resultSnapshot) return;
+  const nameInput = document.getElementById('student-name');
+  const classInput = document.getElementById('student-class');
+  nameInput.value = nameInput.value.trim();
+  classInput.value = classInput.value.trim();
+  if (!certificateFormEl.reportValidity()) return;
+  const studentName = nameInput.value;
+  const studentClass = classInput.value;
+  const result = {
+    format: 'learning-tools-result-v1',
+    toolId: 'sleep-naar-de-juiste-kant',
+    version: 'v1',
+    uniqueId: uniqueId || null,
+    title: config.title || 'Sleep naar de juiste kant',
+    studentName,
+    studentClass,
+    completedAt: resultSnapshot.completedAt,
+    score: { correct: config.columns.length, total: config.columns.length },
+    columns: resultSnapshot.columns
+  };
+  const blob = new Blob([`${JSON.stringify(result, null, 2)}\n`], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `resultaat-sleep-naar-de-juiste-kant-${(uniqueId || 'oefening').replace(/[^a-zA-Z0-9_-]/g, '-')}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+});
+
+restartEl.addEventListener('click', () => {
+  if (completion) completion.reset();
+  else location.reload();
 });
 
 async function init() {
@@ -184,6 +261,7 @@ async function init() {
     render();
     exerciseEl.hidden = false;
     if (uniqueId) {
+      resultStorageKey = `learning-tools:result:sleep-naar-de-juiste-kant:v1:${JSON.stringify([uniqueId, new URL(dataUrl, location.href).toString()])}`;
       completion = window.LearningToolsCompletion?.create?.({
         toolId: 'sleep-naar-de-juiste-kant',
         version: 'v1',
@@ -192,8 +270,16 @@ async function init() {
         uniqueId,
         title: config.title || null,
         containerEl: exerciseEl,
-        onReset: () => location.reload()
+        standalone: false,
+        onReset: () => {
+          storeResult(null);
+          location.reload();
+        }
       }) || null;
+      if (completion?.isCompleted) {
+        resultSnapshot = savedResult();
+        if (resultSnapshot) showEarned();
+      }
     }
   } catch (error) {
     descriptionEl.textContent = 'De opdracht kan niet worden geopend.';

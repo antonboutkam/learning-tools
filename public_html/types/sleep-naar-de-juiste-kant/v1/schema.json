@@ -4,7 +4,15 @@
   "title": "Sleep naar de juiste kant v1",
   "description": "Sleep stellingen naar een of meer juiste kolommen en controleer per kolom het resultaat.",
   "supportsCompletion": true,
-  "outputs": [],
+  "outputs": [
+    {
+      "type": "json",
+      "title": "Resultaatcertificaat",
+      "description": "Downloadbaar JSON-bestand met naam, klas, afrondmoment en de juist ingedeelde stellingen.",
+      "mimeType": "application/json",
+      "extensions": [".json"]
+    }
+  ],
   "type": "object",
   "required": ["title", "columns", "statements"],
   "additionalProperties": false,

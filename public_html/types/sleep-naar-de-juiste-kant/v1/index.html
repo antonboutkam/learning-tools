@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sleep naar de juiste kant</title>
   <link rel="stylesheet" href="/shared/ui.css">
-  <link rel="stylesheet" href="style.css?v=20261026-feedback">
+  <link rel="stylesheet" href="style.css?v=20261026-certificate">
   <script src="/shared/certificate-channel.js" defer></script>
   <script src="/shared/completion.js" defer></script>
-  <script src="app.js?v=20261026-feedback" defer></script>
+  <script src="app.js?v=20261026-certificate" defer></script>
 </head>
 <body>
   <main class="shell">
     <h1 id="title">Sleep naar de juiste kant</h1>
     <p id="description" class="intro">Laadt opdracht…</p>
     <div id="exercise" hidden>
+      <div id="board">
       <section class="pool" aria-labelledby="pool-title">
         <h2 id="pool-title">Stellingen</h2>
         <p class="hint">Sleep een stelling naar een kolom. Een stelling mag in meerdere kolommen staan. Je kunt ook een stelling aanklikken en daarna een kolom kiezen.</p>
@@ -25,6 +26,24 @@
         <button id="check" type="button">Controleer</button>
         <p id="result" role="status" aria-live="polite"></p>
       </div>
+      </div>
+      <section id="earned" class="earned" aria-labelledby="earned-title" hidden>
+        <div class="confetti" aria-hidden="true">✦ · ✧ · ✦ · ✧ · ✦</div>
+        <div class="seal" aria-hidden="true">★</div>
+        <p class="eyebrow">Opdracht afgerond</p>
+        <h2 id="earned-title" tabindex="-1">Certificaat behaald!</h2>
+        <p>Gefeliciteerd! Je hebt alle stellingen in de juiste kolommen geplaatst.</p>
+        <p id="earned-score" class="earned-score"></p>
+        <form id="certificate-form">
+          <label for="student-name">Naam</label>
+          <input id="student-name" name="studentName" autocomplete="name" maxlength="100" required>
+          <label for="student-class">Klas</label>
+          <input id="student-class" name="studentClass" autocomplete="off" maxlength="60" required>
+          <button id="download" type="submit">Download mijn JSON-certificaat</button>
+        </form>
+        <p class="hint">Lever het gedownloade JSON-bestand in bij je opdracht.</p>
+        <button id="restart" class="secondary" type="button">Opnieuw doen</button>
+      </section>
     </div>
     <p id="status" role="alert"></p>
   </main>
