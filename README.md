@@ -287,7 +287,7 @@ Het veld beschrijft de mogelijkheid van de tool, niet de actuele status van een 
 
 ## Opdrachtcertificaat (v1)
 
-Nieuwe tool: `public_html/types/opdrachtcertificaat/v1/`. Verzamelt de succesvolle afrondingen van een expliciete lijst oefeningen op dezelfde pagina. Na alle afrondingen vult de student naam en klas in en downloadt een Ed25519-ondertekend JSON-certificaat. De negen bestaande beoordeelbare tools werken samen via gedeelde completion-/berichtcode binnen hun huidige versie. Zonder actieve certificaattool blijven ze zelfstandig werken.
+Nieuwe tool: `public_html/types/opdrachtcertificaat/v1/`. Verzamelt de succesvolle afrondingen van een expliciete lijst oefeningen op dezelfde pagina. Na alle afrondingen vult de student naam en klas in en downloadt een Ed25519-ondertekend JSON-certificaat. De negen bestaande beoordeelbare tools werken samen via gedeelde completion-/berichtcode binnen hun huidige versie. Die berichtcode werkt ook op HTTP-ontwikkelhosts: als `crypto.randomUUID()` ontbreekt, maakt `crypto.getRandomValues()` de unieke bericht-ID. Zonder actieve certificaattool blijven ze zelfstandig werken.
 
 Zie [inrichting, iframe-contract en automatisch nakijken](docs/opdrachtcertificaat.md). Eenmalige private serverinrichting is nodig voor uitgifte. De tool zelf heeft `supportsCompletion: false`, omdat hij resultaten verzamelt en niet als vereiste oefening in zijn eigen opdrachtenlijst mag komen. `outputs` bevat `json`. De voorbeeldles staat op `/types/opdrachtcertificaat/v1/demo.html`.
 
