@@ -1,0 +1,1 @@
+Wanneer code in de `main` branch gewijzigd wordt en deze wijzigingen via een `commit` en `push` bij GitLab terecht komen start er een `test` en vervolgens een `deploy` pipeline die de code op de productieomgeving zal installeren. Het kan enkele minuten op zich laten wachten voordat de code online komt. Mocht je hierop wachten, geef dit dan even door.  
