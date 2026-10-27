@@ -9,6 +9,7 @@ const columnsEl = document.getElementById('columns');
 const resultEl = document.getElementById('result');
 const statusEl = document.getElementById('status');
 const checkEl = document.getElementById('check');
+const resetEl = document.getElementById('reset');
 const boardEl = document.getElementById('board');
 const earnedEl = document.getElementById('earned');
 const earnedScoreEl = document.getElementById('earned-score');
@@ -21,6 +22,32 @@ let dragging = null;
 let completion = null;
 let resultSnapshot = null;
 let resultStorageKey = null;
+let placementsStorageKey = null;
+
+function storePlacements(value = placements) {
+  if (!placementsStorageKey) return;
+  try {
+    if (value) localStorage.setItem(placementsStorageKey, JSON.stringify(value.map((column) => [...column])));
+    else localStorage.removeItem(placementsStorageKey);
+  } catch {
+    statusEl.textContent = 'Je browser kan je voortgang niet bewaren. Houd deze pagina open tot je klaar bent.';
+  }
+}
+
+function savedPlacements() {
+  if (!placementsStorageKey) return null;
+  try {
+    const saved = JSON.parse(localStorage.getItem(placementsStorageKey));
+    if (!Array.isArray(saved) || saved.length !== config.columns.length ||
+        saved.some((column) => !Array.isArray(column) || column.some((index) =>
+          !Number.isInteger(index) || index < 0 || index >= config.statements.length))) return null;
+    return saved.map((column) => new Set(column));
+  } catch { return null; }
+}
+
+function placementCount(index) {
+  return placements.reduce((count, column) => count + Number(column.has(index)), 0);
+}
 
 function storeResult(value) {
   if (!resultStorageKey) return;
@@ -80,7 +107,13 @@ function makeStatement(index, columnIndex = null) {
   button.type = 'button';
   button.className = 'statement';
   button.textContent = config.statements[index].label;
-  button.draggable = true;
+  const usedUp = columnIndex === null && placementCount(index) >= config.statements[index].correctColumns.length;
+  button.draggable = !usedUp;
+  if (usedUp) {
+    button.disabled = true;
+    button.classList.add('used-up');
+    button.title = 'Al in het maximale aantal kolommen geplaatst. Verwijder eerst een plaatsing om deze stelling te verplaatsen.';
+  }
   button.dataset.statement = String(index);
   if (columnIndex !== null) button.dataset.column = String(columnIndex);
   if (selected === index && columnIndex === null) button.classList.add('selected');
@@ -103,9 +136,12 @@ function makeStatement(index, columnIndex = null) {
 }
 
 function place(statementIndex, columnIndex, from = null) {
+  if (from === null && !placements[columnIndex].has(statementIndex) &&
+      placementCount(statementIndex) >= config.statements[statementIndex].correctColumns.length) return;
   if (from !== null && from !== columnIndex) placements[from].delete(statementIndex);
   placements[columnIndex].add(statementIndex);
   selected = null;
+  storePlacements();
   clearFeedback();
   render();
 }
@@ -141,6 +177,7 @@ function render() {
       remove.addEventListener('click', (event) => {
         event.stopPropagation();
         placements[columnIndex].delete(statementIndex);
+        storePlacements();
         clearFeedback();
         render();
       });
@@ -197,7 +234,7 @@ checkEl.addEventListener('click', () => {
     column.appendChild(feedbackEl);
     if (state === 'correct') correct++;
   });
-  resultEl.textContent = `${correct} van ${config.columns.length} kolommen goed.`;
+  resultEl.textContent = `${correct} van ${config.columns.length} kolommen goed.${correct < config.columns.length ? ' Kijk naar de niet-grijze stellingen: sommige horen in meerdere kolommen.' : ''}`;
   if (correct === config.columns.length) {
     resultSnapshot = {
       completedAt: new Date().toISOString(),
@@ -245,10 +282,18 @@ certificateFormEl.addEventListener('submit', (event) => {
   setTimeout(() => URL.revokeObjectURL(url), 30000);
 });
 
-restartEl.addEventListener('click', () => {
+function resetExercise() {
+  if (completion?.cooldownActive) return;
+  storePlacements(null);
   if (completion) completion.reset();
-  else location.reload();
-});
+  else {
+    storeResult(null);
+    location.reload();
+  }
+}
+
+resetEl.addEventListener('click', resetExercise);
+restartEl.addEventListener('click', resetExercise);
 
 async function init() {
   try {
@@ -257,7 +302,8 @@ async function init() {
     config = validate(await response.json());
     titleEl.textContent = config.title || 'Sleep naar de juiste kant';
     descriptionEl.textContent = config.description || 'Sleep de stellingen naar de juiste kolommen.';
-    placements = config.columns.map(() => new Set());
+    placementsStorageKey = `learning-tools:placements:sleep-naar-de-juiste-kant:v1:${JSON.stringify([uniqueId || 'standalone', new URL(dataUrl, location.href).toString(), config.columns, config.statements])}`;
+    placements = savedPlacements() || config.columns.map(() => new Set());
     render();
     exerciseEl.hidden = false;
     if (uniqueId) {
@@ -272,6 +318,7 @@ async function init() {
         containerEl: exerciseEl,
         standalone: false,
         onReset: () => {
+          storePlacements(null);
           storeResult(null);
           location.reload();
         }

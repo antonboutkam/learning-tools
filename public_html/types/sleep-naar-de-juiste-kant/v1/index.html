@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sleep naar de juiste kant</title>
   <link rel="stylesheet" href="/shared/ui.css">
-  <link rel="stylesheet" href="style.css?v=20261026-certificate">
+  <link rel="stylesheet" href="style.css?v=20261026-state">
   <script src="/shared/certificate-channel.js" defer></script>
   <script src="/shared/completion.js" defer></script>
-  <script src="app.js?v=20261026-certificate" defer></script>
+  <script src="app.js?v=20261026-state" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -18,12 +18,13 @@
       <div id="board">
       <section class="pool" aria-labelledby="pool-title">
         <h2 id="pool-title">Stellingen</h2>
-        <p class="hint">Sleep een stelling naar een kolom. Een stelling mag in meerdere kolommen staan. Je kunt ook een stelling aanklikken en daarna een kolom kiezen.</p>
+        <p class="hint">Sleep een stelling naar een kolom. Een stelling mag in meerdere kolommen staan. Een grijze stelling is al zo vaak geplaatst als mogelijk. Je kunt ook een stelling aanklikken en daarna een kolom kiezen.</p>
         <div id="statements" class="statement-list"></div>
       </section>
       <div id="columns" class="columns"></div>
       <div class="actions">
         <button id="check" type="button">Controleer</button>
+        <button id="reset" class="reset" type="button">Reset</button>
         <p id="result" role="status" aria-live="polite"></p>
       </div>
       </div>
@@ -42,7 +43,7 @@
           <button id="download" type="submit">Download mijn JSON-certificaat</button>
         </form>
         <p class="hint">Lever het gedownloade JSON-bestand in bij je opdracht.</p>
-        <button id="restart" class="secondary" type="button">Opnieuw doen</button>
+        <button id="restart" class="secondary" type="button">Reset en opnieuw doen</button>
       </section>
     </div>
     <p id="status" role="alert"></p>

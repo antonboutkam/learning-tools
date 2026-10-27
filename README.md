@@ -58,6 +58,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Data-schema en voorbeeld: `schema.json` en `example.json` in dezelfde map.
   - Configureer unieke kolomopschriften via `columns` en per stelling een `label` en een of meer exacte kolomopschriften in `correctColumns`. Stellingen kunnen in meerdere kolommen staan; Controleer kleurt complete juiste kolommen groen, onvolledige kolommen amber en kolommen met een fout geplaatste stelling rood.
   - Na een volledig juist antwoord verschijnt een afrondscherm. Studenten vullen naam en klas in en downloaden een JSON-resultaat om in te leveren. Dit losse resultaat wordt in de browser gemaakt en is niet serverondertekend.
+  - De kolomindeling wordt per toolinstantie lokaal bewaard. Reset wist de indeling en begint opnieuw. Een stelling in de voorraad wordt grijs zodra zij in het maximaal toegestane aantal kolommen is geplaatst.
 
 - Pubquiz yes/no (v1)
   - Pad: `public_html/types/pubquiz-yes-no/v1/`
