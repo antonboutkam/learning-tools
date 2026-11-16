@@ -2,11 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/types/strip-ballonnetjes/v1/schema.json",
   "title": "Strip ballonnetjes v1",
-  "description": "Toon één of meer (strip)afbeeldingen met spraak-, gedachte- en vraagballonnen die je met x/y coördinaten positioneert.",
+  "description": "Toon (strip)afbeeldingen met spraak-, gedachte- en vraagballonnen en rechthoekige vertelteksten voor achtergrondinformatie.",
   "supportsCompletion": false,
   "outputs": [],
   "type": "object",
-  "required": ["pages"],
+  "required": [
+    "pages"
+  ],
   "additionalProperties": false,
   "properties": {
     "unique_id": {
@@ -35,12 +37,14 @@
     "pages": {
       "type": "array",
       "title": "Pagina’s",
-      "description": "Elke pagina bestaat uit een afbeelding en één of meer spraak-, gedachte- of vraagballonnen.",
+      "description": "Elke pagina bestaat uit een afbeelding met optionele ballonnen en rechthoekige vertelteksten.",
       "minItems": 1,
       "items": {
         "type": "object",
         "title": "Pagina",
-        "required": ["image"],
+        "required": [
+          "image"
+        ],
         "additionalProperties": false,
         "properties": {
           "title": {
@@ -68,11 +72,16 @@
           "bubbles": {
             "type": "array",
             "title": "Ballonnen",
-            "description": "Optionele tekstballonnen op de pagina. Coördinaten zijn in pixels t.o.v. `designWidth` (of naturalWidth als die ontbreekt).",
+            "description": "Tekstballonnen en vertelteksten op de pagina. Coördinaten zijn in pixels ten opzichte van designWidth (of naturalWidth).",
             "items": {
               "type": "object",
               "title": "Ballon",
-              "required": ["text", "x", "y", "tail"],
+              "required": [
+                "text",
+                "x",
+                "y",
+                "tail"
+              ],
               "additionalProperties": false,
               "properties": {
                 "text": {
@@ -82,10 +91,20 @@
                 },
                 "type": {
                   "type": "string",
-                  "title": "Soort ballon",
-                  "description": "Kies een spraakballon, een gedachteballon als wolkje of een vraagballon met een invulveld onder in het scherm.",
-                  "enum": ["spraak", "gedachte", "vraag"],
-                  "enumNames": ["Spraak", "Gedachte", "Vraag"],
+                  "title": "Soort tekstvak",
+                  "description": "Kies een spraak-, gedachte- of vraagballon, of een rechthoekige verteltekst zonder staart voor verhaal- en achtergrondinformatie.",
+                  "enum": [
+                    "spraak",
+                    "gedachte",
+                    "vraag",
+                    "verteltekst"
+                  ],
+                  "enumNames": [
+                    "Spraak",
+                    "Gedachte",
+                    "Vraag",
+                    "Verteltekst"
+                  ],
                   "default": "spraak"
                 },
                 "variable": {
@@ -124,20 +143,50 @@
                 "tail": {
                   "type": "string",
                   "title": "Richting",
-                  "enum": ["left", "right", "none", "links", "rechts"],
+                  "enum": [
+                    "left",
+                    "right",
+                    "none",
+                    "links",
+                    "rechts"
+                  ],
                   "description": "Aan welke kant het puntige staartje of de gedachtebolletjes staan. Een vraagballon gebruikt dezelfde puntige vorm als een spraakballon. `links`/`rechts` worden ook geaccepteerd."
+                },
+                "position": {
+                  "title": "Positie verteltekst",
+                  "description": "Alleen voor verteltekst: vrij gebruikt x/y; linksboven en rechtsboven sluiten aan op de bovenhoeken van de afbeelding en gebruiken width. Onderaan sluit over de hele afbeeldingsbreedte aan op de onderrand en negeert width. Bij vaste posities worden x/y genegeerd.",
+                  "type": "string",
+                  "enum": [
+                    "vrij",
+                    "linksboven",
+                    "rechtsboven",
+                    "onderaan"
+                  ],
+                  "enumNames": [
+                    "Vrij (x/y)",
+                    "Linksboven",
+                    "Rechtsboven",
+                    "Onderaan (volle breedte)"
+                  ],
+                  "default": "vrij"
                 }
               },
               "allOf": [
                 {
                   "if": {
                     "properties": {
-                      "type": { "const": "vraag" }
+                      "type": {
+                        "const": "vraag"
+                      }
                     },
-                    "required": ["type"]
+                    "required": [
+                      "type"
+                    ]
                   },
                   "then": {
-                    "required": ["variable"]
+                    "required": [
+                      "variable"
+                    ]
                   }
                 }
               ]

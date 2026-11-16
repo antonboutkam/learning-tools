@@ -11,13 +11,17 @@
     <header class="top">
       <div class="top__row">
         <div class="title" id="title">Strip ballonnetjes</div>
-        <div class="nav" id="nav" hidden>
-          <button class="nav__btn" id="prev" type="button">Vorige</button>
-          <div class="nav__meta" id="pageMeta"></div>
-          <button class="nav__btn" id="next" type="button">Volgende</button>
+        <div class="top__actions">
+          <div class="nav" id="nav" hidden>
+            <button class="nav__btn" id="prev" type="button">Vorige</button>
+            <div class="nav__meta" id="pageMeta"></div>
+            <button class="nav__btn" id="next" type="button">Volgende</button>
+          </div>
+          <button class="nav__btn" id="fullscreen" type="button" aria-pressed="false">Volledig scherm</button>
         </div>
       </div>
       <div class="hint" id="hint"></div>
+      <div class="hint error" id="fullscreenStatus" role="status" hidden></div>
     </header>
     <div class="pages" id="pages"></div>
     <div class="answers" id="answers" hidden></div>

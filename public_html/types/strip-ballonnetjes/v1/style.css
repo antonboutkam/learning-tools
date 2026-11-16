@@ -36,6 +36,7 @@ body {
 
 .top__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -49,6 +50,20 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.nav[hidden] { display: none; }
+
+.top__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav__btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 .nav__meta {
@@ -209,6 +224,12 @@ body.mode-all-pages .answers {
   position: relative;
   z-index: 2;
   display: block;
+}
+
+.bubble[data-type="narration"] {
+  border-radius: 0;
+  background: #fff7d6;
+  box-shadow: none;
 }
 
 .bubble:is([data-type="speech"], [data-type="question"])[data-tail="left"]::after,

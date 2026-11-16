@@ -318,9 +318,11 @@
         "Spraak-, gedachte- en vraagballonnen",
         "Positie per afbeelding",
         "Meerdere pagina's",
-        "Variabelen in vervolgtekst"
+        "Variabelen in vervolgtekst",
+        "Volledig scherm met behoud van pagina en antwoorden",
+        "Rechthoekige verteltekst: vrij, linksboven, rechtsboven of onderaan"
       ],
-      "implementatie": "tool.js rendert pagina's en ballonnen. Antwoorden worden per unique_id in localStorage bewaard en kunnen als {{variabele}} terugkomen.",
+      "implementatie": "tool.js rendert pagina's en ballonnen. Antwoorden worden per unique_id in localStorage bewaard en kunnen als {{variabele}} terugkomen. De knop Volledig scherm gebruikt de Fullscreen API voor alleen het tooldocument, zonder herladen. Sluiten kan via de knop of Escape. Een insluitend iframe moet fullscreen toestaan via allow=\"fullscreen\" of allowfullscreen; bij blokkering verschijnt een melding. Verteltekst gebruikt type verteltekst en optioneel position: vrij, linksboven, rechtsboven of onderaan. Onderaan vult de afbeeldingsbreedte; vertelteksten hebben rechte hoeken en geen staart.",
       "api": "Statische iframe-API; geen eigen server-endpoint of score-passback."
     },
     "timeline/v1": {

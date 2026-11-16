@@ -7,6 +7,8 @@
   const nextBtn = document.getElementById("next");
   const pageMetaEl = document.getElementById("pageMeta");
   const answersEl = document.getElementById("answers");
+  const fullscreenBtn = document.getElementById("fullscreen");
+  const fullscreenStatusEl = document.getElementById("fullscreenStatus");
 
   const params = new URLSearchParams(window.location.search);
   const dataUrl = params.get("data") || "";
@@ -76,6 +78,7 @@
 
   const normalizeBubbleType = (value) => {
     const v = String(value || "").toLowerCase();
+    if (v === "verteltekst") return "narration";
     if (v === "gedachte" || v === "thought") return "thought";
     if (v === "vraag" || v === "question") return "question";
     return "speech";
@@ -225,6 +228,24 @@
       const y = toNum(b.dataset.y, 0);
       const w = Math.max(40, toNum(b.dataset.w, 220));
       b.style.top = `${Math.round(y * scale)}px`;
+      b.style.bottom = "";
+
+      if (b.dataset.type === "narration") {
+        const position = b.dataset.position;
+        const width = Math.min(renderedWidth, isFullWidth ? renderedWidth : w * scale);
+        b.style.width = `${Math.round(width)}px`;
+        b.style.left = `${Math.round(x * scale)}px`;
+        if (position === "linksboven" || position === "rechtsboven") {
+          b.style.top = "0px";
+          b.style.left = position === "rechtsboven" ? `${Math.round(renderedWidth - width)}px` : "0px";
+        } else if (position === "onderaan") {
+          b.style.top = "auto";
+          b.style.bottom = "0px";
+          b.style.left = "0px";
+          b.style.width = `${Math.round(renderedWidth)}px`;
+        }
+        return;
+      }
 
       if (isFullWidth) {
         b.style.left = `${Math.round(-sideOffset)}px`;
@@ -276,6 +297,7 @@
       const el = document.createElement("div");
       el.className = "bubble";
       el.dataset.type = normalizeBubbleType(bubble.type);
+      el.dataset.position = String(bubble.position || "vrij");
 
       const textEl = document.createElement("span");
       textEl.className = "bubble__text";
@@ -408,6 +430,38 @@
   };
 
   load();
+
+  const updateFullscreenButton = () => {
+    if (!fullscreenBtn) return;
+    const active = document.fullscreenElement === document.documentElement;
+    fullscreenBtn.textContent = active ? "Volledig scherm sluiten" : "Volledig scherm";
+    fullscreenBtn.setAttribute("aria-pressed", String(active));
+  };
+
+  if (fullscreenBtn) fullscreenBtn.addEventListener("click", async () => {
+    fullscreenStatusEl.hidden = true;
+    fullscreenBtn.disabled = true;
+    try {
+      if (document.fullscreenElement === document.documentElement) {
+        await document.exitFullscreen();
+      } else if (document.documentElement.requestFullscreen && document.fullscreenEnabled) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        throw new Error("Fullscreen unavailable");
+      }
+    } catch (_) {
+      fullscreenStatusEl.textContent = "Volledig scherm is niet beschikbaar of wordt geblokkeerd. Open de tool rechtstreeks of laat volledig scherm toestaan voor het iframe.";
+      fullscreenStatusEl.hidden = false;
+    } finally {
+      fullscreenBtn.disabled = false;
+      updateFullscreenButton();
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    updateFullscreenButton();
+    window.requestAnimationFrame(() => relayout());
+  });
 
   window.addEventListener("resize", () => relayout());
 

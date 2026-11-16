@@ -7,8 +7,25 @@
       "image": "./panel-1.svg",
       "designWidth": 1200,
       "bubbles": [
-        { "text": "Hoi!", "type": "spraak", "x": 110, "y": 90, "width": 240, "tail": "left" },
-        { "text": "Hoe heet jij?", "type": "vraag", "variable": "naam", "placeholder": "Vul je naam in", "defaultValue": "Alex", "x": 740, "y": 180, "width": 340, "tail": "right" }
+        {
+          "text": "Hoi!",
+          "type": "spraak",
+          "x": 110,
+          "y": 90,
+          "width": 240,
+          "tail": "left"
+        },
+        {
+          "text": "Hoe heet jij?",
+          "type": "vraag",
+          "variable": "naam",
+          "placeholder": "Vul je naam in",
+          "defaultValue": "Alex",
+          "x": 740,
+          "y": 180,
+          "width": 340,
+          "tail": "right"
+        }
       ]
     },
     {
@@ -16,9 +33,30 @@
       "image": "./panel-2.svg",
       "designWidth": 1200,
       "bubbles": [
-        { "text": "Leuk je te ontmoeten, {{naam}}!", "type": "spraak", "x": 140, "y": 170, "width": 360, "tail": "left" },
-        { "text": "Wat een mooie naam heeft {{naam}}.", "type": "gedachte", "x": 680, "y": 320, "width": 380, "tail": "right" },
-        { "text": "Dit ballonnetje gebruikt geen width en pakt full-width.", "x": 0, "y": 20, "tail": "none" }
+        {
+          "text": "Leuk je te ontmoeten, {{naam}}!",
+          "type": "spraak",
+          "x": 140,
+          "y": 170,
+          "width": 360,
+          "tail": "left"
+        },
+        {
+          "text": "Wat een mooie naam heeft {{naam}}.",
+          "type": "gedachte",
+          "x": 680,
+          "y": 320,
+          "width": 380,
+          "tail": "right"
+        },
+        {
+          "text": "Even later: het gesprek gaat verder.",
+          "type": "verteltekst",
+          "position": "onderaan",
+          "x": 0,
+          "y": 0,
+          "tail": "none"
+        }
       ]
     }
   ]

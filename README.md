@@ -76,6 +76,8 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/strip-ballonnetjes/v1/example.json`
   - Ondersteunt spraakballonnen met een puntig staartje, gedachteballonnen als wolkje en vraagballonnen met een opgeslagen antwoordveld.
   - Gebruik bij een vraag een variabelenaam zoals `naam`; plaats het antwoord daarna met `{{naam}}` in teksten op vervolgpagina’s.
+  - De knop **Volledig scherm** vergroot alleen de tool; sluit met dezelfde knop of Escape. Pagina en antwoorden blijven behouden. Geef een insluitend iframe `allow="fullscreen"` (of `allowfullscreen`); de browser en bovenliggende pagina moeten volledig scherm toestaan.
+  - Gebruik `type: "verteltekst"` voor een lichtgeel rechthoekig vertelvak zonder staart. Met `position` kies je `linksboven`, `rechtsboven` of `onderaan` (volle afbeeldingsbreedte, tegen de onderrand). Standaard gebruikt `vrij` de bestaande `x`/`y`-coördinaten; bij vaste posities worden die genegeerd. `width` bepaalt de breedte bovenaan.
 
 - Notities (v1)
   - Pad: `public_html/types/notities/v1/`
