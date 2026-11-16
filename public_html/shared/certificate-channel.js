@@ -6,7 +6,10 @@
   const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
   const remove = key => { try { localStorage.removeItem(key); } catch {} };
   function peer(onMessage) {
-    const id = crypto.randomUUID();
+    // randomUUID is unavailable on HTTP development origins; getRandomValues works there.
+    const id = typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : Array.from(crypto.getRandomValues(new Uint8Array(16)), byte => byte.toString(16).padStart(2, '0')).join('');
     const send = (target, event, payload) => {
       try { target.postMessage({ protocol, sender: id, event, payload }, location.origin); } catch {}
     };

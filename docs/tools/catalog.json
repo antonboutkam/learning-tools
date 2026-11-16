@@ -439,6 +439,21 @@
       ],
       "implementatie": "Standalone app.js met veilige tekstweergave. Relatieve afbeeldings- en bronpaden worden opgelost ten opzichte van de geladen JSON-URL. Bij meerdere antwoorden moet de selectie exact kloppen; elke vraag telt even zwaar.",
       "api": "Laadt ?data=<JSON-URL>; zonder data wordt example.json getoond. Optioneel unique_id activeert shared/completion.js en het certificaatprotocol. Geen Canvas-score-passback. Een nieuwsbericht wordt als tekst in de configuratie opgenomen; bronUrl is een link en haalt geen artikel op."
+    },
+    "stappenplan/v1": {
+      "toepassingen": [
+        "Stapsgewijze instructie",
+        "Visuele handleiding"
+      ],
+      "features": [
+        "Eén afbeelding en uitleg per stap",
+        "Automatische stapnummering",
+        "Vorige en Volgende",
+        "Navigatie met pijltjestoetsen",
+        "Alt-tekst en melding bij ontbrekende afbeelding"
+      ],
+      "implementatie": "app.js laadt de JSON-configuratie en toont één stap tegelijk. Relatieve afbeeldingspaden worden opgelost ten opzichte van de geladen JSON-URL. De eerste en laatste stap begrenzen de navigatie.",
+      "api": "Statische iframe-API via ?data=<json-url>; geen eigen server-endpoint of score-passback."
     }
   }
 }

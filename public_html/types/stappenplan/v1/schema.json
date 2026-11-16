@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learning-tools.devroc.nl/types/stappenplan/v1/schema.json",
+  "title": "Stappenplan v1",
+  "description": "Toon per stap een afbeelding, automatisch stapnummer en uitleg. De student doorloopt het stappenplan met Vorige en Volgende.",
+  "outputs": [],
+  "type": "object",
+  "required": [
+    "stappen"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "titel": {
+      "title": "Titel",
+      "description": "Optionele titel boven het stappenplan.",
+      "type": "string"
+    },
+    "stappen": {
+      "title": "Stappen",
+      "description": "De stappen in de volgorde waarin de student ze doorloopt.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Stap",
+        "description": "Een afbeelding met bijbehorende uitleg. Het stapnummer wordt automatisch bepaald.",
+        "type": "object",
+        "required": [
+          "afbeelding",
+          "beschrijving"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "afbeelding": {
+            "title": "Afbeelding",
+            "description": "URL naar de afbeelding (svg/jpeg/png/webp). Relatieve paden worden opgelost ten opzichte van de geladen JSON-configuratie.",
+            "type": "string",
+            "format": "image",
+            "minLength": 1
+          },
+          "alt": {
+            "title": "Alt-tekst",
+            "description": "Beschrijving van de afbeelding voor studenten die een screenreader gebruiken.",
+            "type": "string"
+          },
+          "beschrijving": {
+            "title": "Uitleg of beschrijving",
+            "description": "Uitleg bij deze stap. Nieuwe regels blijven zichtbaar; de tekst wordt als gewone tekst getoond.",
+            "type": "string",
+            "format": "textarea",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

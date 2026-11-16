@@ -1,0 +1,6 @@
+{
+  "keyId": "vervang-door-key-id-uit-setup",
+  "secretKeyFile": "/srv/learning-tools-certificates/secret.key",
+  "recordDir": "/srv/learning-tools-certificates/records",
+  "manifestDir": "/srv/learning-tools-certificates/manifests"
+}

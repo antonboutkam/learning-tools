@@ -34,9 +34,15 @@ PHP 8.1+ met Sodium, schrijfrechten voor de private opslag en HTTPS in productie
 
 Maak een **nieuwe map buiten alle webroots**. Laat het PHP-serviceaccount de bestanden lezen en de recordsmap beschrijven; de setup maakt mappen met 0700 en bestanden met 0600. Gebruik geen publieke map, Git-repository of gedeelde tijdelijke map voor echte sleutels en persoonsgegevens.
 
+Een [voorbeeld van de private configuratie](examples/opdrachtcertificaat-private-config.example.json) laat de vier benodigde velden zien. Zet de echte `config.json` bijvoorbeeld in `/srv/learning-tools-certificates/config.json`, buiten `public_html` en buiten de repository. Gebruik de `keyId` die bij de echte ondertekeningssleutel hoort. Kopieer het voorbeeld niet letterlijk: het bevat geen sleutel en de voorbeeldpaden moeten overeenkomen met de server. De setup hieronder genereert de sleutel, mappen en echte configuratie automatisch.
+
+De productie-API leest bij voorkeur het pad uit `LT_CERTIFICATE_CONFIG` in de PHP-serveromgeving. Zonder die instelling zoekt hij in `<deploy-root>/.private/opdrachtcertificaat/config.json`, waarbij `<deploy-root>` de map is die `public_html` bevat. Die fallback is ook buiten de webroot, maar moet op de server apart worden geplaatst: `.private` staat in `.gitignore` en komt niet mee met een code-deploy.
+
 ```sh
 php scripts/certificate-setup.php /veilig/privepad/learning-tools-certificates
 ```
+
+Voor een Linux-server kan dat bijvoorbeeld `php scripts/certificate-setup.php /srv/learning-tools-certificates` zijn. De bovenliggende map moet al bestaan; de doelmap mag nog niet bestaan. Plaats de manifesten daarna in de aangemaakte `manifests`-map als `<groupId>--<revision>.json`, met dezelfde inhoud als de lesconfiguratie. Zorg dat het PHP-serviceaccount `config.json`, `secret.key` en de manifesten kan lezen en naar `records` kan schrijven.
 
 Stel in de PHP-serveromgeving in:
 

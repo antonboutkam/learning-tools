@@ -316,6 +316,17 @@
         "Nieuwsberichten kritisch lezen"
       ],
       "documentatie": "versions/blikvanger/v1.md"
+    },
+    {
+      "id": "stappenplan",
+      "version": "v1",
+      "name": "Stappenplan",
+      "type": "planar-type",
+      "toepassingen": [
+        "Stapsgewijze instructie",
+        "Visuele handleiding"
+      ],
+      "documentatie": "versions/stappenplan/v1.md"
     }
   ]
 }

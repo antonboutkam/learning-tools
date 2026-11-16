@@ -53,6 +53,13 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/wat-hoort-bij-wat/v1/example.json`
   - Extra: ondersteunt configureerbare `title` + `description` (uitleg), shuffle van rechter- en linkerkolom, en afleiders in de rechterkolom via een `pairs` item met alleen `right` (zonder `left`)
 
+- Sleep naar de juiste kant (v1)
+  - Pad: `public_html/types/sleep-naar-de-juiste-kant/v1/`
+  - Data-schema en voorbeeld: `schema.json` en `example.json` in dezelfde map.
+  - Configureer unieke kolomopschriften via `columns` en per stelling een `label` en een of meer exacte kolomopschriften in `correctColumns`. Stellingen kunnen in meerdere kolommen staan; Controleer kleurt complete juiste kolommen groen, onvolledige kolommen amber en kolommen met een fout geplaatste stelling rood.
+  - Na een volledig juist antwoord verschijnt een afrondscherm. Studenten vullen naam en klas in en downloaden een JSON-resultaat om in te leveren. Dit losse resultaat wordt in de browser gemaakt en is niet serverondertekend.
+  - De kolomindeling wordt per toolinstantie lokaal bewaard. Reset wist de indeling en begint opnieuw. Een stelling in de voorraad wordt grijs zodra zij in het maximaal toegestane aantal kolommen is geplaatst.
+
 - Pubquiz yes/no (v1)
   - Pad: `public_html/types/pubquiz-yes-no/v1/`
   - Data‑schema: `public_html/types/pubquiz-yes-no/v1/schema.json`
@@ -69,6 +76,13 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Example: `public_html/types/digitaal-bericht/v2/example.json`
   - Kale terminal met `$` op iedere schermregel, herstelde tikfouten en tijdelijke puntjes. Geen afzenderblok of knoppen. Het scherm scrollt binnen de vaste iframehoogte. Bij verminderde beweging verschijnt de hele tekst direct.
   - Ondersteunt de bestaande tekstvelden en pipe/backspace-notatie. V1 blijft beschikbaar met de C64-weergave. De nieuwe registry-id is `digitaal-bericht-v2`, zodat beide versies apart te kiezen zijn.
+
+- Stappenplan (v1)
+  - Pad: `public_html/types/stappenplan/v1/`
+  - Data-schema: `public_html/types/stappenplan/v1/schema.json`
+  - Example: `public_html/types/stappenplan/v1/example.json`
+  - Extra: één afbeelding en beschrijving per stap, automatische nummering, Vorige/Volgende en pijltjestoetsen. Relatieve afbeeldingspaden zijn relatief aan de JSON-configuratie.
+  - De afbeelding vult de beschikbare breedte en de resterende iframehoogte, met behoud van de beeldverhouding en zonder uitsnijden. Langere uitleg blijft bereikbaar door te scrollen.
 
 - Strip ballonnetjes (v1)
   - Pad: `public_html/types/strip-ballonnetjes/v1/`
@@ -173,6 +187,7 @@ Gebruik de demo’s direct in de browser:
 - `/types/wat-hoort-bij-wat/v1/?unique_id=demo-koppelen-1&data=example.json`
 - `/types/pubquiz-yes-no/v1/?unique_id=demo-pubquiz-1&data=example.json`
 - `/types/digitaal-bericht/v1/?unique_id=demo-bericht-1&data=example.json`
+- `/types/stappenplan/v1/?data=example.json`
 - `/types/strip-ballonnetjes/v1/?unique_id=demo-strip-1&data=example.json`
 - `/types/notities/v1/?notitieblok_id=demo-notities-1&data=example.json`
 - `/types/timeline/v1/?unique_id=demo-timeline-1&data=example.json`
@@ -276,7 +291,7 @@ Het veld beschrijft de mogelijkheid van de tool, niet de actuele status van een 
 
 ## Opdrachtcertificaat (v1)
 
-Nieuwe tool: `public_html/types/opdrachtcertificaat/v1/`. Verzamelt de succesvolle afrondingen van een expliciete lijst oefeningen op dezelfde pagina. Na alle afrondingen vult de student naam en klas in en downloadt een Ed25519-ondertekend JSON-certificaat. De negen bestaande beoordeelbare tools werken samen via gedeelde completion-/berichtcode binnen hun huidige versie. Zonder actieve certificaattool blijven ze zelfstandig werken.
+Nieuwe tool: `public_html/types/opdrachtcertificaat/v1/`. Verzamelt de succesvolle afrondingen van een expliciete lijst oefeningen op dezelfde pagina. Na alle afrondingen vult de student naam en klas in en downloadt een Ed25519-ondertekend JSON-certificaat. De negen bestaande beoordeelbare tools werken samen via gedeelde completion-/berichtcode binnen hun huidige versie. Die berichtcode werkt ook op HTTP-ontwikkelhosts: als `crypto.randomUUID()` ontbreekt, maakt `crypto.getRandomValues()` de unieke bericht-ID. Zonder actieve certificaattool blijven ze zelfstandig werken.
 
 Zie [inrichting, iframe-contract en automatisch nakijken](docs/opdrachtcertificaat.md). Eenmalige private serverinrichting is nodig voor uitgifte. De tool zelf heeft `supportsCompletion: false`, omdat hij resultaten verzamelt en niet als vereiste oefening in zijn eigen opdrachtenlijst mag komen. `outputs` bevat `json`. De voorbeeldles staat op `/types/opdrachtcertificaat/v1/demo.html`.
 
