@@ -443,17 +443,21 @@
     "stappenplan/v1": {
       "toepassingen": [
         "Stapsgewijze instructie",
-        "Visuele handleiding"
+        "Visuele handleiding",
+        "Analogie en code naast elkaar"
       ],
       "features": [
-        "Eén afbeelding en uitleg per stap",
+        "Uitleg met optionele afbeelding en/of code per stap",
         "Automatische stapnummering",
         "Vorige en Volgende",
         "Navigatie met pijltjestoetsen",
-        "Alt-tekst en melding bij ontbrekende afbeelding"
+        "Alt-tekst en melding bij ontbrekende afbeelding",
+        "Tweerichtingssynchronisatie via synchronisatieGroep binnen dezelfde browser en opslagpartitie",
+        "JavaScript-syntaxkleuren; andere taalnamen met ongekleurde weergave",
+        "Letterlijke codefragmenten vet markeren via code.nadruk"
       ],
-      "implementatie": "app.js laadt de JSON-configuratie en toont één stap tegelijk. Relatieve afbeeldingspaden worden opgelost ten opzichte van de geladen JSON-URL. De eerste en laatste stap begrenzen de navigatie.",
-      "api": "Statische iframe-API via ?data=<json-url>; geen eigen server-endpoint of score-passback."
+      "implementatie": "app.js toont één stap tegelijk. Bestaande configuraties met afbeeldingen blijven geldig; afbeelding is nu optioneel. code bevat taal, bron en optioneel nadruk (letterlijke fragmenten, alle voorkomens). code.js maakt veilige DOM-tekst met uitbreidbare tokenizers; JavaScript krijgt basiskleuren voor trefwoorden, strings, commentaar, getallen en vaste waarden. Templates worden als één string gekleurd. Onbekende talen blijven ongekleurd. Code wordt niet uitgevoerd. Relatieve afbeeldingen worden opgelost ten opzichte van de JSON-URL. sync.js koppelt instanties met dezelfde synchronisatieGroep via BroadcastChannel binnen dezelfde tool-origin en browseropslagpartitie. Beide instanties moeten evenveel stappen hebben; nieuwe instanties vragen de huidige stap op. Er is geen synchronisatie tussen apparaten. Zie types/stappenplan/v1/demo.html voor een gekoppeld voorbeeld en types/stappenplan/v1/example-afbeeldingen.json voor het oorspronkelijke afbeeldingsvoorbeeld.",
+      "api": "Statische iframe-API via ?data=<json-url>; geen eigen server-endpoint of score-passback. Zet synchronisatieGroep in beide JSON-configuraties op dezelfde, per les unieke naam. Stap 1 volgt stap 1, enzovoort. Zonder groep blijft de tool zelfstandig."
     }
   }
 }

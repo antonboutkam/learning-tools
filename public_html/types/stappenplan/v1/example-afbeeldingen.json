@@ -1,0 +1,20 @@
+{
+  "titel": "Een papieren vliegtuig vouwen",
+  "stappen": [
+    {
+      "afbeelding": "images/stap-1.svg",
+      "alt": "Een vel papier met een verticale vouwlijn in het midden.",
+      "beschrijving": "Leg een vel papier voor je neer. Vouw het in de lengte dubbel en open het weer. De vouwlijn helpt je bij de volgende stap."
+    },
+    {
+      "afbeelding": "images/stap-2.svg",
+      "alt": "De twee bovenste hoeken zijn naar de middenlijn gevouwen.",
+      "beschrijving": "Vouw beide bovenste hoeken naar de middenlijn. Zorg dat de randen netjes op elkaar aansluiten."
+    },
+    {
+      "afbeelding": "images/stap-3.svg",
+      "alt": "Een gevouwen papieren vliegtuig met twee vleugels.",
+      "beschrijving": "Vouw het papier dubbel langs de middenlijn en vouw de vleugels naar beneden. Je vliegtuig is klaar om te testen!"
+    }
+  ]
+}

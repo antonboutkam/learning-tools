@@ -78,6 +78,45 @@ if [[ $status != 200 ]] || ! php -r '$v=json_decode(file_get_contents($argv[1]),
   exit 1
 fi
 rm -f "$response"
+read -r -p 'URL of absoluut bestandspad van de echte certificaatconfiguratie (Enter om over te slaan): ' lesson
+if [[ -n $lesson ]]; then
+  lesson_file=$(mktemp)
+  if [[ $lesson == https://* ]]; then
+    curl --fail --silent --show-error --location --output "$lesson_file" "$lesson"
+  elif [[ $lesson == /* && -f $lesson ]]; then
+    cp "$lesson" "$lesson_file"
+  else
+    echo 'Gebruik een HTTPS-URL of bestaand absoluut bestandspad.' >&2; exit 1
+  fi
+  ids=$(php -r '
+    require $argv[2];
+    $m = json_decode(file_get_contents($argv[1]), true, 64, JSON_THROW_ON_ERROR);
+    $group = lt_id($m["groupId"] ?? null); $revision = lt_id($m["revision"] ?? null);
+    lt_text($m["title"] ?? null);
+    if (!isset($m["requiredTools"]) || !is_array($m["requiredTools"]) || !array_is_list($m["requiredTools"]) || count($m["requiredTools"]) < 1 || count($m["requiredTools"]) > 100) exit(1);
+    foreach ($m["requiredTools"] as $tool) { lt_id($tool["id"] ?? null); lt_text($tool["title"] ?? null); }
+    echo "$group $revision\n";
+  ' "$lesson_file" "$current/lib/certificates/service.php") || { echo 'Ongeldige lesconfiguratie.' >&2; exit 1; }
+  read -r group revision <<< "$ids"
+  target="$private/manifests/$group--$revision.json"
+  if [[ -e $target ]]; then
+    if ! cmp -s "$lesson_file" "$target"; then
+      echo "Manifest bestaat al met andere inhoud: $target. Kies een nieuwe revision of herstel dit handmatig." >&2; exit 1
+    fi
+  else
+    install -o "$webuser" -g "$(id -gn "$webuser")" -m 0600 "$lesson_file" "$target"
+  fi
+  rm -f "$lesson_file"
+  response=$(mktemp)
+  status=$(curl --silent --show-error --output "$response" --write-out '%{http_code}' \
+    --header 'Content-Type: application/json' \
+    --data "$(php -r 'echo json_encode(["action"=>"manifest", "groupId"=>$argv[1], "revision"=>$argv[2]]);' "$group" "$revision")" "$api") || status=000
+  if [[ $status != 200 ]]; then
+    echo "API-controle voor $group--$revision mislukt (HTTP $status)." >&2; exit 1
+  fi
+  rm -f "$response"
+  echo "Echt lesmanifest $group--$revision is via de API bereikbaar."
+fi
 echo "Gereed: HTTPS API geeft het demomanifest terug. Configuratie: $private/config.json"
 echo "Poolback-up: $backup"
 echo 'Plaats echte lesmanifesten in de manifests-map als <groupId>--<revision>.json.'

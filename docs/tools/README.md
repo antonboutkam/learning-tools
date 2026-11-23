@@ -10,6 +10,7 @@ Deze map bevat de gegenereerde, agentvriendelijke documentatie per toolversie. D
 
 - **Actieve woordenschat**: Jargonwoorden presenteren (v1)
 - **Algoritmes ontwerpen en vergelijken**: Feedlab (v1)
+- **Analogie en code naast elkaar**: Stappenplan (v1)
 - **Automatische presentatie**: Slide-show (v1)
 - **Beeld met getimede tekstlagen**: Slide-show (v1)
 - **Beeldsituaties beoordelen**: Goed of fout (v1), Blikvanger (v1)

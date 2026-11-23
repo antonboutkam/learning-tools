@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://learning-tools.devroc.nl/types/stappenplan/v1/schema.json",
   "title": "Stappenplan v1",
-  "description": "Toon per stap een afbeelding, automatisch stapnummer en uitleg. De student doorloopt het stappenplan met Vorige en Volgende.",
+  "description": "Toon stapsgewijze uitleg met optionele afbeeldingen en code. Koppel instanties om een analogie en code gelijktijdig te doorlopen, met JavaScript-kleuren en vetgedrukte codefragmenten.",
   "outputs": [],
   "type": "object",
   "required": [
@@ -22,10 +22,9 @@
       "minItems": 1,
       "items": {
         "title": "Stap",
-        "description": "Een afbeelding met bijbehorende uitleg. Het stapnummer wordt automatisch bepaald.",
+        "description": "Een stap met uitleg en optioneel een afbeelding, code of beide. Stappen worden op volgnummer gekoppeld.",
         "type": "object",
         "required": [
-          "afbeelding",
           "beschrijving"
         ],
         "additionalProperties": false,
@@ -48,9 +47,55 @@
             "type": "string",
             "format": "textarea",
             "minLength": 1
+          },
+          "code": {
+            "title": "Codevoorbeeld",
+            "description": "Optioneel codeblok. Code wordt uitsluitend getoond en wordt niet uitgevoerd.",
+            "type": "object",
+            "required": [
+              "taal",
+              "bron"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "taal": {
+                "title": "Programmeertaal",
+                "description": "Gebruik javascript (of js) voor JavaScript-kleuren. Andere taalnamen zijn toegestaan en tonen voorlopig ongekleurde code; extra kleurenschema’s kunnen later worden toegevoegd.",
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
+                "default": "javascript"
+              },
+              "bron": {
+                "title": "Broncode",
+                "description": "Letterlijke code met behoud van inspringing en nieuwe regels. Gebruik geen HTML of Markdown voor opmaak.",
+                "type": "string",
+                "format": "textarea",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "nadruk": {
+                "title": "Vetgedrukte codefragmenten",
+                "description": "Letterlijke fragmenten uit de broncode om vet en met achtergrond te tonen. Alle voorkomens worden gemarkeerd; overlappende fragmenten worden samengevoegd. De broncode blijft ongewijzigd.",
+                "type": "array",
+                "items": {
+                  "title": "Codefragment",
+                  "description": "Een exact fragment uit de broncode, inclusief eventuele spaties en nieuwe regels.",
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
           }
         }
       }
+    },
+    "synchronisatieGroep": {
+      "title": "Synchronisatiegroep",
+      "description": "Optioneel: geef gekoppelde instanties exact dezelfde unieke groepsnaam, bijvoorbeeld les-variabelen-1. Ze volgen elkaars stap in beide richtingen binnen dezelfde browser en opslagpartitie, vanaf dezelfde tool-origin (protocol, domein en poort). Gebruik evenveel stappen in beide instanties. Geen koppeling tussen apparaten.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     }
   }
 }

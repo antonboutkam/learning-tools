@@ -1,0 +1,15 @@
+{
+  "titel": "De koekjesdoos als analogie",
+  "synchronisatieGroep": "demo-voorraad-analogie",
+  "stappen": [
+    {
+      "beschrijving": "Je zet een doos met 3 koekjes in de kast. Op de doos plak je het etiket ‘voorraad’. Zo kun je de inhoud later terugvinden."
+    },
+    {
+      "beschrijving": "Je stopt er één koekje bij. Het etiket blijft hetzelfde, maar er zitten nu 4 koekjes in de doos."
+    },
+    {
+      "beschrijving": "Je kijkt of de doos meer dan 0 koekjes bevat. Als dat zo is, zeg je: ‘Er zijn koekjes!’."
+    }
+  ]
+}

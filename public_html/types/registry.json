@@ -328,7 +328,7 @@
       "launchUrl": "/types/stappenplan/v1/",
       "schemaUrl": "/types/stappenplan/v1/schema.json",
       "exampleDataUrl": "/types/stappenplan/v1/example.json",
-      "description": "Doorloop afbeeldingen met stapnummers en uitleg via Vorige en Volgende."
+      "description": "Doorloop uitleg met afbeeldingen en code, JavaScript-syntaxkleuren en vetgedrukte fragmenten. Koppel instanties om analogie en code samen te doorlopen."
     }
   ]
 }

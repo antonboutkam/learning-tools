@@ -1,20 +1,36 @@
 {
-  "titel": "Een papieren vliegtuig vouwen",
+  "titel": "Een voorraad in JavaScript",
+  "synchronisatieGroep": "demo-voorraad-analogie",
   "stappen": [
     {
-      "afbeelding": "images/stap-1.svg",
-      "alt": "Een vel papier met een verticale vouwlijn in het midden.",
-      "beschrijving": "Leg een vel papier voor je neer. Vouw het in de lengte dubbel en open het weer. De vouwlijn helpt je bij de volgende stap."
+      "beschrijving": "De variabele voorraad is het etiket op de doos. De waarde 3 vertelt hoeveel koekjes erin zitten.",
+      "code": {
+        "taal": "javascript",
+        "bron": "let voorraad = 3;",
+        "nadruk": [
+          "voorraad"
+        ]
+      }
     },
     {
-      "afbeelding": "images/stap-2.svg",
-      "alt": "De twee bovenste hoeken zijn naar de middenlijn gevouwen.",
-      "beschrijving": "Vouw beide bovenste hoeken naar de middenlijn. Zorg dat de randen netjes op elkaar aansluiten."
+      "beschrijving": "Een koekje toevoegen verandert de inhoud van dezelfde doos. De variabele krijgt een nieuwe waarde.",
+      "code": {
+        "taal": "javascript",
+        "bron": "let voorraad = 3;\nvoorraad = voorraad + 1;",
+        "nadruk": [
+          "voorraad = voorraad + 1"
+        ]
+      }
     },
     {
-      "afbeelding": "images/stap-3.svg",
-      "alt": "Een gevouwen papieren vliegtuig met twee vleugels.",
-      "beschrijving": "Vouw het papier dubbel langs de middenlijn en vouw de vleugels naar beneden. Je vliegtuig is klaar om te testen!"
+      "beschrijving": "De voorwaarde controleert of er nog koekjes zijn. Alleen dan volgt de boodschap.",
+      "code": {
+        "taal": "javascript",
+        "bron": "let voorraad = 3;\nvoorraad = voorraad + 1;\n\nif (voorraad > 0) {\n  console.log(\"Er zijn koekjes!\");\n}",
+        "nadruk": [
+          "voorraad > 0"
+        ]
+      }
     }
   ]
 }

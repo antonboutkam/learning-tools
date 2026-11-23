@@ -15,14 +15,21 @@
         <p id="stepNumber" class="step-number"></p>
         <div id="imageContainer" class="image-container"></div>
         <p id="imageStatus" class="image-status" hidden></p>
+        <div id="codeContainer" class="code-container" hidden>
+          <p id="codeLabel" class="code-label"></p>
+          <pre tabindex="0" aria-label="Codevoorbeeld"><code id="codeContent"></code></pre>
+        </div>
         <p id="description" class="description"></p>
       </section>
+      <p id="syncStatus" class="sync-status" role="status" hidden></p>
       <nav aria-label="Stappen doorlopen">
         <button id="previousButton" type="button" disabled>← Vorige</button>
         <button id="nextButton" type="button" disabled>Volgende →</button>
       </nav>
     </div>
   </main>
+  <script src="code.js"></script>
+  <script src="sync.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

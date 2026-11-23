@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stappenplan: analogie en JavaScript</title>
+  <style>
+    body { margin: 0; padding: 24px; color: #172b45; font-family: system-ui, sans-serif; background: #f2f5f9; }
+    h1 { font-size: 1.6rem; }
+    .examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    iframe { width: 100%; height: 680px; border: 1px solid #cdd5df; border-radius: 12px; background: white; }
+    @media (max-width: 750px) { .examples { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <h1>Van koekjesdoos naar JavaScript</h1>
+  <p>Gebruik Vorige of Volgende aan een van beide kanten. De andere kant volgt dezelfde stap. De gemarkeerde code hoort bij de analogie.</p>
+  <div class="examples">
+    <iframe title="Analogie: de koekjesdoos" src="./?data=example-analogie.json"></iframe>
+    <iframe title="Code: een voorraad in JavaScript" src="./?data=example.json"></iframe>
+  </div>
+</body>
+</html>
