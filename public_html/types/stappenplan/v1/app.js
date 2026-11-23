@@ -60,6 +60,31 @@
     return url.href;
   }
 
+  function applyColors(config) {
+    const style = document.documentElement.style;
+    const colors = [
+      ["achtergrondkleur", "--background", "#18243d"],
+      ["beschrijvingAchtergrondkleur", "--description-background", "#fff3b0"],
+      ["beschrijvingTekstkleur", "--description-foreground", "#000000"]
+    ];
+    for (const [key, property, fallback] of colors) {
+      const value = config[key] === undefined ? fallback : config[key];
+      if (typeof value !== "string" || !/^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/.test(value)) {
+        throw new Error(`Gebruik een hexkleur zoals #18243d voor ${key}.`);
+      }
+      style.setProperty(property, value);
+    }
+    // Houd titel en stapnummer leesbaar bij zowel lichte als donkere achtergronden.
+    let hex = style.getPropertyValue("--background").slice(1);
+    if (hex.length === 3) hex = [...hex].map((digit) => digit + digit).join("");
+    const [r, g, b] = hex.match(/../g).map((part) => {
+      const channel = parseInt(part, 16) / 255;
+      return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+    });
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    style.setProperty("--foreground", luminance > 0.179 ? "#000000" : "#ffffff");
+  }
+
   async function load() {
     try {
       const data = new URLSearchParams(window.location.search).get("data");
@@ -90,6 +115,7 @@
           (typeof config.synchronisatieGroep !== "string" || !config.synchronisatieGroep.trim())) {
         throw new Error("De synchronisatiegroep moet een niet-lege tekst zijn.");
       }
+      applyColors(config);
       if (typeof config.titel === "string" && config.titel.trim()) {
         title.textContent = config.titel;
         title.hidden = false;

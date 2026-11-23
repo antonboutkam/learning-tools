@@ -15,6 +15,30 @@
       "description": "Optionele titel boven het stappenplan.",
       "type": "string"
     },
+    "achtergrondkleur": {
+      "title": "Achtergrondkleur",
+      "description": "Achtergrondkleur van het stappenplan als hexcode, bijvoorbeeld #18243d. Standaard donkerblauw.",
+      "type": "string",
+      "format": "color",
+      "pattern": "^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$",
+      "default": "#18243d"
+    },
+    "beschrijvingAchtergrondkleur": {
+      "title": "Achtergrondkleur beschrijving",
+      "description": "Achtergrondkleur van het uitlegvlak als hexcode. Standaard pastelgeel (#fff3b0).",
+      "type": "string",
+      "format": "color",
+      "pattern": "^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$",
+      "default": "#fff3b0"
+    },
+    "beschrijvingTekstkleur": {
+      "title": "Tekstkleur beschrijving",
+      "description": "Tekstkleur van de uitleg als hexcode. Standaard zwart (#000000).",
+      "type": "string",
+      "format": "color",
+      "pattern": "^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$",
+      "default": "#000000"
+    },
     "stappen": {
       "title": "Stappen",
       "description": "De stappen in de volgorde waarin de student ze doorloopt.",

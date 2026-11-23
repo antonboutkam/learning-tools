@@ -1,6 +1,9 @@
 {
   "titel": "Een voorraad in JavaScript",
   "synchronisatieGroep": "demo-voorraad-analogie",
+  "achtergrondkleur": "#18243d",
+  "beschrijvingAchtergrondkleur": "#fff3b0",
+  "beschrijvingTekstkleur": "#000000",
   "stappen": [
     {
       "beschrijving": "De variabele voorraad is het etiket op de doos. De waarde 3 vertelt hoeveel koekjes erin zitten.",

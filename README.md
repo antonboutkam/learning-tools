@@ -84,6 +84,7 @@ Standalone, versie‑gebaseerde quiz‑types die via iframes in Canvas kunnen wo
   - Extra: uitleg met optionele afbeelding en/of code per stap, automatische nummering, Vorige/Volgende en pijltjestoetsen. Relatieve afbeeldingspaden zijn relatief aan de JSON-configuratie.
   - Koppel twee instanties met dezelfde `synchronisatieGroep` en evenveel stappen: navigeren in de ene laat de andere volgen. Dit werkt binnen dezelfde browser, tool-origin en opslagpartitie; gebruik een unieke groepsnaam per les.
   - Code: `code: { "taal": "javascript", "bron": "let voorraad = 3;", "nadruk": ["voorraad"] }`. JavaScript krijgt syntaxkleuren; andere taalnamen tonen voorlopig ongekleurde code. `nadruk` maakt alle exacte voorkomens vet zonder de broncode te wijzigen. Code wordt niet uitgevoerd.
+  - Kleuren: `achtergrondkleur` (standaard `#18243d`), `beschrijvingAchtergrondkleur` (pastelgeel `#fff3b0`) en `beschrijvingTekstkleur` (zwart `#000000`). Gebruik hexkleuren; de titel en het stapnummer krijgen automatisch een leesbare kleur.
   - [Gekoppelde demo](public_html/types/stappenplan/v1/demo.html): analogie (`example-analogie.json`) naast JavaScript (`example.json`). Het oorspronkelijke voorbeeld staat in `example-afbeeldingen.json`.
   - De afbeelding vult de beschikbare breedte en de resterende iframehoogte, met behoud van de beeldverhouding en zonder uitsnijden. Langere uitleg blijft bereikbaar door te scrollen.
 
